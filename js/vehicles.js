@@ -38,6 +38,11 @@ export function makeMaterials(T) {
   M.directionSigns = ps1Material({ map: T.directionSigns, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
   M.fence = ps1Material({ map: T.fence, alphaTest: 0.5, side: THREE.DoubleSide });
   M.busWindows = ps1Material({ map: T.busWindows });
+  M.redPavers = ps1Material({ map: T.redPavers });
+  M.sand = ps1Material({ map: T.sand });
+  M.graffiti = ps1Material({ map: T.graffiti });
+  M.big = ps1Material({ map: T.big, unlit: true, color: 0xf0f0f0 });
+  M.landmarkSigns = ps1Material({ map: T.landmarkSigns, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
   for (const name of Object.keys(T.facade)) M['facade_' + name] = ps1Material({ map: T.facade[name] });
   for (const tree of ['eucalyptus', 'palm', 'roundTree']) {
     M[tree] = ps1Material({ map: T[tree], alphaTest: 0.5, side: THREE.DoubleSide, unlit: true, color: 0xd8d8d8 });

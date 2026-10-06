@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { PS1Post, shared } from './ps1.js';
 import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
-import { City, ROAD, themeAt } from './city.js';
+import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
 import { Traffic } from './traffic.js';
 import { HUD } from './hud.js';
 import { Input } from './input.js';
@@ -40,8 +40,13 @@ const BEST_KEY = 'pelotas-turismo-best';
 const loadBest = () => { try { return Number(localStorage.getItem(BEST_KEY)) || 0; } catch { return 0; } };
 const saveBest = (v) => { try { localStorage.setItem(BEST_KEY, String(Math.floor(v))); } catch { /* sem storage */ } };
 
-// O jogador começa 60 m dentro da avenida para haver chão atrás da câmera. ?tp=<m> teletransporta.
-const START_Z = -60 - (Number(params.get('tp')) || 0);
+// Cada fase ocupa PHASE_LEN metros do mundo; o jogador começa 60 m dentro dela (há chão atrás da
+// câmera) e a fase termina no pórtico de chegada. ?phase=N e ?tp=<m> ajudam a testar.
+const PHASE_FINISH = PHASE_LEN - 170;
+const phaseStartZ = (p) => -(p * PHASE_LEN) - 42; // o prédio do ponto de partida fica logo à frente
+const START_PHASE = Math.min(THEMES.length - 1, Math.max(0, Number(params.get('phase')) || 0));
+const TP = Number(params.get('tp')) || 0;
+const START_Z = phaseStartZ(START_PHASE) - TP;
 
 const G = {
   state: 'title',
@@ -50,20 +55,31 @@ const G = {
   health: 100, score: 0, combo: 0, comboTimer: 0, dist: 0, motos: 0,
   time: 0, stateTime: 0,
   shake: 0, bounce: 0, bounceV: 0, roll: 0, invuln: 0, gear: 1, rpm: 0,
-  course: '', courseKey: null, best: loadBest(), alive: false,
-  wheelRot: 0, titleAngle: 0,
+  course: THEMES[START_PHASE].name, phase: START_PHASE, phases: THEMES.length, best: loadBest(), alive: false,
+  wheelRot: 0, titleAngle: 0, phaseDist: 0,
 };
 
 const camState = { x: G.x, lookX: G.x, fov: 60 };
 
-function resetRun() {
-  G.x = ROAD.LANE_X[1]; G.z = START_Z; G.speed = 0;
-  G.health = 100; G.score = 0; G.combo = 0; G.comboTimer = 0; G.dist = 0; G.motos = 0;
+/** Posiciona o jogador no ponto de partida da fase p e repovoa o tráfego. */
+function startPhase(p, tp = 0) {
+  G.phase = p;
+  G.course = THEMES[p].name;
+  G.x = ROAD.LANE_X[1]; G.z = phaseStartZ(p) - tp; G.speed = 0;
   G.shake = 0; G.bounce = 0; G.bounceV = 0; G.roll = 0; G.invuln = 0; G.gear = 1; G.rpm = 0;
-  G.courseKey = null; G.alive = true; G.stateTime = 0;
-  traffic.reset(START_Z);
+  G.combo = 0; G.comboTimer = 0; G.alive = true; G.stateTime = 0;
+  traffic.reset(G.z);
+  traffic.parkedForPhase(THEMES[p].key, phaseStartZ(p));
   astra.group.rotation.set(0, 0, 0);
+  astra.group.visible = true;
   camState.x = G.x; camState.lookX = G.x;
+  city.update(G.z);
+  hud.banner(`FASE ${p + 1} · ${THEMES[p].name}`);
+}
+
+function resetRun() {
+  G.health = 100; G.score = 0; G.dist = 0; G.motos = 0;
+  startPhase(START_PHASE, TP);
 }
 
 function startRun(gesture = true) {
@@ -84,9 +100,36 @@ function gameOver() {
   hud.setBest(G.best);
 }
 
+function endPhase() {
+  G.state = 'phaseEnd';
+  G.alive = false;
+  G.stateTime = 0;
+  const bonus = Math.round(G.health) * 5;
+  G.score += bonus;
+  audio.start();
+  hud.overlay({ kicker: `FASE ${G.phase + 1} CONCLUÍDA · BÔNUS DE LATARIA +${bonus}`, title: THEMES[G.phase].title2, press: 'ENTER OU TOQUE PARA A PRÓXIMA AVENIDA' }, G, Math.max(G.best, G.score));
+}
+
+function nextPhase() {
+  if (G.phase + 1 >= THEMES.length) { victory(); return; }
+  G.health = Math.min(100, G.health + 25);
+  startPhase(G.phase + 1);
+  G.state = 'playing';
+  hud.show('hud');
+}
+
+function victory() {
+  G.state = 'victory';
+  G.stateTime = 0;
+  if (G.score > G.best) { G.best = G.score; saveBest(G.best); }
+  hud.setBest(G.best);
+  hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'PELOTAS<br>TURISMO', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
+}
+
 function onConfirm() {
   if (G.state === 'title') startRun();
-  else if (G.state === 'gameover' && G.stateTime > 1.2) startRun();
+  else if ((G.state === 'gameover' || G.state === 'victory') && G.stateTime > 1.2) startRun();
+  else if (G.state === 'phaseEnd' && G.stateTime > 1.0) nextPhase();
 }
 
 input.onKey = (code) => {
@@ -203,18 +246,11 @@ function updatePlaying(dt) {
   camera.fov = camState.fov;
   camera.updateProjectionMatrix();
 
-  // Avenida atual (banner ao trocar).
-  const theme = themeAt(G.z - 40);
-  if (theme.key !== G.courseKey) {
-    G.courseKey = theme.key;
-    G.course = theme.name;
-    hud.banner(theme.name);
-  }
-
   audio.engineUpdate(G.rpm, throttle, true);
   hud.update(G);
 
-  if (G.health <= 0) gameOver();
+  if (G.health <= 0) { gameOver(); return; }
+  if (phaseStartZ(G.phase) - G.z >= PHASE_FINISH) endPhase();
 }
 
 function updateTitle(dt) {
@@ -235,9 +271,13 @@ function updateGameOver(dt) {
   G.z -= G.speed * dt;
   astra.group.position.set(G.x, 0, G.z);
   astra.group.visible = true;
+  for (const w of astra.wheels) w.rotation.x -= (G.speed * dt) / 0.30;
   camera.position.set(G.x + Math.cos(a) * 7.5, 2.4, G.z + Math.sin(a) * 7.5);
   camera.lookAt(G.x, 0.6, G.z);
   camera.updateProjectionMatrix();
+  audio.engineUpdate(G.speed / 60, 0, G.state === 'phaseEnd');
+  // Fim de fase avança sozinho depois de alguns segundos.
+  if (G.state === 'phaseEnd' && G.stateTime > 5) nextPhase();
 }
 
 function resize() {
@@ -277,8 +317,9 @@ if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.
 if (params.has('angle')) G.titleAngle = Number(params.get('angle')) || 0;
 // ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura).
 const sim = Number(params.get('sim')) || 0;
-for (let k = 0; k < sim * 60 && G.state === 'playing'; k++) {
+for (let k = 0; k < sim * 60 && (G.state === 'playing' || G.state === 'phaseEnd'); k++) {
   G.time += 1 / 60; G.stateTime += 1 / 60;
+  if (G.state === 'phaseEnd') { if (BOT) { nextPhase(); continue; } break; }
   updatePlaying(1 / 60);
   city.update(G.z);
 }
@@ -294,6 +335,6 @@ if (params.has('env')) {
 if (params.has('dbg')) {
   setInterval(() => {
     const first = traffic.active.slice(0, 4).map((e) => [e.kind, e.x.toFixed(1), e.z.toFixed(1), e.group.visible, e.group.children.length]);
-    console.log('DBG', JSON.stringify({ t: G.time.toFixed(2), z: G.z.toFixed(1), speed: G.speed.toFixed(1), n: traffic.active.length, spawnZ: traffic.spawnZ.toFixed(0), first, drawCalls: renderer.info.render.calls, tris: renderer.info.render.triangles }));
+    console.log('DBG', JSON.stringify({ t: G.time.toFixed(2), state: G.state, phase: G.phase, health: Math.round(G.health), score: Math.round(G.score), z: G.z.toFixed(1), speed: G.speed.toFixed(1), n: traffic.active.length, spawnZ: traffic.spawnZ.toFixed(0), first, drawCalls: renderer.info.render.calls, tris: renderer.info.render.triangles }));
   }, 400);
 }

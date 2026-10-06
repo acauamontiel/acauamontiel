@@ -9,6 +9,8 @@ export class HUD {
       health: $('hud-health'), popup: $('hud-popup'), banner: $('hud-banner'),
       title: $('title'), gameover: $('gameover'), loading: $('loading'), titleBest: $('title-best'),
       goScore: $('go-score'), goDist: $('go-dist'), goMotos: $('go-motos'), goBest: $('go-best'),
+      goKicker: $('go-kicker'), goTitle: $('go-title'), goPress: $('go-press'),
+      courseSub: document.querySelector('.course-sub'),
     };
     this.popupTimer = 0;
   }
@@ -28,9 +30,10 @@ export class HUD {
     this.el.motos.textContent = String(s.motos);
     this.el.health.style.width = Math.max(0, s.health) + '%';
     this.el.combo.textContent = s.combo > 1 ? `COMBO x${s.combo}` : '';
-    if (this.courseName !== s.course) {
-      this.courseName = s.course;
+    if (this.courseName !== s.course || this.phase !== s.phase) {
+      this.courseName = s.course; this.phase = s.phase;
       this.el.course.textContent = s.course;
+      this.el.courseSub.textContent = `FASE ${s.phase + 1}/${s.phases} · PELOTAS · RS`;
     }
   }
 
@@ -51,12 +54,20 @@ export class HUD {
     b.classList.add('show');
   }
 
-  gameOver(s, best) {
+  /** Tela de resultado: fim de jogo, fim de fase ou chegada. */
+  overlay({ kicker, title, press }, s, best) {
+    this.el.goKicker.textContent = kicker;
+    this.el.goTitle.innerHTML = title;
+    this.el.goPress.textContent = press;
     this.el.goScore.textContent = String(Math.floor(s.score));
     this.el.goDist.textContent = (s.dist / 1000).toFixed(2) + ' km';
     this.el.goMotos.textContent = String(s.motos);
     this.el.goBest.textContent = String(Math.floor(best));
     this.show('gameover');
+  }
+
+  gameOver(s, best) {
+    this.overlay({ kicker: 'FIM DE JOGO', title: 'ASTRA NO<br>CONSERTO', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, s, best);
   }
 
   setBest(best) {

@@ -55,8 +55,8 @@
       <h1 class="title">PELOTAS<br>TURISMO</h1>
       <div class="title-sub">ASTRA GSi · DUQUE · BENTO · JK</div>
       <div class="rules">
-        <p>Desvie dos <b>carros</b> e dos <b>buracos</b>.</p>
-        <p>Ganhe pontos atropelando <b>motos</b>. Sequências sem bater multiplicam.</p>
+        <p>Três fases de 2 km: <b>Duque de Caxias</b>, <b>Bento Gonçalves</b> e <b>JK</b>.</p>
+        <p>Desvie dos <b>carros</b> e dos <b>buracos</b>. Ganhe pontos atropelando <b>motos</b>; sequências sem bater multiplicam.</p>
       </div>
       <div class="controls">
         <span><kbd>←</kbd><kbd>→</kbd> desviar</span>
@@ -73,15 +73,15 @@
   <!-- Fim de jogo -->
   <div id="gameover" class="layer screen hidden">
     <div class="title-box">
-      <div class="title-kicker">FIM DE JOGO</div>
-      <h1 class="title small">ASTRA NO<br>CONSERTO</h1>
+      <div id="go-kicker" class="title-kicker">FIM DE JOGO</div>
+      <h1 id="go-title" class="title small">ASTRA NO<br>CONSERTO</h1>
       <div class="results">
         <div class="result"><span class="label">PONTOS</span><span id="go-score" class="value">0</span></div>
         <div class="result"><span class="label">DISTÂNCIA</span><span id="go-dist" class="value">0.00 km</span></div>
         <div class="result"><span class="label">MOTOS</span><span id="go-motos" class="value">0</span></div>
         <div class="result"><span class="label">MELHOR</span><span id="go-best" class="value">0</span></div>
       </div>
-      <div class="press blink">ENTER OU TOQUE PARA CORRER DE NOVO</div>
+      <div id="go-press" class="press blink">ENTER OU TOQUE PARA CORRER DE NOVO</div>
     </div>
   </div>
 

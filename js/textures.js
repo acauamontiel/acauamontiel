@@ -134,6 +134,40 @@ export function makeTextures() {
     T.grass = pixelTexture(c);
   }
 
+  // Canteiro central da Duque: lajotas avermelhadas.
+  {
+    const [c, g] = canvas(64, 64);
+    noise(g, 64, 64, 150, 34, [1.0, 0.55, 0.45]);
+    g.fillStyle = 'rgba(60,30,25,0.8)';
+    for (let i = 0; i < 64; i += 16) { g.fillRect(i, 0, 1, 64); g.fillRect(0, i, 64, 1); }
+    g.fillStyle = 'rgba(255,230,220,0.2)';
+    for (let i = 1; i < 64; i += 16) { g.fillRect(i, 0, 1, 64); g.fillRect(0, i, 64, 1); }
+    T.redPavers = pixelTexture(c);
+  }
+
+  // Terreno de areia e capim ralo (lotes vazios da JK).
+  {
+    const [c, g] = canvas(64, 64);
+    noise(g, 64, 64, 188, 36, [1.0, 0.92, 0.72]);
+    g.fillStyle = 'rgba(70,110,40,0.55)'; for (let k = 0; k < 40; k++) g.fillRect(rnd() * 64, rnd() * 64, 2 + rnd() * 5, 1 + rnd() * 2);
+    g.fillStyle = 'rgba(120,100,70,0.35)'; for (let k = 0; k < 6; k++) g.fillRect(rnd() * 60, rnd() * 60, 6 + rnd() * 14, 3 + rnd() * 8);
+    T.sand = pixelTexture(c);
+  }
+
+  // Muro de concreto com pichações (Bento Gonçalves).
+  {
+    const [c, g] = canvas(64, 32);
+    noise(g, 64, 32, 170, 26);
+    g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(0, 26, 64, 6);
+    const cols = ['#c0392b', '#1f6fb2', '#2e8b57', '#111', '#7a3fa0', '#e0a020'];
+    for (let k = 0; k < 7; k++) {
+      g.fillStyle = cols[k % cols.length];
+      const x = rnd() * 56, y = 6 + rnd() * 10;
+      g.fillRect(x, y, 4 + rnd() * 10, 2); g.fillRect(x + rnd() * 6, y, 2, 4 + rnd() * 8);
+    }
+    T.graffiti = pixelTexture(c);
+  }
+
   // Água do Canal São Gonçalo.
   {
     const [c, g] = canvas(64, 64);
@@ -187,6 +221,14 @@ export function makeTextures() {
     g.fillStyle = 'rgba(120,60,30,0.4)'; for (let k = 0; k < 6; k++) g.fillRect(rnd() * 60, 40 + rnd() * 20, 2 + rnd() * 4, 6 + rnd() * 18);
   });
   facade('plain', () => {});
+  // Auditório do Colégio Pelotense: parede verde-oliva com arcadas altas.
+  facade('auditorium', (g) => {
+    g.globalCompositeOperation = 'multiply'; g.fillStyle = '#9fb08c'; g.fillRect(0, 0, 64, 64); g.globalCompositeOperation = 'source-over';
+    g.fillStyle = '#243030'; g.fillRect(16, 22, 32, 42); g.beginPath(); g.arc(32, 22, 16, Math.PI, 0); g.fill();
+    g.fillStyle = '#6a7a60'; g.fillRect(16, 60, 32, 4);
+    g.fillStyle = 'rgba(255,255,255,0.25)'; g.fillRect(18, 24, 6, 30);
+    g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(0, 0, 64, 5);
+  });
 
   // Lojas do térreo: atlas com 16 fachadas de 64x64 (vitrine + toldo + letreiro).
   T.shopNames = [
@@ -358,13 +400,14 @@ export function makeTextures() {
     ['SUPERMERCADO', 'OFERTAS DA SEMANA · FRAGATA'],
     ['POSTO', 'GASOLINA · ETANOL · DIESEL'],
     ['CONCESSIONÁRIA', 'ASTRA · VECTRA · CORSA · OMEGA'],
-    ['PELOTAS TURISMO', 'LARGADA · AV. DUQUE DE CAXIAS'],
+    ['LARGADA', 'PELOTAS TURISMO'],
+    ['CHEGADA', 'FIM DA FASE'],
   ];
   T.billboardGeneric = 8;
   {
     const n = T.billboardTexts.length;
     const [c, g] = canvas(256 * n, 128);
-    const bgs = ['#c23a1f', '#1f4fa0', '#f2c230', '#222', '#d86aa0', '#2a8a5a', '#000', '#5a2a9a', '#c8241c', '#1a7a3a', '#1a1a1a', '#1f4fa0'];
+    const bgs = ['#c23a1f', '#1f4fa0', '#f2c230', '#222', '#d86aa0', '#2a8a5a', '#000', '#5a2a9a', '#c8241c', '#1a7a3a', '#1a1a1a', '#1f4fa0', '#111111'];
     for (let i = 0; i < n; i++) {
       const x = i * 256;
       g.fillStyle = bgs[i % bgs.length]; g.fillRect(x, 0, 256, 128);
@@ -406,6 +449,35 @@ export function makeTextures() {
     }
     T.signs = pixelTexture(c, false);
     T.signCount = n;
+  }
+
+  // Letreiros dos pontos de partida (atlas 2 x 256x64, fundo claro).
+  T.landmarkTexts = [
+    ['BRIGADA MILITAR', 'SEDE FRAGATA · 4º BPM'],
+    ['COLÉGIO PELOTENSE', 'AUDITÓRIO ANTÔNIO EDGAR NOGUEIRA'],
+  ];
+  {
+    const [c, g] = canvas(512, 64);
+    for (let i = 0; i < 2; i++) {
+      const x = i * 256;
+      g.fillStyle = i === 0 ? '#efe9d8' : '#9fb08c'; g.fillRect(x, 0, 256, 64);
+      g.fillStyle = i === 0 ? '#1a1a1a' : '#f4f4ee'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.font = 'bold 26px Arial, sans-serif';
+      g.fillText(T.landmarkTexts[i][0], x + 128, 24, 244);
+      g.font = 'bold 13px Arial, sans-serif';
+      g.fillText(T.landmarkTexts[i][1], x + 128, 48, 244);
+    }
+    T.landmarkSigns = pixelTexture(c, false);
+  }
+
+  // Letreiro do BIG: letras vermelhas enormes sobre azul-marinho.
+  {
+    const [c, g] = canvas(128, 64);
+    g.fillStyle = '#17245a'; g.fillRect(0, 0, 128, 64);
+    g.fillStyle = '#d22222'; g.font = 'bold 60px Arial Black, Arial, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillText('BIG', 64, 34, 124);
+    g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, 60, 128, 4);
+    T.big = pixelTexture(c, false);
   }
 
   // Placas direcionais verdes (atlas 4 x 128x64).

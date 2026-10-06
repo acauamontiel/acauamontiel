@@ -34,7 +34,8 @@ Parâmetros de URL úteis (depuração):
 |---|---|
 | `?autostart` | pula a tela de título (sem áudio, pois não houve gesto) |
 | `?nops1` | começa com o filtro PS1 desligado |
-| `?tp=1800` | começa 1800 m adiante (1440 m por avenida: Duque → Bento → JK) |
+| `?phase=1` | começa na fase 2 (0 = Duque, 1 = Bento, 2 = JK) |
+| `?tp=1800` | começa 1800 m adiante dentro da fase |
 | `?sim=20` | avança 20 s de jogo antes do primeiro quadro |
 | `?bot` | piloto automático que persegue motos e desvia do resto |
 | `?showcase` | estaciona um exemplar de cada veículo à frente |
@@ -49,18 +50,21 @@ Parâmetros de URL úteis (depuração):
 - **Buracos**: 8% de dano e perda de velocidade.
 - **Motos**: +100 pontos, multiplicados pela sequência (até x8). Bater em um carro zera a sequência.
 - **Raspão**: passar colado em um carro sem bater vale +50.
-- A distância também pontua. O jogo acaba quando o dano chega a 100%.
+- A distância também pontua. O jogo acaba quando a lataria chega a zero.
+- São **três fases de 2 km**, em sequência: Duque de Caxias → Bento Gonçalves → JK. Ao cruzar o pórtico
+  de chegada a lataria restante vira bônus e a próxima fase começa com 25% de lataria recuperada.
 
 ## As avenidas
 
-O percurso alterna, a cada 1,44 km, três avenidas reais de Pelotas (a cidade em si é imaginada):
+Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o ponto de partida num lugar real:
 
-- **Av. Duque de Caxias** — liga o Centro ao Fragata; canteiro central arborizado desde 1914 (eucaliptos e
-  grevíleas), comércio de bairro (supermercados, farmácias, materiais de construção, bancos).
-- **Av. Bento Gonçalves** — Centro, fluxo intenso, bancos e comércio, palmeiras no canteiro,
-  Parque Dom Antônio Zattera de um lado e o Estádio Boca do Lobo do outro.
-- **Av. Pres. Juscelino Kubitschek** — região do Porto, Areal e São Gonçalo: canal, galpões, guindastes,
-  silos, borracharias e posto de gasolina.
+- **Fase 1 · Av. Duque de Caxias** — largada na sede da Brigada Militar do Fragata; canteiro central de
+  lajotas vermelhas com eucaliptos, comércio de bairro (supermercados, farmácias, materiais de construção).
+- **Fase 2 · Av. Bento Gonçalves** — largada no auditório do Colégio Pelotense; canteiro largo com árvores
+  grandes, carros estacionados, muros pichados com prédios recuados, Parque Dom Antônio Zattera e
+  Estádio Boca do Lobo.
+- **Fase 3 · Av. Pres. Juscelino Kubitschek** — largada no supermercado BIG; meio-fio pintado de branco,
+  terrenos de areia, palmeiras, canal, guindastes do porto, silos e posto de gasolina.
 
 ## Técnica PS1
 

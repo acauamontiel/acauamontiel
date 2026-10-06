@@ -42,6 +42,29 @@ export class Traffic {
     return this.addEntity({ kind: 'car', group, x, z, lane, w: tpl.w, l: tpl.l, speed: bus ? rnd(9, 13) : rnd(11, 19), hit: false, passed: false, vx: 0, spinY: 0 });
   }
 
+  /** Carro estacionado (cenário, não colide). */
+  spawnParked(x, z, name, color, rotY = 0, y = 0) {
+    const tpl = this.cars.find((t) => t.name === name) || this.cars[0];
+    const group = makeVehicle(tpl, color === undefined ? pick(tpl.colors) : color, this.M);
+    group.rotation.y = rotY;
+    return this.addEntity({ kind: 'parked', group, x, y, z, w: tpl.w, l: tpl.l, speed: 0, hit: true });
+  }
+
+  /** Carros estacionados do ponto de partida de cada fase. */
+  parkedForPhase(themeKey, startZ) {
+    if (themeKey === 'duque') {
+      this.spawnParked(-13.6, startZ - 2, 'sedan', 0xe8e8e8, Math.PI, 0.15);   // viatura em frente à Brigada
+      this.spawnParked(-13.6, startZ + 8, 'hatch', 0xe8e8e8, Math.PI, 0.15);
+    } else if (themeKey === 'bento') {
+      const cols = [0xb8bcc2, 0xe8e8e8, 0x2a2a2e, 0xb8bcc2, 0x1f3a7a];
+      for (let k = 0; k < 5; k++) this.spawnParked(13.2, startZ - 4 - k * 7.5, k % 2 ? 'hatch' : 'sedan', cols[k], 0, 0.15);
+    } else if (themeKey === 'jk') {
+      this.spawnParked(22, startZ + 6, 'sedan', 0xb8bcc2, Math.PI / 2, 0.01);
+      this.spawnParked(26, startZ - 10, 'hatch', 0xe8e8e8, -Math.PI / 2, 0.01);
+      this.spawnParked(13.2, startZ - 30, 'pickup', 0x1f3a7a, 0, 0.15);
+    }
+  }
+
   spawnOncoming(z) {
     const tpl = pick(this.weighted);
     const group = makeVehicle(tpl, pick(tpl.colors), this.M);
@@ -144,7 +167,7 @@ export class Traffic {
           e.group.rotation.z = -Math.cos(e.t * e.wf + e.ph) * e.wa * 0.12;
           break;
       }
-      e.group.position.set(e.x, 0, e.z);
+      e.group.position.set(e.x, e.y || 0, e.z);
 
       if (e.z > P.z + 30) { this.remove(e); continue; }
       if (e.hit || !P.alive) continue;
