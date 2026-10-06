@@ -66,13 +66,13 @@ O percurso alterna, a cada 1,44 km, três avenidas reais de Pelotas (a cidade em
 
 Tudo está em `js/ps1.js`:
 
-- render em 512x288 (o modo "hi-res" do Gran Turismo) com upscale nearest-neighbor;
+- render interno com 512 px no lado maior (o modo "hi-res" do Gran Turismo), seja a janela larga ou alta, com upscale nearest-neighbor;
 - *vertex snapping* na grade de pixels do framebuffer baixo;
 - mapeamento de textura **afim** (sem correção de perspectiva), com a pista subdividida para não "nadar" demais;
 - iluminação Gouraud por vértice, texturas sem filtro e sem mipmap;
 - quantização para 15 bits com dithering ordenado (Bayer 4x4) no pós-processamento;
 - reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice);
-- céu panorâmico com nuvens (fbm) desenhado no pós-processamento acima da linha do horizonte da câmera;
+- céu em gradiente no pós-processamento, ancorado na linha do horizonte calculada da inclinação da câmera;
 - textura de carroceria "desenrolada" por carro (`makeBodyTexture`): colunas, vidros laterais, vãos de porta,
   maçanetas, caixas de roda e borrachas, multiplicando a cor da pintura.
 

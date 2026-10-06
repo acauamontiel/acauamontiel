@@ -25,11 +25,10 @@ renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.3, 420);
-const post = new PS1Post(renderer, 288);
+const post = new PS1Post(renderer, 512);
 
 const T = makeTextures();
 const M = makeMaterials(T);
-post.setSky(T.sky);
 const astra = buildAstra(M, T);
 scene.add(astra.group);
 const city = new City(scene, M, T);

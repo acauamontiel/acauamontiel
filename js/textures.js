@@ -55,36 +55,6 @@ function valueNoise2D(w, h, octaves = 4, scale = 8) {
 export function makeTextures() {
   const T = {};
 
-  // Céu com nuvens (faixa panorâmica 512x128): gradiente + fbm, mais denso perto do horizonte.
-  {
-    const w = 256, h = 64;
-    const [c, g] = canvas(w, h);
-    const n = valueNoise2D(w, h, 5, 6);
-    const img = g.createImageData(w, h);
-    const d = img.data;
-    for (let y = 0; y < h; y++) {
-      const t = y / (h - 1); // 0 = topo (zênite), 1 = horizonte
-      const sky = [0x34 + (0xbc - 0x34) * t, 0x72 + (0xc8 - 0x72) * t, 0xc4 + (0xd6 - 0xc4) * t];
-      for (let x = 0; x < w; x++) {
-        const v = n[y * w + x];
-        const stretch = 0.55 + t * 0.9; // nuvens achatadas perto do horizonte
-        const cloud = Math.max(0, (v - 0.52) * 3.2 * stretch);
-        const shade = 1 - Math.max(0, (v - 0.62)) * 1.2; // base das nuvens mais escura
-        const cl = Math.min(1, cloud);
-        const i = (y * w + x) * 4;
-        d[i] = sky[0] * (1 - cl) + 236 * shade * cl;
-        d[i + 1] = sky[1] * (1 - cl) + 238 * shade * cl;
-        d[i + 2] = sky[2] * (1 - cl) + 242 * shade * cl;
-        d[i + 3] = 255;
-      }
-    }
-    g.putImageData(img, 0, 0);
-    const [c2, g2] = canvas(512, 128);
-    g2.imageSmoothingEnabled = true;
-    g2.drawImage(c, 0, 0, 512, 128);
-    T.sky = pixelTexture(c2, true);
-  }
-
   // Asfalto de uma faixa (3,4 m x 8 m): desgaste nas trilhas dos pneus, remendos, tracejado à direita.
   {
     const w = 128, h = 256;
@@ -96,7 +66,7 @@ export function makeTextures() {
       for (let x = 0; x < w; x++) {
         const u = x / w;
         const track = Math.exp(-Math.pow((u - 0.26) / 0.11, 2)) + Math.exp(-Math.pow((u - 0.74) / 0.11, 2));
-        let v = 104 - track * 22 + (grain[y * w + x] - 0.5) * 40 + (rnd() - 0.5) * 26;
+        let v = 104 - track * 20 + (grain[y * w + x] - 0.5) * 24 + (rnd() - 0.5) * 14;
         const i = (y * w + x) * 4;
         d[i] = v; d[i + 1] = v; d[i + 2] = v + 2; d[i + 3] = 255;
       }

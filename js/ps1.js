@@ -178,12 +178,15 @@ export function ps1Material(o = {}) {
   return mat;
 }
 
-/** Textura canvas com filtro nearest (sem suavização, como no PS1). */
+/**
+ * Textura canvas com filtro nearest (sem suavização, como no PS1).
+ * Texturas repetidas (chão) usam mipmaps para não "chuviscar" ao longe.
+ */
 export function pixelTexture(canvas, repeat = true) {
   const t = new THREE.CanvasTexture(canvas);
   t.magFilter = THREE.NearestFilter;
-  t.minFilter = THREE.NearestFilter;
-  t.generateMipmaps = false;
+  t.minFilter = repeat ? THREE.NearestMipmapLinearFilter : THREE.NearestFilter;
+  t.generateMipmaps = repeat;
   t.wrapS = t.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
   return t;
 }
@@ -198,8 +201,6 @@ void main() {
 
 const POST_FRAG = /* glsl */`
 uniform sampler2D tDiffuse;
-uniform sampler2D uSky;
-uniform float uHasSky;
 uniform float uHorizon;
 uniform vec2 uRes;
 uniform float uDither;
@@ -218,13 +219,9 @@ float bayer4(vec2 p) {
 
 void main() {
   vec4 s = texture2D(tDiffuse, vUv);
-  // Céu onde a cena não desenhou nada (alpha 0): textura de nuvens acima do horizonte.
+  // Céu em gradiente onde a cena não desenhou nada (alpha 0), ancorado na linha do horizonte.
   float t = clamp((vUv.y - uHorizon) / max(0.02, 1.0 - uHorizon), 0.0, 1.0);
   vec3 sky = mix(uSkyBottom, uSkyTop, pow(t, 0.75));
-  if (uHasSky > 0.5) {
-    vec3 tex = texture2D(uSky, vec2(vUv.x * 0.9 + uTime * 0.004, t)).rgb;
-    sky = mix(uSkyBottom, tex, smoothstep(0.0, 0.10, t));
-  }
   vec3 c = mix(sky, s.rgb, clamp(s.a, 0.0, 1.0));
 
   if (uDither > 0.5) {
@@ -240,9 +237,9 @@ const _dir = new THREE.Vector3();
 
 /** Pós-processamento: cena em baixa resolução → tela, com dithering e céu. */
 export class PS1Post {
-  constructor(renderer, baseHeight = 240) {
+  constructor(renderer, longSide = 512) {
     this.renderer = renderer;
-    this.baseHeight = baseHeight;
+    this.longSide = longSide;
     this.rt = new THREE.WebGLRenderTarget(320, 240, {
       minFilter: THREE.NearestFilter,
       magFilter: THREE.NearestFilter,
@@ -254,8 +251,6 @@ export class PS1Post {
     this.material = new THREE.ShaderMaterial({
       uniforms: {
         tDiffuse: { value: this.rt.texture },
-        uSky: { value: null },
-        uHasSky: { value: 0 },
         uHorizon: { value: 0.55 },
         uRes: { value: new THREE.Vector2(320, 240) },
         uDither: { value: 1 },
@@ -273,10 +268,12 @@ export class PS1Post {
   }
 
   setSize(width, height) {
+    // O lado maior do framebuffer interno fica em longSide (512, como o modo hi-res do GT),
+    // seja a janela larga ou alta; o outro lado segue a proporção.
     const aspect = width / height;
-    let h = this.baseHeight;
-    let w = Math.round(h * aspect);
-    if (w > 640) { w = 640; h = Math.round(w / aspect); }
+    let w, h;
+    if (aspect >= 1) { w = this.longSide; h = Math.max(160, Math.round(w / aspect)); }
+    else { h = this.longSide; w = Math.max(160, Math.round(h * aspect)); }
     this.rt.setSize(w, h);
     this.material.uniforms.uRes.value.set(w, h);
     shared.uSnapRes.value.set(w, h);
@@ -289,11 +286,6 @@ export class PS1Post {
     shared.uSnap.value = on ? 1 : 0;
     shared.uAffine.value = on ? 1 : 0;
     this.material.uniforms.uDither.value = on ? 1 : 0;
-  }
-
-  setSky(texture) {
-    this.material.uniforms.uSky.value = texture;
-    this.material.uniforms.uHasSky.value = texture ? 1 : 0;
   }
 
   render(scene, camera, time) {
