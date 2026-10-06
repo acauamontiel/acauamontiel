@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Pelotas Turismo · Astra GSi</title>
+  <meta name="description" content="Jogo WebGL estilo PS1: um Astra GSi preto correndo pelas avenidas de Pelotas, desviando de carros e buracos e atropelando motos.">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.min.js",
+      "three/addons/": "./vendor/addons/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- HUD estilo Gran Turismo -->
+  <div id="hud" class="layer hidden">
+    <div class="hud-top-left">
+      <div id="hud-course" class="course">AV. DUQUE DE CAXIAS</div>
+      <div class="course-sub">PELOTAS · RS</div>
+    </div>
+    <div class="hud-top-right">
+      <div class="label">PONTOS</div>
+      <div id="hud-score" class="score">000000</div>
+      <div id="hud-combo" class="combo"></div>
+    </div>
+    <div class="hud-bottom-left">
+      <div class="speed-row">
+        <span id="hud-speed" class="speed">0</span>
+        <span class="unit">km/h</span>
+      </div>
+      <div class="gear-row"><span class="label">MARCHA</span> <span id="hud-gear" class="gear">1</span></div>
+    </div>
+    <div class="hud-bottom-right">
+      <div class="stat"><span class="label">DIST</span> <span id="hud-dist" class="value">0.00 km</span></div>
+      <div class="stat"><span class="label">MOTOS</span> <span id="hud-motos" class="value">0</span></div>
+      <div class="stat">
+        <span class="label">LATARIA</span>
+        <span class="bar"><span id="hud-health" class="bar-fill"></span></span>
+      </div>
+    </div>
+    <div id="hud-popup" class="popup"></div>
+    <div id="hud-banner" class="banner"></div>
+  </div>
+
+  <!-- Tela de título -->
+  <div id="title" class="layer screen">
+    <div class="title-box">
+      <div class="title-kicker">PS1 · WEBGL · PELOTAS/RS</div>
+      <h1 class="title">PELOTAS<br>TURISMO</h1>
+      <div class="title-sub">ASTRA GSi · DUQUE · BENTO · JK</div>
+      <div class="rules">
+        <p>Desvie dos <b>carros</b> e dos <b>buracos</b>.</p>
+        <p>Ganhe pontos atropelando <b>motos</b>. Sequências sem bater multiplicam.</p>
+      </div>
+      <div class="controls">
+        <span><kbd>←</kbd><kbd>→</kbd> desviar</span>
+        <span><kbd>↑</kbd> acelerar</span>
+        <span><kbd>↓</kbd> frear</span>
+        <span><kbd>M</kbd> som</span>
+        <span><kbd>P</kbd> filtro PS1</span>
+      </div>
+      <div class="press blink">PRESSIONE ENTER OU TOQUE NA TELA</div>
+      <div id="title-best" class="best"></div>
+    </div>
+  </div>
+
+  <!-- Fim de jogo -->
+  <div id="gameover" class="layer screen hidden">
+    <div class="title-box">
+      <div class="title-kicker">FIM DE JOGO</div>
+      <h1 class="title small">ASTRA NO<br>CONSERTO</h1>
+      <div class="results">
+        <div class="result"><span class="label">PONTOS</span><span id="go-score" class="value">0</span></div>
+        <div class="result"><span class="label">DISTÂNCIA</span><span id="go-dist" class="value">0.00 km</span></div>
+        <div class="result"><span class="label">MOTOS</span><span id="go-motos" class="value">0</span></div>
+        <div class="result"><span class="label">MELHOR</span><span id="go-best" class="value">0</span></div>
+      </div>
+      <div class="press blink">ENTER OU TOQUE PARA CORRER DE NOVO</div>
+    </div>
+  </div>
+
+  <div id="loading" class="layer screen">
+    <div class="loading">CARREGANDO…</div>
+  </div>
+
+  <script>
+    // Se algum módulo falhar (sem WebGL, arquivo faltando), mostra o erro em vez de "CARREGANDO…".
+    window.addEventListener('error', (e) => {
+      const el = document.getElementById('loading');
+      if (el && !el.classList.contains('hidden')) el.firstElementChild.textContent = 'ERRO: ' + (e.message || 'falha ao carregar o jogo');
+    });
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
