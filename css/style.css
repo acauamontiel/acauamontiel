@@ -162,6 +162,11 @@ body.touch .touch-only { display: flex; }
 /* Em telas de toque o HUD inferior sobe para não ficar embaixo dos botões. */
 body.touch .hud-bottom-left { bottom: 128px; }
 body.touch .hud-bottom-right { bottom: 216px; }
+/* Paisagem baixa (celular deitado): DRIFT vai para a esquerda do FREIO e o HUD desce. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .t-drift { right: 226px; bottom: 22px; width: 86px; height: 86px; }
+  body.touch .hud-bottom-right { bottom: 128px; }
+}
 body.touch .hud-bottom-left { left: 14px; }
 body.touch .hud-bottom-right { right: 14px; }
 
