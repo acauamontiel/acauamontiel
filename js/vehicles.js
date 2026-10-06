@@ -73,7 +73,7 @@ export function buildAstra(M, T) {
     wSill: [[-2.12, 0.62], [-1.95, 0.76], [1.95, 0.76], [2.14, 0.66]],
     wBelt: [[-2.12, 0.70], [-1.95, 0.80], [-1.3, 0.85], [0.4, 0.855], [1.6, 0.845], [2.0, 0.82], [2.14, 0.76]],
     yBelt: [[-2.12, 0.66], [-1.95, 0.70], [-1.3, 0.78], [-0.75, 0.84], [1.95, 0.84], [2.14, 0.80]],
-    yTop: [[-2.12, 0.72], [-2.0, 0.79], [-1.3, 0.88], [-0.75, 0.96], [-0.05, 1.40], [0.4, 1.43], [1.2, 1.42], [1.6, 1.22], [1.95, 0.98], [2.14, 0.92]],
+    yTop: [[-2.12, 0.72], [-2.0, 0.79], [-1.3, 0.88], [-0.75, 0.96], [-0.05, 1.40], [0.4, 1.43], [1.2, 1.42], [1.6, 1.22], [1.95, 1.0], [2.06, 0.98], [2.14, 0.95]],
     wTop: [[-2.12, 0.50], [-1.95, 0.64], [-1.3, 0.72], [-0.75, 0.74], [-0.05, 0.62], [1.2, 0.62], [1.6, 0.58], [1.95, 0.62], [2.14, 0.60]],
     cabin: [-0.76, 1.94], windshield: [-0.76, -0.06], rearGlass: [1.2, 1.94],
     paint: PAINT, glass: GL, under: UNDER,
@@ -87,13 +87,17 @@ export function buildAstra(M, T) {
   const paintMat = ps1Material({ map: bodyTex, envStrength: 0.7 });
   M.astraPaint = paintMat;
 
-  // Aerofólio de teto GSi: asa larga sobre o vidro traseiro, pedestais, placas laterais e brake light.
-  const wing = box(1.40, 0.09, 0.50, PAINT, 0, 0, 0);
-  wing.rotateX(-0.12); wing.translate(0, 1.55, 1.44);
-  const plateL = box(0.04, 0.20, 0.50, PAINT, 0, 0, 0); plateL.rotateX(-0.12); plateL.translate(-0.70, 1.52, 1.44);
-  const plateR = box(0.04, 0.20, 0.50, PAINT, 0, 0, 0); plateR.rotateX(-0.12); plateR.translate(0.70, 1.52, 1.44);
-  const pedL = box(0.14, 0.22, 0.26, PAINT, -0.44, 1.42, 1.30);
-  const pedR = box(0.14, 0.22, 0.26, PAINT, 0.44, 1.42, 1.30);
+  // Aerofólio GSi: "lip" em cima da tampa do porta-malas, logo abaixo do vidro traseiro,
+  // com as pontas levantadas e avançando um pouco além da tampa.
+  const wing = box(1.50, 0.05, 0.28, PAINT, 0, 0, 0);
+  wing.rotateX(0.18); wing.translate(0, 1.03, 2.08);
+  const plateL = box(0.16, 0.09, 0.28, PAINT, 0, 0, 0); plateL.rotateX(0.18); plateL.translate(-0.69, 1.05, 2.08);
+  const plateR = box(0.16, 0.09, 0.28, PAINT, 0, 0, 0); plateR.rotateX(0.18); plateR.translate(0.69, 1.05, 2.08);
+  const pedL = box(0.12, 0.08, 0.16, PAINT, -0.52, 0.99, 2.02);
+  const pedR = box(0.12, 0.08, 0.16, PAINT, 0.52, 0.99, 2.02);
+  // antena no teto
+  const antenna = new THREE.CylinderGeometry(0.012, 0.016, 0.55, 5); antenna.rotateX(0.5); antenna.translate(0, 1.64, 0.62);
+  colorize(antenna, PAINT);
   // Retrovisores
   const mirL = box(0.20, 0.10, 0.15, PAINT, -0.94, 0.98, -0.52);
   const mirR = box(0.20, 0.10, 0.15, PAINT, 0.94, 0.98, -0.52);
@@ -106,16 +110,21 @@ export function buildAstra(M, T) {
     arches.push(colorize(d, 0x030304));
   }
   for (const geo of [wing, plateL, plateR, pedL, pedR, mirL, mirR, ...arches]) uvConst(geo, 0.03, 0.15);
-  g.add(new THREE.Mesh(merge([body, wing, plateL, plateR, pedL, pedR, mirL, mirR, ...arches]), paintMat));
+  for (const geo of [antenna]) uvConst(geo, 0.03, 0.15);
+  g.add(new THREE.Mesh(merge([body, wing, plateL, plateR, pedL, pedR, mirL, mirR, antenna, ...arches]), paintMat));
 
   // Detalhes texturizados (atlas): faróis, grade, lanternas fumê, placa.
   const q = [];
   const hl = (x) => { const h = atlasQuad(0.50, 0.17, A, 0, 0, 64, 24); h.rotateY(Math.PI); if (x < 0) h.scale(-1, 1, 1); h.translate(x, 0.64, -2.125); return h; };
   q.push(hl(-0.44), hl(0.44));
   const grille = atlasQuad(0.36, 0.09, A, 0, 56, 64, 12); grille.rotateY(Math.PI); grille.translate(0, 0.64, -2.125); q.push(grille);
-  const tl = (x) => { const t = atlasQuad(0.48, 0.30, A, 64, 0, 64, 40); if (x < 0) t.scale(-1, 1, 1); t.translate(x, 0.66, 2.146); return t; };
-  q.push(tl(-0.56), tl(0.56));
-  const plate = atlasQuad(0.44, 0.11, A, 0, 32, 64, 16); plate.translate(0, 0.50, 2.146); q.push(plate);
+  // lanternas verticais nos cantos, envolvendo a lateral
+  const tl = (x) => { const t = atlasQuad(0.30, 0.46, A, 96, 0, 32, 64); if (x < 0) t.scale(-1, 1, 1); t.translate(x, 0.72, 2.147); return t; };
+  q.push(tl(-0.64), tl(0.64));
+  const tlSide = (x) => { const t = atlasQuad(0.16, 0.44, A, 64, 0, 32, 64); t.rotateY(x > 0 ? Math.PI / 2 : -Math.PI / 2); t.translate(x, 0.72, 2.02); return t; };
+  q.push(tlSide(-0.806), tlSide(0.806));
+  const plate = atlasQuad(0.44, 0.11, A, 0, 32, 64, 16); plate.translate(0, 0.50, 2.147); q.push(plate);
+  const bowtie = atlasQuad(0.13, 0.09, A, 24, 57, 16, 11); bowtie.translate(0, 0.86, 2.147); q.push(bowtie);
   // Corrige o enrolamento dos quads espelhados (scale -1 inverte a face).
   for (const geo of q) { if (!geo.index) continue; }
   const quads = merge(q.map((geo) => geo.index ? geo.toNonIndexed() : geo));
@@ -128,7 +137,9 @@ export function buildAstra(M, T) {
   const d = [];
   d.push(box(1.00, 0.10, 0.03, 0x0c0e10, 0, 0.42, -2.125));
   d.push(box(1.40, 0.10, 0.03, 0x0c0e10, 0, 0.37, 2.146));
-  d.push(emissive(box(0.50, 0.045, 0.03, 0xff3030, 0, 1.575, 1.70)));
+  d.push(emissive(box(0.34, 0.05, 0.04, 0xff3030, 0, 1.33, 1.30))); // brake light no alto do vidro traseiro
+  d.push(box(0.16, 0.025, 0.012, 0xc8c8c4, -0.52, 0.60, 2.147)); // emblema ASTRA
+  d.push(box(0.20, 0.025, 0.012, 0xc8c8c4, 0.50, 0.60, 2.147)); // emblema GSi 16V
   const ex = new THREE.CylinderGeometry(0.045, 0.045, 0.16, 6);
   ex.rotateX(Math.PI / 2); ex.translate(-0.50, 0.33, 2.17);
   d.push(colorize(ex, 0x9a9a9a));

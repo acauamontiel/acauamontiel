@@ -367,15 +367,23 @@ export function makeTextures() {
     g.fillStyle = '#ffffff'; g.beginPath(); g.arc(20, 10, 2, 0, 7); g.fill();
     g.fillStyle = '#d99a2b'; g.fillRect(52, 2, 12, 20);
     g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(0, 22, 64, 2);
-    // lanterna fumê (64,0 64x40): vermelho escuro, âmbar fumê, ré
-    g.fillStyle = '#2a1012'; g.fillRect(64, 0, 64, 40);
-    g.fillStyle = '#7a1a1c'; g.fillRect(66, 2, 60, 14);
-    g.fillStyle = '#a82424'; g.fillRect(66, 4, 28, 10);
-    g.fillStyle = '#5a2816'; g.fillRect(66, 18, 60, 9);
-    g.fillStyle = '#3a3a3c'; g.fillRect(66, 29, 26, 9);
-    g.fillStyle = '#6a1416'; g.fillRect(94, 29, 32, 9);
-    g.fillStyle = 'rgba(255,255,255,0.18)'; g.fillRect(70, 3, 50, 2);
-    g.fillStyle = 'rgba(0,0,0,0.5)'; g.fillRect(64, 16, 64, 2); g.fillRect(64, 27, 64, 2);
+    // lanterna vertical fumê do Astra G hatch (96,0 32x64): topo arredondado, vermelho fumê,
+    // faixa branca da ré, âmbar e vermelho embaixo; borda escura
+    g.fillStyle = '#141416'; g.fillRect(96, 0, 32, 64);
+    g.fillStyle = '#2a1012'; g.beginPath(); g.moveTo(98, 62); g.lineTo(98, 14); g.quadraticCurveTo(98, 2, 112, 2); g.quadraticCurveTo(126, 2, 126, 14); g.lineTo(126, 62); g.closePath(); g.fill();
+    g.fillStyle = '#8a1c1e'; g.beginPath(); g.moveTo(101, 30); g.lineTo(101, 15); g.quadraticCurveTo(101, 5, 112, 5); g.quadraticCurveTo(123, 5, 123, 15); g.lineTo(123, 30); g.closePath(); g.fill();
+    g.fillStyle = '#b83030'; g.fillRect(104, 9, 7, 18);
+    g.fillStyle = '#d8d8d0'; g.fillRect(101, 33, 22, 9);   // ré
+    g.fillStyle = '#c87a28'; g.fillRect(101, 44, 22, 8);   // pisca âmbar fumê
+    g.fillStyle = '#7a1a1c'; g.fillRect(101, 54, 22, 8);   // vermelho inferior
+    g.fillStyle = 'rgba(0,0,0,0.45)'; g.fillRect(100, 31, 24, 2); g.fillRect(100, 42, 24, 2); g.fillRect(100, 52, 24, 2);
+    g.fillStyle = 'rgba(255,255,255,0.18)'; g.fillRect(103, 6, 2, 50);
+    // trecho fumê escuro usado pela lateral envolvente (64,0 32x64)
+    g.fillStyle = '#2a1012'; g.fillRect(64, 0, 32, 64);
+    g.fillStyle = '#6a1416'; g.fillRect(66, 6, 28, 26);
+    g.fillStyle = '#c0c0b8'; g.fillRect(66, 33, 28, 9);
+    g.fillStyle = '#9a5a1e'; g.fillRect(66, 44, 28, 8);
+    g.fillStyle = 'rgba(0,0,0,0.45)'; g.fillRect(64, 31, 32, 2); g.fillRect(64, 42, 32, 2);
     // placa (0,32 64x16): modelo cinza antigo, MGY 8888
     g.fillStyle = '#d4d4d0'; g.fillRect(0, 32, 64, 16);
     g.fillStyle = '#9a9a96'; g.fillRect(0, 32, 64, 1); g.fillRect(0, 47, 64, 1);
