@@ -1,7 +1,7 @@
 // Cidade procedural em "chunks" de 40 m ao longo de -z. Três avenidas temáticas de Pelotas:
 // Duque de Caxias (Fragata), Bento Gonçalves (Centro) e Pres. Juscelino Kubitschek (Porto/Areal).
 import * as THREE from 'three';
-import { box, cylinder, groundPlane, tileBoxUVs, atlasFaceUVs, signQuad, crossTree, merge, colorize } from './geometry.js';
+import { box, cylinder, groundPlane, tileBoxUVs, atlasFaceUVs, signQuad, crossTree, merge, colorize, gradientColorize } from './geometry.js';
 
 export const CHUNK = 40;
 export const SEG_CHUNKS = 36; // 1440 m por avenida
@@ -28,7 +28,7 @@ export const THEMES = [
   },
   {
     key: 'bento', name: 'AV. BENTO GONÇALVES', sub: 'CENTRO', sign: 1,
-    floors: [3, 8], facades: ['colonial', 'modern', 'colonial'], shops: [2, 4, 8, 9, 10, 3, 0, 5, 2, 10], shopProb: 0.9,
+    floors: [3, 8], facades: ['colonial', 'modern', 'balcony', 'colonial'], shops: [2, 4, 8, 9, 10, 3, 0, 5, 2, 10], shopProb: 0.9,
     tree: 'palm', treeSize: [5, 9], treeEvery: 12, roofTanks: 0.3, sidewalkTrees: true,
     palette: [0xf4c6c6, 0xf6e7a1, 0xbfe0f2, 0xcfe8c9, 0xffffff, 0xe9d5f2, 0xf0d8b0],
   },
@@ -264,7 +264,7 @@ export class City {
           const g = new THREE.BoxGeometry(bd, groundH, uw);
           atlasFaceUVs(g, side > 0 ? 1 : 0, idx / shopCount, (idx + 1) / shopCount, 0, 1, (idx + 0.02) / shopCount, 0.985);
           g.translate(xc, groundH / 2, z - uw * (u + 0.5));
-          add('shops', colorize(g, 0xffffff));
+          add('shops', gradientColorize(g, 0xffffff, 0.78));
           if (rng() < 0.6) add('props', box(1.3, 0.08, uw * 0.85, pick(AWNINGS), side * (x0 - 0.65), 3.05, z - uw * (u + 0.5)));
         }
         y = groundH;
@@ -275,7 +275,7 @@ export class City {
         const g = new THREE.BoxGeometry(bd, h, bw);
         tileBoxUVs(g, bd, h, bw, 3.5, 3.2);
         g.translate(xc, y + h / 2, zc);
-        add('facade_' + facadeName, colorize(g, tint));
+        add('facade_' + facadeName, gradientColorize(g, tint, 0.66));
         y += h;
       }
       add('props', box(bd + 0.2, 0.35, bw + 0.2, darker(tint), xc, y + 0.17, zc));

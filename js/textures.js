@@ -27,49 +27,140 @@ function noise(g, w, h, base, amp, tint = [1, 1, 1]) {
   g.putImageData(img, 0, 0);
 }
 
+// Value noise suave (fbm) para nuvens e manchas.
+function valueNoise2D(w, h, octaves = 4, scale = 8) {
+  const out = new Float32Array(w * h);
+  let amp = 1, total = 0, freq = scale;
+  for (let o = 0; o < octaves; o++) {
+    const gw = Math.max(2, Math.round(freq)), gh = Math.max(2, Math.round(freq * h / w));
+    const grid = new Float32Array((gw + 1) * (gh + 1));
+    for (let i = 0; i < grid.length; i++) grid[i] = rnd();
+    for (let y = 0; y < h; y++) {
+      const fy = (y / h) * gh, y0 = Math.floor(fy), ty = fy - y0;
+      const sy = ty * ty * (3 - 2 * ty);
+      for (let x = 0; x < w; x++) {
+        const fx = (x / w) * gw, x0 = Math.floor(fx), tx = fx - x0;
+        const sx = tx * tx * (3 - 2 * tx);
+        const a = grid[y0 * (gw + 1) + x0], b = grid[y0 * (gw + 1) + x0 + 1];
+        const c = grid[(y0 + 1) * (gw + 1) + x0], d = grid[(y0 + 1) * (gw + 1) + x0 + 1];
+        out[y * w + x] += amp * ((a + (b - a) * sx) + ((c + (d - c) * sx) - (a + (b - a) * sx)) * sy);
+      }
+    }
+    total += amp; amp *= 0.5; freq *= 2;
+  }
+  for (let i = 0; i < out.length; i++) out[i] /= total;
+  return out;
+}
+
 export function makeTextures() {
   const T = {};
 
-  // Asfalto de uma faixa (3,4 m x 8 m): tracejado na borda direita.
+  // Céu com nuvens (faixa panorâmica 512x128): gradiente + fbm, mais denso perto do horizonte.
   {
-    const [c, g] = canvas(64, 128);
-    noise(g, 64, 128, 96, 40);
-    g.fillStyle = 'rgba(0,0,0,0.25)';
-    for (let i = 0; i < 40; i++) g.fillRect((rnd() * 64) | 0, (rnd() * 128) | 0, 2 + rnd() * 6, 1);
-    g.fillStyle = '#e8e8e0';
-    g.fillRect(60, 0, 3, 36);
+    const w = 256, h = 64;
+    const [c, g] = canvas(w, h);
+    const n = valueNoise2D(w, h, 5, 6);
+    const img = g.createImageData(w, h);
+    const d = img.data;
+    for (let y = 0; y < h; y++) {
+      const t = y / (h - 1); // 0 = topo (zênite), 1 = horizonte
+      const sky = [0x34 + (0xbc - 0x34) * t, 0x72 + (0xc8 - 0x72) * t, 0xc4 + (0xd6 - 0xc4) * t];
+      for (let x = 0; x < w; x++) {
+        const v = n[y * w + x];
+        const stretch = 0.55 + t * 0.9; // nuvens achatadas perto do horizonte
+        const cloud = Math.max(0, (v - 0.52) * 3.2 * stretch);
+        const shade = 1 - Math.max(0, (v - 0.62)) * 1.2; // base das nuvens mais escura
+        const cl = Math.min(1, cloud);
+        const i = (y * w + x) * 4;
+        d[i] = sky[0] * (1 - cl) + 236 * shade * cl;
+        d[i + 1] = sky[1] * (1 - cl) + 238 * shade * cl;
+        d[i + 2] = sky[2] * (1 - cl) + 242 * shade * cl;
+        d[i + 3] = 255;
+      }
+    }
+    g.putImageData(img, 0, 0);
+    const [c2, g2] = canvas(512, 128);
+    g2.imageSmoothingEnabled = true;
+    g2.drawImage(c, 0, 0, 512, 128);
+    T.sky = pixelTexture(c2, true);
+  }
+
+  // Asfalto de uma faixa (3,4 m x 8 m): desgaste nas trilhas dos pneus, remendos, tracejado à direita.
+  {
+    const w = 128, h = 256;
+    const [c, g] = canvas(w, h);
+    const img = g.createImageData(w, h);
+    const d = img.data;
+    const grain = valueNoise2D(w, h, 3, 16);
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const u = x / w;
+        const track = Math.exp(-Math.pow((u - 0.26) / 0.11, 2)) + Math.exp(-Math.pow((u - 0.74) / 0.11, 2));
+        let v = 104 - track * 22 + (grain[y * w + x] - 0.5) * 40 + (rnd() - 0.5) * 26;
+        const i = (y * w + x) * 4;
+        d[i] = v; d[i + 1] = v; d[i + 2] = v + 2; d[i + 3] = 255;
+      }
+    }
+    g.putImageData(img, 0, 0);
+    // remendos e trincas
+    for (let k = 0; k < 6; k++) {
+      g.fillStyle = `rgba(40,40,42,${0.12 + rnd() * 0.16})`;
+      g.fillRect(rnd() * 100, rnd() * 230, 12 + rnd() * 24, 8 + rnd() * 22);
+    }
+    g.strokeStyle = 'rgba(30,30,32,0.7)'; g.lineWidth = 1;
+    for (let k = 0; k < 7; k++) {
+      g.beginPath(); let x = rnd() * w, y = rnd() * h; g.moveTo(x, y);
+      for (let s = 0; s < 6; s++) { x += (rnd() - 0.5) * 16; y += rnd() * 14; g.lineTo(x, y); }
+      g.stroke();
+    }
+    g.fillStyle = '#d9d9cc'; g.fillRect(121, 0, 5, 64);
+    g.fillStyle = 'rgba(90,90,90,0.5)'; for (let y = 0; y < 64; y += 7) g.fillRect(121, y + (rnd() * 4 | 0), 5, 1);
     T.asphalt = pixelTexture(c);
   }
 
   // Asfalto liso (ruas transversais, estacionamentos).
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 92, 36);
+    noise(g, 64, 64, 96, 36);
+    g.fillStyle = 'rgba(0,0,0,0.2)'; for (let k = 0; k < 5; k++) g.fillRect(rnd() * 60, rnd() * 60, 4 + rnd() * 12, 3 + rnd() * 8);
     T.asphaltPlain = pixelTexture(c);
   }
 
-  // Faixa de pedestres.
+  // Faixa de pedestres gasta.
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 92, 30);
-    g.fillStyle = '#ecece4';
+    noise(g, 64, 64, 96, 30);
+    g.fillStyle = '#e4e4da';
     for (let i = 0; i < 64; i += 16) g.fillRect(i + 3, 4, 9, 56);
+    g.fillStyle = 'rgba(90,90,88,0.5)'; for (let k = 0; k < 24; k++) g.fillRect(rnd() * 64, rnd() * 64, 2, 3);
     T.zebra = pixelTexture(c);
   }
 
-  // Calçada de lajotas de concreto.
+  // Calçada de lajotas de concreto com juntas e manchas.
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 168, 34);
+    noise(g, 64, 64, 164, 30);
+    g.fillStyle = 'rgba(0,0,0,0.12)'; for (let k = 0; k < 10; k++) g.fillRect(rnd() * 64, rnd() * 64, 6 + rnd() * 14, 4 + rnd() * 10);
     g.fillStyle = 'rgba(60,60,60,0.9)';
     for (let i = 0; i < 64; i += 16) { g.fillRect(i, 0, 1, 64); g.fillRect(0, i, 64, 1); }
+    g.fillStyle = 'rgba(255,255,255,0.25)';
+    for (let i = 1; i < 64; i += 16) { g.fillRect(i, 0, 1, 64); g.fillRect(0, i, 64, 1); }
     T.sidewalk = pixelTexture(c);
+  }
+
+  // Concreto do meio-fio.
+  {
+    const [c, g] = canvas(32, 32);
+    noise(g, 32, 32, 176, 30);
+    g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(0, 24, 32, 8);
+    T.concrete = pixelTexture(c);
   }
 
   // Grama do canteiro central.
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 110, 60, [0.55, 1.0, 0.45]);
+    noise(g, 64, 64, 112, 60, [0.55, 1.0, 0.45]);
+    g.fillStyle = 'rgba(80,60,30,0.35)'; for (let k = 0; k < 8; k++) g.fillRect(rnd() * 64, rnd() * 64, 3 + rnd() * 8, 2 + rnd() * 4);
     T.grass = pixelTexture(c);
   }
 
@@ -82,42 +173,52 @@ export function makeTextures() {
     T.water = pixelTexture(c);
   }
 
-  // Fachadas: um tile = um andar x uma janela.
+  // Fachadas: um tile = um andar x uma janela. Reboco com ruído, sujeira na base, vidro com reflexo.
   T.facade = {};
-  const facade = (name, wall, frame, glass, draw) => {
+  const facade = (name, draw) => {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 230, 24);
-    g.globalCompositeOperation = 'multiply';
-    g.fillStyle = wall;
-    g.fillRect(0, 0, 64, 64);
-    g.globalCompositeOperation = 'source-over';
-    draw(g, frame, glass);
+    noise(g, 64, 64, 232, 22);
+    const grd = g.createLinearGradient(0, 0, 0, 64);
+    grd.addColorStop(0, 'rgba(0,0,0,0)'); grd.addColorStop(0.85, 'rgba(0,0,0,0.05)'); grd.addColorStop(1, 'rgba(0,0,0,0.22)');
+    g.fillStyle = grd; g.fillRect(0, 0, 64, 64);
+    draw(g);
     T.facade[name] = pixelTexture(c);
   };
-  const drawWindow = (g, x, y, w, h, frame, glass, arch = false) => {
+  const drawWindow = (g, x, y, w, h, frame, arch = false) => {
+    g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x - 2, y + h + 2, w + 4, 2); // sombra do peitoril
     g.fillStyle = frame; g.fillRect(x - 2, y - 2, w + 4, h + 4);
-    g.fillStyle = glass; g.fillRect(x, y, w, h);
-    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x + 2, y + 2, w * 0.4, h * 0.45);
+    const gl = g.createLinearGradient(0, y, 0, y + h);
+    gl.addColorStop(0, '#9fc3dc'); gl.addColorStop(0.45, '#4f6f8a'); gl.addColorStop(0.5, '#22313f'); gl.addColorStop(1, '#1a2530');
+    g.fillStyle = gl; g.fillRect(x, y, w, h);
+    g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x + 2, y + 2, w * 0.35, h * 0.5);
+    g.fillStyle = 'rgba(220,200,160,0.35)'; g.fillRect(x + w * 0.6, y + h * 0.45, w * 0.4, h * 0.55); // cortina
     g.fillStyle = frame; g.fillRect(x + w / 2 - 1, y, 2, h);
-    if (arch) { g.fillStyle = frame; g.beginPath(); g.arc(x + w / 2, y, w / 2 + 2, Math.PI, 0); g.fill(); g.fillStyle = glass; g.beginPath(); g.arc(x + w / 2, y, w / 2, Math.PI, 0); g.fill(); }
+    if (arch) { g.fillStyle = frame; g.beginPath(); g.arc(x + w / 2, y, w / 2 + 2, Math.PI, 0); g.fill(); g.fillStyle = '#5a7a94'; g.beginPath(); g.arc(x + w / 2, y, w / 2, Math.PI, 0); g.fill(); }
   };
-  // Prédio moderno (Centro, anos 70-90): janelas largas.
-  facade('modern', '#ffffff', '#555', '#2d3f55', (g, f, gl) => { drawWindow(g, 10, 18, 44, 26, f, gl); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(0, 60, 64, 4); });
-  // Colonial/eclético (Centro histórico): janela alta em arco, cornija.
-  facade('colonial', '#ffffff', '#5a4a3a', '#243040', (g, f, gl) => { drawWindow(g, 20, 20, 24, 36, f, gl, true); g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(0, 0, 64, 5); g.fillStyle = 'rgba(255,255,255,0.3)'; g.fillRect(0, 5, 64, 2); });
-  // Residencial de bairro (Fragata): janela pequena, reboco.
-  facade('house', '#ffffff', '#6b6b6b', '#2a3a4a', (g, f, gl) => { drawWindow(g, 20, 24, 24, 22, f, gl); g.fillStyle = 'rgba(0,0,0,0.1)'; g.fillRect(0, 62, 64, 2); });
-  // Galpão (Porto/JK): chapa ondulada e janelinha alta.
-  facade('warehouse', '#ffffff', '#444', '#2a3038', (g, f, gl) => {
-    g.fillStyle = 'rgba(0,0,0,0.22)';
-    for (let i = 0; i < 64; i += 6) g.fillRect(i, 0, 2, 64);
-    drawWindow(g, 8, 8, 48, 12, f, gl);
-    g.fillStyle = 'rgba(120,60,30,0.35)'; g.fillRect(0, 50, 64, 14);
+  facade('modern', (g) => { drawWindow(g, 8, 16, 48, 28, '#4a4a4a'); g.fillStyle = 'rgba(0,0,0,0.15)'; g.fillRect(0, 58, 64, 6); });
+  facade('balcony', (g) => {
+    drawWindow(g, 14, 10, 36, 30, '#555');
+    g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(0, 44, 64, 3);
+    g.fillStyle = '#d8d8d8'; g.fillRect(0, 47, 64, 12);
+    g.fillStyle = '#3a3a3a'; for (let x = 2; x < 64; x += 6) g.fillRect(x, 47, 1, 12); g.fillRect(0, 46, 64, 2);
+    g.fillStyle = '#8a8a8a'; g.fillRect(52, 24, 10, 8); // ar-condicionado
   });
-  // Parede lisa (lateral/topo).
-  facade('plain', '#ffffff', '#000', '#000', () => {});
+  facade('colonial', (g) => {
+    drawWindow(g, 20, 20, 24, 34, '#5a4a3a', true);
+    g.fillStyle = 'rgba(0,0,0,0.2)'; g.fillRect(0, 0, 64, 6);
+    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(0, 6, 64, 2);
+    g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(4, 10, 3, 54); g.fillRect(57, 10, 3, 54); // pilastras
+  });
+  facade('house', (g) => { drawWindow(g, 20, 24, 24, 22, '#6b6b6b'); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(0, 60, 64, 4); g.fillStyle = 'rgba(0,0,0,0.08)'; g.fillRect(0, 0, 64, 4); });
+  facade('warehouse', (g) => {
+    g.fillStyle = 'rgba(0,0,0,0.22)'; for (let i = 0; i < 64; i += 6) g.fillRect(i, 0, 2, 64);
+    g.fillStyle = 'rgba(255,255,255,0.15)'; for (let i = 3; i < 64; i += 6) g.fillRect(i, 0, 1, 64);
+    drawWindow(g, 8, 8, 48, 12, '#444');
+    g.fillStyle = 'rgba(120,60,30,0.4)'; for (let k = 0; k < 6; k++) g.fillRect(rnd() * 60, 40 + rnd() * 20, 2 + rnd() * 4, 6 + rnd() * 18);
+  });
+  facade('plain', () => {});
 
-  // Lojas do térreo: atlas com 8 fachadas de 64x64 (vitrine + toldo + letreiro).
+  // Lojas do térreo: atlas com 16 fachadas de 64x64 (vitrine + toldo + letreiro).
   T.shopNames = [
     'FARMÁCIA', 'SUPERMERCADO', 'DOCERIA', 'LANCHERIA XIS', 'BANCO', 'LOTÉRICA', 'MAT. CONSTRUÇÃO', 'AUTO PEÇAS',
     'ÓTICA', 'LIVRARIA', 'CAFÉ', 'PNEUS', 'BORRACHARIA', 'OFICINA', 'DEPÓSITO', 'FERRAGEM',
@@ -130,14 +231,19 @@ export function makeTextures() {
       const x = i * 64;
       g.fillStyle = ['#e9dcc3', '#dfe3e8', '#f1e4b3', '#e5d6d6', '#d9e4d9', '#e6e6e6', '#f0d9c0', '#d8dde6'][i % 8];
       g.fillRect(x, 0, 64, 64);
-      // vitrine
-      g.fillStyle = '#1e2a38'; g.fillRect(x + 6, 24, 52, 40);
-      g.fillStyle = 'rgba(255,255,255,0.28)'; g.fillRect(x + 8, 26, 20, 30);
+      g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(x, 56, 64, 8);
+      // vitrine com reflexo
+      const gl = g.createLinearGradient(0, 24, 0, 64);
+      gl.addColorStop(0, '#6f8ea8'); gl.addColorStop(0.4, '#2a3a4a'); gl.addColorStop(1, '#141c26');
+      g.fillStyle = gl; g.fillRect(x + 6, 24, 52, 40);
+      g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x + 8, 26, 16, 34);
       g.fillStyle = '#333'; g.fillRect(x + 30, 24, 3, 40); g.fillRect(x + 6, 24, 52, 2);
       // porta
       g.fillStyle = '#5a3a1a'; g.fillRect(x + 40, 34, 14, 30);
+      g.fillStyle = '#c8a040'; g.fillRect(x + 50, 48, 2, 2);
       // letreiro
       g.fillStyle = awnings[i % awnings.length]; g.fillRect(x, 2, 64, 18);
+      g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x, 18, 64, 2);
       g.fillStyle = '#fff';
       g.font = 'bold 9px Arial, sans-serif';
       g.textAlign = 'center'; g.textBaseline = 'middle';
@@ -146,58 +252,73 @@ export function makeTextures() {
       g.fillText(name, x + 32, 11, 62);
       // toldo listrado
       for (let s = 0; s < 64; s += 8) { g.fillStyle = s % 16 ? '#f4f4f4' : awnings[i % awnings.length]; g.fillRect(x + s, 20, 8, 4); }
+      g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(x, 24, 64, 2);
     }
     T.shops = pixelTexture(c, false);
     T.shopCount = n;
   }
 
-  // Árvores em quads cruzados (alpha).
+  // Árvores em quads cruzados (alpha), copas feitas de muitos tufos com três tons.
   const tree = (draw) => {
     const [c, g] = canvas(64, 128);
     g.clearRect(0, 0, 64, 128);
     draw(g);
-    const t = pixelTexture(c, false);
-    return t;
+    return pixelTexture(c, false);
   };
-  // Eucalipto da Duque de Caxias: tronco alto e copa irregular.
+  const tufts = (g, cx, cy, rx, ry, count, shades) => {
+    for (let k = 0; k < count; k++) {
+      const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd());
+      const x = cx + Math.cos(a) * rx * r, y = cy + Math.sin(a) * ry * r;
+      const h = (cy - y) / ry; // -1 base, +1 topo
+      const shade = shades[Math.min(shades.length - 1, Math.max(0, Math.floor((h + 1) / 2 * shades.length)))];
+      g.fillStyle = shade; g.beginPath(); g.arc(x, y, 3 + rnd() * 4, 0, 7); g.fill();
+    }
+  };
+  // Eucalipto da Duque de Caxias: tronco alto claro e copa irregular em tufos.
   T.eucalyptus = tree((g) => {
     g.fillStyle = '#8a7a66'; g.fillRect(29, 50, 6, 78);
-    g.fillStyle = '#a89c88'; g.fillRect(31, 50, 2, 78);
-    const blobs = [[32, 26, 18], [20, 36, 12], [45, 34, 13], [30, 44, 11], [38, 14, 10], [24, 18, 9]];
-    for (const [x, y, r] of blobs) {
-      g.fillStyle = '#4f7a3a'; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill();
-      g.fillStyle = '#6d9a4c'; g.beginPath(); g.arc(x - r * 0.3, y - r * 0.3, r * 0.55, 0, 7); g.fill();
-    }
+    g.fillStyle = '#b4a890'; g.fillRect(31, 50, 2, 78);
+    g.fillStyle = '#6a5a48'; for (let y = 56; y < 128; y += 11) g.fillRect(29, y, 6, 1);
+    g.fillStyle = '#8a7a66'; g.fillRect(24, 36, 3, 20); g.fillRect(38, 30, 3, 26);
+    tufts(g, 32, 28, 26, 26, 70, ['#2f5a28', '#3f7a32', '#558f3f', '#74a84c']);
   });
   // Palmeira da Bento Gonçalves.
   T.palm = tree((g) => {
     g.fillStyle = '#9a8a70'; g.fillRect(30, 28, 5, 100);
     g.fillStyle = '#6f6250'; for (let y = 30; y < 128; y += 8) g.fillRect(30, y, 5, 2);
-    g.strokeStyle = '#3f8a3a'; g.lineWidth = 5; g.lineCap = 'round';
-    for (let a = 0; a < 8; a++) {
-      const ang = (a / 8) * Math.PI * 2;
-      g.beginPath(); g.moveTo(32, 26);
-      g.quadraticCurveTo(32 + Math.cos(ang) * 18, 26 + Math.sin(ang) * 12 - 8, 32 + Math.cos(ang) * 28, 26 + Math.sin(ang) * 14 + 6);
-      g.stroke();
+    g.fillStyle = '#b8a888'; g.fillRect(31, 30, 1, 98);
+    g.lineCap = 'round';
+    for (let a = 0; a < 9; a++) {
+      const ang = (a / 9) * Math.PI * 2;
+      for (const [col, lw] of [['#2e6a2a', 6], ['#4a9a3a', 3]]) {
+        g.strokeStyle = col; g.lineWidth = lw;
+        g.beginPath(); g.moveTo(32, 26);
+        g.quadraticCurveTo(32 + Math.cos(ang) * 18, 26 + Math.sin(ang) * 12 - 10, 32 + Math.cos(ang) * 29, 26 + Math.sin(ang) * 14 + 8);
+        g.stroke();
+      }
     }
     g.fillStyle = '#6a4a20'; g.beginPath(); g.arc(32, 27, 4, 0, 7); g.fill();
+    g.fillStyle = '#c8a040'; g.beginPath(); g.arc(30, 30, 2, 0, 7); g.arc(34, 31, 2, 0, 7); g.fill();
   });
   // Árvore de copa redonda (parque, calçadas).
   T.roundTree = tree((g) => {
-    g.fillStyle = '#6b5438'; g.fillRect(29, 70, 6, 58);
-    g.fillStyle = '#3f6d2e'; g.beginPath(); g.arc(32, 44, 28, 0, 7); g.fill();
-    g.fillStyle = '#5b8f3e'; g.beginPath(); g.arc(24, 36, 16, 0, 7); g.fill();
-    g.fillStyle = '#79ab4f'; g.beginPath(); g.arc(20, 30, 8, 0, 7); g.fill();
+    g.fillStyle = '#5a4530'; g.fillRect(29, 70, 6, 58);
+    g.fillStyle = '#7a6245'; g.fillRect(30, 70, 2, 58);
+    g.fillStyle = '#5a4530'; g.fillRect(22, 60, 4, 16); g.fillRect(38, 58, 4, 18);
+    tufts(g, 32, 42, 30, 30, 110, ['#24481e', '#2f6a2a', '#3f8a35', '#5fa84a', '#86c25c']);
   });
 
-  // Buraco na pista.
+  // Buraco na pista: borda de brita clara, asfalto quebrado e fundo escuro.
   {
-    const [c, g] = canvas(32, 32);
-    g.clearRect(0, 0, 32, 32);
-    g.fillStyle = '#5a5751'; g.beginPath(); g.ellipse(16, 16, 15, 11, 0, 0, 7); g.fill();
-    g.fillStyle = '#2a2724'; g.beginPath(); g.ellipse(16, 16, 12, 8, 0, 0, 7); g.fill();
-    g.fillStyle = '#141210'; g.beginPath(); g.ellipse(17, 17, 8, 5, 0, 0, 7); g.fill();
-    g.fillStyle = '#6a6760'; g.fillRect(4, 14, 3, 2); g.fillRect(24, 10, 2, 3); g.fillRect(20, 24, 3, 2);
+    const [c, g] = canvas(48, 48);
+    g.clearRect(0, 0, 48, 48);
+    g.fillStyle = '#a89e90'; g.beginPath(); g.ellipse(24, 24, 23, 17, 0, 0, 7); g.fill();
+    g.fillStyle = '#6a655c'; g.beginPath(); g.ellipse(24, 24, 20, 14, 0, 0, 7); g.fill();
+    g.fillStyle = '#2a2724'; g.beginPath(); g.ellipse(24, 25, 16, 11, 0, 0, 7); g.fill();
+    g.fillStyle = '#121110'; g.beginPath(); g.ellipse(25, 26, 11, 7, 0, 0, 7); g.fill();
+    g.fillStyle = '#b8b0a0'; for (let k = 0; k < 14; k++) { const a = rnd() * 7, r = 17 + rnd() * 6; g.fillRect(24 + Math.cos(a) * r, 24 + Math.sin(a) * r * 0.72, 2, 2); }
+    g.strokeStyle = '#3a3734'; g.lineWidth = 1;
+    for (let k = 0; k < 5; k++) { const a = rnd() * 7; g.beginPath(); g.moveTo(24 + Math.cos(a) * 14, 24 + Math.sin(a) * 10); g.lineTo(24 + Math.cos(a) * 23, 24 + Math.sin(a) * 17); g.stroke(); }
     T.pothole = pixelTexture(c, false);
   }
 
@@ -253,7 +374,7 @@ export function makeTextures() {
     T.shadow = pixelTexture(c, false);
   }
 
-  // Outdoors (atlas 8 x 256x128).
+  // Outdoors (atlas de 256x128 cada).
   T.billboardTexts = [
     ['PELOTAS', 'CAPITAL DO DOCE'],
     ['FENADOCE', 'TODO ANO EM PELOTAS'],
@@ -333,15 +454,6 @@ export function makeTextures() {
     T.directionSigns = pixelTexture(c, false);
   }
 
-  // Janelas de ônibus (faixa).
-  {
-    const [c, g] = canvas(64, 32);
-    g.fillStyle = '#ffffff'; g.fillRect(0, 0, 64, 32);
-    g.fillStyle = '#20303f'; for (let x = 2; x < 64; x += 16) g.fillRect(x, 4, 12, 24);
-    g.fillStyle = 'rgba(255,255,255,0.3)'; for (let x = 2; x < 64; x += 16) g.fillRect(x + 1, 5, 5, 10);
-    T.busWindows = pixelTexture(c);
-  }
-
   // Cerca do parque (alpha).
   {
     const [c, g] = canvas(32, 32);
@@ -353,4 +465,51 @@ export function makeTextures() {
   }
 
   return T;
+}
+
+/**
+ * Textura de carroceria "desenrolada": u = posição ao longo do carro (frente → trás),
+ * v = posição no anel do perfil (0 = embaixo, 1 = centro do teto). Multiplica a cor dos vértices,
+ * então desenha só o que escurece/clareia: colunas, frisos, caixas de roda, vãos de porta, borrachas.
+ * @param {object} o { zs, cabin, windshield, rearGlass, pillars:[[z0,z1]...], doors:[z...], handles:[z...], wheels:[z...], wheelR, rows }
+ */
+export function makeBodyTexture(o) {
+  const W = 128, H = 64;
+  const [c, g] = canvas(W, H);
+  const z0 = o.zs[0], z1 = o.zs[o.zs.length - 1];
+  const U = (z) => Math.round((z - z0) / (z1 - z0) * W);
+  const Y = (v) => Math.round((1 - v) * H);
+  const R = o.rows; // { floor, sill, lower, crease, belt, glassBase, roofEdge }
+  g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H);
+  // chão e saia
+  g.fillStyle = '#1a1a1c'; g.fillRect(0, Y(R.sill), W, H - Y(R.sill));
+  g.fillStyle = '#9a9a9a'; g.fillRect(0, Y(R.lower) - 1, W, Y(R.sill) - Y(R.lower) + 1); // saia lateral escurecida
+  // caixas de roda
+  for (const wz of o.wheels) {
+    const cx = U(wz), r = Math.round(o.wheelR / (z1 - z0) * W * 1.25);
+    g.fillStyle = '#2a2a2c'; g.beginPath(); g.ellipse(cx, Y(R.sill) - 1, r, r * 0.9, 0, Math.PI, 0); g.fill();
+    g.fillStyle = '#6a6a6a'; g.beginPath(); g.ellipse(cx, Y(R.sill) - 1, r + 2, r * 0.9 + 2, 0, Math.PI, 0); g.lineWidth = 1; g.strokeStyle = '#6a6a6a'; g.stroke();
+  }
+  // vãos de porta e tampas
+  g.fillStyle = '#5a5a5a';
+  for (const dz of o.doors) g.fillRect(U(dz), Y(R.glassBase) - 1, 1, Y(R.sill) - Y(R.glassBase) + 1);
+  // maçanetas
+  g.fillStyle = '#d0d0d0';
+  for (const hz of o.handles) g.fillRect(U(hz) - 3, Y(R.belt) + 2, 6, 2);
+  // banda dos vidros laterais: vidro claro com faixa de reflexo, colunas pretas
+  const gTop = Y(R.roofEdge), gBot = Y(R.glassBase);
+  g.fillStyle = '#ffffff'; g.fillRect(U(o.cabin[0]), gTop, U(o.cabin[1]) - U(o.cabin[0]), gBot - gTop);
+  g.fillStyle = '#c8d4dc'; g.fillRect(U(o.cabin[0]), gTop + 1, U(o.cabin[1]) - U(o.cabin[0]), Math.max(1, Math.round((gBot - gTop) * 0.25)));
+  g.fillStyle = '#101214';
+  for (const [p0, p1] of o.pillars) g.fillRect(U(p0), gTop - 1, Math.max(2, U(p1) - U(p0)), gBot - gTop + 2);
+  // friso da cintura
+  g.fillStyle = '#3a3a3a'; g.fillRect(U(o.cabin[0]), gBot, U(o.cabin[1]) - U(o.cabin[0]), 1);
+  // topo: borrachas em volta do para-brisa e vidro traseiro, vão do capô e da tampa
+  const tTop = 0, tBot = gTop;
+  g.fillStyle = '#202224';
+  for (const [a, b] of [o.windshield, o.rearGlass]) { g.fillRect(U(a), tTop, 1, tBot); g.fillRect(U(b) - 1, tTop, 1, tBot); }
+  g.fillStyle = '#5a5a5a';
+  if (o.hood) g.fillRect(U(o.hood), tTop, 1, tBot);
+  if (o.tailgate) g.fillRect(U(o.tailgate), tTop, 1, tBot);
+  return pixelTexture(c, false);
 }

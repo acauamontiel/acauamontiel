@@ -71,7 +71,10 @@ Tudo está em `js/ps1.js`:
 - mapeamento de textura **afim** (sem correção de perspectiva), com a pista subdividida para não "nadar" demais;
 - iluminação Gouraud por vértice, texturas sem filtro e sem mipmap;
 - quantização para 15 bits com dithering ordenado (Bayer 4x4) no pós-processamento;
-- reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice).
+- reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice);
+- céu panorâmico com nuvens (fbm) desenhado no pós-processamento acima da linha do horizonte da câmera;
+- textura de carroceria "desenrolada" por carro (`makeBodyTexture`): colunas, vidros laterais, vãos de porta,
+  maçanetas, caixas de roda e borrachas, multiplicando a cor da pintura.
 
 Os carros são carrocerias "loftadas" por seções transversais (`carBody` em `js/geometry.js`), com vincos
 na linha de cintura e base dos vidros e o resto suave (Gouraud), como os modelos de ~400 triângulos do GT.

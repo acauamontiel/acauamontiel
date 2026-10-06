@@ -198,6 +198,9 @@ void main() {
 
 const POST_FRAG = /* glsl */`
 uniform sampler2D tDiffuse;
+uniform sampler2D uSky;
+uniform float uHasSky;
+uniform float uHorizon;
 uniform vec2 uRes;
 uniform float uDither;
 uniform vec3 uSkyTop;
@@ -215,9 +218,13 @@ float bayer4(vec2 p) {
 
 void main() {
   vec4 s = texture2D(tDiffuse, vUv);
-  // Céu em gradiente onde a cena não desenhou nada (alpha 0).
-  float t = smoothstep(0.47, 1.0, vUv.y);
+  // Céu onde a cena não desenhou nada (alpha 0): textura de nuvens acima do horizonte.
+  float t = clamp((vUv.y - uHorizon) / max(0.02, 1.0 - uHorizon), 0.0, 1.0);
   vec3 sky = mix(uSkyBottom, uSkyTop, pow(t, 0.75));
+  if (uHasSky > 0.5) {
+    vec3 tex = texture2D(uSky, vec2(vUv.x * 0.9 + uTime * 0.004, t)).rgb;
+    sky = mix(uSkyBottom, tex, smoothstep(0.0, 0.10, t));
+  }
   vec3 c = mix(sky, s.rgb, clamp(s.a, 0.0, 1.0));
 
   if (uDither > 0.5) {
@@ -228,6 +235,8 @@ void main() {
   gl_FragColor = vec4(c, 1.0);
 }
 `;
+
+const _dir = new THREE.Vector3();
 
 /** Pós-processamento: cena em baixa resolução → tela, com dithering e céu. */
 export class PS1Post {
@@ -245,6 +254,9 @@ export class PS1Post {
     this.material = new THREE.ShaderMaterial({
       uniforms: {
         tDiffuse: { value: this.rt.texture },
+        uSky: { value: null },
+        uHasSky: { value: 0 },
+        uHorizon: { value: 0.55 },
         uRes: { value: new THREE.Vector2(320, 240) },
         uDither: { value: 1 },
         uSkyTop: { value: new THREE.Color(0x3b78c9) },
@@ -279,9 +291,19 @@ export class PS1Post {
     this.material.uniforms.uDither.value = on ? 1 : 0;
   }
 
+  setSky(texture) {
+    this.material.uniforms.uSky.value = texture;
+    this.material.uniforms.uHasSky.value = texture ? 1 : 0;
+  }
+
   render(scene, camera, time) {
     const r = this.renderer;
     this.material.uniforms.uTime.value = time;
+    // Linha do horizonte em coordenadas de tela, a partir da inclinação da câmera.
+    camera.getWorldDirection(_dir);
+    const pitch = Math.asin(Math.max(-1, Math.min(1, _dir.y)));
+    const ndcY = -Math.tan(pitch) / Math.tan(camera.fov * 0.5 * Math.PI / 180);
+    this.material.uniforms.uHorizon.value = Math.max(0.05, Math.min(0.95, 0.5 + 0.5 * ndcY));
     r.setRenderTarget(this.rt);
     r.setClearColor(0x000000, 0);
     r.clear(true, true, false);

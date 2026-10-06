@@ -29,6 +29,7 @@ const post = new PS1Post(renderer, 288);
 
 const T = makeTextures();
 const M = makeMaterials(T);
+post.setSky(T.sky);
 const astra = buildAstra(M, T);
 scene.add(astra.group);
 const city = new City(scene, M, T);
@@ -198,8 +199,8 @@ function updatePlaying(dt) {
   camState.fov += ((56 + G.speed * 0.28) - camState.fov) * Math.min(1, 3 * dt);
   const sx = (Math.random() - 0.5) * G.shake * 0.5;
   const sy = (Math.random() - 0.5) * G.shake * 0.4;
-  camera.position.set(camState.x + sx, 1.55 + G.bounce * 0.06 + sy, G.z + 5.9 + G.speed * 0.02);
-  camera.lookAt(camState.x + steer * 0.5 + sx, 0.95 + sy, G.z - 10);
+  camera.position.set(camState.x + sx, 3.1 + G.bounce * 0.06 + sy, G.z + 6.8 + G.speed * 0.02);
+  camera.lookAt(camState.x + steer * 0.5 + sx, 0.4 + sy, G.z - 12);
   camera.fov = camState.fov;
   camera.updateProjectionMatrix();
 
@@ -222,8 +223,8 @@ function updateTitle(dt) {
   const a = G.titleAngle;
   astra.group.position.set(G.x, 0, G.z);
   astra.group.rotation.set(0, 0, 0);
-  camera.position.set(G.x + Math.cos(a) * 6.4, 1.25 + Math.sin(a * 0.6) * 0.45, G.z + Math.sin(a) * 6.4);
-  camera.lookAt(G.x, 0.75, G.z);
+  camera.position.set(G.x + Math.cos(a) * 6.4, 1.7 + Math.sin(a * 0.6) * 0.5, G.z + Math.sin(a) * 6.4);
+  camera.lookAt(G.x, 0.7, G.z);
   camera.fov = 48;
   camera.updateProjectionMatrix();
 }
@@ -288,7 +289,7 @@ frame();
 window.__game = { G, scene, camera, city, traffic, post, shared };
 if (params.has('env')) {
   const v = Number(params.get('env'));
-  M.paintBlack.uniforms.uEnvStrength.value = v;
+  M.astraPaint.uniforms.uEnvStrength.value = v;
   M.glass.uniforms.uEnvStrength.value = v;
 }
 if (params.has('dbg')) {

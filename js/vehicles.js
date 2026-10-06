@@ -1,8 +1,9 @@
 // Modelos low-poly estilo PS1: Astra GSi do jogador, carros do tráfego, ônibus, motos e buracos.
 // As carrocerias são "loftadas" por seções transversais com sombreamento Gouraud (ver geometry.js).
 import * as THREE from 'three';
-import { box, cylinder, wheel, merge, colorize, groundPlane, carBody, atlasQuad, discWheel } from './geometry.js';
+import { box, cylinder, wheel, merge, colorize, groundPlane, carBody, atlasQuad, discWheel, uvConst, BODY_ROWS } from './geometry.js';
 import { ps1Material } from './ps1.js';
+import { makeBodyTexture } from './textures.js';
 
 const GLASS = 0x1a2630;
 
@@ -18,9 +19,10 @@ export function makeMaterials(T) {
   M.pothole = ps1Material({ map: T.pothole, unlit: true, alphaTest: 0.5, color: 0xcccccc });
 
   const paintCache = new Map();
-  M.paint = (hex) => {
-    if (!paintCache.has(hex)) paintCache.set(hex, ps1Material({ color: hex, envStrength: 0.18 }));
-    return paintCache.get(hex);
+  M.paint = (hex, map = null) => {
+    const key = hex + '|' + (map ? map.id : 0);
+    if (!paintCache.has(key)) paintCache.set(key, ps1Material({ color: hex, map, envStrength: 0.18 }));
+    return paintCache.get(key);
   };
 
   // Cidade
@@ -59,8 +61,8 @@ export function buildAstra(M, T) {
   const A = T.ASTRA_ATLAS;
   const g = new THREE.Group();
 
-  const body = carBody({
-    zs: [-2.12, -2.0, -1.75, -1.3, -0.95, -0.77, -0.75, -0.4, -0.07, -0.05, 0.4, 0.8, 1.19, 1.21, 1.6, 1.93, 1.95, 2.06, 2.14],
+  const spec = {
+    zs: [-2.12, -2.04, -1.92, -1.75, -1.5, -1.3, -1.1, -0.95, -0.77, -0.75, -0.55, -0.35, -0.2, -0.07, -0.05, 0.2, 0.45, 0.7, 0.95, 1.19, 1.21, 1.4, 1.6, 1.78, 1.93, 1.95, 2.06, 2.14],
     yFloor: [[-2.12, 0.34], [-1.95, 0.27], [1.95, 0.27], [2.14, 0.34]],
     wSill: [[-2.12, 0.62], [-1.95, 0.76], [1.95, 0.76], [2.14, 0.66]],
     wBelt: [[-2.12, 0.70], [-1.95, 0.80], [-1.3, 0.85], [0.4, 0.855], [1.6, 0.845], [2.0, 0.82], [2.14, 0.76]],
@@ -69,7 +71,15 @@ export function buildAstra(M, T) {
     wTop: [[-2.12, 0.50], [-1.95, 0.64], [-1.3, 0.72], [-0.75, 0.74], [-0.05, 0.62], [1.2, 0.62], [1.6, 0.58], [1.95, 0.62], [2.14, 0.60]],
     cabin: [-0.76, 1.94], windshield: [-0.76, -0.06], rearGlass: [1.2, 1.94],
     paint: PAINT, glass: GL, under: UNDER,
+  };
+  const body = carBody(spec);
+  const bodyTex = makeBodyTexture({
+    zs: spec.zs, cabin: spec.cabin, windshield: spec.windshield, rearGlass: spec.rearGlass, rows: BODY_ROWS,
+    pillars: [[-0.76, -0.62], [0.62, 0.74], [1.52, 1.94]], doors: [-0.70, 0.66], handles: [0.45],
+    wheels: [-1.307, 1.307], wheelR: 0.30, hood: -0.78, tailgate: 1.96,
   });
+  const paintMat = ps1Material({ map: bodyTex, envStrength: 0.7 });
+  M.astraPaint = paintMat;
 
   // Aerofólio de teto GSi: asa larga sobre o vidro traseiro, pedestais, placas laterais e brake light.
   const wing = box(1.40, 0.09, 0.50, PAINT, 0, 0, 0);
@@ -89,7 +99,8 @@ export function buildAstra(M, T) {
     d.translate(x, 0.32, z);
     arches.push(colorize(d, 0x030304));
   }
-  g.add(new THREE.Mesh(merge([body, wing, plateL, plateR, pedL, pedR, mirL, mirR, ...arches]), M.paintBlack));
+  for (const geo of [wing, plateL, plateR, pedL, pedR, mirL, mirR, ...arches]) uvConst(geo, 0.03, 0.3);
+  g.add(new THREE.Mesh(merge([body, wing, plateL, plateR, pedL, pedR, mirL, mirR, ...arches]), paintMat));
 
   // Detalhes texturizados (atlas): faróis, grade, lanternas fumê, placa.
   const q = [];
@@ -137,6 +148,10 @@ export function buildAstra(M, T) {
 function carTemplate(s) {
   const spec = Object.assign({ paint: 0xffffff, glass: GLASS, under: 0x101012 }, s.body);
   const paint = carBody(spec);
+  const bodyTex = makeBodyTexture(Object.assign({
+    zs: spec.zs, cabin: spec.cabin, windshield: spec.windshield, rearGlass: spec.rearGlass, rows: BODY_ROWS,
+    wheels: [-s.wheelBase / 2, s.wheelBase / 2], wheelR: s.wheelR, pillars: [], doors: [], handles: [],
+  }, s.tex || {}));
   const detail = [];
   const half = s.l / 2;
   const ly = s.lightY;
@@ -154,7 +169,7 @@ function carTemplate(s) {
     w.translate(x, s.wheelR, z);
     detail.push(w);
   }
-  return { paint, detail: merge(detail), w: s.w, l: s.l, colors: s.colors, name: s.name, weight: s.weight };
+  return { paint, bodyTex, detail: merge(detail), w: s.w, l: s.l, colors: s.colors, name: s.name, weight: s.weight };
 }
 
 const CAR_COLORS = [0xe8e8e8, 0xb8bcc2, 0xb3221c, 0x1f3a7a, 0x1f5a3a, 0xd8c9a3, 0x2a2a2e, 0x8a1c3a, 0x4a6fa5];
@@ -162,7 +177,8 @@ const CAR_COLORS = [0xe8e8e8, 0xb8bcc2, 0xb3221c, 0x1f3a7a, 0x1f5a3a, 0xd8c9a3, 
 /** Templates: sedã (Monza/Vectra), hatch (Gol/Uno), van (Kombi), picape (D-20) e ônibus urbano. */
 export function buildTrafficTemplates() {
   return [
-    carTemplate({ name: 'sedan', w: 1.70, l: 4.5, wheelR: 0.30, wheelBase: 2.60, lightY: 0.66, colors: CAR_COLORS, weight: 3, body: {
+    carTemplate({ name: 'sedan', w: 1.70, l: 4.5, wheelR: 0.30, wheelBase: 2.60, lightY: 0.66, colors: CAR_COLORS, weight: 3,
+      tex: { pillars: [[-0.8, -0.66], [0.42, 0.52], [1.5, 1.7]], doors: [-0.72, 0.48, 1.56], handles: [0.3, 1.4], hood: -0.82, tailgate: 1.72 }, body: {
       zs: [-2.25, -2.1, -1.7, -1.3, -0.82, -0.78, -0.4, -0.12, -0.08, 0.4, 0.9, 0.98, 1.02, 1.5, 1.68, 1.72, 2.1, 2.25],
       yFloor: [[-2.25, 0.34], [-2.1, 0.27], [2.1, 0.27], [2.25, 0.34]],
       wSill: [[-2.25, 0.60], [-2.1, 0.76], [2.1, 0.76], [2.25, 0.66]],
@@ -172,7 +188,8 @@ export function buildTrafficTemplates() {
       wTop: [[-2.25, 0.50], [-2.1, 0.64], [-1.3, 0.72], [-0.8, 0.74], [-0.1, 0.60], [1.0, 0.60], [1.7, 0.72], [2.25, 0.60]],
       cabin: [-0.8, 1.7], windshield: [-0.8, -0.1], rearGlass: [1.0, 1.68],
     } }),
-    carTemplate({ name: 'hatch', w: 1.64, l: 3.9, wheelR: 0.29, wheelBase: 2.45, lightY: 0.64, colors: CAR_COLORS, weight: 3, body: {
+    carTemplate({ name: 'hatch', w: 1.64, l: 3.9, wheelR: 0.29, wheelBase: 2.45, lightY: 0.64, colors: CAR_COLORS, weight: 3,
+      tex: { pillars: [[-0.7, -0.56], [0.5, 0.6], [1.5, 1.8]], doors: [-0.62, 0.55], handles: [0.35], hood: -0.72, tailgate: 1.82 }, body: {
       zs: [-1.95, -1.85, -1.4, -1.0, -0.72, -0.68, -0.3, -0.02, 0.02, 0.5, 1.0, 1.18, 1.22, 1.6, 1.78, 1.82, 1.9, 1.95],
       yFloor: [[-1.95, 0.34], [-1.85, 0.27], [1.85, 0.27], [1.95, 0.34]],
       wSill: [[-1.95, 0.58], [-1.85, 0.73], [1.85, 0.73], [1.95, 0.62]],
@@ -182,7 +199,8 @@ export function buildTrafficTemplates() {
       wTop: [[-1.95, 0.48], [-1.85, 0.62], [-1.0, 0.70], [-0.7, 0.72], [0, 0.60], [1.2, 0.60], [1.8, 0.58], [1.95, 0.56]],
       cabin: [-0.7, 1.8], windshield: [-0.7, 0], rearGlass: [1.2, 1.8],
     } }),
-    carTemplate({ name: 'van', w: 1.76, l: 4.4, wheelR: 0.33, wheelBase: 2.50, lightY: 0.9, colors: [0xe8e8e8, 0x3a7fc1, 0xd8c9a3, 0x8a1c3a], weight: 1, body: {
+    carTemplate({ name: 'van', w: 1.76, l: 4.4, wheelR: 0.33, wheelBase: 2.50, lightY: 0.9, colors: [0xe8e8e8, 0x3a7fc1, 0xd8c9a3, 0x8a1c3a], weight: 1,
+      tex: { pillars: [[-1.56, -1.42], [-0.3, -0.2], [1.0, 1.1], [2.05, 2.2]], doors: [-1.5, -0.25, 1.05], handles: [-0.45], tailgate: 2.12 }, body: {
       zs: [-2.2, -2.1, -1.8, -1.58, -1.54, -1.0, 0, 1.0, 2.0, 2.1, 2.14, 2.2],
       yFloor: [[-2.2, 0.36], [-2.1, 0.30], [2.1, 0.30], [2.2, 0.36]],
       wSill: [[-2.2, 0.66], [-2.1, 0.78], [2.1, 0.78], [2.2, 0.70]],
@@ -192,7 +210,8 @@ export function buildTrafficTemplates() {
       wTop: [[-2.2, 0.60], [-2.0, 0.78], [-1.5, 0.74], [2.2, 0.72]],
       cabin: [-1.56, 2.2], windshield: [-2.1, -1.56], rearGlass: [2.12, 2.2],
     } }),
-    carTemplate({ name: 'pickup', w: 1.78, l: 5.0, wheelR: 0.34, wheelBase: 3.00, lightY: 0.72, colors: [0xe8e8e8, 0x1f3a7a, 0xb3221c, 0x2a2a2e], weight: 1, body: {
+    carTemplate({ name: 'pickup', w: 1.78, l: 5.0, wheelR: 0.34, wheelBase: 3.00, lightY: 0.72, colors: [0xe8e8e8, 0x1f3a7a, 0xb3221c, 0x2a2a2e], weight: 1,
+      tex: { pillars: [[-1.0, -0.88], [0.38, 0.5]], doors: [-0.94, 0.44], handles: [0.25], hood: -1.02, tailgate: 2.4 }, body: {
       zs: [-2.5, -2.35, -1.9, -1.3, -1.02, -0.98, -0.6, -0.32, -0.28, 0.1, 0.28, 0.32, 0.5, 0.6, 1.5, 2.4, 2.5],
       yFloor: [[-2.5, 0.38], [-2.35, 0.32], [2.4, 0.32], [2.5, 0.38]],
       wSill: [[-2.5, 0.64], [-2.35, 0.78], [2.4, 0.78], [2.5, 0.70]],
@@ -202,7 +221,8 @@ export function buildTrafficTemplates() {
       wTop: [[-2.5, 0.55], [-2.3, 0.70], [-1.0, 0.78], [-0.3, 0.66], [0.3, 0.66], [0.6, 0.84], [2.5, 0.84]],
       cabin: [-1.0, 0.5], windshield: [-1.0, -0.3], rearGlass: [0.3, 0.5],
     } }),
-    carTemplate({ name: 'bus', w: 2.50, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xe0a020, 0x2c62b5, 0xe8e8e8, 0xc83a2a], weight: 1, rim: 0x6a6a6e, body: {
+    carTemplate({ name: 'bus', w: 2.50, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xe0a020, 0x2c62b5, 0xe8e8e8, 0xc83a2a], weight: 1, rim: 0x6a6a6e,
+      tex: { pillars: [[-5.2, -5.0], [-3.9, -3.78], [-2.6, -2.48], [-1.3, -1.18], [0, 0.12], [1.3, 1.42], [2.6, 2.72], [3.9, 4.02], [5.2, 5.4]], doors: [-4.6, -4.0, 0.2, 0.8], handles: [], tailgate: 5.4 }, body: {
       zs: [-5.5, -5.4, -5.1, -4.5, -3, -1, 1, 3, 5, 5.3, 5.4, 5.5],
       yFloor: [[-5.5, 0.5], [-5.3, 0.4], [5.3, 0.4], [5.5, 0.5]],
       wSill: [[-5.5, 1.1], [-5.3, 1.2], [5.3, 1.2], [5.5, 1.1]],
@@ -218,7 +238,7 @@ export function buildTrafficTemplates() {
 /** Cria uma instância (Group) de um template com a cor dada. */
 export function makeVehicle(tpl, color, M) {
   const g = new THREE.Group();
-  g.add(new THREE.Mesh(tpl.paint, M.paint(color)));
+  g.add(new THREE.Mesh(tpl.paint, M.paint(color, tpl.bodyTex)));
   g.add(new THREE.Mesh(tpl.detail, M.detail));
   g.add(shadowMesh(tpl.w * 1.15, tpl.l * 1.05, M));
   return g;

@@ -173,31 +173,33 @@ export function lerpKeys(keys, z) {
  * do perfil, de baixo (x=0) até o topo (x=0). Pontos "sharp" viram vincos (normais e cores
  * descontínuas); os demais ficam suaves (Gouraud). Fecha as pontas com tampas planas.
  */
-export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6) {
+export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6, vMap = null) {
   const rings = stations.map((st) => {
     const pts = st.pts;
     const ring = [];
-    const emit = (p, dir, xs) => {
+    const emit = (p, dir, xs, pi) => {
       const [x, y, sharp, cB, cA] = p;
-      if (!sharp) return [{ x: xs * x, y, c: cA, dup: false }];
+      if (!sharp) return [{ x: xs * x, y, c: cA, dup: false, pi }];
       return dir > 0
-        ? [{ x: xs * x, y, c: cB, dup: true }, { x: xs * x, y, c: cA, dup: false }]
-        : [{ x: xs * x, y, c: cA, dup: true }, { x: xs * x, y, c: cB, dup: false }];
+        ? [{ x: xs * x, y, c: cB, dup: true, pi }, { x: xs * x, y, c: cA, dup: false, pi }]
+        : [{ x: xs * x, y, c: cA, dup: true, pi }, { x: xs * x, y, c: cB, dup: false, pi }];
     };
-    ring.push({ x: 0, y: pts[0][1], c: pts[0][4], dup: false });
-    for (let i = 1; i < pts.length - 1; i++) ring.push(...emit(pts[i], 1, 1));
-    ring.push({ x: 0, y: pts[pts.length - 1][1], c: pts[pts.length - 1][3], dup: false });
-    for (let i = pts.length - 2; i >= 1; i--) ring.push(...emit(pts[i], -1, -1));
+    ring.push({ x: 0, y: pts[0][1], c: pts[0][4], dup: false, pi: 0 });
+    for (let i = 1; i < pts.length - 1; i++) ring.push(...emit(pts[i], 1, 1, i));
+    ring.push({ x: 0, y: pts[pts.length - 1][1], c: pts[pts.length - 1][3], dup: false, pi: pts.length - 1 });
+    for (let i = pts.length - 2; i >= 1; i--) ring.push(...emit(pts[i], -1, -1, i));
     return ring;
   });
   const S = rings.length, R = rings[0].length;
-  const pos = [], col = [], idx = [], cut = [];
+  const zFirst = stations[0].z, zLast = stations[S - 1].z;
+  const pos = [], col = [], idx = [], cut = [], uvs = [];
   for (let s = 0; s < S; s++) {
     for (let k = 0; k < R; k++) {
       const e = rings[s][k];
       pos.push(e.x, e.y, stations[s].z);
       _c.set(e.c); col.push(_c.r, _c.g, _c.b);
       cut.push(glassColor !== null && e.c === glassColor ? glassEnvCut : 0);
+      uvs.push((stations[s].z - zFirst) / (zLast - zFirst), vMap ? vMap[e.pi] : 0.3);
     }
   }
   for (let s = 0; s < S - 1; s++) {
@@ -212,7 +214,7 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6) {
   body.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   body.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
   body.setAttribute('envCut', new THREE.Float32BufferAttribute(cut, 1));
-  body.setAttribute('uv', new THREE.Float32BufferAttribute(new Float32Array(pos.length / 3 * 2), 2));
+  body.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
   body.setIndex(idx);
   body.computeVertexNormals();
   // Garante normais para fora: testa um vértice do topo da estação central.
@@ -238,7 +240,9 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6) {
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3));
     g.setAttribute('color', new THREE.Float32BufferAttribute(c, 3));
-    g.setAttribute('uv', new THREE.Float32BufferAttribute(new Float32Array(p.length / 3 * 2), 2));
+    const cuv = new Float32Array(p.length / 3 * 2);
+    for (let k = 0; k < cuv.length; k += 2) { cuv[k] = dirZ > 0 ? 0.97 : 0.03; cuv[k + 1] = 0.3; }
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(cuv, 2));
     g.setIndex(ix);
     g.computeVertexNormals();
     if (Math.sign(g.attributes.normal.getZ(0)) !== Math.sign(dirZ)) {
@@ -254,6 +258,9 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6) {
  * Gera as estações de uma carroceria a partir de curvas-chave (ver loft).
  * spec: { zs, yFloor, wSill, wBelt, yBelt, yTop, wTop, cabin, windshield, rearGlass, paint, glass, under }
  */
+export const BODY_ROWS = { floor: 0, sill: 0.06, lower: 0.18, crease: 0.32, belt: 0.42, glassBase: 0.50, roofEdge: 0.72, top: 1.0 };
+const BODY_VMAP = [BODY_ROWS.floor, BODY_ROWS.sill, BODY_ROWS.lower, BODY_ROWS.crease, BODY_ROWS.belt, BODY_ROWS.glassBase, BODY_ROWS.roofEdge, BODY_ROWS.top];
+
 export function carBody(spec) {
   const P = spec.paint, G = spec.glass, U = spec.under;
   const inRange = (r, z) => z >= r[0] && z <= r[1];
@@ -265,17 +272,44 @@ export function carBody(spec) {
     const wG = cabin ? Math.max(wT + 0.02, wB - 0.06) : Math.min(wB - 0.02, wT + 0.09);
     const topGlass = inRange(spec.windshield, z) || inRange(spec.rearGlass, z);
     const side = cabin ? G : P, top = topGlass ? G : P;
+    const yLower = Math.min(yF + 0.2, yB - 0.1);
     return { z, pts: [
       [0, yF, false, U, U],
       [wS, yF, true, U, P],
-      [wB, Math.min(yF + 0.2, yB - 0.05), false, P, P],
+      [wB, yLower, false, P, P],
+      [wB + 0.012, (yLower + yB) / 2, false, P, P], // vinco lateral
       [wB, yB, true, P, P],
       [wG, yG, true, P, side],
       [wT, yT, true, side, top],
       [0, yT, false, top, top],
     ] };
   });
-  return loft(stations, P, G);
+  return loft(stations, P, G, 0.6, BODY_VMAP);
+}
+
+/** Cor por vértice com gradiente vertical (base mais escura = oclusão falsa). */
+export function gradientColorize(geo, color, bottomMul = 0.7) {
+  colorize(geo, color);
+  const pos = geo.attributes.position, col = geo.attributes.color;
+  let minY = Infinity, maxY = -Infinity;
+  for (let i = 0; i < pos.count; i++) { const y = pos.getY(i); if (y < minY) minY = y; if (y > maxY) maxY = y; }
+  const span = Math.max(1e-6, maxY - minY);
+  for (let i = 0; i < pos.count; i++) {
+    const t = (pos.getY(i) - minY) / span;
+    const m = bottomMul + (1 - bottomMul) * t;
+    col.setXYZ(i, col.getX(i) * m, col.getY(i) * m, col.getZ(i) * m);
+  }
+  col.needsUpdate = true;
+  return geo;
+}
+
+/** Fixa todas as UVs num ponto (para peças sem textura dentro de um material com mapa). */
+export function uvConst(geo, u, v) {
+  if (!geo.attributes.uv) ensureAttributes(geo);
+  const uv = geo.attributes.uv;
+  for (let i = 0; i < uv.count; i++) uv.setXY(i, u, v);
+  uv.needsUpdate = true;
+  return geo;
 }
 
 /** Quad (PlaneGeometry) com UV num sub-retângulo do atlas dado em pixels. */
@@ -290,7 +324,7 @@ export function atlasQuad(w, h, atlasSize, x0, y0, rw, rh, color = 0xffffff) {
  * region: [x0, y0, size] da face no atlas (quadrado); treadUV: ponto do atlas com a cor do pneu.
  */
 export function discWheel(r, width, atlasSize, region, treadUV, outerSign = 1) {
-  const tread = new THREE.CylinderGeometry(r, r, width, 12, 1, true);
+  const tread = new THREE.CylinderGeometry(r, r, width, 16, 1, true);
   tread.rotateZ(Math.PI / 2);
   const tu = tread.attributes.uv;
   for (let i = 0; i < tu.count; i++) tu.setXY(i, treadUV[0], treadUV[1]);
@@ -298,7 +332,7 @@ export function discWheel(r, width, atlasSize, region, treadUV, outerSign = 1) {
   const [x0, y0, size] = region;
   const u0 = x0 / atlasSize, u1 = (x0 + size) / atlasSize, v1 = 1 - y0 / atlasSize, v0 = 1 - (y0 + size) / atlasSize;
   const face = (sign, textured) => {
-    const d = new THREE.CircleGeometry(r, 12);
+    const d = new THREE.CircleGeometry(r, 16);
     const uv = d.attributes.uv;
     for (let i = 0; i < uv.count; i++) {
       if (textured) uv.setXY(i, u0 + uv.getX(i) * (u1 - u0), v0 + uv.getY(i) * (v1 - v0));
