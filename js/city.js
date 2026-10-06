@@ -1,7 +1,7 @@
 // Cidade procedural em "chunks" de 40 m ao longo de -z. Três avenidas temáticas de Pelotas:
 // Duque de Caxias (Fragata), Bento Gonçalves (Centro) e Pres. Juscelino Kubitschek (Porto/Areal).
 import * as THREE from 'three';
-import { box, cylinder, groundPlane, tileBoxUVs, atlasFaceUVs, signQuad, crossTree, merge, colorize, gradientColorize } from './geometry.js';
+import { box, cylinder, groundPlane, tileBoxUVs, atlasFaceUVs, signQuad, crossTree, merge, colorize, gradientColorize, emissive } from './geometry.js';
 
 export const CHUNK = 40;
 export const PHASE_CHUNKS = 50; // 2000 m por fase (avenida)
@@ -176,8 +176,8 @@ export class City {
   lampPost(add, z) {
     add('props', cylinder(0.08, 0.11, 8, 6, 0xb8bcc0, 0, 4, z));
     add('props', box(4.6, 0.12, 0.12, 0xb8bcc0, 0, 7.9, z));
-    add('props', box(0.55, 0.16, 0.32, 0xf4f4e8, -2.2, 7.8, z));
-    add('props', box(0.55, 0.16, 0.32, 0xf4f4e8, 2.2, 7.8, z));
+    add('props', emissive(box(0.55, 0.16, 0.32, 0xffd9a0, -2.2, 7.8, z)));
+    add('props', emissive(box(0.55, 0.16, 0.32, 0xffd9a0, 2.2, 7.8, z)));
   }
 
   intersection(ctx) {
@@ -202,7 +202,7 @@ export class City {
     add('props', box(0.42, 1.10, 0.36, 0x222426, hx, 4.6, z));
     const on = Math.floor(rng() * 3);
     const cols = [0xff2a1a, 0xffc020, 0x20e040];
-    for (let k = 0; k < 3; k++) add('props', box(0.26, 0.26, 0.08, on === k ? cols[k] : 0x2a2a2a, hx, 4.95 - k * 0.35, z + 0.20));
+    for (let k = 0; k < 3; k++) { const b = box(0.26, 0.26, 0.08, on === k ? cols[k] : 0x2a2a2a, hx, 4.95 - k * 0.35, z + 0.20); add('props', on === k ? emissive(b) : b); }
   }
 
   streetSign(add, x, z, idx) {
@@ -275,7 +275,7 @@ export class City {
         add('grass', groundPlane(9, bw, 2, bw / 4, 0xffffff, side * (x0 + 5), 0.02, zc, 1, 1));
         const h = (3 + Math.floor(rng() * 5)) * 3.2;
         const g = new THREE.BoxGeometry(bd, h, bw * 0.8);
-        tileBoxUVs(g, bd, h, bw * 0.8, 3.5, 3.2);
+        tileBoxUVs(g, bd, h, bw * 0.8, 7.0, 6.4);
         g.translate(side * (x0 + 10 + bd / 2), h / 2, zc);
         add('facade_' + pick(['modern', 'balcony']), gradientColorize(g, pick(theme.palette), 0.66));
         add('props', box(bd + 0.2, 0.35, bw * 0.8 + 0.2, 0x6a645c, side * (x0 + 10 + bd / 2), h + 0.17, zc));
@@ -302,7 +302,7 @@ export class City {
       if (upper > 0) {
         const h = upper * 3.2;
         const g = new THREE.BoxGeometry(bd, h, bw);
-        tileBoxUVs(g, bd, h, bw, 3.5, 3.2);
+        tileBoxUVs(g, bd, h, bw, 7.0, 6.4);
         g.translate(xc, y + h / 2, zc);
         add('facade_' + facadeName, gradientColorize(g, tint, 0.66));
         y += h;
@@ -344,7 +344,7 @@ export class City {
     if (local === 1) {
       const xc = -(x0 + 8);
       const g = new THREE.BoxGeometry(16, 4.6, 36);
-      tileBoxUVs(g, 16, 4.6, 36, 4.5, 4.6);
+      tileBoxUVs(g, 16, 4.6, 36, 9.0, 9.2);
       g.translate(xc, 2.3, zc);
       add('facade_house', gradientColorize(g, 0xf0ead8, 0.75));
       add('props', box(16.4, 0.7, 36.4, 0x8a7a5a, xc, 4.75, zc)); // platibanda cáqui
@@ -352,7 +352,7 @@ export class City {
       // pórtico central com colunas
       add('props', box(3.5, 0.4, 10, 0xf0ead8, -(x0 + 1.5), 4.2, zc));
       for (const dz of [-4, 0, 4]) add('props', box(0.5, 4.2, 0.5, 0xe8e2d0, -(x0 - 0.1), 2.1 + 0.15, zc + dz));
-      add('props', box(0.3, 2.6, 3.2, 0x243030, -(x0 + 0.1), 1.3 + 0.15, zc)); // porta de vidro
+      add('props', emissive(box(0.3, 2.6, 3.2, 0xffe0b0, -(x0 + 0.1), 1.3 + 0.15, zc))); // porta de vidro acesa
       const q = signQuad(14, 2.0, 0, 0.5);
       q.rotateY(Math.PI / 2); q.translate(-(x0 - 0.02), 3.6, zc + 8);
       add('landmarkSigns', q);
@@ -377,7 +377,7 @@ export class City {
     if (local === 1) {
       const xc = x0 + 9;
       const g = new THREE.BoxGeometry(18, 6.2, 38);
-      tileBoxUVs(g, 18, 6.2, 38, 4.2, 6.2);
+      tileBoxUVs(g, 18, 6.2, 38, 8.4, 12.4);
       g.translate(xc, 3.1, zc);
       add('facade_auditorium', gradientColorize(g, 0xffffff, 0.8));
       add('props', box(18.4, 0.5, 38.4, 0x7a8a6a, xc, 6.45, zc));
@@ -393,7 +393,7 @@ export class City {
       add('grass', groundPlane(8, CHUNK - 2, 2, 5, 0xffffff, x0 + 4.3, 0.02, zc, 1, 1));
       const h = 7.5;
       const g = new THREE.BoxGeometry(16, h, 28);
-      tileBoxUVs(g, 16, h, 28, 3.5, 3.6);
+      tileBoxUVs(g, 16, h, 28, 7.0, 7.2);
       g.translate(x0 + 16, h / 2, zc + (local === 0 ? 2 : -2));
       add('facade_modern', gradientColorize(g, 0xd8e0c8, 0.7));
       add('props', box(16.2, 0.35, 28.2, 0x6a645c, x0 + 16, h + 0.17, zc + (local === 0 ? 2 : -2)));
@@ -417,7 +417,7 @@ export class City {
       const side = signQuad(28, 6.8, 0, 1);
       side.rotateY(-Math.PI / 2); side.translate(x0 + 10 - 0.3, 6.6, zc - 4);
       add('big', side);
-      add('props', box(0.4, 4.5, 16, 0x2a3a4a, x0 + 10 - 0.2, 2.25, zc - 4)); // vitrines da entrada
+      add('props', emissive(box(0.4, 4.5, 16, 0xffe0b0, x0 + 10 - 0.2, 2.25, zc - 4))); // vitrines da entrada acesas
       add('props', box(6, 0.5, 20, 0xe8e2d0, x0 + 7, 4.6, zc - 4)); // marquise
       // torre/silo com a marca
       add('props', cylinder(2.2, 2.2, 24, 10, 0x2a2a30, x0 + 44, 12, zA - 6));
@@ -447,7 +447,7 @@ export class City {
     const x = 16.2 + 16;
     add('props', box(32, 7, 38, 0xf4f4f0, x, 3.5, zc));
     add('props', box(32.2, 1.3, 38.2, 0xc8241c, x, 6.2, zc));
-    add('props', box(0.5, 4.2, 14, GLASS, 16.3, 2.1, zc));
+    add('props', emissive(box(0.5, 4.2, 14, 0xffe0b0, 16.3, 2.1, zc)));
     add('props', box(6, 0.4, 16, 0xe0e0dc, 16.2 + 3, 4.5, zc)); // marquise
     for (const dz of [-7, 7]) add('props', box(0.4, 4.3, 0.4, 0xe0e0dc, 16.4, 2.15, zc + dz));
     const q = signQuad(14, 3.2, 8 / this.T.billboardCount, 9 / this.T.billboardCount);
@@ -490,6 +490,7 @@ export class City {
       add('props', cylinder(3.2, 3.4, 0.5, 8, 0xd8d0c0, x, 0.42, zc));
       for (let k = 0; k < 6; k++) { const a = (k / 6) * Math.PI * 2; add('props', box(0.25, 3, 0.25, 0xf0f0f0, x + Math.cos(a) * 2.7, 2.1, zc + Math.sin(a) * 2.7)); }
       add('props', cylinder(0.3, 3.6, 1.8, 8, 0x8a3a2a, x, 4.5, zc));
+      add('props', emissive(box(0.3, 0.3, 0.3, 0xffd9a0, x, 3.2, zc))); // lâmpada do coreto
     }
   }
 
@@ -503,7 +504,7 @@ export class City {
     add('props', box(18.2, 0.8, CHUNK + 0.1, 0x1f4fa0, x1 + 19, 18.7, zc));
     const tower = (z) => {
       add('props', box(1.2, 36, 1.2, 0x8a8a8e, x1 + 27, 18, z));
-      add('props', box(4.5, 2.6, 0.6, 0xf8f8f0, x1 + 27, 36.5, z + 0.5));
+      add('props', emissive(box(4.5, 2.6, 0.6, 0xffffff, x1 + 27, 36.5, z + 0.5)));
     };
     if (local === 24) tower(zA - 3);
     if (local === 26) tower(zB + 3);
@@ -541,6 +542,7 @@ export class City {
     for (const dx of [-5, 5]) for (const dz of [-9, 9]) add('props', box(0.6, 5.2, 0.6, 0xe8e8e8, x + dx, 2.6, zc + dz));
     add('props', box(15, 0.7, 26, 0xf0f0f0, x, 5.55, zc));
     add('props', box(15.2, 0.5, 26.2, 0xc8241c, x, 6.0, zc));
+    for (const dz of [-8, 0, 8]) add('props', emissive(box(2.0, 0.1, 0.8, 0xffffff, x, 5.18, zc + dz))); // luminárias do canopy
     for (const dz of [-5, 0, 5]) { add('props', box(0.9, 1.6, 0.6, 0xe8e8e8, x, 0.8, zc + dz)); add('props', box(0.9, 0.3, 0.62, 0xc8241c, x, 1.5, zc + dz)); }
     add('props', box(12, 4, 14, 0xf4f4f0, 16.2 + 25, 2, zc));
     add('props', box(12.2, 0.4, 14.2, 0x6a645c, 16.2 + 25, 4.2, zc));

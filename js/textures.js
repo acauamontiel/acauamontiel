@@ -52,6 +52,16 @@ function valueNoise2D(w, h, octaves = 4, scale = 8) {
   return out;
 }
 
+// Marca um retângulo como emissivo: reduz o alpha (que vira brilho próprio no shader, uEmissiveMask)
+// sem ler pixels de volta ("destination-out" só multiplica o alpha existente, preservando a cor).
+function markEmissive(g, x, y, w, h, alpha) {
+  g.save();
+  g.globalCompositeOperation = 'destination-out';
+  g.fillStyle = `rgba(0,0,0,${1 - alpha})`;
+  g.fillRect(x, y, w, h);
+  g.restore();
+}
+
 export function makeTextures() {
   const T = {};
 
@@ -177,57 +187,63 @@ export function makeTextures() {
     T.water = pixelTexture(c);
   }
 
-  // Fachadas: um tile = um andar x uma janela. Reboco com ruído, sujeira na base, vidro com reflexo.
+  // Fachadas: um tile 128x128 = 2 andares x 2 janelas (7 m x 6,4 m). À noite parte das janelas
+  // fica acesa (amarelo quente, emissivo via alpha) e parte apagada (azul escuro).
   T.facade = {};
   const facade = (name, draw) => {
-    const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 232, 22);
-    const grd = g.createLinearGradient(0, 0, 0, 64);
+    const [c, g] = canvas(128, 128);
+    noise(g, 128, 128, 232, 22);
+    const grd = g.createLinearGradient(0, 0, 0, 128);
     grd.addColorStop(0, 'rgba(0,0,0,0)'); grd.addColorStop(0.85, 'rgba(0,0,0,0.05)'); grd.addColorStop(1, 'rgba(0,0,0,0.22)');
-    g.fillStyle = grd; g.fillRect(0, 0, 64, 64);
-    draw(g);
+    g.fillStyle = grd; g.fillRect(0, 0, 128, 128);
+    for (const [ox, oy] of [[0, 0], [64, 0], [0, 64], [64, 64]]) draw(g, ox, oy, rnd() < 0.55);
     T.facade[name] = pixelTexture(c);
   };
-  const drawWindow = (g, x, y, w, h, frame, arch = false) => {
+  const drawWindow = (g, x, y, w, h, frame, lit, arch = false) => {
     g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x - 2, y + h + 2, w + 4, 2); // sombra do peitoril
     g.fillStyle = frame; g.fillRect(x - 2, y - 2, w + 4, h + 4);
-    const gl = g.createLinearGradient(0, y, 0, y + h);
-    gl.addColorStop(0, '#9fc3dc'); gl.addColorStop(0.45, '#4f6f8a'); gl.addColorStop(0.5, '#22313f'); gl.addColorStop(1, '#1a2530');
-    g.fillStyle = gl; g.fillRect(x, y, w, h);
-    g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x + 2, y + 2, w * 0.35, h * 0.5);
-    g.fillStyle = 'rgba(220,200,160,0.35)'; g.fillRect(x + w * 0.6, y + h * 0.45, w * 0.4, h * 0.55); // cortina
+    if (lit) {
+      const gl = g.createLinearGradient(0, y, 0, y + h);
+      gl.addColorStop(0, '#ffe2a0'); gl.addColorStop(1, '#f0b860');
+      g.fillStyle = gl; g.fillRect(x, y, w, h);
+      g.fillStyle = 'rgba(120,70,20,0.45)'; g.fillRect(x + w * 0.6, y + h * 0.4, w * 0.4, h * 0.6); // cortina
+    } else {
+      g.fillStyle = '#141c28'; g.fillRect(x, y, w, h);
+      g.fillStyle = 'rgba(120,150,190,0.25)'; g.fillRect(x + 2, y + 2, w * 0.35, h * 0.4);
+    }
     g.fillStyle = frame; g.fillRect(x + w / 2 - 1, y, 2, h);
-    if (arch) { g.fillStyle = frame; g.beginPath(); g.arc(x + w / 2, y, w / 2 + 2, Math.PI, 0); g.fill(); g.fillStyle = '#5a7a94'; g.beginPath(); g.arc(x + w / 2, y, w / 2, Math.PI, 0); g.fill(); }
+    if (arch) { g.fillStyle = frame; g.beginPath(); g.arc(x + w / 2, y, w / 2 + 2, Math.PI, 0); g.fill(); g.fillStyle = lit ? '#ffd890' : '#1c2838'; g.beginPath(); g.arc(x + w / 2, y, w / 2, Math.PI, 0); g.fill(); if (lit) markEmissive(g, x, y - w / 2, w, w / 2, 0.3); }
+    if (lit) markEmissive(g, x, y, w, h, 0.3);
   };
-  facade('modern', (g) => { drawWindow(g, 8, 16, 48, 28, '#4a4a4a'); g.fillStyle = 'rgba(0,0,0,0.15)'; g.fillRect(0, 58, 64, 6); });
-  facade('balcony', (g) => {
-    drawWindow(g, 14, 10, 36, 30, '#555');
-    g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(0, 44, 64, 3);
-    g.fillStyle = '#d8d8d8'; g.fillRect(0, 47, 64, 12);
-    g.fillStyle = '#3a3a3a'; for (let x = 2; x < 64; x += 6) g.fillRect(x, 47, 1, 12); g.fillRect(0, 46, 64, 2);
-    g.fillStyle = '#8a8a8a'; g.fillRect(52, 24, 10, 8); // ar-condicionado
+  facade('modern', (g, ox, oy, lit) => { drawWindow(g, ox + 8, oy + 16, 48, 28, '#4a4a4a', lit); g.fillStyle = 'rgba(0,0,0,0.15)'; g.fillRect(ox, oy + 58, 64, 6); });
+  facade('balcony', (g, ox, oy, lit) => {
+    drawWindow(g, ox + 14, oy + 10, 36, 30, '#555', lit);
+    g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(ox, oy + 44, 64, 3);
+    g.fillStyle = '#c8c8c8'; g.fillRect(ox, oy + 47, 64, 12);
+    g.fillStyle = '#3a3a3a'; for (let x = 2; x < 64; x += 6) g.fillRect(ox + x, oy + 47, 1, 12); g.fillRect(ox, oy + 46, 64, 2);
+    g.fillStyle = '#8a8a8a'; g.fillRect(ox + 52, oy + 24, 10, 8); // ar-condicionado
   });
-  facade('colonial', (g) => {
-    drawWindow(g, 20, 20, 24, 34, '#5a4a3a', true);
-    g.fillStyle = 'rgba(0,0,0,0.2)'; g.fillRect(0, 0, 64, 6);
-    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(0, 6, 64, 2);
-    g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(4, 10, 3, 54); g.fillRect(57, 10, 3, 54); // pilastras
+  facade('colonial', (g, ox, oy, lit) => {
+    drawWindow(g, ox + 20, oy + 20, 24, 34, '#5a4a3a', lit, true);
+    g.fillStyle = 'rgba(0,0,0,0.2)'; g.fillRect(ox, oy, 64, 6);
+    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(ox, oy + 6, 64, 2);
+    g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(ox + 4, oy + 10, 3, 54); g.fillRect(ox + 57, oy + 10, 3, 54); // pilastras
   });
-  facade('house', (g) => { drawWindow(g, 20, 24, 24, 22, '#6b6b6b'); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(0, 60, 64, 4); g.fillStyle = 'rgba(0,0,0,0.08)'; g.fillRect(0, 0, 64, 4); });
-  facade('warehouse', (g) => {
-    g.fillStyle = 'rgba(0,0,0,0.22)'; for (let i = 0; i < 64; i += 6) g.fillRect(i, 0, 2, 64);
-    g.fillStyle = 'rgba(255,255,255,0.15)'; for (let i = 3; i < 64; i += 6) g.fillRect(i, 0, 1, 64);
-    drawWindow(g, 8, 8, 48, 12, '#444');
-    g.fillStyle = 'rgba(120,60,30,0.4)'; for (let k = 0; k < 6; k++) g.fillRect(rnd() * 60, 40 + rnd() * 20, 2 + rnd() * 4, 6 + rnd() * 18);
+  facade('house', (g, ox, oy, lit) => { drawWindow(g, ox + 20, oy + 24, 24, 22, '#6b6b6b', lit); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(ox, oy + 60, 64, 4); g.fillStyle = 'rgba(0,0,0,0.08)'; g.fillRect(ox, oy, 64, 4); });
+  facade('warehouse', (g, ox, oy, lit) => {
+    g.fillStyle = 'rgba(0,0,0,0.22)'; for (let i = 0; i < 64; i += 6) g.fillRect(ox + i, oy, 2, 64);
+    g.fillStyle = 'rgba(255,255,255,0.15)'; for (let i = 3; i < 64; i += 6) g.fillRect(ox + i, oy, 1, 64);
+    drawWindow(g, ox + 8, oy + 8, 48, 12, '#444', lit && rnd() < 0.5);
+    g.fillStyle = 'rgba(120,60,30,0.4)'; for (let k = 0; k < 6; k++) g.fillRect(ox + rnd() * 60, oy + 40 + rnd() * 20, 2 + rnd() * 4, 6 + rnd() * 18);
   });
   facade('plain', () => {});
-  // Auditório do Colégio Pelotense: parede verde-oliva com arcadas altas.
-  facade('auditorium', (g) => {
-    g.globalCompositeOperation = 'multiply'; g.fillStyle = '#9fb08c'; g.fillRect(0, 0, 64, 64); g.globalCompositeOperation = 'source-over';
-    g.fillStyle = '#243030'; g.fillRect(16, 22, 32, 42); g.beginPath(); g.arc(32, 22, 16, Math.PI, 0); g.fill();
-    g.fillStyle = '#6a7a60'; g.fillRect(16, 60, 32, 4);
-    g.fillStyle = 'rgba(255,255,255,0.25)'; g.fillRect(18, 24, 6, 30);
-    g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(0, 0, 64, 5);
+  // Auditório do Colégio Pelotense: parede verde-oliva com arcadas altas iluminadas por dentro.
+  facade('auditorium', (g, ox, oy, lit) => {
+    g.globalCompositeOperation = 'multiply'; g.fillStyle = '#9fb08c'; g.fillRect(ox, oy, 64, 64); g.globalCompositeOperation = 'source-over';
+    g.fillStyle = lit ? '#f0c878' : '#243030'; g.fillRect(ox + 16, oy + 22, 32, 42); g.beginPath(); g.arc(ox + 32, oy + 22, 16, Math.PI, 0); g.fill();
+    g.fillStyle = '#6a7a60'; g.fillRect(ox + 16, oy + 60, 32, 4);
+    g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(ox, oy, 64, 5);
+    if (lit) markEmissive(g, ox + 16, oy + 6, 32, 54, 0.4);
   });
 
   // Lojas do térreo: atlas com 16 fachadas de 64x64 (vitrine + toldo + letreiro).
@@ -265,6 +281,11 @@ export function makeTextures() {
       // toldo listrado
       for (let s = 0; s < 64; s += 8) { g.fillStyle = s % 16 ? '#f4f4f4' : awnings[i % awnings.length]; g.fillRect(x + s, 20, 8, 4); }
       g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(x, 24, 64, 2);
+      // À noite: vitrine acesa e letreiro luminoso.
+      g.fillStyle = '#ffd9a0'; g.fillRect(x + 8, 26, 20, 36);
+      g.fillStyle = 'rgba(60,40,20,0.5)'; g.fillRect(x + 12, 40, 6, 22); g.fillRect(x + 20, 44, 5, 18); // manequins
+      markEmissive(g, x + 6, 24, 52, 40, 0.45);
+      markEmissive(g, x, 2, 64, 18, 0.2);
     }
     T.shops = pixelTexture(c, false);
     T.shopCount = n;
@@ -400,7 +421,7 @@ export function makeTextures() {
     ['SUPERMERCADO', 'OFERTAS DA SEMANA · FRAGATA'],
     ['POSTO', 'GASOLINA · ETANOL · DIESEL'],
     ['CONCESSIONÁRIA', 'ASTRA · VECTRA · CORSA · OMEGA'],
-    ['LARGADA', 'PELOTAS TURISMO'],
+    ['LARGADA', 'CRAZY NIGHTS'],
     ['CHEGADA', 'FIM DA FASE'],
   ];
   T.billboardGeneric = 8;
@@ -629,8 +650,10 @@ export function makeBusLivery(kind, o) {
     }
     // janelas: vidro escuro com reflexo e cortinas, colunas finas entre elas
     const wx0 = U(o.cabin[0]) + 4, wx1 = U(o.cabin[1]) - 4;
-    g.fillStyle = '#20282e'; sideRect(g, side, wx0, wx1, R.glassBase + 0.01, winTop);
-    g.fillStyle = '#6f8ea8'; sideRect(g, side, wx0, wx1, winTop - 0.06, winTop - 0.015);
+    // Interior aceso à noite: vidro quente e emissivo; cortinas e molduras por cima.
+    g.fillStyle = '#f0c890'; sideRect(g, side, wx0, wx1, R.glassBase + 0.01, winTop);
+    g.fillStyle = '#c89a60'; sideRect(g, side, wx0, wx1, winTop - 0.06, winTop - 0.015);
+    { const ya = side.Y(R.glassBase + 0.01), yb = side.Y(winTop); markEmissive(g, wx0, Math.min(ya, yb), wx1 - wx0, Math.abs(yb - ya), 0.45); }
     const pitch = Math.round(1.35 / (z1 - z0) * W);
     for (let x = wx0; x < wx1; x += pitch) {
       g.fillStyle = L.frame; sideRect(g, side, x, x + 2, R.glassBase, winTop + 0.01); // coluna clara (moldura)
@@ -654,6 +677,11 @@ export function makeBusLivery(kind, o) {
     sideRect(g, side, 0, U(o.windshield[1]), R.roofEdge, 0.985);
     sideRect(g, side, U(o.rearGlass[0]), W, R.roofEdge, 0.94);
     g.fillStyle = L.sign; sideRect(g, side, 0, U(o.windshield[1]), 0.90, 0.97);
+    // Letreiro de destino aceso.
+    {
+      const sa = side.Y(0.90), sb = side.Y(0.97);
+      markEmissive(g, 0, Math.min(sa, sb), Math.max(1, U(o.windshield[1])), Math.max(1, Math.abs(sb - sa)), 0.25);
+    }
     // nome da empresa e número de frota
     const textV = (L.skirtTop + R.glassBase) / 2 - 0.01;
     sideText(g, side, L.text, Math.round(W * (L.plate ? 0.72 : 0.70)), textV, L.font, L.textColor, Math.round(W * (L.plate ? 0.25 : 0.40)), L.shadow);

@@ -25,7 +25,7 @@ renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.5, 340);
-const post = new PS1Post(renderer, 512);
+const post = new PS1Post(renderer, 640);
 
 const T = makeTextures();
 const M = makeMaterials(T);
@@ -131,7 +131,7 @@ function victory() {
   G.stateTime = 0;
   if (G.score > G.best) { G.best = G.score; saveBest(G.best); }
   hud.setBest(G.best);
-  hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'PELOTAS<br>TURISMO', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
+  hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'CRAZY<br>NIGHTS', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
 }
 
 function onConfirm() {
@@ -143,7 +143,6 @@ function onConfirm() {
 input.onKey = (code) => {
   if (code === 'Enter' || code === 'Space') onConfirm();
   if (code === 'KeyM') audio.setMuted(!audio.muted);
-  if (code === 'KeyP') post.setEnabled(!post.enabled);
 };
 input.onAny = () => { if (G.state !== 'playing') onConfirm(); };
 
@@ -309,6 +308,7 @@ function frame() {
   else updateGameOver(dt);
   city.update(G.z);
   updateCurve();
+  shared.uCarPos.value.set(G.x, 0.6, G.z);
   if (DBG) renderer.info.reset();
   post.render(scene, camera, G.time);
 }
@@ -319,7 +319,6 @@ if (DBG) renderer.info.autoReset = false;
 city.update(G.z);
 hud.setBest(G.best);
 hud.show('title');
-if (params.has('nops1')) post.setEnabled(false);
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }
 if (params.has('bus')) traffic.spawnParked(-7.1, G.z - 3, 'bus_' + params.get('bus'), 0xffffff, Math.PI, 0); // depuração: ônibus ao lado
@@ -337,10 +336,12 @@ frame();
 
 // Para depuração no console.
 window.__game = { G, scene, camera, city, traffic, post, shared };
-if (params.has('env')) {
-  const v = Number(params.get('env'));
-  M.astraPaint.uniforms.uEnvStrength.value = v;
-  M.glass.uniforms.uEnvStrength.value = v;
+if (params.has('env')) M.astraPaint.uniforms.uEnvStrength.value = Number(params.get('env'));
+if (params.has('day')) {
+  // Depuração: cena diurna (sem postes/farol, céu claro).
+  shared.uNight.value = 0; shared.uAmbient.value = 0.42; shared.uDiffuse.value = 0.78; shared.uEnvScale.value = 1;
+  shared.uFogColor.value.set(0xbcc8d6); shared.uFogNear.value = 60; shared.uFogFar.value = 230;
+  post.material.uniforms.uSkyTop.value.set(0x3b78c9);
 }
 if (params.has('dbg')) {
   setInterval(() => {

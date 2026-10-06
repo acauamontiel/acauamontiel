@@ -1,24 +1,24 @@
-// Renderização estilo PlayStation 1:
-//  - render target em baixa resolução (≈320x240) com upscale "pixelado"
-//  - vertex snapping (os vértices "pulam" na grade de pixels)
-//  - mapeamento de textura afim (as texturas "nadam" nos polígonos)
-//  - iluminação por vértice (Gouraud), sem filtro de textura
-//  - quantização para 15 bits de cor com dithering ordenado (Bayer 4x4)
+// Renderização low-poly noturna:
+//  - render target em resolução reduzida (640 px no lado maior) com upscale "pixelado"
+//  - iluminação por fragmento: luar fraco, postes de sódio a cada 20 m e o farol do Astra
+//  - texturas sem filtro (texels visíveis), céu em gradiente com estrelas, neblina noturna
+//  - emissivos: geometria (lanternas, faróis, luminárias) e máscara no alpha das texturas
+//    (janelas acesas, vitrines, letreiros)
 import * as THREE from 'three';
 
 THREE.ColorManagement.enabled = false;
 
-// Uniforms compartilhados por todos os materiais PS1.
+// Uniforms compartilhados por todos os materiais.
 export const shared = {
-  uSnapRes: { value: new THREE.Vector2(320, 240) },
-  uSnap: { value: 1 },
-  uAffine: { value: 1 },
-  uFogColor: { value: new THREE.Color(0xbcc8d6) },
-  uFogNear: { value: 60 },
-  uFogFar: { value: 230 },
-  uLightDir: { value: new THREE.Vector3(0.5, 0.75, 0.35).normalize() },
-  uAmbient: { value: 0.42 },
-  uDiffuse: { value: 0.78 },
+  uFogColor: { value: new THREE.Color(0x151826) },
+  uFogNear: { value: 40 },
+  uFogFar: { value: 210 },
+  uLightDir: { value: new THREE.Vector3(0.3, 0.8, -0.4).normalize() }, // luar
+  uAmbient: { value: 0.30 },
+  uDiffuse: { value: 0.22 },
+  uNight: { value: 1 },
+  uEnvScale: { value: 0.45 },
+  uCarPos: { value: new THREE.Vector3(7.1, 0.6, 0) },
   // Curva visual da pista: x = amplitude lateral, y = z inicial, z = z final, w = z da câmera.
   uCurve: { value: new THREE.Vector4(0, 0, -1, 0) },
 };
@@ -29,21 +29,21 @@ const white = (() => {
   return t;
 })();
 
-// Textura "matcap" de reflexo de céu usada na lataria preta do Astra.
+// Textura "matcap" de reflexo de céu noturno usada na lataria preta do Astra.
 export const envTexture = (() => {
   const c = document.createElement('canvas');
   c.width = 32; c.height = 32;
   const g = c.getContext('2d');
   const grad = g.createLinearGradient(0, 0, 0, 32);
   // y=0 (topo do canvas) = normal apontando para cima; y=1 = normal para baixo.
-  grad.addColorStop(0.0, '#8aa6c0');
-  grad.addColorStop(0.22, '#a4bccf');
-  grad.addColorStop(0.33, '#c8d6e0');
-  grad.addColorStop(0.40, '#6e7a86');
-  grad.addColorStop(0.46, '#30373d');
-  grad.addColorStop(0.50, '#1a1e22');
-  grad.addColorStop(0.62, '#0e1012');
-  grad.addColorStop(1.0, '#060607');
+  grad.addColorStop(0.0, '#4a5a78');
+  grad.addColorStop(0.22, '#5c6e8c');
+  grad.addColorStop(0.33, '#9aa8bc');
+  grad.addColorStop(0.40, '#4a545e');
+  grad.addColorStop(0.46, '#262c32');
+  grad.addColorStop(0.50, '#14171a');
+  grad.addColorStop(0.62, '#0c0e10');
+  grad.addColorStop(1.0, '#050506');
   g.fillStyle = grad;
   g.fillRect(0, 0, 32, 32);
   const t = new THREE.CanvasTexture(c);
@@ -53,9 +53,6 @@ export const envTexture = (() => {
 })();
 
 const VERT = /* glsl */`
-uniform vec2 uSnapRes;
-uniform float uSnap;
-uniform float uAffine;
 uniform vec3 uLightDir;
 uniform float uAmbient;
 uniform float uDiffuse;
@@ -63,7 +60,15 @@ uniform float uFogNear;
 uniform float uFogFar;
 uniform float uUnlit;
 uniform vec4 uCurve;
-attribute float envCut; // 0 = reflexo cheio; vidros usam ~0.6 (geometrias sem o atributo leem 0)
+attribute float envCut; // 0 = reflexo cheio; vidros ~0.6; -1 = geometria emissiva
+
+varying vec2 vUv;
+varying vec3 vAlbedo;
+varying float vLight;
+varying float vFog;
+varying vec2 vEnv;
+varying float vEnvCut;
+varying vec3 vWorld;
 
 // Dobra o mundo lateralmente ao longo de z (como os jogos de corrida da época faziam):
 // um "sino" de amplitude uCurve.x entre uCurve.y e uCurve.z. A jogabilidade continua reta.
@@ -77,47 +82,26 @@ float curveSlope(float z) {
   return uCurve.x * 0.5 * sin(6.2831853 * t) * 6.2831853 * (-1.0 / (uCurve.y - uCurve.z));
 }
 
-varying vec3 vUvW;
-varying vec3 vColor;
-varying float vFog;
-varying vec2 vEnv;
-varying float vEnvCut;
-
 void main() {
   vEnvCut = envCut;
   vec4 wp = modelMatrix * vec4(position, 1.0);
+  vWorld = wp.xyz; // posição "reta" (antes da curva), usada para postes e farol
   // Subtrai a tangente na posição da câmera: perto do carro a pista fica reta, longe ela curva.
   wp.x += curveAt(wp.z) - curveAt(uCurve.w) - curveSlope(uCurve.w) * (wp.z - uCurve.w);
   vec4 mv = viewMatrix * wp;
-  vec4 clip = projectionMatrix * mv;
+  gl_Position = projectionMatrix * mv;
 
-  // Vertex snapping: arredonda a posição em NDC para a grade de pixels do framebuffer baixo.
-  if (uSnap > 0.5 && clip.w > 0.0) {
-    vec2 grid = uSnapRes * 0.5;
-    vec2 ndc = clip.xy / clip.w;
-    ndc = floor(ndc * grid + 0.5) / grid;
-    clip.xy = ndc * clip.w;
-  }
-  gl_Position = clip;
-
-  // Iluminação Gouraud (por vértice), flat porque as normais são por face.
   vec3 wn = normalize(mat3(modelMatrix) * normal);
   float diff = max(dot(wn, uLightDir), 0.0);
-  float light = mix(uAmbient + uDiffuse * diff, 1.0, uUnlit);
+  vLight = mix(uAmbient + uDiffuse * diff, 1.0, uUnlit);
 
   vec3 c = vec3(1.0);
   #ifdef USE_COLOR
     c = color;
   #endif
-  vColor = c * light;
-
+  vAlbedo = c;
   vFog = clamp((-mv.z - uFogNear) / (uFogFar - uFogNear), 0.0, 1.0);
-
-  // Mapeamento afim: multiplica a UV por w e divide pelo w interpolado no fragment.
-  // Isso cancela a correção de perspectiva da GPU e reproduz o "swimming" do PS1.
-  float w = mix(1.0, clip.w, uAffine);
-  vUvW = vec3(uv * w, w);
-
+  vUv = uv;
   vec3 vn = normalize(normalMatrix * normal);
   vEnv = vn.xy * 0.5 + 0.5;
 }
@@ -130,46 +114,87 @@ uniform vec3 uColor;
 uniform vec3 uFogColor;
 uniform float uAlphaTest;
 uniform float uOpacity;
+uniform float uEmissiveMask;
 uniform sampler2D uEnvMap;
 uniform float uEnvStrength;
+uniform float uEnvScale;
+uniform float uNight;
+uniform vec3 uCarPos;
 
-varying vec3 vUvW;
-varying vec3 vColor;
+varying vec2 vUv;
+varying vec3 vAlbedo;
+varying float vLight;
 varying float vFog;
 varying vec2 vEnv;
 varying float vEnvCut;
+varying vec3 vWorld;
+
+// Postes de sódio no canteiro central: luminárias em x = ±2.2, y = 7.8, a cada 20 m (z ≡ -10 mod 20).
+float lampTerm(vec3 p) {
+  float zl = -10.0 + 20.0 * floor((p.z + 10.0) / 20.0 + 0.5);
+  float sum = 0.0;
+  for (int k = -1; k <= 1; k++) {
+    float z = zl + float(k) * 20.0;
+    for (int s = -1; s <= 1; s += 2) {
+      vec3 d = p - vec3(2.2 * float(s), 7.8, z);
+      sum += 34.0 / (dot(d, d) + 6.0);
+    }
+  }
+  return sum;
+}
+
+// Farol do Astra: feixe para -z a partir do carro, abrindo com a distância.
+float headTerm(vec3 p) {
+  vec3 d = p - uCarPos;
+  float along = -d.z;
+  if (along <= 0.0) return 0.0;
+  float spread = 1.6 + along * 0.3;
+  float lat = exp(-(d.x * d.x) / (spread * spread));
+  float fall = clamp(1.0 - along / 70.0, 0.0, 1.0);
+  float h = clamp(1.0 - abs(d.y - 0.2) / 3.5, 0.0, 1.0);
+  return lat * fall * fall * h * 2.2;
+}
 
 void main() {
-  vec2 uv = vUvW.xy / vUvW.z;
   vec4 tex = vec4(1.0);
-  if (uHasMap > 0.5) tex = texture2D(uMap, uv);
+  if (uHasMap > 0.5) tex = texture2D(uMap, vUv);
   if (tex.a < uAlphaTest) discard;
-  vec3 c = tex.rgb * uColor * vColor;
-  if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength * (1.0 - vEnvCut);
-  c = mix(c, uFogColor, vFog);
-  gl_FragColor = vec4(c, tex.a * uOpacity);
+
+  vec3 albedo = tex.rgb * uColor * vAlbedo;
+  // Emissivo: alpha < 1 nas texturas marcadas (janelas acesas) ou geometria com envCut = -1.
+  float emis = uEmissiveMask * (1.0 - tex.a);
+  if (vEnvCut < -0.5) emis = 1.0;
+
+  vec3 lamp = vec3(1.0, 0.72, 0.42) * lampTerm(vWorld) * uNight;
+  vec3 head = vec3(1.0, 0.95, 0.82) * headTerm(vWorld) * uNight;
+  vec3 c = albedo * (vLight + lamp + head) * (1.0 - emis) + albedo * emis;
+
+  if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength * uEnvScale * max(0.0, 1.0 - vEnvCut);
+  c = mix(c, uFogColor, vFog * (1.0 - emis * 0.6));
+
+  float alpha = (uOpacity < 1.0 || uAlphaTest > 0.0) ? tex.a * uOpacity : 1.0;
+  gl_FragColor = vec4(c, alpha);
 }
 `;
 
 /**
- * Cria um material PS1.
+ * Cria um material do jogo.
  * @param {object} o
- * @param {THREE.Texture|null} o.map textura (filtro nearest recomendado)
+ * @param {THREE.Texture|null} o.map textura (filtro nearest)
  * @param {number} o.color cor multiplicadora
  * @param {number} o.envStrength intensidade do reflexo "matcap"
- * @param {boolean} o.unlit ignora a luz direcional (vegetação, placas, sombras)
+ * @param {boolean} o.unlit ignora luar e ambiente (placas, outdoors)
+ * @param {boolean} o.emissiveMask alpha da textura < 1 vira brilho próprio (janelas acesas)
  * @param {number} o.alphaTest limiar de recorte de alpha
  * @param {boolean} o.transparent habilita blending (sombras)
  * @param {number} o.opacity opacidade
  * @param {number} o.side lado renderizado
+ * @param {number} o.polygonOffset afasta decalques da superfície de baixo
  * @param {boolean} o.vertexColors usa o atributo color
  */
 export function ps1Material(o = {}) {
   const mat = new THREE.ShaderMaterial({
     uniforms: {
-      uSnapRes: shared.uSnapRes,
-      uSnap: shared.uSnap,
-      uAffine: shared.uAffine,
       uFogColor: shared.uFogColor,
       uFogNear: shared.uFogNear,
       uFogFar: shared.uFogFar,
@@ -177,11 +202,15 @@ export function ps1Material(o = {}) {
       uAmbient: shared.uAmbient,
       uDiffuse: shared.uDiffuse,
       uCurve: shared.uCurve,
+      uNight: shared.uNight,
+      uEnvScale: shared.uEnvScale,
+      uCarPos: shared.uCarPos,
       uMap: { value: o.map || white },
       uHasMap: { value: o.map ? 1 : 0 },
       uColor: { value: new THREE.Color(o.color === undefined ? 0xffffff : o.color) },
       uAlphaTest: { value: o.alphaTest || 0 },
       uOpacity: { value: o.opacity === undefined ? 1 : o.opacity },
+      uEmissiveMask: { value: o.emissiveMask ? 1 : 0 },
       uEnvMap: { value: envTexture },
       uEnvStrength: { value: o.envStrength || 0 },
       uUnlit: { value: o.unlit ? 1 : 0 },
@@ -194,8 +223,6 @@ export function ps1Material(o = {}) {
     depthWrite: o.depthWrite === undefined ? !o.transparent : o.depthWrite,
     fog: false,
   });
-  // Decalques (linhas, faixas, calçadas sobre meio-fio) usam polygon offset em vez de
-  // ficarem milímetros acima da superfície, o que piscava à distância (z-fighting).
   if (o.polygonOffset) {
     mat.polygonOffset = true;
     mat.polygonOffsetFactor = -o.polygonOffset;
@@ -204,10 +231,7 @@ export function ps1Material(o = {}) {
   return mat;
 }
 
-/**
- * Textura canvas com filtro nearest (sem suavização, como no PS1).
- * Texturas repetidas (chão) usam mipmaps para não "chuviscar" ao longe.
- */
+/** Textura canvas com filtro nearest e mipmaps. */
 export function pixelTexture(canvas, repeat = true) {
   const t = new THREE.CanvasTexture(canvas);
   t.magFilter = THREE.NearestFilter;
@@ -229,44 +253,35 @@ const POST_FRAG = /* glsl */`
 uniform sampler2D tDiffuse;
 uniform float uHorizon;
 uniform vec2 uRes;
-uniform float uDither;
 uniform vec3 uSkyTop;
 uniform vec3 uSkyBottom;
 uniform float uTime;
 varying vec2 vUv;
 
-float bayer2(vec2 p) {
-  p = mod(floor(p), 2.0);
-  return p.x == 0.0 ? (p.y == 0.0 ? 0.0 : 3.0) : (p.y == 0.0 ? 2.0 : 1.0);
-}
-float bayer4(vec2 p) {
-  return (4.0 * bayer2(p) + bayer2(floor(p * 0.5))) / 16.0;
-}
+float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 
 void main() {
   vec4 s = texture2D(tDiffuse, vUv);
-  // Céu em gradiente onde a cena não desenhou nada (alpha 0), ancorado na linha do horizonte.
+  // Céu noturno em gradiente, ancorado na linha do horizonte, com estrelas.
   float t = clamp((vUv.y - uHorizon) / max(0.02, 1.0 - uHorizon), 0.0, 1.0);
-  vec3 sky = mix(uSkyBottom, uSkyTop, pow(t, 0.75));
+  vec3 sky = mix(uSkyBottom, uSkyTop, pow(t, 0.6));
+  vec2 cell = floor(vUv * uRes * 0.5);
+  float star = step(0.994, hash(cell)) * smoothstep(0.15, 0.5, t);
+  star *= 0.6 + 0.4 * sin(uTime * 2.0 + hash(cell + 7.0) * 6.28);
+  sky += vec3(star);
   vec3 c = mix(sky, s.rgb, clamp(s.a, 0.0, 1.0));
-
-  if (uDither > 0.5) {
-    vec2 px = floor(vUv * uRes);
-    float d = bayer4(px);
-    c = floor(c * 31.0 + d * 0.8 + 0.1) / 31.0;
-  }
   gl_FragColor = vec4(c, 1.0);
 }
 `;
 
 const _dir = new THREE.Vector3();
 
-/** Pós-processamento: cena em baixa resolução → tela, com dithering e céu. */
+/** Pós-processamento: cena em resolução reduzida → tela, com céu noturno. */
 export class PS1Post {
-  constructor(renderer, longSide = 512) {
+  constructor(renderer, longSide = 640) {
     this.renderer = renderer;
     this.longSide = longSide;
-    this.rt = new THREE.WebGLRenderTarget(320, 240, {
+    this.rt = new THREE.WebGLRenderTarget(640, 360, {
       minFilter: THREE.NearestFilter,
       magFilter: THREE.NearestFilter,
       depthBuffer: true,
@@ -278,9 +293,8 @@ export class PS1Post {
       uniforms: {
         tDiffuse: { value: this.rt.texture },
         uHorizon: { value: 0.55 },
-        uRes: { value: new THREE.Vector2(320, 240) },
-        uDither: { value: 1 },
-        uSkyTop: { value: new THREE.Color(0x3b78c9) },
+        uRes: { value: new THREE.Vector2(640, 360) },
+        uSkyTop: { value: new THREE.Color(0x05070f) },
         uSkyBottom: { value: shared.uFogColor.value },
         uTime: { value: 0 },
       },
@@ -290,28 +304,18 @@ export class PS1Post {
       depthWrite: false,
     });
     this.scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.material));
-    this.enabled = true;
   }
 
   setSize(width, height) {
-    // O lado maior do framebuffer interno fica em longSide (512, como o modo hi-res do GT),
-    // seja a janela larga ou alta; o outro lado segue a proporção.
+    // O lado maior do framebuffer interno fica em longSide, seja a janela larga ou alta.
     const aspect = width / height;
     let w, h;
     if (aspect >= 1) { w = this.longSide; h = Math.max(160, Math.round(w / aspect)); }
     else { h = this.longSide; w = Math.max(160, Math.round(h * aspect)); }
     this.rt.setSize(w, h);
     this.material.uniforms.uRes.value.set(w, h);
-    shared.uSnapRes.value.set(w, h);
     this.width = w;
     this.height = h;
-  }
-
-  setEnabled(on) {
-    this.enabled = on;
-    shared.uSnap.value = on ? 1 : 0;
-    shared.uAffine.value = on ? 1 : 0;
-    this.material.uniforms.uDither.value = on ? 1 : 0;
   }
 
   render(scene, camera, time) {

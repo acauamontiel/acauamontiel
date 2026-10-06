@@ -134,7 +134,7 @@ html, body {
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  background: radial-gradient(ellipse at center, rgba(10,20,40,0.55), rgba(0,0,0,0.85));
+  background: radial-gradient(ellipse at center, rgba(30,10,50,0.55), rgba(0,0,0,0.85));
 }
 .title-box { text-align: center; padding: 24px; max-width: 760px; width: 100%; }
 
@@ -147,11 +147,11 @@ h1.title {
   font-style: italic;
   font-weight: 900;
   letter-spacing: -0.02em;
-  background: linear-gradient(180deg, #fff 0%, #ffe77a 35%, #ff9d2e 55%, #c23a1f 56%, #ffd84a 100%);
+  background: linear-gradient(180deg, #fff 0%, #ffd1f2 30%, #ff4fb8 52%, #7a1fa0 53%, #45c8ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(3px 3px 0 #000) drop-shadow(0 0 12px rgba(255,180,60,0.35));
+  filter: drop-shadow(3px 3px 0 #000) drop-shadow(0 0 14px rgba(255,80,190,0.45));
 }
 h1.title.small { font-size: clamp(40px, 9vw, 86px); }
 

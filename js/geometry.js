@@ -306,6 +306,15 @@ export function gradientColorize(geo, color, bottomMul = 0.7) {
   return geo;
 }
 
+/** Marca a geometria como emissiva (brilha à noite): envCut = -1 em todos os vértices. */
+export function emissive(geo) {
+  ensureAttributes(geo);
+  const a = geo.attributes.envCut;
+  for (let i = 0; i < a.count; i++) a.setX(i, -1);
+  a.needsUpdate = true;
+  return geo;
+}
+
 /** Fixa todas as UVs num ponto (para peças sem textura dentro de um material com mapa). */
 export function uvConst(geo, u, v) {
   if (!geo.attributes.uv) ensureAttributes(geo);

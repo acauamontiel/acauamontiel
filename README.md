@@ -1,7 +1,8 @@
-# Pelotas Turismo · Astra GSi
+# Crazy Nights · Astra GSi em Pelotas
 
-Jogo WebGL com visual de PlayStation 1 (estilo Gran Turismo): um **Chevrolet Astra GSi preto com aerofólio**
-correndo pelas avenidas de **Pelotas/RS**, desviando de carros e buracos e ganhando pontos ao atropelar motos.
+Jogo WebGL low-poly com espírito de Gran Turismo de PS1: um **Chevrolet Astra GSi preto com aerofólio**
+correndo de madrugada pelas avenidas de **Pelotas/RS**, desviando de carros e buracos e ganhando pontos ao
+atropelar motos.
 
 Feito só com **JavaScript puro + [three.js](https://threejs.org/) r170** (embutido em `vendor/`). Sem TypeScript, sem React, sem build, sem CDN.
 
@@ -24,7 +25,6 @@ Qualquer servidor estático também serve (os módulos ES não carregam via `fil
 | `↓` ou `S` | frear |
 | `Enter` / `Espaço` | começar / recomeçar |
 | `M` | liga/desliga o som |
-| `P` | liga/desliga o filtro PS1 (snapping, textura afim, dithering) |
 
 No celular: toque na metade esquerda/direita da tela para desviar; dois dedos freiam.
 
@@ -33,7 +33,7 @@ Parâmetros de URL úteis (depuração):
 | Parâmetro | Efeito |
 |---|---|
 | `?autostart` | pula a tela de título (sem áudio, pois não houve gesto) |
-| `?nops1` | começa com o filtro PS1 desligado |
+| `?day` | cena diurna, para comparar |
 | `?phase=1` | começa na fase 2 (0 = Duque, 1 = Bento, 2 = JK) |
 | `?tp=1800` | começa 1800 m adiante dentro da fase |
 | `?sim=20` | avança 20 s de jogo antes do primeiro quadro |
@@ -67,17 +67,18 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 - **Fase 3 · Av. Pres. Juscelino Kubitschek** — largada no supermercado BIG; meio-fio pintado de branco,
   terrenos de areia, palmeiras, canal, guindastes do porto, silos e posto de gasolina.
 
-## Técnica PS1
+## Técnica
 
-Tudo está em `js/ps1.js`:
+Tudo em `js/ps1.js`:
 
-- render interno com 512 px no lado maior (o modo "hi-res" do Gran Turismo), seja a janela larga ou alta, com upscale nearest-neighbor;
-- *vertex snapping* na grade de pixels do framebuffer baixo;
-- mapeamento de textura **afim** (sem correção de perspectiva), com a pista subdividida para não "nadar" demais;
-- iluminação Gouraud por vértice, texturas sem filtro e sem mipmap;
-- quantização para 15 bits com dithering ordenado (Bayer 4x4) no pós-processamento;
+- render interno com 640 px no lado maior, seja a janela larga ou alta, com upscale nearest-neighbor;
+- iluminação por fragmento: luar fraco, **postes de sódio** a cada 20 m no canteiro (poças quentes na pista) e o
+  **farol do Astra** abrindo à frente; nada disso usa luzes do three.js, é tudo calculado no shader;
+- emissivos: lanternas, faróis, luminárias e semáforos brilham via atributo por vértice; janelas acesas,
+  vitrines, letreiros e o interior dos ônibus via máscara no alpha das texturas;
+- texturas geradas em canvas, sem filtro (texels visíveis) e com mipmaps;
 - reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice);
-- céu em gradiente no pós-processamento, ancorado na linha do horizonte calculada da inclinação da câmera;
+- céu noturno em gradiente com estrelas, ancorado na linha do horizonte da câmera; neblina escura;
 - textura de carroceria "desenrolada" por carro (`makeBodyTexture`): colunas, vidros laterais, vãos de porta,
   maçanetas, caixas de roda e borrachas, multiplicando a cor da pintura;
 - curvas "dobradas" no vertex shader, como nos jogos de corrida da época: a lógica do jogo é reta, mas a
@@ -89,15 +90,13 @@ na linha de cintura e base dos vidros e o resto suave (Gouraud), como os modelos
 O Astra GSi tem aerofólio de teto com placas laterais e brake light, rodas texturizadas de cinco raios,
 lanternas fumê, faróis e grade com gravata dourada.
 
-Texturas são geradas em canvas na hora (`js/textures.js`); a cidade é procedural em trechos de 40 m (`js/city.js`).
-
 ## Estrutura
 
 ```
 index.html        HUD e telas (DOM)
 css/style.css
 js/main.js        loop, estado do jogo, câmera
-js/ps1.js         material/shader PS1 e pós-processamento
+js/ps1.js         material/shader (luz noturna, emissivos, curva) e pós-processamento
 js/textures.js    texturas procedurais
 js/geometry.js    helpers low-poly
 js/vehicles.js    Astra GSi, carros do tráfego, ônibus (Turf, Santa Maria, Santa Rosa), moto, buraco

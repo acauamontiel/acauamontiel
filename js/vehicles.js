@@ -1,7 +1,7 @@
 // Modelos low-poly estilo PS1: Astra GSi do jogador, carros do tráfego, ônibus, motos e buracos.
 // As carrocerias são "loftadas" por seções transversais com sombreamento Gouraud (ver geometry.js).
 import * as THREE from 'three';
-import { box, cylinder, wheel, merge, colorize, groundPlane, carBody, atlasQuad, discWheel, uvConst, signQuad, BODY_ROWS } from './geometry.js';
+import { box, cylinder, wheel, merge, colorize, groundPlane, carBody, atlasQuad, discWheel, uvConst, signQuad, emissive, BODY_ROWS } from './geometry.js';
 import { ps1Material } from './ps1.js';
 import { makeBodyTexture, makeBusLivery } from './textures.js';
 
@@ -11,7 +11,6 @@ const GLASS = 0x1a2630;
 export function makeMaterials(T) {
   const M = {};
   // Lataria preta: a cor base é quase preta e a forma vem do reflexo "matcap" do céu (visual GT).
-  M.paintBlack = ps1Material({ envStrength: 0.7 });
   M.astraDetail = ps1Material({ map: T.astra, unlit: true });
   M.detail = ps1Material({});
   M.props = ps1Material({});
@@ -20,9 +19,9 @@ export function makeMaterials(T) {
   M.lines = ps1Material({ polygonOffset: 2 });
 
   const paintCache = new Map();
-  M.paint = (hex, map = null) => {
-    const key = hex + '|' + (map ? map.id : 0);
-    if (!paintCache.has(key)) paintCache.set(key, ps1Material({ color: hex, map, envStrength: 0.18 }));
+  M.paint = (hex, map = null, emissiveMask = false) => {
+    const key = hex + '|' + (map ? map.id : 0) + (emissiveMask ? 'e' : '');
+    if (!paintCache.has(key)) paintCache.set(key, ps1Material({ color: hex, map, envStrength: 0.18, emissiveMask }));
     return paintCache.get(key);
   };
 
@@ -33,7 +32,7 @@ export function makeMaterials(T) {
   M.sidewalk = ps1Material({ map: T.sidewalk, polygonOffset: 1 });
   M.grass = ps1Material({ map: T.grass, polygonOffset: 1 });
   M.water = ps1Material({ map: T.water, envStrength: 0.15 });
-  M.shops = ps1Material({ map: T.shops });
+  M.shops = ps1Material({ map: T.shops, emissiveMask: true });
   M.billboards = ps1Material({ map: T.billboards, unlit: true, color: 0xeeeeee });
   M.billboardCount = T.billboardCount;
   M.signs = ps1Material({ map: T.signs, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
@@ -45,9 +44,9 @@ export function makeMaterials(T) {
   M.graffiti = ps1Material({ map: T.graffiti });
   M.big = ps1Material({ map: T.big, unlit: true, color: 0xf0f0f0 });
   M.landmarkSigns = ps1Material({ map: T.landmarkSigns, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
-  for (const name of Object.keys(T.facade)) M['facade_' + name] = ps1Material({ map: T.facade[name] });
+  for (const name of Object.keys(T.facade)) M['facade_' + name] = ps1Material({ map: T.facade[name], emissiveMask: true });
   for (const tree of ['eucalyptus', 'palm', 'roundTree']) {
-    M[tree] = ps1Material({ map: T[tree], alphaTest: 0.5, side: THREE.DoubleSide, unlit: true, color: 0xd8d8d8 });
+    M[tree] = ps1Material({ map: T[tree], alphaTest: 0.5, side: THREE.DoubleSide, color: 0x6c7676 });
   }
   return M;
 }
@@ -129,7 +128,7 @@ export function buildAstra(M, T) {
   const d = [];
   d.push(box(1.00, 0.10, 0.03, 0x0c0e10, 0, 0.42, -2.125));
   d.push(box(1.40, 0.10, 0.03, 0x0c0e10, 0, 0.37, 2.146));
-  d.push(box(0.50, 0.045, 0.03, 0xd02020, 0, 1.575, 1.70));
+  d.push(emissive(box(0.50, 0.045, 0.03, 0xff3030, 0, 1.575, 1.70)));
   const ex = new THREE.CylinderGeometry(0.045, 0.045, 0.16, 6);
   ex.rotateX(Math.PI / 2); ex.translate(-0.50, 0.33, 2.17);
   d.push(colorize(ex, 0x9a9a9a));
@@ -165,10 +164,10 @@ function carTemplate(s) {
   const half = s.l / 2;
   const ly = s.lightY;
   const lx = s.w * 0.3, lw = s.w * 0.22;
-  detail.push(box(lw, 0.14, 0.06, 0xe9edf1, -lx, ly, -half + 0.02));
-  detail.push(box(lw, 0.14, 0.06, 0xe9edf1, lx, ly, -half + 0.02));
-  detail.push(box(lw, 0.16, 0.06, 0xc0261c, -lx, ly + 0.02, half - 0.02));
-  detail.push(box(lw, 0.16, 0.06, 0xc0261c, lx, ly + 0.02, half - 0.02));
+  detail.push(emissive(box(lw, 0.14, 0.06, 0xfff4d8, -lx, ly, -half + 0.02)));
+  detail.push(emissive(box(lw, 0.14, 0.06, 0xfff4d8, lx, ly, -half + 0.02)));
+  detail.push(emissive(box(lw, 0.16, 0.06, 0xff2a20, -lx, ly + 0.02, half - 0.02)));
+  detail.push(emissive(box(lw, 0.16, 0.06, 0xff2a20, lx, ly + 0.02, half - 0.02)));
   detail.push(box(s.w * 0.22, 0.10, 0.05, 0xe0e0d8, 0, ly - 0.14, half - 0.02)); // placa
   const wg = wheel(s.wheelR, s.wheelR * 0.6, s.rim || 0x9a9ca0);
   const wz = s.wheelBase / 2;
@@ -249,7 +248,7 @@ export function buildTrafficTemplates() {
 /** Cria uma instância (Group) de um template com a cor dada. */
 export function makeVehicle(tpl, color, M) {
   const g = new THREE.Group();
-  g.add(new THREE.Mesh(tpl.paint, M.paint(tpl.bus ? 0xffffff : color, tpl.bodyTex)));
+  g.add(new THREE.Mesh(tpl.paint, M.paint(tpl.bus ? 0xffffff : color, tpl.bodyTex, tpl.bus)));
   g.add(new THREE.Mesh(tpl.detail, M.detail));
   if (tpl.bus && tpl.rearAd >= 0) {
     // Propaganda na traseira, como nos ônibus de Pelotas.
@@ -273,8 +272,8 @@ export function buildMotoTemplate() {
   detail.push(box(0.32, 0.10, 0.62, 0x1a1a1a, 0, 0.75, 0.30)); // banco
   detail.push(box(0.08, 0.55, 0.08, 0x9a9a9e, 0, 0.55, -0.62)); // garfo
   detail.push(box(0.62, 0.05, 0.05, 0x222222, 0, 0.88, -0.52)); // guidão
-  detail.push(box(0.16, 0.16, 0.08, 0xeeeedd, 0, 0.78, -0.74)); // farol
-  detail.push(box(0.10, 0.08, 0.06, 0xc0261c, 0, 0.70, 0.98)); // lanterna
+  detail.push(emissive(box(0.16, 0.16, 0.08, 0xfff4d8, 0, 0.78, -0.74))); // farol
+  detail.push(emissive(box(0.10, 0.08, 0.06, 0xff2a20, 0, 0.70, 0.98))); // lanterna
   const ex = new THREE.CylinderGeometry(0.05, 0.05, 0.9, 6); ex.rotateX(Math.PI / 2); ex.translate(0.18, 0.33, 0.45);
   detail.push(colorize(ex, 0xb0b0b4));
   // baú de entrega
