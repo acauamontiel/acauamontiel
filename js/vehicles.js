@@ -138,8 +138,6 @@ export function buildAstra(M, T) {
   d.push(box(1.00, 0.10, 0.03, 0x0c0e10, 0, 0.42, -2.125));
   d.push(box(1.40, 0.10, 0.03, 0x0c0e10, 0, 0.37, 2.146));
   d.push(emissive(box(0.34, 0.05, 0.04, 0xff3030, 0, 1.33, 1.30))); // brake light no alto do vidro traseiro
-  d.push(box(0.16, 0.025, 0.012, 0xc8c8c4, -0.52, 0.60, 2.147)); // emblema ASTRA
-  d.push(box(0.20, 0.025, 0.012, 0xc8c8c4, 0.50, 0.60, 2.147)); // emblema GSi 16V
   const ex = new THREE.CylinderGeometry(0.045, 0.045, 0.16, 6);
   ex.rotateX(Math.PI / 2); ex.translate(-0.50, 0.33, 2.17);
   d.push(colorize(ex, 0x9a9a9a));
