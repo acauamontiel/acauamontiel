@@ -43,7 +43,7 @@ Parâmetros de URL úteis (depuração):
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
 | `?angle=0.75` | ângulo inicial da câmera orbital da tela de título (3/4 traseira) |
-| `?bus=turf` | estaciona um ônibus (turf, santamaria, santarosa) ao lado do carro na tela de título |
+| `?bus=turf` | estaciona um ônibus (turf, santasilvana, santarosa) ao lado do carro na tela de título |
 
 ## Regras
 

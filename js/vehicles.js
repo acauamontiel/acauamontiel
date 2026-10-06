@@ -230,9 +230,9 @@ export function buildTrafficTemplates() {
       wTop: [[-2.5, 0.55], [-2.3, 0.70], [-1.0, 0.78], [-0.3, 0.66], [0.3, 0.66], [0.6, 0.84], [2.5, 0.84]],
       cabin: [-1.0, 0.5], windshield: [-1.0, -0.3], rearGlass: [0.3, 0.5],
     } }),
-    ...['turf', 'santamaria', 'santarosa'].map((livery, k) => carTemplate({
-      name: 'bus_' + livery, livery, w: 2.50, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xffffff], weight: 1, rim: 0xe8e8e4,
-      rearAd: livery === 'santamaria' ? -1 : (k * 3) % 8,
+    ...['turf', 'santasilvana', 'santarosa'].map((livery, k) => carTemplate({
+      name: 'bus_' + livery, livery, w: 2.50, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xffffff], weight: 1, rim: livery === 'santasilvana' ? 0xb8bcc2 : 0xe8e8e4,
+      rearAd: livery === 'santasilvana' ? -1 : (k * 3) % 8,
       tex: { doors: [-4.3, 0.4] }, body: {
         zs: [-5.5, -5.42, -5.2, -4.8, -3.5, -2, -0.5, 1, 2.5, 4, 5.1, 5.35, 5.45, 5.5],
         yFloor: [[-5.5, 0.5], [-5.3, 0.4], [5.3, 0.4], [5.5, 0.5]],

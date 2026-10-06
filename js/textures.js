@@ -587,26 +587,39 @@ export function makeBusLivery(kind, o) {
   const U = (z) => Math.round((z - z0) / (z1 - z0) * W);
   const R = o.rows;
   const L = {
-    turf: { skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', curtain: '#5fb0a0', sign: '#f2c230' },
-    santamaria: { skirt: '#d42020', skirtTop: 0.24, text: 'SANTA MARIA', font: 'bold 17px "Arial Black", Arial, sans-serif', textColor: '#111', number: '48', roof: null, curtain: null, stripe: '#d42020', sign: '#e8e8e8' },
-    santarosa: { skirt: '#3a3a3c', skirtTop: 0.11, text: 'Santa Rosa', font: 'italic bold 25px Georgia, "Times New Roman", serif', textColor: '#1f7a3a', shadow: '#d42020', number: '37', roof: null, curtain: null, confetti: ['#d42020', '#1f7a3a'], sign: '#e8e8e8' },
+    turf: { base: '#f2f2ee', skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', roofTop: '#e4e4e0', frame: '#d8d8d4', curtain: '#5fb0a0', sign: '#f2c230' },
+    // Santa Silvana: carroceria inteira azul-claro, placa branca com o nome em itálico e número 41005.
+    santasilvana: { base: '#7cc4e8', skirt: '#6ab4dc', skirtTop: 0.14, text: 'SANTA SILVANA', font: 'italic bold 15px "Arial Black", Arial, sans-serif', textColor: '#111', number: '41005', roof: null, roofTop: '#6ab4dc', frame: '#f4f4f4', curtain: null, plate: '#f6f6f2', sign: '#f4f4f4' },
+    // Santa Rosa: branco com serpentinas verdes e vermelhas, letras verdes com sombra vermelha.
+    santarosa: { base: '#f2f2ee', skirt: '#3a3a3c', skirtTop: 0.11, text: 'Santa Rosa', font: 'italic bold 25px Georgia, "Times New Roman", serif', textColor: '#1f7a3a', shadow: '#d42020', number: '37', roof: null, roofTop: '#e4e4e0', frame: '#d8d8d4', curtain: null, ribbons: ['#d42020', '#1f7a3a'], sign: '#e8e8e8' },
   }[kind];
-  g.fillStyle = '#f2f2ee'; g.fillRect(0, 0, W, H);
+  g.fillStyle = L.base; g.fillRect(0, 0, W, H);
   const winTop = R.roofEdge - 0.05; // os vidros terminam um pouco abaixo da borda do teto
   for (const side of bodySides(W, H)) {
     // saia e chão
     g.fillStyle = L.skirt; sideRect(g, side, 0, W, R.sill, L.skirtTop);
     g.fillStyle = '#1a1a1c'; sideRect(g, side, 0, W, 0, R.sill);
     if (L.stripe) { g.fillStyle = L.stripe; sideRect(g, side, 0, W, R.glassBase - 0.04, R.glassBase - 0.02); }
-    if (L.confetti) {
-      for (let k = 0; k < 42; k++) {
+    if (L.ribbons) {
+      // Serpentinas curtas e onduladas, como confete de carnaval.
+      g.lineCap = 'round'; g.lineWidth = 2.2;
+      for (let k = 0; k < 70; k++) {
         g.save();
-        g.fillStyle = L.confetti[k % 2];
-        const x = 10 + rnd() * (W - 20), v = L.skirtTop + 0.02 + rnd() * (R.glassBase - L.skirtTop - 0.06);
-        g.translate(x, side.Y(v)); g.rotate((rnd() - 0.5) * 1.6);
-        g.fillRect(-1.5, -5 - rnd() * 6, 3, 10 + rnd() * 12);
+        g.strokeStyle = L.ribbons[k % 2];
+        const x = 8 + rnd() * (W - 16);
+        const v = k < 58 ? L.skirtTop + 0.02 + rnd() * (R.glassBase - L.skirtTop - 0.06) : R.roofEdge + 0.02 + rnd() * 0.12;
+        g.translate(x, side.Y(v)); g.rotate((rnd() - 0.5) * 2.4);
+        const len = 6 + rnd() * 5;
+        g.beginPath(); g.moveTo(-len / 2, 0);
+        g.quadraticCurveTo(-len / 6, -3, 0, 0); g.quadraticCurveTo(len / 6, 3, len / 2, 0);
+        g.stroke();
         g.restore();
       }
+    }
+    if (L.plate) {
+      // Placa branca com o nome (Santa Silvana), entre a saia e a base dos vidros.
+      g.fillStyle = L.plate; sideRect(g, side, Math.round(W * 0.56), Math.round(W * 0.86), L.skirtTop + 0.03, R.glassBase - 0.025);
+      g.fillStyle = '#d42020'; sideRect(g, side, Math.round(W * 0.575), Math.round(W * 0.60), L.skirtTop + 0.06, R.glassBase - 0.055); // logo
     }
     // caixas de roda
     for (const wz of o.wheels) {
@@ -620,10 +633,10 @@ export function makeBusLivery(kind, o) {
     g.fillStyle = '#6f8ea8'; sideRect(g, side, wx0, wx1, winTop - 0.06, winTop - 0.015);
     const pitch = Math.round(1.35 / (z1 - z0) * W);
     for (let x = wx0; x < wx1; x += pitch) {
-      g.fillStyle = '#d8d8d4'; sideRect(g, side, x, x + 2, R.glassBase, winTop + 0.01); // coluna clara (moldura)
+      g.fillStyle = L.frame; sideRect(g, side, x, x + 2, R.glassBase, winTop + 0.01); // coluna clara (moldura)
       if (L.curtain) { g.fillStyle = L.curtain; sideRect(g, side, x + 3, x + 6, R.glassBase + 0.02, winTop - 0.07); }
     }
-    g.fillStyle = '#d8d8d4'; sideRect(g, side, wx0, wx1, R.glassBase, R.glassBase + 0.012);
+    g.fillStyle = L.frame; sideRect(g, side, wx0, wx1, R.glassBase, R.glassBase + 0.012);
     // portas só do lado direito (frente e meio), com vidro
     if (side.name === 'right') {
       for (const dz of o.doors) {
@@ -634,8 +647,8 @@ export function makeBusLivery(kind, o) {
       }
     }
     // faixa do teto (Turf) e teto
-    g.fillStyle = L.roof || '#e4e4e0'; sideRect(g, side, 0, W, winTop, R.roofEdge + 0.07);
-    g.fillStyle = '#e4e4e0'; sideRect(g, side, 0, W, R.roofEdge + 0.07, 1);
+    g.fillStyle = L.roof || L.base; sideRect(g, side, 0, W, winTop, R.roofEdge + 0.07);
+    g.fillStyle = L.roofTop; sideRect(g, side, 0, W, R.roofEdge + 0.07, 1);
     // para-brisa e vidro traseiro (banda do teto nas extremidades) + letreiro
     g.fillStyle = '#20282e';
     sideRect(g, side, 0, U(o.windshield[1]), R.roofEdge, 0.985);
@@ -643,8 +656,8 @@ export function makeBusLivery(kind, o) {
     g.fillStyle = L.sign; sideRect(g, side, 0, U(o.windshield[1]), 0.90, 0.97);
     // nome da empresa e número de frota
     const textV = (L.skirtTop + R.glassBase) / 2 - 0.01;
-    sideText(g, side, L.text, Math.round(W * 0.70), textV, L.font, L.textColor, Math.round(W * 0.40), L.shadow);
-    sideText(g, side, L.number, Math.round(W * 0.20), textV, 'bold 13px Arial, sans-serif', '#111', 30);
+    sideText(g, side, L.text, Math.round(W * (L.plate ? 0.72 : 0.70)), textV, L.font, L.textColor, Math.round(W * (L.plate ? 0.25 : 0.40)), L.shadow);
+    sideText(g, side, L.number, Math.round(W * (L.plate ? 0.92 : 0.20)), textV, 'bold 13px Arial, sans-serif', '#111', 36);
   }
   return pixelTexture(c, false);
 }
