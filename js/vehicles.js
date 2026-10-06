@@ -15,8 +15,9 @@ export function makeMaterials(T) {
   M.astraDetail = ps1Material({ map: T.astra, unlit: true });
   M.detail = ps1Material({});
   M.props = ps1Material({});
-  M.shadow = ps1Material({ map: T.shadow, unlit: true, transparent: true, alphaTest: 0.05, opacity: 0.85 });
-  M.pothole = ps1Material({ map: T.pothole, unlit: true, alphaTest: 0.5, color: 0xcccccc });
+  M.shadow = ps1Material({ map: T.shadow, unlit: true, transparent: true, alphaTest: 0.05, opacity: 0.85, polygonOffset: 3 });
+  M.pothole = ps1Material({ map: T.pothole, unlit: true, alphaTest: 0.5, color: 0xcccccc, polygonOffset: 2 });
+  M.lines = ps1Material({ polygonOffset: 2 });
 
   const paintCache = new Map();
   M.paint = (hex, map = null) => {
@@ -27,10 +28,10 @@ export function makeMaterials(T) {
 
   // Cidade
   M.asphalt = ps1Material({ map: T.asphalt });
-  M.asphaltPlain = ps1Material({ map: T.asphaltPlain });
-  M.zebra = ps1Material({ map: T.zebra });
-  M.sidewalk = ps1Material({ map: T.sidewalk });
-  M.grass = ps1Material({ map: T.grass });
+  M.asphaltPlain = ps1Material({ map: T.asphaltPlain, polygonOffset: 1 });
+  M.zebra = ps1Material({ map: T.zebra, polygonOffset: 2 });
+  M.sidewalk = ps1Material({ map: T.sidewalk, polygonOffset: 1 });
+  M.grass = ps1Material({ map: T.grass, polygonOffset: 1 });
   M.water = ps1Material({ map: T.water, envStrength: 0.15 });
   M.shops = ps1Material({ map: T.shops });
   M.billboards = ps1Material({ map: T.billboards, unlit: true, color: 0xeeeeee });
@@ -38,8 +39,8 @@ export function makeMaterials(T) {
   M.directionSigns = ps1Material({ map: T.directionSigns, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
   M.fence = ps1Material({ map: T.fence, alphaTest: 0.5, side: THREE.DoubleSide });
   M.busWindows = ps1Material({ map: T.busWindows });
-  M.redPavers = ps1Material({ map: T.redPavers });
-  M.sand = ps1Material({ map: T.sand });
+  M.redPavers = ps1Material({ map: T.redPavers, polygonOffset: 1 });
+  M.sand = ps1Material({ map: T.sand, polygonOffset: 1 });
   M.graffiti = ps1Material({ map: T.graffiti });
   M.big = ps1Material({ map: T.big, unlit: true, color: 0xf0f0f0 });
   M.landmarkSigns = ps1Material({ map: T.landmarkSigns, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });

@@ -78,7 +78,10 @@ Tudo está em `js/ps1.js`:
 - reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice);
 - céu em gradiente no pós-processamento, ancorado na linha do horizonte calculada da inclinação da câmera;
 - textura de carroceria "desenrolada" por carro (`makeBodyTexture`): colunas, vidros laterais, vãos de porta,
-  maçanetas, caixas de roda e borrachas, multiplicando a cor da pintura.
+  maçanetas, caixas de roda e borrachas, multiplicando a cor da pintura;
+- curvas "dobradas" no vertex shader, como nos jogos de corrida da época: a lógica do jogo é reta, mas a
+  pista aparece curvando (a JK tem a curva característica logo depois do BIG);
+- decalques (linhas, faixas, calçadas, sombras, buracos) com polygon offset para não piscarem à distância.
 
 Os carros são carrocerias "loftadas" por seções transversais (`carBody` em `js/geometry.js`), com vincos
 na linha de cintura e base dos vidros e o resto suave (Gouraud), como os modelos de ~400 triângulos do GT.

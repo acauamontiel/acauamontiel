@@ -115,7 +115,7 @@ export class City {
     // A pista do jogador é mais subdividida para o mapeamento afim não deformar tanto perto da câmera.
     add('asphalt', groundPlane(ROAD.CARRIAGE_W, CHUNK, 3, CHUNK / 8, 0xffffff, 7.1, 0, zc, 6, 20));
     add('asphalt', groundPlane(ROAD.CARRIAGE_W, CHUNK, 3, CHUNK / 8, 0xffffff, -7.1, 0, zc, 3, 10));
-    for (const x of [2.1, 12.1, -2.1, -12.1]) add('props', groundPlane(0.14, CHUNK, 1, 1, 0xf0f0e8, x, 0.006, zc, 1, 5));
+    for (const x of [2.1, 12.1, -2.1, -12.1]) add('lines', groundPlane(0.14, CHUNK, 1, 1, 0xf0f0e8, x, 0.01, zc, 1, 5));
 
     // --- Canteiro central e calçadas (interrompidos nos cruzamentos).
     const ranges = isX ? [[zA, zA - 13], [zB + 13, zB]] : [[zA, zB]];
@@ -123,10 +123,10 @@ export class City {
       const len = z0 - z1, zm = (z0 + z1) / 2;
       const segs = Math.max(1, Math.round(len / 8));
       add('props', box(4.0, 0.16, len, theme.curb, 0, 0.08, zm));
-      add(theme.median, groundPlane(3.4, len, 1, len / 4, 0xffffff, 0, 0.165, zm, 1, segs));
+      add(theme.median, groundPlane(3.4, len, 1, len / 4, 0xffffff, 0, 0.19, zm, 1, segs));
       for (const side of [1, -1]) {
         add('props', box(4.0, 0.15, len, theme.curb === 0xececec ? 0xe4e4e0 : 0xbdbdb5, side * 14.2, 0.075, zm));
-        add('sidewalk', groundPlane(3.9, len, 2, len / 2, 0xffffff, side * 14.2, 0.155, zm, 1, segs * 2));
+        add('sidewalk', groundPlane(3.9, len, 2, len / 2, 0xffffff, side * 14.2, 0.18, zm, 1, segs * 2));
       }
     }
 
@@ -183,9 +183,9 @@ export class City {
   intersection(ctx) {
     const { add, zc, rng, theme, local } = ctx;
     const canalLeft = theme.key === 'jk' && local >= 8 && local <= 32;
-    add('asphaltPlain', groundPlane(45, 14, 6, 2, 0xffffff, 22.5, 0.004, zc, 3, 1));
-    add('asphaltPlain', groundPlane(canalLeft ? 32 : 45, 14, 6, 2, 0xffffff, canalLeft ? -16 : -22.5, 0.004, zc, 3, 1));
-    for (const x of [7.1, -7.1]) for (const z of [zc + 8.4, zc - 8.4]) add('zebra', groundPlane(ROAD.CARRIAGE_W, 2.4, 3, 1, 0xffffff, x, 0.009, z, 3, 1));
+    add('asphaltPlain', groundPlane(45, 14, 6, 2, 0xffffff, 22.5, 0.02, zc, 3, 1));
+    add('asphaltPlain', groundPlane(canalLeft ? 32 : 45, 14, 6, 2, 0xffffff, canalLeft ? -16 : -22.5, 0.02, zc, 3, 1));
+    for (const x of [7.1, -7.1]) for (const z of [zc + 8.4, zc - 8.4]) add('zebra', groundPlane(ROAD.CARRIAGE_W, 2.4, 3, 1, 0xffffff, x, 0.03, z, 3, 1));
     this.trafficLight(add, 12.9, zc + 7.6, -1, rng);
     this.trafficLight(add, -12.9, zc - 7.6, 1, rng);
     this.streetSign(add, 13.3, zc + 7.2, theme.sign);
@@ -426,7 +426,7 @@ export class City {
     } else {
       // estacionamento com palmeiras, cerca branca e outdoor alto
       add('asphaltPlain', groundPlane(36, CHUNK, 5, 6, 0xffffff, x0 + 18, 0.01, zc, 2, 2));
-      for (let k = 0; k < 5; k++) add('props', groundPlane(0.12, 5, 1, 1, 0xf0f0e8, x0 + 6 + k * 2.8, 0.02, zc + 10));
+      for (let k = 0; k < 5; k++) add('lines', groundPlane(0.12, 5, 1, 1, 0xf0f0e8, x0 + 6 + k * 2.8, 0.03, zc + 10));
       for (let z = zA - 2; z > zB; z -= 5) add('props', box(0.14, 1.3, 0.14, 0xf0f0f0, x0 + 0.3, 0.8, z));
       add('props', box(0.05, 0.08, CHUNK - 2, 0xf0f0f0, x0 + 0.3, 1.4, zc));
       for (let k = 0; k < 3; k++) { const t = crossTree(4.5 + rng(), 6 + rng() * 2); t.translate(x0 + 2 + rng() * 3, 0.02, zA - 6 - k * 12); add('palm', t); }
@@ -437,7 +437,7 @@ export class City {
 
   supermarketLot({ add, zc, zA, rng }) {
     add('asphaltPlain', groundPlane(34, CHUNK, 5, 6, 0xffffff, 16.2 + 17, 0.01, zc, 2, 2));
-    for (let k = 0; k < 6; k++) add('props', groundPlane(0.12, 5, 1, 1, 0xf0f0e8, 20 + k * 2.8, 0.02, zc + 10));
+    for (let k = 0; k < 6; k++) add('lines', groundPlane(0.12, 5, 1, 1, 0xf0f0e8, 20 + k * 2.8, 0.03, zc + 10));
     add('props', box(0.7, 13, 0.7, 0xc8c8c0, 19, 6.5, zA - 20));
     this.billboard({ add, zA }, 1, 8, 19, 14.5, 7, 3.5, zA - 20);
     add('props', box(34.4, 0.6, 0.4, 0x9a9a92, 16.2 + 17, 0.45, zA - 39.8));

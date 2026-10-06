@@ -19,6 +19,8 @@ export const shared = {
   uLightDir: { value: new THREE.Vector3(0.5, 0.75, 0.35).normalize() },
   uAmbient: { value: 0.42 },
   uDiffuse: { value: 0.78 },
+  // Curva visual da pista: x = amplitude lateral, y = z inicial, z = z final, w = z da câmera.
+  uCurve: { value: new THREE.Vector4(0, 0, -1, 0) },
 };
 
 const white = (() => {
@@ -60,7 +62,20 @@ uniform float uDiffuse;
 uniform float uFogNear;
 uniform float uFogFar;
 uniform float uUnlit;
+uniform vec4 uCurve;
 attribute float envCut; // 0 = reflexo cheio; vidros usam ~0.6 (geometrias sem o atributo leem 0)
+
+// Dobra o mundo lateralmente ao longo de z (como os jogos de corrida da época faziam):
+// um "sino" de amplitude uCurve.x entre uCurve.y e uCurve.z. A jogabilidade continua reta.
+float curveAt(float z) {
+  float t = clamp((uCurve.y - z) / (uCurve.y - uCurve.z), 0.0, 1.0);
+  return uCurve.x * 0.5 * (1.0 - cos(6.2831853 * t));
+}
+float curveSlope(float z) {
+  float t = (uCurve.y - z) / (uCurve.y - uCurve.z);
+  if (t <= 0.0 || t >= 1.0) return 0.0;
+  return uCurve.x * 0.5 * sin(6.2831853 * t) * 6.2831853 * (-1.0 / (uCurve.y - uCurve.z));
+}
 
 varying vec3 vUvW;
 varying vec3 vColor;
@@ -70,7 +85,10 @@ varying float vEnvCut;
 
 void main() {
   vEnvCut = envCut;
-  vec4 mv = modelViewMatrix * vec4(position, 1.0);
+  vec4 wp = modelMatrix * vec4(position, 1.0);
+  // Subtrai a tangente na posição da câmera: perto do carro a pista fica reta, longe ela curva.
+  wp.x += curveAt(wp.z) - curveAt(uCurve.w) - curveSlope(uCurve.w) * (wp.z - uCurve.w);
+  vec4 mv = viewMatrix * wp;
   vec4 clip = projectionMatrix * mv;
 
   // Vertex snapping: arredonda a posição em NDC para a grade de pixels do framebuffer baixo.
@@ -158,6 +176,7 @@ export function ps1Material(o = {}) {
       uLightDir: shared.uLightDir,
       uAmbient: shared.uAmbient,
       uDiffuse: shared.uDiffuse,
+      uCurve: shared.uCurve,
       uMap: { value: o.map || white },
       uHasMap: { value: o.map ? 1 : 0 },
       uColor: { value: new THREE.Color(o.color === undefined ? 0xffffff : o.color) },
@@ -175,6 +194,13 @@ export function ps1Material(o = {}) {
     depthWrite: o.depthWrite === undefined ? !o.transparent : o.depthWrite,
     fog: false,
   });
+  // Decalques (linhas, faixas, calçadas sobre meio-fio) usam polygon offset em vez de
+  // ficarem milímetros acima da superfície, o que piscava à distância (z-fighting).
+  if (o.polygonOffset) {
+    mat.polygonOffset = true;
+    mat.polygonOffsetFactor = -o.polygonOffset;
+    mat.polygonOffsetUnits = -o.polygonOffset;
+  }
   return mat;
 }
 
@@ -185,8 +211,8 @@ export function ps1Material(o = {}) {
 export function pixelTexture(canvas, repeat = true) {
   const t = new THREE.CanvasTexture(canvas);
   t.magFilter = THREE.NearestFilter;
-  t.minFilter = repeat ? THREE.NearestMipmapLinearFilter : THREE.NearestFilter;
-  t.generateMipmaps = repeat;
+  t.minFilter = THREE.NearestMipmapLinearFilter;
+  t.generateMipmaps = true;
   t.wrapS = t.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
   return t;
 }
@@ -227,7 +253,7 @@ void main() {
   if (uDither > 0.5) {
     vec2 px = floor(vUv * uRes);
     float d = bayer4(px);
-    c = floor(c * 31.0 + d) / 31.0;
+    c = floor(c * 31.0 + d * 0.8 + 0.1) / 31.0;
   }
   gl_FragColor = vec4(c, 1.0);
 }

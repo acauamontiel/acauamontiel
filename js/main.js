@@ -24,7 +24,7 @@ renderer.setPixelRatio(1);
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.3, 420);
+const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.5, 340);
 const post = new PS1Post(renderer, 512);
 
 const T = makeTextures();
@@ -47,6 +47,14 @@ const phaseStartZ = (p) => -(p * PHASE_LEN) - 42; // o prédio do ponto de parti
 const START_PHASE = Math.min(THEMES.length - 1, Math.max(0, Number(params.get('phase')) || 0));
 const TP = Number(params.get('tp')) || 0;
 const START_Z = phaseStartZ(START_PHASE) - TP;
+// Curvas visuais por fase (dobra no vertex shader): a JK tem a curva característica logo após o BIG.
+const CURVES = { jk: { amp: 14, from: 70, to: 470 } };
+function updateCurve() {
+  const c = CURVES[THEMES[G.phase].key];
+  const z0 = phaseStartZ(G.phase);
+  if (c) shared.uCurve.value.set(c.amp, z0 - c.from, z0 - c.to, camera.position.z);
+  else shared.uCurve.value.set(0, 0, -1, camera.position.z);
+}
 
 const G = {
   state: 'title',
@@ -300,6 +308,7 @@ function frame() {
   else if (G.state === 'title') updateTitle(dt);
   else updateGameOver(dt);
   city.update(G.z);
+  updateCurve();
   if (DBG) renderer.info.reset();
   post.render(scene, camera, G.time);
 }
