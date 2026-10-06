@@ -131,7 +131,7 @@ function victory() {
   G.stateTime = 0;
   if (G.score > G.best) { G.best = G.score; saveBest(G.best); }
   hud.setBest(G.best);
-  hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'CRAZY<br>NIGHTS', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
+  hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'CRAZY<br>ASTRA', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
 }
 
 function onConfirm() {

@@ -1,4 +1,4 @@
-# Crazy Nights · Astra GSi em Pelotas
+# Crazy Astra · GSi em Pelotas
 
 Jogo WebGL low-poly com espírito de Gran Turismo de PS1: um **Chevrolet Astra GSi preto com aerofólio**
 correndo de madrugada pelas avenidas de **Pelotas/RS**, desviando de carros e buracos e ganhando pontos ao

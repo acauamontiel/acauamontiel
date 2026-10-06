@@ -421,7 +421,7 @@ export function makeTextures() {
     ['SUPERMERCADO', 'OFERTAS DA SEMANA · FRAGATA'],
     ['POSTO', 'GASOLINA · ETANOL · DIESEL'],
     ['CONCESSIONÁRIA', 'ASTRA · VECTRA · CORSA · OMEGA'],
-    ['LARGADA', 'CRAZY NIGHTS'],
+    ['LARGADA', 'CRAZY ASTRA'],
     ['CHEGADA', 'FIM DA FASE'],
   ];
   T.billboardGeneric = 8;
