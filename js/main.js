@@ -206,13 +206,14 @@ function updatePlaying(dt) {
   const brake = input.brake || input.down;
   const steer = BOT ? botSteer() : input.steer;
 
-  // Drift: acelerar e frear juntos solta a traseira; o carro guina e desliza para o lado apontado.
-  // Histerese: entra no drift acima de 9 m/s e só sai dele abaixo de 6 m/s (ou soltando uma das teclas).
-  const wantDrift = throttle && brake && G.speed > (G.drift > 0.3 ? 6 : 9);
+  // Drift: acelerar e frear juntos (ou o botão/Shift de drift) solta a traseira; o carro guina e
+  // desliza para o lado apontado sem perder velocidade. Histerese: entra acima de 9 m/s e só sai
+  // abaixo de 6 m/s ou soltando o comando.
+  const wantDrift = ((throttle && brake) || input.drift) && G.speed > (G.drift > 0.3 ? 6 : 9);
   G.drift += ((wantDrift ? 1 : 0) - G.drift) * Math.min(1, (wantDrift ? 5 : 3) * dt);
   const d = G.drift;
   if (wantDrift) {
-    G.speed = Math.max(9, G.speed - 9 * dt); // derrapar custa velocidade, mas sem travar
+    // mantém a velocidade durante a derrapagem
   } else if (brake) {
     G.speed = Math.max(6, G.speed - 32 * dt);
   } else {

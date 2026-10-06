@@ -155,10 +155,13 @@ body.touch .touch-only { display: flex; }
 .t-left { left: 18px; }
 .t-right { left: 116px; }
 .t-brake { right: 128px; font-size: 16px; }
-.t-gas { right: 18px; width: 98px; height: 98px; bottom: 16px; background: rgba(53,208,90,0.18); }
+.t-gas { right: 18px; width: 98px; height: 98px; bottom: 16px; font-size: 12px; letter-spacing: 0.02em; background: rgba(53,208,90,0.18); }
 .t-gas.on { background: rgba(53,208,90,0.55); border-color: #35d05a; }
+.t-drift { right: 40px; bottom: 126px; width: 80px; height: 80px; font-size: 15px; background: rgba(255,80,190,0.16); }
+.t-drift.on { background: rgba(255,80,190,0.55); border-color: #ff4fb8; }
 /* Em telas de toque o HUD inferior sobe para não ficar embaixo dos botões. */
-body.touch .hud-bottom-left, body.touch .hud-bottom-right { bottom: 128px; }
+body.touch .hud-bottom-left { bottom: 128px; }
+body.touch .hud-bottom-right { bottom: 216px; }
 body.touch .hud-bottom-left { left: 14px; }
 body.touch .hud-bottom-right { right: 14px; }
 

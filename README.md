@@ -23,11 +23,11 @@ Qualquer servidor estático também serve (os módulos ES não carregam via `fil
 | `←` `→` ou `A` `D` | desviar |
 | `↑` ou `W` | acelerar (acima da velocidade de cruzeiro) |
 | `Espaço` (ou `↓` / `S`) | frear |
-| `↑` + `Espaço` | drift: a traseira solta e o carro desliza para o lado em que você aponta |
+| `↑` + `Espaço` ou `Shift` | drift: a traseira solta e o carro desliza para o lado em que você aponta |
 | `Enter` | começar / recomeçar |
 | `M` | liga/desliga o som |
 
-No celular aparecem botões na tela: ◀ ▶ para desviar, GÁS e FREIO; GÁS + FREIO juntos fazem o drift.
+No celular aparecem botões na tela: ◀ ▶ para desviar, FREIO, DRIFT e ACELERADOR.
 
 Parâmetros de URL úteis (depuração):
 
@@ -53,7 +53,7 @@ Parâmetros de URL úteis (depuração):
 - **Buracos**: 8% de dano e perda de velocidade.
 - **Motos**: +100 pontos, multiplicados pela sequência (até x8). Bater em um carro zera a sequência.
 - **Raspão**: passar colado em um carro sem bater vale +50.
-- **Drift**: derrapar rende pontos enquanto durar, mas custa velocidade.
+- **Drift**: derrapar rende pontos enquanto durar e mantém a velocidade.
 - A distância também pontua. O jogo acaba quando a lataria chega a zero.
 - São **três fases de 2 km**, em sequência: Duque de Caxias → Bento Gonçalves → JK. Ao cruzar o pórtico
   de chegada a lataria restante vira bônus e a próxima fase começa com 25% de lataria recuperada.

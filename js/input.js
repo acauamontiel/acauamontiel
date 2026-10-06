@@ -1,7 +1,7 @@
 // Teclado + botões de toque na tela (ver bindTouchControls).
 export class Input {
   constructor(el) {
-    this.left = false; this.right = false; this.up = false; this.down = false; this.brake = false;
+    this.left = false; this.right = false; this.up = false; this.down = false; this.brake = false; this.drift = false;
     this.pressed = new Set();
     this.onAny = null;
     this.onKey = null;
@@ -16,7 +16,7 @@ export class Input {
       }
     });
     window.addEventListener('keyup', (e) => this.set(e.code, false));
-    window.addEventListener('blur', () => { this.left = this.right = this.up = this.down = this.brake = false; });
+    window.addEventListener('blur', () => { this.left = this.right = this.up = this.down = this.brake = this.drift = false; });
 
     // Toque fora dos botões só serve para começar/continuar (os botões ficam ocultos nas telas).
     el.addEventListener('touchstart', () => { if (this.onAny) this.onAny(); }, { passive: true });
@@ -47,6 +47,7 @@ export class Input {
       case 'ArrowUp': case 'KeyW': this.up = v; break;
       case 'ArrowDown': case 'KeyS': this.down = v; break;
       case 'Space': this.brake = v; break;
+      case 'ShiftLeft': case 'ShiftRight': this.drift = v; break;
     }
   }
 
