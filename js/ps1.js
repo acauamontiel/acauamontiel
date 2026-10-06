@@ -16,9 +16,9 @@ export const shared = {
   uFogColor: { value: new THREE.Color(0xbcc8d6) },
   uFogNear: { value: 60 },
   uFogFar: { value: 230 },
-  uLightDir: { value: new THREE.Vector3(0.35, 0.85, 0.4).normalize() },
-  uAmbient: { value: 0.52 },
-  uDiffuse: { value: 0.62 },
+  uLightDir: { value: new THREE.Vector3(0.5, 0.75, 0.35).normalize() },
+  uAmbient: { value: 0.42 },
+  uDiffuse: { value: 0.78 },
 };
 
 const white = (() => {
@@ -34,14 +34,14 @@ export const envTexture = (() => {
   const g = c.getContext('2d');
   const grad = g.createLinearGradient(0, 0, 0, 32);
   // y=0 (topo do canvas) = normal apontando para cima; y=1 = normal para baixo.
-  grad.addColorStop(0.0, '#17304c');
-  grad.addColorStop(0.22, '#1f3a5a');
-  grad.addColorStop(0.30, '#8aa0b4');
-  grad.addColorStop(0.40, '#c8d8e6');
-  grad.addColorStop(0.44, '#4a545c');
-  grad.addColorStop(0.50, '#2a3036');
-  grad.addColorStop(0.70, '#15181b');
-  grad.addColorStop(1.0, '#0a0b0c');
+  grad.addColorStop(0.0, '#8aa6c0');
+  grad.addColorStop(0.22, '#a4bccf');
+  grad.addColorStop(0.33, '#c8d6e0');
+  grad.addColorStop(0.40, '#6e7a86');
+  grad.addColorStop(0.46, '#30373d');
+  grad.addColorStop(0.50, '#1a1e22');
+  grad.addColorStop(0.62, '#0e1012');
+  grad.addColorStop(1.0, '#060607');
   g.fillStyle = grad;
   g.fillRect(0, 0, 32, 32);
   const t = new THREE.CanvasTexture(c);
@@ -60,13 +60,16 @@ uniform float uDiffuse;
 uniform float uFogNear;
 uniform float uFogFar;
 uniform float uUnlit;
+attribute float envCut; // 0 = reflexo cheio; vidros usam ~0.6 (geometrias sem o atributo leem 0)
 
 varying vec3 vUvW;
 varying vec3 vColor;
 varying float vFog;
 varying vec2 vEnv;
+varying float vEnvCut;
 
 void main() {
+  vEnvCut = envCut;
   vec4 mv = modelViewMatrix * vec4(position, 1.0);
   vec4 clip = projectionMatrix * mv;
 
@@ -116,6 +119,7 @@ varying vec3 vUvW;
 varying vec3 vColor;
 varying float vFog;
 varying vec2 vEnv;
+varying float vEnvCut;
 
 void main() {
   vec2 uv = vUvW.xy / vUvW.z;
@@ -123,7 +127,7 @@ void main() {
   if (uHasMap > 0.5) tex = texture2D(uMap, uv);
   if (tex.a < uAlphaTest) discard;
   vec3 c = tex.rgb * uColor * vColor;
-  if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength;
+  if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength * (1.0 - vEnvCut);
   c = mix(c, uFogColor, vFog);
   gl_FragColor = vec4(c, tex.a * uOpacity);
 }

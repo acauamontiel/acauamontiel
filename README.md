@@ -41,6 +41,7 @@ Parâmetros de URL úteis (depuração):
 | `?nohud` | esconde o HUD |
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
+| `?angle=0.75` | ângulo inicial da câmera orbital da tela de título (3/4 traseira) |
 
 ## Regras
 
@@ -65,12 +66,17 @@ O percurso alterna, a cada 1,44 km, três avenidas reais de Pelotas (a cidade em
 
 Tudo está em `js/ps1.js`:
 
-- render em ~320x240 com upscale nearest-neighbor;
+- render em 512x288 (o modo "hi-res" do Gran Turismo) com upscale nearest-neighbor;
 - *vertex snapping* na grade de pixels do framebuffer baixo;
 - mapeamento de textura **afim** (sem correção de perspectiva), com a pista subdividida para não "nadar" demais;
 - iluminação Gouraud por vértice, texturas sem filtro e sem mipmap;
 - quantização para 15 bits com dithering ordenado (Bayer 4x4) no pós-processamento;
-- reflexo de céu *matcap* na lataria preta.
+- reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice).
+
+Os carros são carrocerias "loftadas" por seções transversais (`carBody` em `js/geometry.js`), com vincos
+na linha de cintura e base dos vidros e o resto suave (Gouraud), como os modelos de ~400 triângulos do GT.
+O Astra GSi tem aerofólio de teto com placas laterais e brake light, rodas texturizadas de cinco raios,
+lanternas fumê, faróis e grade com gravata dourada.
 
 Texturas são geradas em canvas na hora (`js/textures.js`); a cidade é procedural em trechos de 40 m (`js/city.js`).
 

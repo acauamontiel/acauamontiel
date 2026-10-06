@@ -25,11 +25,11 @@ renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.3, 420);
-const post = new PS1Post(renderer, 240);
+const post = new PS1Post(renderer, 288);
 
 const T = makeTextures();
 const M = makeMaterials(T);
-const astra = buildAstra(M);
+const astra = buildAstra(M, T);
 scene.add(astra.group);
 const city = new City(scene, M, T);
 const traffic = new Traffic(scene, M, buildTrafficTemplates(), buildMotoTemplate());
@@ -195,11 +195,11 @@ function updatePlaying(dt) {
 
   // Câmera de perseguição.
   camState.x += (G.x - camState.x) * Math.min(1, 5 * dt);
-  camState.fov += ((58 + G.speed * 0.28) - camState.fov) * Math.min(1, 3 * dt);
+  camState.fov += ((56 + G.speed * 0.28) - camState.fov) * Math.min(1, 3 * dt);
   const sx = (Math.random() - 0.5) * G.shake * 0.5;
   const sy = (Math.random() - 0.5) * G.shake * 0.4;
-  camera.position.set(camState.x + sx, 2.25 + G.bounce * 0.06 + sy, G.z + 6.6 + G.speed * 0.025);
-  camera.lookAt(camState.x + steer * 0.5 + sx, 0.85 + sy, G.z - 13);
+  camera.position.set(camState.x + sx, 1.55 + G.bounce * 0.06 + sy, G.z + 5.9 + G.speed * 0.02);
+  camera.lookAt(camState.x + steer * 0.5 + sx, 0.95 + sy, G.z - 10);
   camera.fov = camState.fov;
   camera.updateProjectionMatrix();
 
@@ -222,9 +222,9 @@ function updateTitle(dt) {
   const a = G.titleAngle;
   astra.group.position.set(G.x, 0, G.z);
   astra.group.rotation.set(0, 0, 0);
-  camera.position.set(G.x + Math.cos(a) * 6.8, 1.6 + Math.sin(a * 0.6) * 0.5, G.z + Math.sin(a) * 6.8);
-  camera.lookAt(G.x, 0.7, G.z);
-  camera.fov = 50;
+  camera.position.set(G.x + Math.cos(a) * 6.4, 1.25 + Math.sin(a * 0.6) * 0.45, G.z + Math.sin(a) * 6.4);
+  camera.lookAt(G.x, 0.75, G.z);
+  camera.fov = 48;
   camera.updateProjectionMatrix();
 }
 
@@ -273,7 +273,8 @@ hud.show('title');
 if (params.has('nops1')) post.setEnabled(false);
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }
-if (params.has('nohud')) hud.el.hud.style.visibility = 'hidden';
+if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.style.visibility = 'hidden'; hud.el.gameover.style.visibility = 'hidden'; }
+if (params.has('angle')) G.titleAngle = Number(params.get('angle')) || 0;
 // ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura).
 const sim = Number(params.get('sim')) || 0;
 for (let k = 0; k < sim * 60 && G.state === 'playing'; k++) {

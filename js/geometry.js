@@ -11,12 +11,14 @@ export function colorize(geo, color) {
   const arr = new Float32Array(n * 3);
   for (let i = 0; i < n; i++) { arr[i * 3] = _c.r; arr[i * 3 + 1] = _c.g; arr[i * 3 + 2] = _c.b; }
   geo.setAttribute('color', new THREE.BufferAttribute(arr, 3));
+  if (!geo.attributes.envCut) geo.setAttribute('envCut', new THREE.BufferAttribute(new Float32Array(n), 1));
   return geo;
 }
 
-/** Garante que a geometria tenha color/uv/normal (para merge). */
+/** Garante que a geometria tenha color/envCut/uv/normal (para merge). */
 export function ensureAttributes(geo) {
   if (!geo.attributes.color) colorize(geo, 0xffffff);
+  if (!geo.attributes.envCut) geo.setAttribute('envCut', new THREE.BufferAttribute(new Float32Array(geo.attributes.position.count), 1));
   if (!geo.attributes.uv) {
     const n = geo.attributes.position.count;
     geo.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
@@ -151,4 +153,160 @@ export function crossTree(w, h, color = 0xffffff) {
   const g = merge([colorize(a, color), colorize(b, color)]);
   g.translate(0, h / 2, 0);
   return g;
+}
+
+/** Interpola linearmente uma lista de chaves [[z, v], ...] ordenada por z. */
+export function lerpKeys(keys, z) {
+  if (z <= keys[0][0]) return keys[0][1];
+  for (let i = 1; i < keys.length; i++) {
+    if (z <= keys[i][0]) {
+      const [z0, v0] = keys[i - 1], [z1, v1] = keys[i];
+      return z1 === z0 ? v1 : v0 + (v1 - v0) * (z - z0) / (z1 - z0);
+    }
+  }
+  return keys[keys.length - 1][1];
+}
+
+/**
+ * Loft de uma carroceria a partir de seções transversais (estações) ao longo de z.
+ * Cada estação: { z, pts: [[x, y, sharp, corBaixo, corCima], ...] } com a metade direita
+ * do perfil, de baixo (x=0) até o topo (x=0). Pontos "sharp" viram vincos (normais e cores
+ * descontínuas); os demais ficam suaves (Gouraud). Fecha as pontas com tampas planas.
+ */
+export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6) {
+  const rings = stations.map((st) => {
+    const pts = st.pts;
+    const ring = [];
+    const emit = (p, dir, xs) => {
+      const [x, y, sharp, cB, cA] = p;
+      if (!sharp) return [{ x: xs * x, y, c: cA, dup: false }];
+      return dir > 0
+        ? [{ x: xs * x, y, c: cB, dup: true }, { x: xs * x, y, c: cA, dup: false }]
+        : [{ x: xs * x, y, c: cA, dup: true }, { x: xs * x, y, c: cB, dup: false }];
+    };
+    ring.push({ x: 0, y: pts[0][1], c: pts[0][4], dup: false });
+    for (let i = 1; i < pts.length - 1; i++) ring.push(...emit(pts[i], 1, 1));
+    ring.push({ x: 0, y: pts[pts.length - 1][1], c: pts[pts.length - 1][3], dup: false });
+    for (let i = pts.length - 2; i >= 1; i--) ring.push(...emit(pts[i], -1, -1));
+    return ring;
+  });
+  const S = rings.length, R = rings[0].length;
+  const pos = [], col = [], idx = [], cut = [];
+  for (let s = 0; s < S; s++) {
+    for (let k = 0; k < R; k++) {
+      const e = rings[s][k];
+      pos.push(e.x, e.y, stations[s].z);
+      _c.set(e.c); col.push(_c.r, _c.g, _c.b);
+      cut.push(glassColor !== null && e.c === glassColor ? glassEnvCut : 0);
+    }
+  }
+  for (let s = 0; s < S - 1; s++) {
+    for (let k = 0; k < R; k++) {
+      if (rings[s][k].dup) continue;
+      const k2 = (k + 1) % R;
+      const a = s * R + k, b = s * R + k2, c = (s + 1) * R + k2, d = (s + 1) * R + k;
+      idx.push(a, c, b, a, d, c);
+    }
+  }
+  const body = new THREE.BufferGeometry();
+  body.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  body.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+  body.setAttribute('envCut', new THREE.Float32BufferAttribute(cut, 1));
+  body.setAttribute('uv', new THREE.Float32BufferAttribute(new Float32Array(pos.length / 3 * 2), 2));
+  body.setIndex(idx);
+  body.computeVertexNormals();
+  // Garante normais para fora: testa um vértice do topo da estação central.
+  const mid = Math.floor(S / 2) * R + Math.floor(R / 2);
+  if (body.attributes.normal.getY(mid) < 0) {
+    for (let i = 0; i < idx.length; i += 3) { const t = idx[i + 1]; idx[i + 1] = idx[i + 2]; idx[i + 2] = t; }
+    body.setIndex(idx);
+    body.computeVertexNormals();
+  }
+
+  const cap = (s, dirZ) => {
+    const ring = rings[s], z = stations[s].z;
+    const cy = (ring[0].y + ring[Math.floor(R / 2)].y) / 2;
+    const p = [0, cy, z], c = [];
+    _c.set(capColor); c.push(_c.r, _c.g, _c.b);
+    for (let k = 0; k < R; k++) { p.push(ring[k].x, ring[k].y, z); c.push(_c.r, _c.g, _c.b); }
+    const ix = [];
+    for (let k = 0; k < R; k++) {
+      if (ring[k].dup) continue;
+      const k2 = (k + 1) % R;
+      if (dirZ > 0) ix.push(0, k + 1, k2 + 1); else ix.push(0, k2 + 1, k + 1);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3));
+    g.setAttribute('color', new THREE.Float32BufferAttribute(c, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(new Float32Array(p.length / 3 * 2), 2));
+    g.setIndex(ix);
+    g.computeVertexNormals();
+    if (Math.sign(g.attributes.normal.getZ(0)) !== Math.sign(dirZ)) {
+      for (let i = 0; i < ix.length; i += 3) { const t = ix[i + 1]; ix[i + 1] = ix[i + 2]; ix[i + 2] = t; }
+      g.setIndex(ix); g.computeVertexNormals();
+    }
+    return g;
+  };
+  return merge([body, cap(0, -1), cap(S - 1, 1)]);
+}
+
+/**
+ * Gera as estações de uma carroceria a partir de curvas-chave (ver loft).
+ * spec: { zs, yFloor, wSill, wBelt, yBelt, yTop, wTop, cabin, windshield, rearGlass, paint, glass, under }
+ */
+export function carBody(spec) {
+  const P = spec.paint, G = spec.glass, U = spec.under;
+  const inRange = (r, z) => z >= r[0] && z <= r[1];
+  const stations = spec.zs.map((z) => {
+    const yF = lerpKeys(spec.yFloor, z), wS = lerpKeys(spec.wSill, z), wB = lerpKeys(spec.wBelt, z);
+    const yB = lerpKeys(spec.yBelt, z), yT = lerpKeys(spec.yTop, z), wT = lerpKeys(spec.wTop, z);
+    const cabin = inRange(spec.cabin, z);
+    const yG = cabin ? Math.min(yB + 0.06, yT - 0.05) : Math.max(yB + 0.01, yT - 0.05);
+    const wG = cabin ? Math.max(wT + 0.02, wB - 0.06) : Math.min(wB - 0.02, wT + 0.09);
+    const topGlass = inRange(spec.windshield, z) || inRange(spec.rearGlass, z);
+    const side = cabin ? G : P, top = topGlass ? G : P;
+    return { z, pts: [
+      [0, yF, false, U, U],
+      [wS, yF, true, U, P],
+      [wB, Math.min(yF + 0.2, yB - 0.05), false, P, P],
+      [wB, yB, true, P, P],
+      [wG, yG, true, P, side],
+      [wT, yT, true, side, top],
+      [0, yT, false, top, top],
+    ] };
+  });
+  return loft(stations, P, G);
+}
+
+/** Quad (PlaneGeometry) com UV num sub-retângulo do atlas dado em pixels. */
+export function atlasQuad(w, h, atlasSize, x0, y0, rw, rh, color = 0xffffff) {
+  const u0 = x0 / atlasSize, u1 = (x0 + rw) / atlasSize;
+  const v1 = 1 - y0 / atlasSize, v0 = 1 - (y0 + rh) / atlasSize;
+  return signQuad(w, h, u0, u1, v0, v1, color);
+}
+
+/**
+ * Roda com face texturizada (disco) e banda de rodagem lisa, eixo em X.
+ * region: [x0, y0, size] da face no atlas (quadrado); treadUV: ponto do atlas com a cor do pneu.
+ */
+export function discWheel(r, width, atlasSize, region, treadUV, outerSign = 1) {
+  const tread = new THREE.CylinderGeometry(r, r, width, 12, 1, true);
+  tread.rotateZ(Math.PI / 2);
+  const tu = tread.attributes.uv;
+  for (let i = 0; i < tu.count; i++) tu.setXY(i, treadUV[0], treadUV[1]);
+  colorize(tread, 0xffffff);
+  const [x0, y0, size] = region;
+  const u0 = x0 / atlasSize, u1 = (x0 + size) / atlasSize, v1 = 1 - y0 / atlasSize, v0 = 1 - (y0 + size) / atlasSize;
+  const face = (sign, textured) => {
+    const d = new THREE.CircleGeometry(r, 12);
+    const uv = d.attributes.uv;
+    for (let i = 0; i < uv.count; i++) {
+      if (textured) uv.setXY(i, u0 + uv.getX(i) * (u1 - u0), v0 + uv.getY(i) * (v1 - v0));
+      else uv.setXY(i, treadUV[0], treadUV[1]);
+    }
+    d.rotateY(sign > 0 ? Math.PI / 2 : -Math.PI / 2);
+    d.translate(sign * width / 2, 0, 0);
+    return colorize(d, 0xffffff);
+  };
+  return merge([tread, face(outerSign, true), face(-outerSign, false)]);
 }

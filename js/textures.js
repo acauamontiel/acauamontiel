@@ -33,7 +33,7 @@ export function makeTextures() {
   // Asfalto de uma faixa (3,4 m x 8 m): tracejado na borda direita.
   {
     const [c, g] = canvas(64, 128);
-    noise(g, 64, 128, 78, 40);
+    noise(g, 64, 128, 96, 40);
     g.fillStyle = 'rgba(0,0,0,0.25)';
     for (let i = 0; i < 40; i++) g.fillRect((rnd() * 64) | 0, (rnd() * 128) | 0, 2 + rnd() * 6, 1);
     g.fillStyle = '#e8e8e0';
@@ -44,14 +44,14 @@ export function makeTextures() {
   // Asfalto liso (ruas transversais, estacionamentos).
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 74, 36);
+    noise(g, 64, 64, 92, 36);
     T.asphaltPlain = pixelTexture(c);
   }
 
   // Faixa de pedestres.
   {
     const [c, g] = canvas(64, 64);
-    noise(g, 64, 64, 74, 30);
+    noise(g, 64, 64, 92, 30);
     g.fillStyle = '#ecece4';
     for (let i = 0; i < 64; i += 16) g.fillRect(i + 3, 4, 9, 56);
     T.zebra = pixelTexture(c);
@@ -199,6 +199,50 @@ export function makeTextures() {
     g.fillStyle = '#141210'; g.beginPath(); g.ellipse(17, 17, 8, 5, 0, 0, 7); g.fill();
     g.fillStyle = '#6a6760'; g.fillRect(4, 14, 3, 2); g.fillRect(24, 10, 2, 3); g.fillRect(20, 24, 3, 2);
     T.pothole = pixelTexture(c, false);
+  }
+
+  // Atlas de detalhes do Astra (128x128): farol, lanterna fumê, placa, grade e face da roda.
+  T.ASTRA_ATLAS = 128;
+  {
+    const [c, g] = canvas(128, 128);
+    g.fillStyle = '#141416'; g.fillRect(0, 0, 128, 128);
+    // farol (0,0 64x24): lente clara, refletor, pisca âmbar
+    g.fillStyle = '#c9d0d6'; g.fillRect(0, 0, 64, 24);
+    g.fillStyle = '#eef2f5'; g.beginPath(); g.ellipse(26, 12, 20, 9, 0, 0, 7); g.fill();
+    g.fillStyle = '#8c949c'; g.beginPath(); g.arc(22, 12, 5, 0, 7); g.fill();
+    g.fillStyle = '#ffffff'; g.beginPath(); g.arc(20, 10, 2, 0, 7); g.fill();
+    g.fillStyle = '#d99a2b'; g.fillRect(52, 2, 12, 20);
+    g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(0, 22, 64, 2);
+    // lanterna fumê (64,0 64x40): vermelho escuro, âmbar fumê, ré
+    g.fillStyle = '#2a1012'; g.fillRect(64, 0, 64, 40);
+    g.fillStyle = '#7a1a1c'; g.fillRect(66, 2, 60, 14);
+    g.fillStyle = '#a82424'; g.fillRect(66, 4, 28, 10);
+    g.fillStyle = '#5a2816'; g.fillRect(66, 18, 60, 9);
+    g.fillStyle = '#3a3a3c'; g.fillRect(66, 29, 26, 9);
+    g.fillStyle = '#6a1416'; g.fillRect(94, 29, 32, 9);
+    g.fillStyle = 'rgba(255,255,255,0.18)'; g.fillRect(70, 3, 50, 2);
+    g.fillStyle = 'rgba(0,0,0,0.5)'; g.fillRect(64, 16, 64, 2); g.fillRect(64, 27, 64, 2);
+    // placa (0,32 64x16)
+    g.fillStyle = '#e8e8e4'; g.fillRect(0, 32, 64, 16);
+    g.fillStyle = '#1946a8'; g.fillRect(0, 32, 64, 3);
+    g.fillStyle = '#1a1a1a'; g.font = 'bold 10px Arial, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillText('PLT·GSi', 32, 41, 60);
+    // grade (0,56 64x12) com gravata dourada
+    g.fillStyle = '#0e1012'; g.fillRect(0, 56, 64, 12);
+    g.fillStyle = '#22262a'; for (let y = 58; y < 68; y += 3) g.fillRect(0, y, 64, 1);
+    g.fillStyle = '#c9a227'; g.fillRect(26, 60, 12, 4); g.fillRect(30, 58, 4, 8);
+    // roda (64,64 64x64): pneu, aro preto com 5 raios grafite
+    g.fillStyle = '#141416'; g.fillRect(64, 64, 64, 64);
+    g.fillStyle = '#1c1c1e'; g.beginPath(); g.arc(96, 96, 31, 0, 7); g.fill();
+    g.strokeStyle = '#2a2a2c'; g.lineWidth = 1; g.beginPath(); g.arc(96, 96, 27, 0, 7); g.stroke();
+    g.fillStyle = '#34373c'; g.beginPath(); g.arc(96, 96, 23, 0, 7); g.fill();
+    g.fillStyle = '#17181a'; g.beginPath(); g.arc(96, 96, 20, 0, 7); g.fill();
+    g.strokeStyle = '#4e535a'; g.lineWidth = 5; g.lineCap = 'round';
+    for (let k = 0; k < 5; k++) { const a = -Math.PI / 2 + (k / 5) * Math.PI * 2; g.beginPath(); g.moveTo(96, 96); g.lineTo(96 + Math.cos(a) * 19, 96 + Math.sin(a) * 19); g.stroke(); }
+    g.fillStyle = '#5a5f66'; g.beginPath(); g.arc(96, 96, 5, 0, 7); g.fill();
+    g.fillStyle = '#2a2d31'; g.beginPath(); g.arc(96, 96, 2.5, 0, 7); g.fill();
+    g.fillStyle = 'rgba(255,255,255,0.12)'; g.beginPath(); g.arc(90, 88, 12, 0, 7); g.fill();
+    T.astra = pixelTexture(c, false);
   }
 
   // Sombra "blob".
