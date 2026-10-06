@@ -43,6 +43,7 @@ Parâmetros de URL úteis (depuração):
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
 | `?angle=0.75` | ângulo inicial da câmera orbital da tela de título (3/4 traseira) |
+| `?bus=turf` | estaciona um ônibus (turf, santamaria, santarosa) ao lado do carro na tela de título |
 
 ## Regras
 
@@ -99,7 +100,7 @@ js/main.js        loop, estado do jogo, câmera
 js/ps1.js         material/shader PS1 e pós-processamento
 js/textures.js    texturas procedurais
 js/geometry.js    helpers low-poly
-js/vehicles.js    Astra GSi, carros do tráfego, moto, buraco
+js/vehicles.js    Astra GSi, carros do tráfego, ônibus (Turf, Santa Maria, Santa Rosa), moto, buraco
 js/city.js        avenidas, prédios, cruzamentos e pontos de referência
 js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js

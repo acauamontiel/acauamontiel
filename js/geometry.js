@@ -179,14 +179,14 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6, v
     const ring = [];
     const emit = (p, dir, xs, pi) => {
       const [x, y, sharp, cB, cA] = p;
-      if (!sharp) return [{ x: xs * x, y, c: cA, dup: false, pi }];
+      if (!sharp) return [{ x: xs * x, y, c: cA, dup: false, pi, xs }];
       return dir > 0
-        ? [{ x: xs * x, y, c: cB, dup: true, pi }, { x: xs * x, y, c: cA, dup: false, pi }]
-        : [{ x: xs * x, y, c: cA, dup: true, pi }, { x: xs * x, y, c: cB, dup: false, pi }];
+        ? [{ x: xs * x, y, c: cB, dup: true, pi, xs }, { x: xs * x, y, c: cA, dup: false, pi, xs }]
+        : [{ x: xs * x, y, c: cA, dup: true, pi, xs }, { x: xs * x, y, c: cB, dup: false, pi, xs }];
     };
-    ring.push({ x: 0, y: pts[0][1], c: pts[0][4], dup: false, pi: 0 });
+    ring.push({ x: 0, y: pts[0][1], c: pts[0][4], dup: false, pi: 0, xs: 1 });
     for (let i = 1; i < pts.length - 1; i++) ring.push(...emit(pts[i], 1, 1, i));
-    ring.push({ x: 0, y: pts[pts.length - 1][1], c: pts[pts.length - 1][3], dup: false, pi: pts.length - 1 });
+    ring.push({ x: 0, y: pts[pts.length - 1][1], c: pts[pts.length - 1][3], dup: false, pi: pts.length - 1, xs: 1 });
     for (let i = pts.length - 2; i >= 1; i--) ring.push(...emit(pts[i], -1, -1, i));
     return ring;
   });
@@ -199,7 +199,10 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6, v
       pos.push(e.x, e.y, stations[s].z);
       _c.set(e.c); col.push(_c.r, _c.g, _c.b);
       cut.push(glassColor !== null && e.c === glassColor ? glassEnvCut : 0);
-      uvs.push((stations[s].z - zFirst) / (zLast - zFirst), vMap ? vMap[e.pi] : 0.3);
+      // Textura "desenrolada": u ao longo do carro; lado direito na metade de baixo (v 0..0.5,
+      // chão → centro do teto) e lado esquerdo na metade de cima (v 1..0.5), encontrando-se no teto.
+      const vSide = vMap ? vMap[e.pi] : 0.3;
+      uvs.push((stations[s].z - zFirst) / (zLast - zFirst), e.xs > 0 ? vSide * 0.5 : 1 - vSide * 0.5);
     }
   }
   for (let s = 0; s < S - 1; s++) {
@@ -241,7 +244,7 @@ export function loft(stations, capColor, glassColor = null, glassEnvCut = 0.6, v
     g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3));
     g.setAttribute('color', new THREE.Float32BufferAttribute(c, 3));
     const cuv = new Float32Array(p.length / 3 * 2);
-    for (let k = 0; k < cuv.length; k += 2) { cuv[k] = dirZ > 0 ? 0.97 : 0.03; cuv[k + 1] = 0.3; }
+    for (let k = 0; k < cuv.length; k += 2) { cuv[k] = dirZ > 0 ? 0.97 : 0.03; cuv[k + 1] = 0.15; }
     g.setAttribute('uv', new THREE.Float32BufferAttribute(cuv, 2));
     g.setIndex(ix);
     g.computeVertexNormals();

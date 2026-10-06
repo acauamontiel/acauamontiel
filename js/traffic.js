@@ -38,7 +38,7 @@ export class Traffic {
 
   spawnCar(x, z, lane, tpl = pick(this.weighted), color = pick(tpl.colors)) {
     const group = makeVehicle(tpl, color, this.M);
-    const bus = tpl.name === 'bus';
+    const bus = tpl.bus;
     return this.addEntity({ kind: 'car', group, x, z, lane, w: tpl.w, l: tpl.l, speed: bus ? rnd(9, 13) : rnd(11, 19), hit: false, passed: false, vx: 0, spinY: 0 });
   }
 
@@ -106,7 +106,7 @@ export class Traffic {
 
   /** Depuração: um exemplar parado de cada veículo à frente do jogador. */
   showcase(z) {
-    this.cars.forEach((tpl, k) => { this.spawnCar(ROAD.LANE_X[1 + (k % 2)], z - 12 - k * 9, 1 + (k % 2), tpl, tpl.colors[0]).speed = 0; });
+    [...this.cars].reverse().forEach((tpl, k) => { this.spawnCar(ROAD.LANE_X[1 + (k % 2)], z - 14 - k * 13, 1 + (k % 2), tpl, tpl.colors[0]).speed = 0; });
     const m = this.spawnMoto(1, z - 6); m.speed = 0; m.wa = 0; m.x = 5.6;
     this.spawnHole(ROAD.LANE_X[0], z - 9);
     this.spawnOncoming(z - 20).speed = 0;

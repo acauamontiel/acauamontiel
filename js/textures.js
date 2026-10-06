@@ -510,48 +510,141 @@ export function makeTextures() {
 }
 
 /**
- * Textura de carroceria "desenrolada": u = posição ao longo do carro (frente → trás),
- * v = posição no anel do perfil (0 = embaixo, 1 = centro do teto). Multiplica a cor dos vértices,
- * então desenha só o que escurece/clareia: colunas, frisos, caixas de roda, vãos de porta, borrachas.
- * @param {object} o { zs, cabin, windshield, rearGlass, pillars:[[z0,z1]...], doors:[z...], handles:[z...], wheels:[z...], wheelR, rows }
+ * Helpers para desenhar uma carroceria "desenrolada" em duas metades: lado direito na metade de
+ * baixo do canvas (v 0..0.5 = chão → centro do teto) e lado esquerdo na metade de cima (v 1..0.5).
+ * Dentro de cada lado, as coordenadas são (px ao longo do carro, v da linha do perfil 0..1).
+ */
+function bodySides(W, H) {
+  const half = H / 2;
+  return [
+    { name: 'right', Y: (v) => H - v * half, dir: -1, mirrorText: true },
+    { name: 'left', Y: (v) => v * half, dir: 1, mirrorText: false },
+  ];
+}
+function sideRect(g, side, x0, x1, v0, v1) {
+  const ya = side.Y(v0), yb = side.Y(v1);
+  g.fillRect(Math.min(x0, x1), Math.min(ya, yb), Math.abs(x1 - x0), Math.max(1, Math.abs(yb - ya)));
+}
+function sideText(g, side, text, cx, v, font, color, maxW, shadow = null) {
+  g.save();
+  g.translate(cx, side.Y(v));
+  // No lado direito o u cresce para a esquerda de quem olha o ônibus; espelha o texto.
+  g.scale(side.mirrorText ? -1 : 1, side.dir > 0 ? -1 : 1);
+  g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle';
+  if (shadow) { g.fillStyle = shadow; g.fillText(text, 1.5, 1.5, maxW); }
+  g.fillStyle = color; g.fillText(text, 0, 0, maxW);
+  g.restore();
+}
+
+/**
+ * Textura de carroceria genérica (carros): u = posição ao longo do carro (frente → trás),
+ * v = linha do perfil. Multiplica a cor dos vértices, então desenha só o que escurece/clareia:
+ * colunas, frisos, caixas de roda, vãos de porta, borrachas.
  */
 export function makeBodyTexture(o) {
-  const W = 128, H = 64;
+  const W = 128, H = 128;
   const [c, g] = canvas(W, H);
   const z0 = o.zs[0], z1 = o.zs[o.zs.length - 1];
   const U = (z) => Math.round((z - z0) / (z1 - z0) * W);
-  const Y = (v) => Math.round((1 - v) * H);
-  const R = o.rows; // { floor, sill, lower, crease, belt, glassBase, roofEdge }
+  const R = o.rows;
   g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H);
-  // chão e saia
-  g.fillStyle = '#1a1a1c'; g.fillRect(0, Y(R.sill), W, H - Y(R.sill));
-  g.fillStyle = '#9a9a9a'; g.fillRect(0, Y(R.lower) - 1, W, Y(R.sill) - Y(R.lower) + 1); // saia lateral escurecida
-  // caixas de roda
-  for (const wz of o.wheels) {
-    const cx = U(wz), r = Math.round(o.wheelR / (z1 - z0) * W * 1.25);
-    g.fillStyle = '#2a2a2c'; g.beginPath(); g.ellipse(cx, Y(R.sill) - 1, r, r * 0.9, 0, Math.PI, 0); g.fill();
-    g.fillStyle = '#6a6a6a'; g.beginPath(); g.ellipse(cx, Y(R.sill) - 1, r + 2, r * 0.9 + 2, 0, Math.PI, 0); g.lineWidth = 1; g.strokeStyle = '#6a6a6a'; g.stroke();
+  for (const side of bodySides(W, H)) {
+    g.fillStyle = '#1a1a1c'; sideRect(g, side, 0, W, 0, R.sill);
+    g.fillStyle = '#9a9a9a'; sideRect(g, side, 0, W, R.sill, R.lower); // saia escurecida
+    for (const wz of o.wheels) {
+      const cx = U(wz), r = Math.round(o.wheelR / (z1 - z0) * W * 1.25);
+      g.fillStyle = '#2a2a2c'; g.beginPath(); g.ellipse(cx, side.Y(R.sill), r, r * 0.9, 0, 0, 7); g.fill();
+      g.fillStyle = '#1a1a1c'; sideRect(g, side, 0, W, 0, R.sill);
+    }
+    g.fillStyle = '#5a5a5a';
+    for (const dz of o.doors) sideRect(g, side, U(dz), U(dz) + 1, R.sill, R.glassBase);
+    g.fillStyle = '#d0d0d0';
+    for (const hz of o.handles) sideRect(g, side, U(hz) - 3, U(hz) + 3, R.belt - 0.02, R.belt - 0.045);
+    // vidros laterais: claros com faixa de reflexo; colunas pretas
+    g.fillStyle = '#c8d4dc'; sideRect(g, side, U(o.cabin[0]), U(o.cabin[1]), R.roofEdge - 0.06, R.roofEdge);
+    g.fillStyle = '#101214';
+    for (const [p0, p1] of o.pillars) sideRect(g, side, U(p0), Math.max(U(p0) + 2, U(p1)), R.glassBase - 0.01, R.roofEdge + 0.01);
+    g.fillStyle = '#3a3a3a'; sideRect(g, side, U(o.cabin[0]), U(o.cabin[1]), R.glassBase, R.glassBase + 0.012);
+    // teto: borrachas dos vidros e vãos do capô/tampa
+    g.fillStyle = '#202224';
+    for (const [a, b] of [o.windshield, o.rearGlass]) { sideRect(g, side, U(a), U(a) + 1, R.roofEdge, 1); sideRect(g, side, U(b) - 1, U(b), R.roofEdge, 1); }
+    g.fillStyle = '#5a5a5a';
+    if (o.hood) sideRect(g, side, U(o.hood), U(o.hood) + 1, R.roofEdge, 1);
+    if (o.tailgate) sideRect(g, side, U(o.tailgate), U(o.tailgate) + 1, R.roofEdge, 1);
   }
-  // vãos de porta e tampas
-  g.fillStyle = '#5a5a5a';
-  for (const dz of o.doors) g.fillRect(U(dz), Y(R.glassBase) - 1, 1, Y(R.sill) - Y(R.glassBase) + 1);
-  // maçanetas
-  g.fillStyle = '#d0d0d0';
-  for (const hz of o.handles) g.fillRect(U(hz) - 3, Y(R.belt) + 2, 6, 2);
-  // banda dos vidros laterais: vidro claro com faixa de reflexo, colunas pretas
-  const gTop = Y(R.roofEdge), gBot = Y(R.glassBase);
-  g.fillStyle = '#ffffff'; g.fillRect(U(o.cabin[0]), gTop, U(o.cabin[1]) - U(o.cabin[0]), gBot - gTop);
-  g.fillStyle = '#c8d4dc'; g.fillRect(U(o.cabin[0]), gTop + 1, U(o.cabin[1]) - U(o.cabin[0]), Math.max(1, Math.round((gBot - gTop) * 0.25)));
-  g.fillStyle = '#101214';
-  for (const [p0, p1] of o.pillars) g.fillRect(U(p0), gTop - 1, Math.max(2, U(p1) - U(p0)), gBot - gTop + 2);
-  // friso da cintura
-  g.fillStyle = '#3a3a3a'; g.fillRect(U(o.cabin[0]), gBot, U(o.cabin[1]) - U(o.cabin[0]), 1);
-  // topo: borrachas em volta do para-brisa e vidro traseiro, vão do capô e da tampa
-  const tTop = 0, tBot = gTop;
-  g.fillStyle = '#202224';
-  for (const [a, b] of [o.windshield, o.rearGlass]) { g.fillRect(U(a), tTop, 1, tBot); g.fillRect(U(b) - 1, tTop, 1, tBot); }
-  g.fillStyle = '#5a5a5a';
-  if (o.hood) g.fillRect(U(o.hood), tTop, 1, tBot);
-  if (o.tailgate) g.fillRect(U(o.tailgate), tTop, 1, tBot);
+  return pixelTexture(c, false);
+}
+
+/**
+ * Pinturas dos ônibus urbanos de Pelotas, desenhadas sobre a carroceria desenrolada.
+ * kind: 'turf' | 'santamaria' | 'santarosa'. Os vértices do ônibus são brancos, então a textura
+ * carrega as cores (inclusive os vidros).
+ */
+export function makeBusLivery(kind, o) {
+  const W = 256, H = 128;
+  const [c, g] = canvas(W, H);
+  const z0 = o.zs[0], z1 = o.zs[o.zs.length - 1];
+  const U = (z) => Math.round((z - z0) / (z1 - z0) * W);
+  const R = o.rows;
+  const L = {
+    turf: { skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', curtain: '#5fb0a0', sign: '#f2c230' },
+    santamaria: { skirt: '#d42020', skirtTop: 0.24, text: 'SANTA MARIA', font: 'bold 17px "Arial Black", Arial, sans-serif', textColor: '#111', number: '48', roof: null, curtain: null, stripe: '#d42020', sign: '#e8e8e8' },
+    santarosa: { skirt: '#3a3a3c', skirtTop: 0.11, text: 'Santa Rosa', font: 'italic bold 25px Georgia, "Times New Roman", serif', textColor: '#1f7a3a', shadow: '#d42020', number: '37', roof: null, curtain: null, confetti: ['#d42020', '#1f7a3a'], sign: '#e8e8e8' },
+  }[kind];
+  g.fillStyle = '#f2f2ee'; g.fillRect(0, 0, W, H);
+  const winTop = R.roofEdge - 0.05; // os vidros terminam um pouco abaixo da borda do teto
+  for (const side of bodySides(W, H)) {
+    // saia e chão
+    g.fillStyle = L.skirt; sideRect(g, side, 0, W, R.sill, L.skirtTop);
+    g.fillStyle = '#1a1a1c'; sideRect(g, side, 0, W, 0, R.sill);
+    if (L.stripe) { g.fillStyle = L.stripe; sideRect(g, side, 0, W, R.glassBase - 0.04, R.glassBase - 0.02); }
+    if (L.confetti) {
+      for (let k = 0; k < 42; k++) {
+        g.save();
+        g.fillStyle = L.confetti[k % 2];
+        const x = 10 + rnd() * (W - 20), v = L.skirtTop + 0.02 + rnd() * (R.glassBase - L.skirtTop - 0.06);
+        g.translate(x, side.Y(v)); g.rotate((rnd() - 0.5) * 1.6);
+        g.fillRect(-1.5, -5 - rnd() * 6, 3, 10 + rnd() * 12);
+        g.restore();
+      }
+    }
+    // caixas de roda
+    for (const wz of o.wheels) {
+      const cx = U(wz), r = Math.round(o.wheelR / (z1 - z0) * W * 1.15);
+      g.fillStyle = '#242426'; g.beginPath(); g.ellipse(cx, side.Y(R.sill), r, r * 0.9, 0, 0, 7); g.fill();
+      g.fillStyle = '#1a1a1c'; sideRect(g, side, 0, W, 0, R.sill);
+    }
+    // janelas: vidro escuro com reflexo e cortinas, colunas finas entre elas
+    const wx0 = U(o.cabin[0]) + 4, wx1 = U(o.cabin[1]) - 4;
+    g.fillStyle = '#20282e'; sideRect(g, side, wx0, wx1, R.glassBase + 0.01, winTop);
+    g.fillStyle = '#6f8ea8'; sideRect(g, side, wx0, wx1, winTop - 0.06, winTop - 0.015);
+    const pitch = Math.round(1.35 / (z1 - z0) * W);
+    for (let x = wx0; x < wx1; x += pitch) {
+      g.fillStyle = '#d8d8d4'; sideRect(g, side, x, x + 2, R.glassBase, winTop + 0.01); // coluna clara (moldura)
+      if (L.curtain) { g.fillStyle = L.curtain; sideRect(g, side, x + 3, x + 6, R.glassBase + 0.02, winTop - 0.07); }
+    }
+    g.fillStyle = '#d8d8d4'; sideRect(g, side, wx0, wx1, R.glassBase, R.glassBase + 0.012);
+    // portas só do lado direito (frente e meio), com vidro
+    if (side.name === 'right') {
+      for (const dz of o.doors) {
+        const dx = U(dz);
+        g.fillStyle = '#c8c8c4'; sideRect(g, side, dx, dx + 10, R.sill, winTop);
+        g.fillStyle = '#20282e'; sideRect(g, side, dx + 2, dx + 8, R.lower + 0.02, winTop - 0.03);
+        g.fillStyle = '#5a5a5a'; sideRect(g, side, dx + 5, dx + 6, R.sill, winTop);
+      }
+    }
+    // faixa do teto (Turf) e teto
+    g.fillStyle = L.roof || '#e4e4e0'; sideRect(g, side, 0, W, winTop, R.roofEdge + 0.07);
+    g.fillStyle = '#e4e4e0'; sideRect(g, side, 0, W, R.roofEdge + 0.07, 1);
+    // para-brisa e vidro traseiro (banda do teto nas extremidades) + letreiro
+    g.fillStyle = '#20282e';
+    sideRect(g, side, 0, U(o.windshield[1]), R.roofEdge, 0.985);
+    sideRect(g, side, U(o.rearGlass[0]), W, R.roofEdge, 0.94);
+    g.fillStyle = L.sign; sideRect(g, side, 0, U(o.windshield[1]), 0.90, 0.97);
+    // nome da empresa e número de frota
+    const textV = (L.skirtTop + R.glassBase) / 2 - 0.01;
+    sideText(g, side, L.text, Math.round(W * 0.70), textV, L.font, L.textColor, Math.round(W * 0.40), L.shadow);
+    sideText(g, side, L.number, Math.round(W * 0.20), textV, 'bold 13px Arial, sans-serif', '#111', 30);
+  }
   return pixelTexture(c, false);
 }
