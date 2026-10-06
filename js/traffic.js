@@ -73,7 +73,7 @@ export class Traffic {
   }
 
   spawnMoto(lane, z) {
-    const group = makeMoto(this.moto, pick(this.moto.colors), this.M);
+    const group = makeMoto(this.moto, pick(this.moto.colors), this.M, pick(this.moto.bagColors));
     const baseX = ROAD.LANE_X[lane];
     const weave = Math.random() < 0.55;
     return this.addEntity({

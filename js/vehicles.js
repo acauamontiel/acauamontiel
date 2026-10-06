@@ -276,9 +276,9 @@ export function buildMotoTemplate() {
   detail.push(emissive(box(0.10, 0.08, 0.06, 0xff2a20, 0, 0.70, 0.98))); // lanterna
   const ex = new THREE.CylinderGeometry(0.05, 0.05, 0.9, 6); ex.rotateX(Math.PI / 2); ex.translate(0.18, 0.33, 0.45);
   detail.push(colorize(ex, 0xb0b0b4));
-  // baú de entrega
-  detail.push(box(0.50, 0.46, 0.46, 0xe2e2e2, 0, 0.98, 0.78));
-  detail.push(box(0.52, 0.10, 0.48, 0xd02020, 0, 0.98, 0.78));
+  // bag de entrega: a caixa em si é um mesh separado (vermelha ou amarela), aqui só a alça
+  detail.push(box(0.52, 0.04, 0.48, 0x1a1a1a, 0, 1.0, 0.78));
+  const bag = box(0.50, 0.46, 0.46, 0xffffff, 0, 0.98, 0.78);
   // piloto
   detail.push(box(0.36, 0.42, 0.26, 0x2a2a4a, 0, 0.78, 0.15)); // pernas
   const torso = box(0.42, 0.50, 0.30, 0x252528, 0, 0, 0); torso.rotateX(-0.28); torso.translate(0, 1.18, 0.02);
@@ -289,13 +289,14 @@ export function buildMotoTemplate() {
   const head = new THREE.SphereGeometry(0.17, 7, 5); head.translate(0, 1.52, -0.12);
   detail.push(colorize(head, 0xe8e8e8)); // capacete
   detail.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.52, -0.28)); // viseira
-  return { paint: merge(paint), detail: merge(detail), w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000] };
+  return { paint: merge(paint), detail: merge(detail), bag, w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000], bagColors: [0xd42020, 0xf2c230] };
 }
 
-export function makeMoto(tpl, color, M) {
+export function makeMoto(tpl, color, M, bagColor = 0xd42020) {
   const g = new THREE.Group();
   g.add(new THREE.Mesh(tpl.paint, M.paint(color)));
   g.add(new THREE.Mesh(tpl.detail, M.detail));
+  g.add(new THREE.Mesh(tpl.bag, M.paint(bagColor)));
   g.add(shadowMesh(1.0, 2.2, M));
   return g;
 }
