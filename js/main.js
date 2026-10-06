@@ -34,6 +34,7 @@ scene.add(astra.group);
 const city = new City(scene, M, T);
 const traffic = new Traffic(scene, M, buildTrafficTemplates(), buildMotoTemplate());
 const input = new Input(window);
+input.bindTouchControls(document.getElementById('touch'));
 const audio = new GameAudio();
 
 const BEST_KEY = 'pelotas-turismo-best';
@@ -385,7 +386,7 @@ hud.show('title');
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }
 if (params.has('bus')) traffic.spawnParked(-7.1, G.z - 3, 'bus_' + params.get('bus'), 0xffffff, Math.PI, 0); // depuração: ônibus ao lado
-if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.style.visibility = 'hidden'; hud.el.gameover.style.visibility = 'hidden'; }
+if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.style.visibility = 'hidden'; hud.el.gameover.style.visibility = 'hidden'; hud.el.touch.style.visibility = 'hidden'; }
 if (params.has('angle')) G.titleAngle = Number(params.get('angle')) || 0;
 // ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura);
 // ?hold=up,brake,right segura teclas a partir de ?holdAt=<s>.

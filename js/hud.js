@@ -11,12 +11,16 @@ export class HUD {
       goScore: $('go-score'), goDist: $('go-dist'), goMotos: $('go-motos'), goBest: $('go-best'),
       goKicker: $('go-kicker'), goTitle: $('go-title'), goPress: $('go-press'),
       courseSub: document.querySelector('.course-sub'),
+      touch: $('touch'),
     };
     this.popupTimer = 0;
+    this.isTouch = new URLSearchParams(location.search).has('touch') || window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+    if (this.isTouch) document.body.classList.add('touch');
   }
 
   show(name) {
     this.el.hud.classList.toggle('hidden', name !== 'hud');
+    this.el.touch.classList.toggle('hidden', !(name === 'hud' && this.isTouch));
     this.el.title.classList.toggle('hidden', name !== 'title');
     this.el.gameover.classList.toggle('hidden', name !== 'gameover');
     this.el.loading.classList.add('hidden');

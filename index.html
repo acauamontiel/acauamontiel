@@ -65,6 +65,9 @@
         <span><kbd>↑</kbd>+<kbd>ESPAÇO</kbd> drift</span>
         <span><kbd>M</kbd> som</span>
       </div>
+      <div class="controls touch-only">
+        <span>No celular: botões na tela. <b>GÁS</b> + <b>FREIO</b> juntos fazem o drift.</span>
+      </div>
       <div class="press blink">PRESSIONE ENTER OU TOQUE NA TELA</div>
       <div id="title-best" class="best"></div>
     </div>
@@ -83,6 +86,14 @@
       </div>
       <div id="go-press" class="press blink">ENTER OU TOQUE PARA CORRER DE NOVO</div>
     </div>
+  </div>
+
+  <!-- Controles de toque (só em telas de toque, durante a corrida) -->
+  <div id="touch" class="layer hidden">
+    <button class="tbtn t-left" data-k="left" aria-label="esquerda">◀</button>
+    <button class="tbtn t-right" data-k="right" aria-label="direita">▶</button>
+    <button class="tbtn t-brake" data-k="brake" aria-label="freio">FREIO</button>
+    <button class="tbtn t-gas" data-k="up" aria-label="acelerar">GÁS</button>
   </div>
 
   <div id="loading" class="layer screen">

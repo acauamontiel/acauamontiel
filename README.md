@@ -27,7 +27,7 @@ Qualquer servidor estático também serve (os módulos ES não carregam via `fil
 | `Enter` | começar / recomeçar |
 | `M` | liga/desliga o som |
 
-No celular: toque na metade esquerda/direita da tela para desviar; dois dedos freiam.
+No celular aparecem botões na tela: ◀ ▶ para desviar, GÁS e FREIO; GÁS + FREIO juntos fazem o drift.
 
 Parâmetros de URL úteis (depuração):
 
@@ -41,6 +41,7 @@ Parâmetros de URL úteis (depuração):
 | `?bot` | piloto automático que persegue motos e desvia do resto |
 | `?showcase` | estaciona um exemplar de cada veículo à frente |
 | `?nohud` | esconde o HUD |
+| `?touch` | força os botões de toque (para testar no desktop) |
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
 | `?angle=0.75` | ângulo inicial da câmera orbital da tela de título (3/4 traseira) |

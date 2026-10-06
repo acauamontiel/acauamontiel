@@ -1,5 +1,4 @@
-// Teclado + toque. Toque: metade esquerda/direita da tela desvia, dois dedos freiam.
-// Os listeners de toque ficam na janela porque as telas de título/fim cobrem o canvas.
+// Teclado + botões de toque na tela (ver bindTouchControls).
 export class Input {
   constructor(el) {
     this.left = false; this.right = false; this.up = false; this.down = false; this.brake = false;
@@ -19,27 +18,26 @@ export class Input {
     window.addEventListener('keyup', (e) => this.set(e.code, false));
     window.addEventListener('blur', () => { this.left = this.right = this.up = this.down = this.brake = false; });
 
-    const touchUpdate = () => {
-      let l = false, r = false;
-      for (const x of this.touches.values()) { if (x < window.innerWidth / 2) l = true; else r = true; }
-      this.left = l; this.right = r;
-      this.down = this.touches.size >= 2 && l && r;
-    };
-    el.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      for (const t of e.changedTouches) this.touches.set(t.identifier, t.clientX);
-      touchUpdate();
-      if (this.onAny) this.onAny();
-    }, { passive: false });
-    el.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      for (const t of e.changedTouches) this.touches.set(t.identifier, t.clientX);
-      touchUpdate();
-    }, { passive: false });
-    const end = (e) => { for (const t of e.changedTouches) this.touches.delete(t.identifier); touchUpdate(); };
-    el.addEventListener('touchend', end);
-    el.addEventListener('touchcancel', end);
+    // Toque fora dos botões só serve para começar/continuar (os botões ficam ocultos nas telas).
+    el.addEventListener('touchstart', () => { if (this.onAny) this.onAny(); }, { passive: true });
     el.addEventListener('mousedown', () => { if (this.onAny) this.onAny(); });
+  }
+
+  /**
+   * Botões de toque na tela: cada botão segura sua própria tecla enquanto o dedo estiver nele,
+   * com multitoque (GÁS + FREIO + seta ao mesmo tempo).
+   */
+  bindTouchControls(container) {
+    for (const btn of container.querySelectorAll('.tbtn')) {
+      const key = btn.dataset.k;
+      const press = (e) => { e.preventDefault(); this[key] = true; btn.classList.add('on'); try { btn.setPointerCapture(e.pointerId); } catch { /* ok */ } };
+      const release = () => { this[key] = false; btn.classList.remove('on'); };
+      btn.addEventListener('pointerdown', press);
+      btn.addEventListener('pointerup', release);
+      btn.addEventListener('pointercancel', release);
+      btn.addEventListener('lostpointercapture', release);
+      btn.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
   }
 
   set(code, v) {

@@ -128,6 +128,40 @@ html, body {
   100% { opacity: 0; transform: translateX(30%); }
 }
 
+/* ---------- Controles de toque ---------- */
+.touch-only { display: none; }
+body.touch .touch-only { display: flex; }
+#touch { z-index: 5; }
+.tbtn {
+  position: absolute;
+  bottom: 22px;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.12);
+  color: var(--gt-white);
+  font: 700 22px var(--font);
+  font-style: italic;
+  text-shadow: var(--shadow);
+  pointer-events: auto;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(2px);
+}
+.tbtn.on { background: rgba(255,216,74,0.5); border-color: var(--gt-yellow); }
+.t-left { left: 18px; }
+.t-right { left: 116px; }
+.t-brake { right: 128px; font-size: 16px; }
+.t-gas { right: 18px; width: 98px; height: 98px; bottom: 16px; background: rgba(53,208,90,0.18); }
+.t-gas.on { background: rgba(53,208,90,0.55); border-color: #35d05a; }
+/* Em telas de toque o HUD inferior sobe para não ficar embaixo dos botões. */
+body.touch .hud-bottom-left, body.touch .hud-bottom-right { bottom: 128px; }
+body.touch .hud-bottom-left { left: 14px; }
+body.touch .hud-bottom-right { right: 14px; }
+
 /* ---------- Telas ---------- */
 .screen {
   display: flex;
