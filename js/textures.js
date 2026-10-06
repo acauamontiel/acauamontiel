@@ -376,11 +376,11 @@ export function makeTextures() {
     g.fillStyle = '#6a1416'; g.fillRect(94, 29, 32, 9);
     g.fillStyle = 'rgba(255,255,255,0.18)'; g.fillRect(70, 3, 50, 2);
     g.fillStyle = 'rgba(0,0,0,0.5)'; g.fillRect(64, 16, 64, 2); g.fillRect(64, 27, 64, 2);
-    // placa (0,32 64x16)
-    g.fillStyle = '#e8e8e4'; g.fillRect(0, 32, 64, 16);
-    g.fillStyle = '#1946a8'; g.fillRect(0, 32, 64, 3);
+    // placa (0,32 64x16): modelo cinza antigo, MGY 8888
+    g.fillStyle = '#d4d4d0'; g.fillRect(0, 32, 64, 16);
+    g.fillStyle = '#9a9a96'; g.fillRect(0, 32, 64, 1); g.fillRect(0, 47, 64, 1);
     g.fillStyle = '#1a1a1a'; g.font = 'bold 10px Arial, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    g.fillText('PLT·GSi', 32, 41, 60);
+    g.fillText('MGY 8888', 32, 40, 60);
     // grade (0,56 64x12) com gravata dourada
     g.fillStyle = '#0e1012'; g.fillRect(0, 56, 64, 12);
     g.fillStyle = '#22262a'; for (let y = 58; y < 68; y += 3) g.fillRect(0, y, 64, 1);
