@@ -2,7 +2,7 @@
 // Os listeners de toque ficam na janela porque as telas de título/fim cobrem o canvas.
 export class Input {
   constructor(el) {
-    this.left = false; this.right = false; this.up = false; this.down = false;
+    this.left = false; this.right = false; this.up = false; this.down = false; this.brake = false;
     this.pressed = new Set();
     this.onAny = null;
     this.onKey = null;
@@ -17,7 +17,7 @@ export class Input {
       }
     });
     window.addEventListener('keyup', (e) => this.set(e.code, false));
-    window.addEventListener('blur', () => { this.left = this.right = this.up = this.down = false; });
+    window.addEventListener('blur', () => { this.left = this.right = this.up = this.down = this.brake = false; });
 
     const touchUpdate = () => {
       let l = false, r = false;
@@ -48,6 +48,7 @@ export class Input {
       case 'ArrowRight': case 'KeyD': this.right = v; break;
       case 'ArrowUp': case 'KeyW': this.up = v; break;
       case 'ArrowDown': case 'KeyS': this.down = v; break;
+      case 'Space': this.brake = v; break;
     }
   }
 

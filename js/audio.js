@@ -28,6 +28,26 @@ export class GameAudio {
     filter.connect(eg).connect(this.master);
     osc1.start(); osc2.start();
     this.engine = { osc1, osc2, filter, gain: eg };
+
+    // Cantada de pneu: ruído em loop por um passa-banda, ganho controlado pelo drift.
+    const n = ctx.sampleRate;
+    const nb = ctx.createBuffer(1, n, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    for (let i = 0; i < n; i++) nd[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource(); src.buffer = nb; src.loop = true;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1700; bp.Q.value = 2.5;
+    const sg = ctx.createGain(); sg.gain.value = 0;
+    src.connect(bp).connect(sg).connect(this.master);
+    src.start();
+    this.screech = { src, bp, gain: sg };
+  }
+
+  /** Nível da cantada de pneu em [0,1]. */
+  screechUpdate(level) {
+    if (!this.screech) return;
+    const t = this.ctx.currentTime;
+    this.screech.gain.gain.setTargetAtTime(level * 0.3, t, 0.05);
+    this.screech.bp.frequency.setTargetAtTime(1400 + level * 900, t, 0.1);
   }
 
   setMuted(m) {

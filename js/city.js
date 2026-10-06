@@ -174,8 +174,8 @@ export class City {
   }
 
   lampPost(add, z) {
-    add('props', cylinder(0.08, 0.11, 8, 6, 0xb8bcc0, 0, 4, z));
-    add('props', box(4.6, 0.12, 0.12, 0xb8bcc0, 0, 7.9, z));
+    add('props', cylinder(0.08, 0.11, 8, 6, 0x8a8e92, 0, 4, z));
+    add('props', box(4.6, 0.12, 0.12, 0x8a8e92, 0, 7.9, z));
     add('props', emissive(box(0.55, 0.16, 0.32, 0xffd9a0, -2.2, 7.8, z)));
     add('props', emissive(box(0.55, 0.16, 0.32, 0xffd9a0, 2.2, 7.8, z)));
   }

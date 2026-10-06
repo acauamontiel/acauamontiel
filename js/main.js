@@ -1,6 +1,6 @@
 // PELOTAS TURISMO — Astra GSi pelas avenidas de Pelotas, em WebGL com visual de PS1.
 import * as THREE from 'three';
-import { PS1Post, shared } from './ps1.js';
+import { PS1Post, shared, ps1Material } from './ps1.js';
 import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
 import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
@@ -63,6 +63,7 @@ const G = {
   health: 100, score: 0, combo: 0, comboTimer: 0, dist: 0, motos: 0,
   time: 0, stateTime: 0,
   shake: 0, bounce: 0, bounceV: 0, roll: 0, invuln: 0, gear: 1, rpm: 0,
+  drift: 0, vx: 0, yaw: 0, driftPop: false, smokeT: 0,
   course: THEMES[START_PHASE].name, phase: START_PHASE, phases: THEMES.length, best: loadBest(), alive: false,
   wheelRot: 0, titleAngle: 0, phaseDist: 0,
 };
@@ -75,6 +76,7 @@ function startPhase(p, tp = 0) {
   G.course = THEMES[p].name;
   G.x = ROAD.LANE_X[1]; G.z = phaseStartZ(p) - tp; G.speed = 0;
   G.shake = 0; G.bounce = 0; G.bounceV = 0; G.roll = 0; G.invuln = 0; G.gear = 1; G.rpm = 0;
+  G.drift = 0; G.vx = 0; G.yaw = 0; G.driftPop = false;
   G.combo = 0; G.comboTimer = 0; G.alive = true; G.stateTime = 0;
   traffic.reset(G.z);
   traffic.parkedForPhase(THEMES[p].key, phaseStartZ(p));
@@ -134,6 +136,33 @@ function victory() {
   hud.overlay({ kicker: 'CHEGADA · DUQUE, BENTO E JK VENCIDAS', title: 'CRAZY<br>ASTRA', press: 'ENTER OU TOQUE PARA CORRER DE NOVO' }, G, G.best);
 }
 
+// Fumaça dos pneus traseiros durante o drift: quads no chão que crescem e somem.
+const smoke = {
+  pool: [],
+  init() {
+    const geo = new THREE.PlaneGeometry(1, 1); geo.rotateX(-Math.PI / 2);
+    for (let i = 0; i < 24; i++) {
+      const mat = ps1Material({ map: T.shadow, unlit: true, transparent: true, color: 0xb0b0b0, opacity: 0, polygonOffset: 3 });
+      const m = new THREE.Mesh(geo, mat); m.visible = false; m.renderOrder = 3;
+      scene.add(m); this.pool.push({ m, life: 1 });
+    }
+  },
+  spawn(x, z) {
+    const p = this.pool.find((q) => q.life >= 1) || this.pool[0];
+    p.life = 0; p.m.visible = true; p.m.position.set(x, 0.08, z); p.m.rotation.y = Math.random() * Math.PI;
+  },
+  update(dt) {
+    for (const p of this.pool) {
+      if (p.life >= 1) continue;
+      p.life += dt / 0.9;
+      const sc = 0.7 + p.life * 2.4;
+      p.m.scale.set(sc, 1, sc);
+      p.m.material.uniforms.uOpacity.value = 0.55 * (1 - p.life);
+      if (p.life >= 1) p.m.visible = false;
+    }
+  },
+};
+
 function onConfirm() {
   if (G.state === 'title') startRun();
   else if ((G.state === 'gameover' || G.state === 'victory') && G.stateTime > 1.2) startRun();
@@ -141,7 +170,7 @@ function onConfirm() {
 }
 
 input.onKey = (code) => {
-  if (code === 'Enter' || code === 'Space') onConfirm();
+  if (code === 'Enter') onConfirm();
   if (code === 'KeyM') audio.setMuted(!audio.muted);
 };
 input.onAny = () => { if (G.state !== 'playing') onConfirm(); };
@@ -173,22 +202,52 @@ function updatePlaying(dt) {
   const diff = Math.min(1, G.dist / 6000);
   const cruise = 24 + diff * 18;
   const throttle = input.up ? 1 : 0;
-  if (input.down) {
+  const brake = input.brake || input.down;
+  const steer = BOT ? botSteer() : input.steer;
+
+  // Drift: acelerar e frear juntos solta a traseira; o carro guina e desliza para o lado apontado.
+  // Histerese: entra no drift acima de 9 m/s e só sai dele abaixo de 6 m/s (ou soltando uma das teclas).
+  const wantDrift = throttle && brake && G.speed > (G.drift > 0.3 ? 6 : 9);
+  G.drift += ((wantDrift ? 1 : 0) - G.drift) * Math.min(1, (wantDrift ? 5 : 3) * dt);
+  const d = G.drift;
+  if (wantDrift) {
+    G.speed = Math.max(9, G.speed - 9 * dt); // derrapar custa velocidade, mas sem travar
+  } else if (brake) {
     G.speed = Math.max(6, G.speed - 32 * dt);
   } else {
     const target = throttle ? G.maxSpeed : cruise;
     G.speed += (target - G.speed) * (throttle ? 0.55 : 0.35) * dt;
   }
 
-  // Direção lateral, com "pancada" no meio-fio.
-  const steer = BOT ? botSteer() : input.steer;
-  const lateral = steer * (7 + G.speed * 0.11) * dt;
+  // Velocidade lateral: no drift ela se acumula (traseira solta); fora dele o atrito a mata rápido.
+  G.vx += steer * 26 * d * dt;
+  G.vx *= Math.exp(-(2.5 + 6 * (1 - d)) * dt);
+  G.vx = Math.max(-16, Math.min(16, G.vx));
+  const lateral = steer * (7 + G.speed * 0.11) * (1 - d) * dt + G.vx * dt;
   let nx = G.x + lateral;
   if (nx < ROAD.PLAYER_MIN_X || nx > ROAD.PLAYER_MAX_X) {
     nx = Math.max(ROAD.PLAYER_MIN_X, Math.min(ROAD.PLAYER_MAX_X, nx));
-    if (steer !== 0 && G.speed > 8) { G.speed *= 1 - 0.6 * dt; G.shake = Math.max(G.shake, 0.15); if (Math.random() < dt * 6) audio.curb(); }
+    G.vx *= -0.3;
+    if ((steer !== 0 || d > 0.3) && G.speed > 8) { G.speed *= 1 - 0.6 * dt; G.shake = Math.max(G.shake, 0.15); if (Math.random() < dt * 6) audio.curb(); }
   }
   G.x = nx;
+
+  // Guinada visual: o nariz aponta para dentro da curva, proporcional ao escorregão.
+  const targetYaw = (-steer * 0.6 - G.vx * 0.012) * d;
+  G.yaw += (targetYaw - G.yaw) * Math.min(1, (d > 0.1 ? 6 : 8) * dt);
+
+  // Pontos, fumaça e cantada enquanto derrapa.
+  if (d > 0.5) {
+    G.score += 25 * dt;
+    if (!G.driftPop) { G.driftPop = true; hud.popup('DERRAPAGEM!'); }
+    G.smokeT -= dt;
+    if (G.smokeT <= 0) {
+      G.smokeT = 0.06;
+      const c = Math.cos(G.yaw), sn = Math.sin(G.yaw);
+      for (const wx of [-0.76, 0.76]) smoke.spawn(G.x + wx * c + 1.3 * sn, G.z - wx * sn + 1.3 * c);
+    }
+  } else if (d < 0.2) G.driftPop = false;
+  audio.screechUpdate(d * Math.min(1, G.speed / 20));
   G.z -= G.speed * dt;
   G.dist += G.speed * dt;
   G.score += G.speed * dt * 0.5;
@@ -237,7 +296,7 @@ function updatePlaying(dt) {
   G.shake *= Math.exp(-5 * dt);
 
   astra.group.position.set(G.x, G.bounce * 0.12, G.z);
-  astra.group.rotation.set(G.bounce * 0.04, steer * -0.03, G.roll);
+  astra.group.rotation.set(G.bounce * 0.04, G.yaw + steer * -0.03 * (1 - d), G.roll * (1 + d));
   G.wheelRot -= (G.speed * dt) / 0.30;
   for (const w of astra.wheels) w.rotation.x = G.wheelRot;
   // Piscar quando invulnerável.
@@ -249,11 +308,12 @@ function updatePlaying(dt) {
   const sx = (Math.random() - 0.5) * G.shake * 0.5;
   const sy = (Math.random() - 0.5) * G.shake * 0.4;
   camera.position.set(camState.x + sx, 3.1 + G.bounce * 0.06 + sy, G.z + 6.8 + G.speed * 0.02);
-  camera.lookAt(camState.x + steer * 0.5 + sx, 0.4 + sy, G.z - 12);
+  camera.lookAt(camState.x + steer * 0.5 + G.vx * 0.12 + sx, 0.4 + sy, G.z - 12);
   camera.fov = camState.fov;
   camera.updateProjectionMatrix();
 
   audio.engineUpdate(G.rpm, throttle, true);
+  smoke.update(dt);
   hud.update(G);
 
   if (G.health <= 0) { gameOver(); return; }
@@ -283,6 +343,8 @@ function updateGameOver(dt) {
   camera.lookAt(G.x, 0.6, G.z);
   camera.updateProjectionMatrix();
   audio.engineUpdate(G.speed / 60, 0, G.state === 'phaseEnd');
+  audio.screechUpdate(0);
+  smoke.update(dt);
   // Fim de fase avança sozinho depois de alguns segundos.
   if (G.state === 'phaseEnd' && G.stateTime > 5) nextPhase();
 }
@@ -316,6 +378,7 @@ const DBG = params.has('dbg');
 if (DBG) renderer.info.autoReset = false;
 
 // Inicialização.
+smoke.init();
 city.update(G.z);
 hud.setBest(G.best);
 hud.show('title');
@@ -324,10 +387,14 @@ if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; 
 if (params.has('bus')) traffic.spawnParked(-7.1, G.z - 3, 'bus_' + params.get('bus'), 0xffffff, Math.PI, 0); // depuração: ônibus ao lado
 if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.style.visibility = 'hidden'; hud.el.gameover.style.visibility = 'hidden'; }
 if (params.has('angle')) G.titleAngle = Number(params.get('angle')) || 0;
-// ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura).
+// ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura);
+// ?hold=up,brake,right segura teclas a partir de ?holdAt=<s>.
+const HOLD = (params.get('hold') || '').split(',').filter(Boolean);
+const HOLD_AT = Number(params.get('holdAt')) || 0;
 const sim = Number(params.get('sim')) || 0;
 for (let k = 0; k < sim * 60 && (G.state === 'playing' || G.state === 'phaseEnd'); k++) {
   G.time += 1 / 60; G.stateTime += 1 / 60;
+  if (G.time >= HOLD_AT) for (const h of HOLD) input[h] = true;
   if (G.state === 'phaseEnd') { if (BOT) { nextPhase(); continue; } break; }
   updatePlaying(1 / 60);
   city.update(G.z);
