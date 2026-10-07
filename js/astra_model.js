@@ -22,7 +22,7 @@ const RULES = [
   ['vehicle_badges', (map) => ({ map, alphaTest: 0.5, polygonOffset: 1 }), 1],
   ['vehicle_detail2|futo_dash', (map) => ({ map }), 1],
   ['vehicle_detail2', () => ({ color: 0x18191b }), 1],
-  ['wheel|rim', () => ({ color: 0x6e7176, envStrength: 0.5 }), 0],
+  ['wheel|rim', () => ({ color: 0x121214, envStrength: 0.55 }), 0],
   ['wheel|tire', () => ({ color: 0x0c0c0d }), 1],
   ['vehicle_tire', (map) => ({ map, color: 0x9a9a9a }), 0.5],
 ];

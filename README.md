@@ -101,7 +101,7 @@ entra sozinho se o GLB não carregar.
 conversor em `tools/rage2glb/`, escrito em Python puro (sem dependências):
 
 ```bash
-python3 tools/rage2glb/export_glb.py buffalo.yft buffalo.ytd assets/astra.glb --texsize 128 --skip 9,14,15,42,46,48
+python3 tools/rage2glb/export_glb.py buffalo.yft buffalo.ytd assets/astra.glb --texsize 128 --skip 9,14,15,42,46,48,86 --drop-uv '84:0.5,1.1,0.6,1.1'
 ```
 
 O que o conversor faz:
@@ -109,7 +109,7 @@ O que o conversor faz:
 - descomprime o recurso RSC7 e lê o fragmento: drawable, esqueleto, shaders, buffers de vértices e índices
   (posição, normal, UV, índices de osso), e o dicionário de texturas (DXT1/DXT5/ARGB → PNG);
 - mantém só o exterior: descarta as peças ligadas a ossos de interior/motor/som e os shaders de interior
-  (`--skip-bones`, `--skip-shaders`, `--skip`); o resultado tem ~31 mil triângulos em vez dos 310 mil originais;
+  (`--skip-bones`, `--skip-shaders`, `--skip`), e tira decalques por região de UV (`--drop-uv`: a faixa "SUPER SPORT" e o "GSi 16V" da tampa ficaram de fora); o resultado tem ~31 mil triângulos em vez dos 310 mil originais;
 - converte os eixos (GTA: y para frente, z para cima → jogo: -z para frente, y para cima) e coloca as rodas no chão;
 - decima as rodas (30 mil → 1,4 mil triângulos cada) por colapso de arestas com quádricas (`decimate.py`) e
   instancia as quatro nos ossos `wheel_lf/rf/lr/rr`, espelhando as da direita;

@@ -16,6 +16,7 @@ ap.add_argument('--texsize-big', default='farol,lanterna,vehiclelights128,farolv
 ap.add_argument('--texsize', type=int, default=256)
 ap.add_argument('--ground', type=float, default=None, help='z (GTA) do chão; default = centro da roda - raio')
 ap.add_argument('--report', action='store_true')
+ap.add_argument('--drop-uv', default='', help='remove triângulos pelo centro do UV: gi:umin,umax,vmin,vmax;...')
 args = ap.parse_args()
 
 r = rage.Res(args.yft); frag = rage.read_frag(r); d = frag['drawable']
@@ -72,9 +73,19 @@ def material(si):
     elif s['name'] in ('vehicle_badges', 'vehicle_decal', 'vehicle_cutout', 'emissive', 'vehicle_lightsemissive') or (tex and ('faixa' in tex.lower())): m['alphaMode'] = 'MASK'; m['alphaCutoff'] = 0.4
     mat_cache[si] = out.material(m); return mat_cache[si]
 
-def build_geometry(g, bone_filter=True, mirror=False):
+drop_uv = {}
+for item in args.drop_uv.split(';'):
+    if not item: continue
+    gi, rect = item.split(':'); drop_uv.setdefault(int(gi), []).append([float(x) for x in rect.split(',')])
+
+def build_geometry(g, bone_filter=True, mirror=False, gi=None):
     vs = rage.vertices(r, g); idx = rage.indices(r, g)
     tris = [idx[i:i+3] for i in range(0, len(idx) - len(idx) % 3, 3)]
+    for u0, u1, v0, v1 in drop_uv.get(gi, []):
+        def inside(t):
+            u = sum(vs[v]['uv0'][0] for v in t) / 3; w = sum(vs[v]['uv0'][1] for v in t) / 3
+            return u0 <= u <= u1 and v0 <= w <= v1
+        tris = [t for t in tris if not inside(t)]
     if bone_filter and 'blendi' in vs[0]:
         tris = [t for t in tris if not any(vs[v]['blendi'][2] in skip_bones for v in t)]
     if not tris: return None
@@ -104,7 +115,7 @@ for gi, g in enumerate(model['geoms']):
     s = d['shaders'][g['shader']]
     if only and gi not in only: continue
     if gi in skip or s['name'] in skip_shaders: continue
-    res = build_geometry(g)
+    res = build_geometry(g, gi=gi)
     if not res: continue
     pos, nor, uv, ind, bones = res
     tex = s['params'].get('DiffuseSampler', (None, None))[1] or ''
