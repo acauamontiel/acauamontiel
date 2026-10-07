@@ -186,7 +186,7 @@ function carTemplate(s) {
     w.translate(x, s.wheelR, z);
     detail.push(w);
   }
-  return { paint, bodyTex, detail: merge(detail), w: s.w, l: s.l, colors: s.colors, name: s.name, weight: s.weight, bus: !!s.livery, rearAd: s.rearAd };
+  return { paint, bodyTex, detail: merge(detail), w: s.w, l: s.l, colors: s.colors, name: s.name, weight: s.weight, bus: !!s.livery, livery: s.livery, rearAd: s.rearAd, model: s.model };
 }
 
 const CAR_COLORS = [0xe8e8e8, 0xb8bcc2, 0xb3221c, 0x1f3a7a, 0x1f5a3a, 0xd8c9a3, 0x2a2a2e, 0x8a1c3a, 0x4a6fa5];
@@ -194,7 +194,7 @@ const CAR_COLORS = [0xe8e8e8, 0xb8bcc2, 0xb3221c, 0x1f3a7a, 0x1f5a3a, 0xd8c9a3, 
 /** Templates: sedã (Monza/Vectra), hatch (Gol/Uno), van (Kombi), picape (D-20) e ônibus urbano. */
 export function buildTrafficTemplates() {
   return [
-    carTemplate({ name: 'sedan', w: 1.70, l: 4.5, wheelR: 0.30, wheelBase: 2.60, lightY: 0.66, colors: CAR_COLORS, weight: 4,
+    carTemplate({ name: 'sedan', model: 'marea', w: 1.76, l: 4.55, wheelR: 0.30, wheelBase: 2.60, lightY: 0.66, colors: CAR_COLORS, weight: 4,
       tex: { pillars: [[-0.8, -0.66], [0.42, 0.52], [1.5, 1.7]], doors: [-0.72, 0.48, 1.56], handles: [0.3, 1.4], hood: -0.82, tailgate: 1.72 }, body: {
       zs: [-2.25, -2.1, -1.7, -1.3, -0.82, -0.78, -0.4, -0.12, -0.08, 0.4, 0.9, 0.98, 1.02, 1.5, 1.68, 1.72, 2.1, 2.25],
       yFloor: [[-2.25, 0.34], [-2.1, 0.27], [2.1, 0.27], [2.25, 0.34]],
@@ -205,7 +205,7 @@ export function buildTrafficTemplates() {
       wTop: [[-2.25, 0.50], [-2.1, 0.64], [-1.3, 0.72], [-0.8, 0.74], [-0.1, 0.60], [1.0, 0.60], [1.7, 0.72], [2.25, 0.60]],
       cabin: [-0.8, 1.7], windshield: [-0.8, -0.1], rearGlass: [1.0, 1.68],
     } }),
-    carTemplate({ name: 'hatch', w: 1.64, l: 3.9, wheelR: 0.29, wheelBase: 2.45, lightY: 0.64, colors: CAR_COLORS, weight: 4,
+    carTemplate({ name: 'hatch', model: 'hb20', w: 1.72, l: 4.0, wheelR: 0.29, wheelBase: 2.45, lightY: 0.64, colors: CAR_COLORS, weight: 4,
       tex: { pillars: [[-0.7, -0.56], [0.5, 0.6], [1.5, 1.8]], doors: [-0.62, 0.55], handles: [0.35], hood: -0.72, tailgate: 1.82 }, body: {
       zs: [-1.95, -1.85, -1.4, -1.0, -0.72, -0.68, -0.3, -0.02, 0.02, 0.5, 1.0, 1.18, 1.22, 1.6, 1.78, 1.82, 1.9, 1.95],
       yFloor: [[-1.95, 0.34], [-1.85, 0.27], [1.85, 0.27], [1.95, 0.34]],
@@ -256,6 +256,11 @@ export function buildTrafficTemplates() {
 
 /** Cria uma instância (Group) de um template com a cor dada. */
 export function makeVehicle(tpl, color, M) {
+  if (tpl.model && M.models && M.models[tpl.model]) {
+    const g = M.models[tpl.model].make(color);
+    g.add(shadowMesh(tpl.w * 1.15, tpl.l * 1.05, M));
+    return g;
+  }
   if (tpl.bus && M.busModel) {
     const g = M.busModel.make(tpl.livery);
     g.add(shadowMesh(tpl.w * 1.15, tpl.l * 1.05, M));
@@ -307,6 +312,11 @@ export function buildMotoTemplate() {
 }
 
 export function makeMoto(tpl, color, M, bagColor = 0xd42020) {
+  if (M.models && M.models.biz) {
+    const g = M.models.biz.make(color, bagColor);
+    g.add(shadowMesh(1.0, 2.2, M));
+    return g;
+  }
   const g = new THREE.Group();
   g.add(new THREE.Mesh(tpl.paint, M.paint(color)));
   g.add(new THREE.Mesh(tpl.detail, M.detail));

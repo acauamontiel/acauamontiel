@@ -53,7 +53,7 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
   const fixed = new Map();
   const skins = {};
   const liveryMat = (kind) => {
-    if (!skins[kind]) skins[kind] = ps1Material({ map: T.busSkin[kind], envStrength: 0.12, lightScale: 0.45 });
+    if (!skins[kind]) skins[kind] = ps1Material({ map: T.busSkin[kind], envStrength: 0.12, lightScale: 0.3 });
     return skins[kind];
   };
   const roles = []; // [mesh, role]

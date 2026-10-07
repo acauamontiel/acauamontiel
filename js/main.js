@@ -5,6 +5,7 @@ import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
 import { loadAstraModel } from './astra_model.js';
 import { loadBusModel } from './bus_model.js';
+import { loadVehicleModels } from './vehicle_models.js';
 import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
 import { Traffic } from './traffic.js';
 import { HUD } from './hud.js';
@@ -41,7 +42,11 @@ try {
 }
 // Ônibus do tráfego: modelo 3D (assets/bus.glb) com as pinturas Turf, Santa Silvana e Santa Rosa projetadas.
 if (!params.has('lowpoly')) {
-  try { M.busModel = await loadBusModel(M, T); } catch (err) { console.warn('Modelo do ônibus não carregou; usando o procedural.', err); }
+  const [bus, models] = await Promise.all([
+    loadBusModel(M, T).catch((err) => { console.warn('Modelo do ônibus não carregou; usando o procedural.', err); return null; }),
+    loadVehicleModels(M),
+  ]);
+  M.busModel = bus; M.models = models; // carros (Marea, HB20) e moto (Biz) do tráfego
 }
 scene.add(astra.group);
 const city = new City(scene, M, T);
@@ -399,7 +404,7 @@ hud.setBest(G.best);
 hud.show('title');
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }
-if (params.has('bus')) traffic.spawnParked(-7.1, G.z - 3, 'bus_' + params.get('bus'), 0xffffff, Math.PI, 0); // depuração: ônibus ao lado
+if (params.has('bus')) traffic.spawnParked(7.1, G.z - 9, 'bus_' + params.get('bus'), 0xffffff, 0, 0); // depuração: ônibus logo à frente
 if (params.has('nohud')) { hud.el.hud.style.visibility = 'hidden'; hud.el.title.style.visibility = 'hidden'; hud.el.gameover.style.visibility = 'hidden'; hud.el.touch.style.visibility = 'hidden'; }
 if (params.has('angle')) G.titleAngle = Number(params.get('angle')) || 0;
 // ?sim=N avança N segundos de jogo antes do primeiro quadro (depuração/captura);

@@ -141,6 +141,30 @@ python3 tools/rage2glb/export_dff.py bus.dff bus.txd assets/bus.glb \
 
 `tools/viewer.html?game=bus&kind=santarosa&views=side,isoFL,rear&dist=2.6` mostra cada pintura como no jogo.
 
+### Carros e motos do tráfego
+
+Marea Weekend (sedã), HB20 (hatch) e a Honda Biz do motoboy também vêm de mods de GTA SA, pelo exportador genérico
+`tools/rage2glb/export_car.py`:
+
+```bash
+python3 tools/rage2glb/export_car.py marea.dff marea.txd --out assets/marea.glb \
+  --skip-frames "_dam,ped_,Box_,interior,Taramps,corneta,AP-2100,Motor,Gaiola" --wheel-frame wheel --target 12000
+python3 tools/rage2glb/export_car.py hb20.dff hb20.txd --out assets/hb20.glb --skip-frames "_dam,ped_,Box_,interior" --target 14000
+python3 tools/rage2glb/export_car.py biz.dff --out assets/biz.glb --target 7000 --paint-frames bau --rename "196,131,87=skin"
+```
+
+- as cores-chave do GTA SA (60,255,0 e 255,0,175) viram o material `paint`, que o jogo troca pela cor sorteada do
+  carro; no Biz o frame `bau` vira `paint2`, que recebe o vermelho ou amarelo do baú (o mod já traz o motoboy);
+- materiais com alpha viram `glass`; cores-chave de luz são divididas em frente/trás na exportação e viram farol
+  branco, lanterna vermelha ou pisca âmbar; texturas DXT e rasters 888/8888 do TXD são reduzidas a 128 px;
+- `--target` decima tudo proporcionalmente (o HB20 tem 658 mil triângulos no mod; no jogo, 14 mil); uma roda única
+  (`--wheel-frame`) é instanciada e espelhada nos quatro `wheel_*_dummy`;
+- `js/vehicle_models.js` carrega o catálogo (`VEHICLE_MODELS`) e `makeVehicle`/`makeMoto` usam os modelos quando
+  carregados; van e picape continuam loftados.
+
+`tools/viewer.html?game=marea&night&color=2a4a9a&views=isoFL,isoRR,rear` mostra um carro como no jogo
+(`game=hb20`, `game=biz&color2=f2c230` para o baú).
+
 `tools/viewer.html?views=isoFL,rear,side&list` mostra o GLB com vários ângulos e a lista de peças
 (`?only=g39` ou `?hide=wheel` isolam peças; `?game` carrega com os materiais do jogo, placa MGY 8888 incluída). Os modelos originais do mod não ficam no repositório; só o GLB derivado.
 
@@ -160,8 +184,10 @@ js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
 assets/bus.glb    modelo do ônibus urbano (idem)
+assets/marea.glb  assets/hb20.glb  assets/biz.glb   carros e moto do tráfego (export_car.py)
+js/vehicle_models.js  carregador genérico dos carros/moto em GLB
 js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
-tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA) → GLB (Python puro)
+tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA: ônibus, carros, motos) → GLB (Python puro)
 tools/viewer.html visualizador do GLB
 vendor/           three.module.min.js, BufferGeometryUtils.js e GLTFLoader.js (r170, MIT)
 docker-compose.yml  nginx servindo a pasta em :8080
