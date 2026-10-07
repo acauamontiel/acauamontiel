@@ -5,6 +5,7 @@ correndo de madrugada pelas avenidas de **Pelotas/RS**, desviando de carros e bu
 atropelar motos.
 
 Feito só com **JavaScript puro + [three.js](https://threejs.org/) r170** (embutido em `vendor/`). Sem TypeScript, sem React, sem build, sem CDN.
+O Astra é um modelo 3D de verdade (`assets/astra.glb`), convertido de um mod de GTA V com o script em `tools/rage2glb/`.
 
 ## Como rodar
 
@@ -41,6 +42,7 @@ Parâmetros de URL úteis (depuração):
 | `?bot` | piloto automático que persegue motos e desvia do resto |
 | `?showcase` | estaciona um exemplar de cada veículo à frente |
 | `?nohud` | esconde o HUD |
+| `?lowpoly` | usa o Astra procedural em vez do modelo GLB |
 | `?touch` | força os botões de toque (para testar no desktop) |
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
@@ -90,8 +92,33 @@ Tudo em `js/ps1.js`:
 
 Os carros são carrocerias "loftadas" por seções transversais (`carBody` em `js/geometry.js`), com vincos
 na linha de cintura e base dos vidros e o resto suave (Gouraud), como os modelos de ~400 triângulos do GT.
-O Astra GSi tem aerofólio de teto com placas laterais e brake light, rodas texturizadas de cinco raios,
-lanternas fumê, faróis e grade com gravata dourada.
+O Astra GSi usa o modelo 3D de `assets/astra.glb` (ver abaixo); `?lowpoly` volta ao Astra procedural, que também
+entra sozinho se o GLB não carregar.
+
+## O modelo do Astra
+
+`assets/astra.glb` foi gerado a partir de um mod de GTA V (`buffalo.yft` + `buffalo.ytd`, formato RAGE) com o
+conversor em `tools/rage2glb/`, escrito em Python puro (sem dependências):
+
+```bash
+python3 tools/rage2glb/export_glb.py buffalo.yft buffalo.ytd assets/astra.glb --texsize 128 --skip 9,14,15,42,46,48
+```
+
+O que o conversor faz:
+
+- descomprime o recurso RSC7 e lê o fragmento: drawable, esqueleto, shaders, buffers de vértices e índices
+  (posição, normal, UV, índices de osso), e o dicionário de texturas (DXT1/DXT5/ARGB → PNG);
+- mantém só o exterior: descarta as peças ligadas a ossos de interior/motor/som e os shaders de interior
+  (`--skip-bones`, `--skip-shaders`, `--skip`); o resultado tem ~31 mil triângulos em vez dos 310 mil originais;
+- converte os eixos (GTA: y para frente, z para cima → jogo: -z para frente, y para cima) e coloca as rodas no chão;
+- decima as rodas (30 mil → 1,4 mil triângulos cada) por colapso de arestas com quádricas (`decimate.py`) e
+  instancia as quatro nos ossos `wheel_lf/rf/lr/rr`, espelhando as da direita;
+- reduz as texturas para 128 px (256 px para faróis e lanternas) e grava um GLB com materiais nomeados
+  `shader|textura`, que `js/astra_model.js` troca pelos materiais do jogo (pintura preta com reflexo,
+  vidro fumê, faróis e lanternas acesos, placa MGY 8888 gerada em canvas).
+
+`tools/viewer.html?views=isoFL,rear,side&list` mostra o GLB com vários ângulos e a lista de peças
+(`?only=g39` ou `?hide=wheel` isolam peças). Os modelos originais do mod não ficam no repositório; só o GLB derivado.
 
 ## Estrutura
 
@@ -102,10 +129,14 @@ js/main.js        loop, estado do jogo, câmera
 js/ps1.js         material/shader (luz noturna, emissivos, curva) e pós-processamento
 js/textures.js    texturas procedurais
 js/geometry.js    helpers low-poly
-js/vehicles.js    Astra GSi, carros do tráfego, ônibus (Turf, Santa Maria, Santa Rosa), moto, buraco
+js/vehicles.js    Astra procedural (reserva), carros do tráfego, ônibus (Turf, Santa Silvana, Santa Rosa), moto, buraco
+js/astra_model.js carrega assets/astra.glb e aplica os materiais do jogo
 js/city.js        avenidas, prédios, cruzamentos e pontos de referência
 js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
-vendor/           three.module.min.js e BufferGeometryUtils.js (r170, MIT)
+assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
+tools/rage2glb/   conversor .yft/.ytd → GLB (Python puro)
+tools/viewer.html visualizador do GLB
+vendor/           three.module.min.js, BufferGeometryUtils.js e GLTFLoader.js (r170, MIT)
 docker-compose.yml  nginx servindo a pasta em :8080
 ```

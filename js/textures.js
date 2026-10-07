@@ -407,6 +407,18 @@ export function makeTextures() {
     T.astra = pixelTexture(c, false);
   }
 
+  // Placa do modelo 3D do Astra (assets/astra.glb): o UV da placa ocupa a faixa v 0,24-0,74 da textura.
+  {
+    const [c, g] = canvas(128, 64);
+    g.fillStyle = '#141416'; g.fillRect(0, 0, 128, 64);
+    g.fillStyle = '#d4d4d0'; g.fillRect(2, 16, 124, 31);
+    g.fillStyle = '#9a9a96'; g.fillRect(2, 16, 124, 1); g.fillRect(2, 46, 124, 1); g.fillRect(2, 16, 1, 31); g.fillRect(125, 16, 1, 31);
+    g.fillStyle = '#1a1a1a'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.font = 'bold 7px Arial, sans-serif'; g.fillText('PELOTAS - RS', 64, 22, 100);
+    g.font = 'bold 19px Arial, sans-serif'; g.fillText('MGY 8888', 64, 35, 118);
+    T.plate = pixelTexture(c, false);
+  }
+
   // Sombra "blob".
   {
     const [c, g] = canvas(32, 32);

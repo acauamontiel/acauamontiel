@@ -51,7 +51,7 @@ export function makeMaterials(T) {
   return M;
 }
 
-function shadowMesh(w, l, M) {
+export function shadowMesh(w, l, M) {
   const g = groundPlane(w, l, 1, 1, 0xffffff, 0, 0.012, 0);
   const m = new THREE.Mesh(g, M.shadow);
   m.renderOrder = 1;
@@ -156,7 +156,7 @@ export function buildAstra(M, T) {
   }
   g.add(shadowMesh(2.2, 4.7, M));
 
-  return { group: g, wheels, width: 1.71, length: 4.26 };
+  return { group: g, wheels, width: 1.71, length: 4.26, wheelR: 0.30, rearWheels: { x: [-0.76, 0.76], z: 1.3 } };
 }
 
 /** Monta um template de carro do tráfego: { paint, detail, w, l, wheelR }. */

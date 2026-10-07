@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { PS1Post, shared, ps1Material } from './ps1.js';
 import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
+import { loadAstraModel } from './astra_model.js';
 import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
 import { Traffic } from './traffic.js';
 import { HUD } from './hud.js';
@@ -29,7 +30,14 @@ const post = new PS1Post(renderer, 640);
 
 const T = makeTextures();
 const M = makeMaterials(T);
-const astra = buildAstra(M, T);
+// Astra: modelo 3D convertido (assets/astra.glb); se não carregar (ex.: file://), usa o procedural.
+let astra;
+try {
+  astra = params.has('lowpoly') ? buildAstra(M, T) : await loadAstraModel(M, T);
+} catch (err) {
+  console.warn('Modelo do Astra não carregou; usando a versão procedural.', err);
+  astra = buildAstra(M, T);
+}
 scene.add(astra.group);
 const city = new City(scene, M, T);
 const traffic = new Traffic(scene, M, buildTrafficTemplates(), buildMotoTemplate());
@@ -246,7 +254,7 @@ function updatePlaying(dt) {
     if (G.smokeT <= 0) {
       G.smokeT = 0.06;
       const c = Math.cos(G.yaw), sn = Math.sin(G.yaw);
-      for (const wx of [-0.76, 0.76]) smoke.spawn(G.x + wx * c + 1.3 * sn, G.z - wx * sn + 1.3 * c);
+      for (const wx of astra.rearWheels.x) smoke.spawn(G.x + wx * c + astra.rearWheels.z * sn, G.z - wx * sn + astra.rearWheels.z * c);
     }
   } else if (d < 0.2) G.driftPop = false;
   audio.screechUpdate(d * Math.min(1, G.speed / 20));
@@ -299,7 +307,7 @@ function updatePlaying(dt) {
 
   astra.group.position.set(G.x, G.bounce * 0.12, G.z);
   astra.group.rotation.set(G.bounce * 0.04, G.yaw + steer * -0.03 * (1 - d), G.roll * (1 + d));
-  G.wheelRot -= (G.speed * dt) / 0.30;
+  G.wheelRot -= (G.speed * dt) / astra.wheelR;
   for (const w of astra.wheels) w.rotation.x = G.wheelRot;
   // Piscar quando invulnerável.
   astra.group.visible = G.invuln <= 0 || Math.floor(G.time * 16) % 2 === 0;
@@ -340,7 +348,7 @@ function updateGameOver(dt) {
   G.z -= G.speed * dt;
   astra.group.position.set(G.x, 0, G.z);
   astra.group.visible = true;
-  for (const w of astra.wheels) w.rotation.x -= (G.speed * dt) / 0.30;
+  for (const w of astra.wheels) w.rotation.x -= (G.speed * dt) / astra.wheelR;
   camera.position.set(G.x + Math.cos(a) * 7.5, 2.4, G.z + Math.sin(a) * 7.5);
   camera.lookAt(G.x, 0.6, G.z);
   camera.updateProjectionMatrix();
