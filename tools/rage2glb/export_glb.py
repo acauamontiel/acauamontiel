@@ -16,6 +16,7 @@ ap.add_argument('--texsize-big', default='farol,lanterna,vehiclelights128,farolv
 ap.add_argument('--texsize', type=int, default=256)
 ap.add_argument('--ground', type=float, default=None, help='z (GTA) do chão; default = centro da roda - raio')
 ap.add_argument('--report', action='store_true')
+ap.add_argument('--curve', default='', help='escurece texturas por curva de tom (gama): nome:gama,nome:gama (fundo escuro, lâmpadas claras)')
 ap.add_argument('--drop-uv', default='', help='remove triângulos pelo centro do UV: gi:umin,umax,vmin,vmax;...')
 args = ap.parse_args()
 
@@ -53,7 +54,8 @@ def tex_index(name):
     t = txd.get(key)
     if t is None: tex_cache[key] = None; print('  textura ausente:', name); return None
     try:
-        data, w, h = dxt.texture_png(rt, t, args.texsize * (2 if key in args.texsize_big.lower().split(',') else 1))
+        gammas = {k.split(':')[0].lower(): float(k.split(':')[1]) for k in args.curve.split(',') if k}
+        data, w, h = dxt.texture_png(rt, t, args.texsize * (2 if key in args.texsize_big.lower().split(',') else 1), gammas.get(key, 1.0))
     except Exception as e:
         print('  textura falhou', name, e); tex_cache[key] = None; return None
     tex_cache[key] = out.image_png(name, data); print('  textura %s %dx%d -> %dx%d' % (name, t['w'], t['h'], w, h))
