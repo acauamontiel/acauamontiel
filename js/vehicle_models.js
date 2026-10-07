@@ -107,6 +107,8 @@ export const VEHICLE_MODELS = {
   hb20: { url: 'assets/hb20.glb', length: 4.0 },
   gol: { url: 'assets/gol.glb', length: 3.95 },
   compass: { url: 'assets/compass.glb', length: 4.4 },
+  kombi: { url: 'assets/kombi.glb', length: 4.5 },
+  saveiro: { url: 'assets/saveiro.glb', length: 4.5 },
   biz: { url: 'assets/biz.glb', length: 2.0 },
 };
 

@@ -73,6 +73,7 @@ def mat_name(mat, fname):
     if any(s in fname for s in paint_frames) and not tex: return 'paint2'
     if col[3] < 255: return 'glass|%s|%d,%d,%d,%d' % (tex, *col)
     if not tex and col[:3] in renames: return renames[col[:3]]
+    if 'vehiclelights' in tex and col[:3] in {(255, 175, 0), (185, 255, 0), (0, 255, 200), (255, 60, 0), (255, 255, 0)}: tex = ''  # luz com textura genérica ausente
     return '%s|%d,%d,%d,%d' % (tex, *col)
 
 def material(mat, fname):
@@ -108,7 +109,7 @@ for a in m['atomics']:
     groups = []
     for mi, tris in by.items():
         mat = g['materials'][mi]
-        if not mat['tex'] and mat['color'][:3] in LIGHT_KEYS:
+        if (not mat['tex'] or 'vehiclelights' in mat['tex'].lower()) and mat['color'][:3] in LIGHT_KEYS:
             # luzes: separa frente (y > 0 no GTA) e trás para o jogo decidir farol/lanterna pela posição
             front = [tt for tt in tris if sum(pos[v][1] for v in tt) > 0]; back = [tt for tt in tris if sum(pos[v][1] for v in tt) <= 0]
             if front: groups.append((mi, front))

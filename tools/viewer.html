@@ -12,7 +12,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { makeTextures } from '../js/textures.js';
-import { makeMaterials } from '../js/vehicles.js';
+import { makeMaterials, makeVehicle, makeMoto, buildTrafficTemplates, buildMotoTemplate } from '../js/vehicles.js';
 import { loadAstraModel } from '../js/astra_model.js';
 import { loadBusModel } from '../js/bus_model.js';
 import { loadVehicleModel, VEHICLE_MODELS } from '../js/vehicle_models.js';
@@ -38,7 +38,13 @@ if (q.has('game')) {
   if (q.get('game') === 'bus') loadBusModel(M, T, q.get('file') || '../assets/bus.glb').then((b) => { scene.add(b.make(q.get('kind') || 'turf')); draw(); });
   else if (VEHICLE_MODELS[q.get('game')]) {
     const o = { ...VEHICLE_MODELS[q.get('game')], url: '../' + VEHICLE_MODELS[q.get('game')].url };
-    loadVehicleModel(M, o).then((v) => { scene.add(v.make(parseInt(q.get('color') || 'c0392b', 16), parseInt(q.get('color2') || 'f2c230', 16))); draw(); });
+    loadVehicleModel(M, o).then((v) => {
+      M.models = { [q.get('game')]: v };
+      const tpls = buildTrafficTemplates(); const tpl = tpls.find((t) => t.model === q.get('game'));
+      const color = parseInt(q.get('color') || 'c0392b', 16);
+      scene.add(q.get('game') === 'biz' ? makeMoto(buildMotoTemplate(), color, M, parseInt(q.get('color2') || 'f2c230', 16)) : tpl ? makeVehicle(tpl, color, M) : v.make(color));
+      draw();
+    });
   }
   else loadAstraModel(M, T, file).then((a) => { scene.add(a.group); draw(); });
 } else

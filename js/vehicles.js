@@ -225,7 +225,7 @@ function buildBaseTemplates() {
       wTop: [[-1.95, 0.48], [-1.85, 0.62], [-1.0, 0.70], [-0.7, 0.72], [0, 0.60], [1.2, 0.60], [1.8, 0.58], [1.95, 0.56]],
       cabin: [-0.7, 1.8], windshield: [-0.7, 0], rearGlass: [1.2, 1.8],
     } }),
-    carTemplate({ name: 'van', w: 1.76, l: 4.4, wheelR: 0.33, wheelBase: 2.50, lightY: 0.9, colors: [0xe8e8e8, 0x3a7fc1, 0xd8c9a3, 0x8a1c3a], weight: 1,
+    carTemplate({ name: 'van', model: 'kombi', w: 1.80, l: 4.5, wheelR: 0.33, wheelBase: 2.50, lightY: 0.9, colors: [0xe8e8e8, 0x3a7fc1, 0xd8c9a3, 0x8a1c3a], weight: 1,
       tex: { pillars: [[-1.56, -1.42], [-0.3, -0.2], [1.0, 1.1], [2.05, 2.2]], doors: [-1.5, -0.25, 1.05], handles: [-0.45], tailgate: 2.12 }, body: {
       zs: [-2.2, -2.1, -1.8, -1.58, -1.54, -1.0, 0, 1.0, 2.0, 2.1, 2.14, 2.2],
       yFloor: [[-2.2, 0.36], [-2.1, 0.30], [2.1, 0.30], [2.2, 0.36]],
@@ -236,7 +236,7 @@ function buildBaseTemplates() {
       wTop: [[-2.2, 0.60], [-2.0, 0.78], [-1.5, 0.74], [2.2, 0.72]],
       cabin: [-1.56, 2.2], windshield: [-2.1, -1.56], rearGlass: [2.12, 2.2],
     } }),
-    carTemplate({ name: 'pickup', w: 1.78, l: 5.0, wheelR: 0.34, wheelBase: 3.00, lightY: 0.72, colors: [0xe8e8e8, 0x1f3a7a, 0xb3221c, 0x2a2a2e], weight: 1,
+    carTemplate({ name: 'pickup', model: 'saveiro', w: 1.72, l: 4.5, wheelR: 0.34, wheelBase: 3.00, lightY: 0.72, colors: [0xe8e8e8, 0x1f3a7a, 0xb3221c, 0x2a2a2e], weight: 1,
       tex: { pillars: [[-1.0, -0.88], [0.38, 0.5]], doors: [-0.94, 0.44], handles: [0.25], hood: -1.02, tailgate: 2.4 }, body: {
       zs: [-2.5, -2.35, -1.9, -1.3, -1.02, -0.98, -0.6, -0.32, -0.28, 0.1, 0.28, 0.32, 0.5, 0.6, 1.5, 2.4, 2.5],
       yFloor: [[-2.5, 0.38], [-2.35, 0.32], [2.4, 0.32], [2.5, 0.38]],
@@ -317,12 +317,20 @@ export function buildMotoTemplate() {
   const head = new THREE.SphereGeometry(0.17, 7, 5); head.translate(0, 1.52, -0.12);
   detail.push(colorize(head, 0xe8e8e8)); // capacete
   detail.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.52, -0.28)); // viseira
-  return { paint: merge(paint), detail: merge(detail), bag, w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000], bagColors: [0xd42020, 0xf2c230] };
+  // Tronco e capacete para completar o motoboy do modelo 3D (o mod da Biz só traz braços e pernas).
+  const rider = [];
+  const torso2 = box(0.40, 0.52, 0.30, 0x8a1a1a, 0, 0, 0); torso2.rotateX(-0.25); torso2.translate(0, 0.98, 0.14);
+  rider.push(torso2);
+  const head2 = new THREE.SphereGeometry(0.17, 7, 5); head2.translate(0, 1.33, 0.0);
+  rider.push(colorize(head2, 0xe8e8e8));
+  rider.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.33, -0.16));
+  return { paint: merge(paint), detail: merge(detail), bag, rider: merge(rider), w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000], bagColors: [0xd42020, 0xf2c230] };
 }
 
 export function makeMoto(tpl, color, M, bagColor = 0xd42020) {
   if (M.models && M.models.biz) {
     const g = M.models.biz.make(color, bagColor);
+    g.add(new THREE.Mesh(tpl.rider, M.detail));
     g.add(shadowMesh(1.0, 2.2, M));
     return g;
   }
