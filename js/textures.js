@@ -417,6 +417,7 @@ export function makeTextures() {
     g.font = 'bold 7px Arial, sans-serif'; g.fillText('PELOTAS - RS', 64, 22, 100);
     g.font = 'bold 19px Arial, sans-serif'; g.fillText('MGY 8888', 64, 35, 118);
     T.plate = pixelTexture(c, false);
+    T.plate.flipY = false; // UV do GLB cresce para baixo, como no glTF
   }
 
   // Sombra "blob".

@@ -118,7 +118,7 @@ O que o conversor faz:
   vidro fumê, faróis e lanternas acesos, placa MGY 8888 gerada em canvas).
 
 `tools/viewer.html?views=isoFL,rear,side&list` mostra o GLB com vários ângulos e a lista de peças
-(`?only=g39` ou `?hide=wheel` isolam peças). Os modelos originais do mod não ficam no repositório; só o GLB derivado.
+(`?only=g39` ou `?hide=wheel` isolam peças; `?game` carrega com os materiais do jogo, placa MGY 8888 incluída). Os modelos originais do mod não ficam no repositório; só o GLB derivado.
 
 ## Estrutura
 
