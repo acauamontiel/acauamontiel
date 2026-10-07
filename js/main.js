@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { PS1Post, shared, ps1Material } from './ps1.js';
 import { makeTextures } from './textures.js';
-import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
+import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate, makeVehicle, makeMoto, makePothole } from './vehicles.js';
 import { loadAstraModel } from './astra_model.js';
 import { loadBusModel } from './bus_model.js';
 import { loadVehicleModels } from './vehicle_models.js';
@@ -401,6 +401,24 @@ if (DBG) renderer.info.autoReset = false;
 smoke.init();
 city.update(G.z);
 hud.setBest(G.best);
+// Aquecimento: a primeira vez que um modelo aparece, o three.js compila o shader e sobe geometria, texturas e
+// mipmaps para a GPU, o que trava o quadro (no celular, visivelmente). Renderiza um quadro oculto, ainda sob a
+// tela de carregamento, com um exemplar de cada veículo em cada cor, moto com cada baú e um buraco.
+function warmUp() {
+  const g = new THREE.Group();
+  for (const tpl of traffic.cars) for (const c of tpl.colors) g.add(makeVehicle(tpl, c, M));
+  for (const c of traffic.moto.colors) for (const b of traffic.moto.bagColors) g.add(makeMoto(traffic.moto, c, M, b));
+  g.add(makePothole(M));
+  g.traverse((o) => { if (o.isMesh) o.frustumCulled = false; });
+  g.position.set(G.x, 0, G.z - 12);
+  scene.add(g);
+  camera.position.set(G.x, 3, G.z + 6); camera.lookAt(G.x, 0.5, G.z - 12); camera.updateProjectionMatrix();
+  renderer.compile(scene, camera);
+  post.render(scene, camera, 0);
+  scene.remove(g);
+  g.traverse((o) => { if (o.isMesh) o.frustumCulled = true; });
+}
+warmUp();
 hud.show('title');
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }

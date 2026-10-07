@@ -82,6 +82,8 @@ Tudo em `js/ps1.js`:
 - emissivos: lanternas, faróis, luminárias e semáforos brilham via atributo por vértice; janelas acesas,
   vitrines, letreiros e o interior dos ônibus via máscara no alpha das texturas;
 - texturas geradas em canvas, sem filtro (texels visíveis) e com mipmaps;
+- aquecimento da GPU antes do título: um quadro oculto com cada veículo em cada cor compila shaders e sobe
+  geometrias, texturas e mipmaps, para o primeiro modelo que aparece na pista não travar (`warmUp` em `js/main.js`);
 - reflexo de céu *matcap* na lataria preta (o vidro reflete menos, via atributo `envCut` por vértice);
 - céu noturno em gradiente com estrelas, ancorado na linha do horizonte da câmera; neblina escura;
 - textura de carroceria "desenrolada" por carro (`makeBodyTexture`): colunas, vidros laterais, vãos de porta,
