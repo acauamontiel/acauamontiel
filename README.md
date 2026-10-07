@@ -5,7 +5,7 @@ correndo de madrugada pelas avenidas de **Pelotas/RS**, desviando de carros e bu
 atropelar motos.
 
 Feito só com **JavaScript puro + [three.js](https://threejs.org/) r170** (embutido em `vendor/`). Sem TypeScript, sem React, sem build, sem CDN.
-O Astra é um modelo 3D de verdade (`assets/astra.glb`), convertido de um mod de GTA V com o script em `tools/rage2glb/`.
+O Astra e os ônibus são modelos 3D de verdade (`assets/*.glb`), convertidos de mods de GTA com os scripts em `tools/rage2glb/`.
 
 ## Como rodar
 
@@ -42,7 +42,7 @@ Parâmetros de URL úteis (depuração):
 | `?bot` | piloto automático que persegue motos e desvia do resto |
 | `?showcase` | estaciona um exemplar de cada veículo à frente |
 | `?nohud` | esconde o HUD |
-| `?lowpoly` | usa o Astra procedural em vez do modelo GLB |
+| `?lowpoly` | usa o Astra e os ônibus procedurais em vez dos modelos GLB |
 | `?touch` | força os botões de toque (para testar no desktop) |
 | `?dbg` | loga estado do tráfego e draw calls no console |
 | `?env=0` | intensidade do reflexo da lataria |
@@ -117,6 +117,30 @@ O que o conversor faz:
   `shader|textura`, que `js/astra_model.js` troca pelos materiais do jogo (pintura preta com reflexo,
   vidro fumê, faróis e lanternas acesos, gravatas pretas, placa MGY 8888 gerada em canvas).
 
+### O modelo do ônibus
+
+`assets/bus.glb` vem de um mod de GTA San Andreas (`bus.dff` + `bus.txd`, RenderWare), convertido por
+`tools/rage2glb/export_dff.py`:
+
+```bash
+python3 tools/rage2glb/export_dff.py bus.dff bus.txd assets/bus.glb \
+  --skip-frames "_dam,Box_,IL,ped_,das1,SL,dx-lights" \
+  --skip-tex d4exn1main,dxn1-route,d4exn1wall,dxn1-seat1,d4exn1dash,d4exn1floor,d4exn1heater,d4exn1int2,d4exn1tcktprntr,4317,dxn1-seat2,d4exn1ceilling,d4exn1signs,dexsl360logos,dx4-lights \
+  --livery-tex dxn1-body1,dxn1-body2,dxn1-body3,dxn1-body4,dxn1-body5,dxn1-body6,dxn1-body7,dxn1-body8,dxn1-body9 --livery-colors "221,221,221"
+```
+
+- lê frames (hierarquia), geometrias, Bin Mesh (divisão por material) e o TXD (DXT1 → PNG);
+- descarta o interior (bancos, corrimãos, painel): à noite as janelas ficam acesas e opacas, então ele não faria falta;
+  o resultado tem ~9 mil triângulos, com as quatro rodas decimadas;
+- os painéis de carroceria do mod recebem um **UV projetado** (lateral, frente, traseira, teto e assoalho) no layout
+  de `makeBusSkin()` em `js/textures.js`, que pinta em canvas as três empresas (Turf, Santa Silvana, Santa Rosa):
+  cor base, saia, teto, nome, número e serpentinas. Assim a pintura do mod não é usada e trocar de empresa é
+  trocar uma textura de 256x128;
+- `js/bus_model.js` carrega o GLB e instancia os ônibus do tráfego (`makeVehicle` usa o modelo quando ele está
+  carregado; o ônibus loftado continua como reserva e com `?lowpoly`).
+
+`tools/viewer.html?game=bus&kind=santarosa&views=side,isoFL,rear&dist=2.6` mostra cada pintura como no jogo.
+
 `tools/viewer.html?views=isoFL,rear,side&list` mostra o GLB com vários ângulos e a lista de peças
 (`?only=g39` ou `?hide=wheel` isolam peças; `?game` carrega com os materiais do jogo, placa MGY 8888 incluída). Os modelos originais do mod não ficam no repositório; só o GLB derivado.
 
@@ -135,7 +159,9 @@ js/city.js        avenidas, prédios, cruzamentos e pontos de referência
 js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
-tools/rage2glb/   conversor .yft/.ytd → GLB (Python puro)
+assets/bus.glb    modelo do ônibus urbano (idem)
+js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
+tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA) → GLB (Python puro)
 tools/viewer.html visualizador do GLB
 vendor/           three.module.min.js, BufferGeometryUtils.js e GLTFLoader.js (r170, MIT)
 docker-compose.yml  nginx servindo a pasta em :8080

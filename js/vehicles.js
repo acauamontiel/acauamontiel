@@ -239,7 +239,7 @@ export function buildTrafficTemplates() {
       cabin: [-1.0, 0.5], windshield: [-1.0, -0.3], rearGlass: [0.3, 0.5],
     } }),
     ...['turf', 'santasilvana', 'santarosa'].map((livery, k) => carTemplate({
-      name: 'bus_' + livery, livery, w: 2.50, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xffffff], weight: 1, rim: livery === 'santasilvana' ? 0xb8bcc2 : 0xe8e8e4,
+      name: 'bus_' + livery, livery, w: 2.70, l: 11.0, wheelR: 0.50, wheelBase: 6.0, lightY: 0.9, colors: [0xffffff], weight: 1, rim: livery === 'santasilvana' ? 0xb8bcc2 : 0xe8e8e4,
       rearAd: livery === 'santasilvana' ? -1 : (k * 3) % 8,
       tex: { doors: [-4.3, 0.4] }, body: {
         zs: [-5.5, -5.42, -5.2, -4.8, -3.5, -2, -0.5, 1, 2.5, 4, 5.1, 5.35, 5.45, 5.5],
@@ -256,6 +256,11 @@ export function buildTrafficTemplates() {
 
 /** Cria uma instância (Group) de um template com a cor dada. */
 export function makeVehicle(tpl, color, M) {
+  if (tpl.bus && M.busModel) {
+    const g = M.busModel.make(tpl.livery);
+    g.add(shadowMesh(tpl.w * 1.15, tpl.l * 1.05, M));
+    return g;
+  }
   const g = new THREE.Group();
   g.add(new THREE.Mesh(tpl.paint, M.paint(tpl.bus ? 0xffffff : color, tpl.bodyTex, tpl.bus)));
   g.add(new THREE.Mesh(tpl.detail, M.detail));

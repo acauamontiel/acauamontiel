@@ -14,6 +14,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { makeTextures } from '../js/textures.js';
 import { makeMaterials } from '../js/vehicles.js';
 import { loadAstraModel } from '../js/astra_model.js';
+import { loadBusModel } from '../js/bus_model.js';
 import { shared } from '../js/ps1.js';
 const q = new URLSearchParams(location.search);
 const file = q.get('file') || '../assets/astra.glb';
@@ -30,9 +31,11 @@ scene.add(new THREE.GridHelper(6, 12, 0x555, 0x444));
 const names = [];
 // ?game: carrega pelo mesmo caminho do jogo (materiais PS1, placa MGY 8888), em cena diurna.
 if (q.has('game')) {
-  shared.uNight.value = 0; shared.uAmbient.value = 0.9; shared.uDiffuse.value = 0.5; shared.uFogFar.value = 1000;
+  if (q.has('night')) shared.uCarPos.value.set(0, 0.6, 25); // como no jogo: o veículo 25 m à frente do farol do Astra
+  else { shared.uNight.value = 0; shared.uAmbient.value = 0.9; shared.uDiffuse.value = 0.5; shared.uFogFar.value = 1000; }
   const T = makeTextures(); const M = makeMaterials(T);
-  loadAstraModel(M, T, file).then((a) => { scene.add(a.group); draw(); });
+  if (q.get('game') === 'bus') loadBusModel(M, T, q.get('file') || '../assets/bus.glb').then((b) => { scene.add(b.make(q.get('kind') || 'turf')); draw(); });
+  else loadAstraModel(M, T, file).then((a) => { scene.add(a.group); draw(); });
 } else
 new GLTFLoader().load(file, (g) => {
   g.scene.traverse((o) => {
@@ -52,13 +55,14 @@ const views = {
   chase: [[0, 3.1, 6.8], [0, 0.4, -12]], low: [[2.5, 0.3, -3.5], [0, 0.4, 0]],
 };
 const want = (q.get('views') || 'isoFL,isoRR,side,rear,front,top').split(',');
+const dist = Number(q.get('dist')) || 1; // ?dist=2.5 afasta as câmeras (ônibus)
 function draw() {
   const cols = want.length > 3 ? 3 : want.length, rows = Math.ceil(want.length / cols);
   const w = Math.floor(innerWidth / cols), h = Math.floor(innerHeight / rows);
   want.forEach((v, i) => {
     const [pos, at] = views[v];
     const cam = new THREE.PerspectiveCamera(q.get('fov') ? +q.get('fov') : 40, w / h, 0.1, 100);
-    cam.position.set(...pos); cam.lookAt(...at);
+    cam.position.set(pos[0] * dist, pos[1] * dist, pos[2] * dist); cam.lookAt(at[0], at[1] * dist, at[2]);
     const x = (i % cols) * w, y = innerHeight - (Math.floor(i / cols) + 1) * h;
     renderer.setViewport(x, y, w, h); renderer.setScissor(x, y, w, h); renderer.render(scene, cam);
   });

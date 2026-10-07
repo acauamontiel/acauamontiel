@@ -4,6 +4,7 @@ import { PS1Post, shared, ps1Material } from './ps1.js';
 import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate } from './vehicles.js';
 import { loadAstraModel } from './astra_model.js';
+import { loadBusModel } from './bus_model.js';
 import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
 import { Traffic } from './traffic.js';
 import { HUD } from './hud.js';
@@ -37,6 +38,10 @@ try {
 } catch (err) {
   console.warn('Modelo do Astra não carregou; usando a versão procedural.', err);
   astra = buildAstra(M, T);
+}
+// Ônibus do tráfego: modelo 3D (assets/bus.glb) com as pinturas Turf, Santa Silvana e Santa Rosa projetadas.
+if (!params.has('lowpoly')) {
+  try { M.busModel = await loadBusModel(M, T); } catch (err) { console.warn('Modelo do ônibus não carregou; usando o procedural.', err); }
 }
 scene.add(astra.group);
 const city = new City(scene, M, T);

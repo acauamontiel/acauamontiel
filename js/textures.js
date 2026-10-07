@@ -548,6 +548,8 @@ export function makeTextures() {
     T.fence = pixelTexture(c);
   }
 
+  T.busSkin = { turf: makeBusSkin('turf'), santasilvana: makeBusSkin('santasilvana'), santarosa: makeBusSkin('santarosa') };
+  T.busSkin.turf.flipY = T.busSkin.santasilvana.flipY = T.busSkin.santarosa.flipY = false;
   return T;
 }
 
@@ -622,6 +624,61 @@ export function makeBodyTexture(o) {
  * kind: 'turf' | 'santamaria' | 'santarosa'. Os vértices do ônibus são brancos, então a textura
  * carrega as cores (inclusive os vidros).
  */
+/**
+ * Pintura para o modelo 3D do ônibus (assets/bus.glb). O conversor projeta o UV da carroceria
+ * neste layout 256x128: lateral em cima (u = frente→trás, v = teto→chão, nos dois lados),
+ * embaixo da esquerda para a direita: frente, traseira, teto e assoalho (64 px cada).
+ */
+export function makeBusSkin(kind) {
+  const W = 256, H = 128, SIDE_H = 64, Y0 = 0.23, Y1 = 2.74; // alturas reais da carroceria (m)
+  const [c, g] = canvas(W, H);
+  const yAt = (m) => Math.round(SIDE_H * (Y1 - m) / (Y1 - Y0)); // metro -> linha da lateral
+  const L = BUS_LIVERIES[kind];
+  const skirtY = yAt(Y0 + (Y1 - Y0) * L.skirtTop);
+  // lateral
+  g.fillStyle = L.base; g.fillRect(0, 0, W, SIDE_H);
+  g.fillStyle = L.skirt; g.fillRect(0, skirtY, W, SIDE_H - skirtY);
+  if (L.roof) { g.fillStyle = L.roof; g.fillRect(0, 0, W, yAt(2.45)); }
+  g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, yAt(Y0 + 0.08), W, 2); // friso inferior
+  if (L.ribbons) {
+    // serpentinas pequenas, tipo carnaval, abaixo das janelas
+    for (let i = 0; i < 2; i++) {
+      g.strokeStyle = L.ribbons[i]; g.lineWidth = 1.5; g.beginPath();
+      const y = yAt(1.42) + i * 4;
+      for (let x = 0; x <= W; x += 6) g.lineTo(x, y + ((x / 6 + i) % 2 ? 2 : -2));
+      g.stroke();
+    }
+  }
+  const nameY = yAt(1.05);
+  if (L.plate) { g.fillStyle = L.plate; g.fillRect(Math.round(W * 0.33), nameY - 9, Math.round(W * 0.42), 18); }
+  const text = (t, x, y, font, color, maxW, shadow) => {
+    g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle';
+    if (shadow) { g.fillStyle = shadow; g.fillText(t, x + 1, y + 1, maxW); }
+    g.fillStyle = color; g.fillText(t, x, y, maxW);
+  };
+  text(L.text, Math.round(W * 0.54), nameY, L.font.replace(/\d+px/, (m) => Math.round(parseInt(m) * 0.7) + 'px'), L.textColor, W * 0.4, L.shadow);
+  text(L.number, Math.round(W * 0.09), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
+  text(L.number, Math.round(W * 0.93), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
+  // frente (0-64), traseira (64-128), teto (128-192), assoalho (192-256), na metade de baixo
+  const fy = (m) => SIDE_H + yAt(m);
+  for (const [x0, rear] of [[0, false], [64, true]]) {
+    g.fillStyle = L.base; g.fillRect(x0, SIDE_H, 64, SIDE_H);
+    g.fillStyle = L.skirt; g.fillRect(x0, SIDE_H + skirtY, 64, SIDE_H - skirtY);
+    if (L.roof) { g.fillStyle = L.roof; g.fillRect(x0, SIDE_H, 64, yAt(2.45)); }
+    if (rear) text(L.number, x0 + 32, fy(0.95), 'bold 12px Arial, sans-serif', L.numberColor || '#111', 40);
+    else text(L.text, x0 + 32, fy(2.5), 'bold 8px Arial, sans-serif', L.roof ? '#111' : L.textColor, 56);
+  }
+  g.fillStyle = L.roof || L.roofTop; g.fillRect(128, SIDE_H, 64, SIDE_H);
+  g.fillStyle = '#17181a'; g.fillRect(192, SIDE_H, 64, SIDE_H);
+  return pixelTexture(c, false);
+}
+
+const BUS_LIVERIES = {
+  turf: { base: '#f2f2ee', skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', roofTop: '#e4e4e0' },
+  santasilvana: { base: '#7cc4e8', skirt: '#6ab4dc', skirtTop: 0.14, text: 'SANTA SILVANA', font: 'italic bold 15px "Arial Black", Arial, sans-serif', textColor: '#111', number: '41005', roof: null, roofTop: '#6ab4dc', plate: '#f6f6f2' },
+  santarosa: { base: '#f2f2ee', skirt: '#3a3a3c', skirtTop: 0.11, text: 'Santa Rosa', font: 'italic bold 25px Georgia, "Times New Roman", serif', textColor: '#1f7a3a', shadow: '#d42020', number: '37', roof: null, roofTop: '#e4e4e0', ribbons: ['#d42020', '#1f7a3a'] },
+};
+
 export function makeBusLivery(kind, o) {
   const W = 256, H = 128;
   const [c, g] = canvas(W, H);

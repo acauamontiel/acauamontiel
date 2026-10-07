@@ -120,6 +120,7 @@ uniform float uEnvStrength;
 uniform float uEnvScale;
 uniform float uNight;
 uniform vec3 uCarPos;
+uniform float uLightScale;
 
 varying vec2 vUv;
 varying vec3 vAlbedo;
@@ -167,7 +168,7 @@ void main() {
 
   vec3 lamp = vec3(1.0, 0.72, 0.42) * lampTerm(vWorld) * uNight;
   vec3 head = vec3(1.0, 0.95, 0.82) * headTerm(vWorld) * uNight;
-  vec3 c = albedo * (vLight + lamp + head) * (1.0 - emis) + albedo * emis;
+  vec3 c = albedo * (vLight + (lamp + head) * uLightScale) * (1.0 - emis) + albedo * emis;
 
   if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength * uEnvScale * max(0.0, 1.0 - vEnvCut);
   c = mix(c, uFogColor, vFog * (1.0 - emis * 0.6));
@@ -191,6 +192,7 @@ void main() {
  * @param {number} o.side lado renderizado
  * @param {number} o.polygonOffset afasta decalques da superfície de baixo
  * @param {boolean} o.vertexColors usa o atributo color
+ * @param {number} o.lightScale atenua postes e farol (superfícies claras grandes, como ônibus brancos)
  */
 export function ps1Material(o = {}) {
   const mat = new THREE.ShaderMaterial({
@@ -214,6 +216,7 @@ export function ps1Material(o = {}) {
       uEnvMap: { value: envTexture },
       uEnvStrength: { value: o.envStrength || 0 },
       uUnlit: { value: o.unlit ? 1 : 0 },
+      uLightScale: { value: o.lightScale === undefined ? 1 : o.lightScale },
     },
     vertexShader: VERT,
     fragmentShader: FRAG,
