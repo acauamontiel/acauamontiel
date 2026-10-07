@@ -35,6 +35,13 @@ function fixedMaterial(src, mesh, length) {
     const c = key === '0,255,200' || key === '255,60,0' ? 0xffa020 : zc < 0 ? 0xfff2d0 : 0xff2810;
     return { opts: { color: c, unlit: true, lightScale: 0 }, envCut: 1 };
   }
+  // nomes vindos do exportador GTA V (export_glb.py --generic)
+  if (tex === 'vehicle_lightsemissive' || tex === 'vehicle_mesh' && /farol/.test(rgba || '')) return { opts: { map, color: 0x8c8c8c, unlit: true, lightScale: 0 }, envCut: 1 };
+  if (tex === 'wheel') return rgba === 'rim' ? { opts: { color: 0x6e7176, envStrength: 0.5, lightScale: 0.5 }, envCut: 0 } : { opts: { color: 0x0c0c0d }, envCut: 1 };
+  if (tex === 'spec') return { opts: { color: 0x8a8c90, envStrength: 0.5, lightScale: 0.5 }, envCut: 0 };
+  if (tex === 'vehicle_tire' || tex === 'vehicle_mesh' || tex === 'vehicle_badges' || tex === 'vehicle_detail2') {
+    return map ? { opts: { map, lightScale: 0.7, alphaTest: tex === 'vehicle_badges' ? 0.5 : 0 }, envCut: 1 } : { opts: { color: 0x151517, envStrength: 0.2 }, envCut: 0.5 };
+  }
   if (name.startsWith('glass')) return { opts: { color: 0x0c1016, envStrength: 0.9, transparent: true, opacity: 0.92, side: THREE.DoubleSide }, envCut: 0.35 };
   const chrome = /chrom|cromo|crom|reflect|ref/.test(tex);
   const hex = new THREE.Color(col[0] / 255, col[1] / 255, col[2] / 255).getHex();
@@ -53,7 +60,7 @@ function fixedMaterial(src, mesh, length) {
 export async function loadVehicleModel(M, o) {
   const gltf = await new GLTFLoader().loadAsync(o.url);
   const bb = (gltf.parser.json.extras || {}).bbox || [[-1, 0, -2], [1, 1.5, 2]];
-  const rawLength = bb[1][2] - bb[0][2];
+  const rawLength = Math.abs(bb[1][2] - bb[0][2]);
   const scale = o.length ? o.length / rawLength : 1;
   const paintCache = new Map();
   const paintMat = (hex, env) => {
@@ -77,7 +84,7 @@ export async function loadVehicleModel(M, o) {
   });
   gltf.scene.traverse((m) => { if (m.isMesh && m.userData.role === 'fixed') { m.material = m.userData.mat; if (m.material.transparent) m.renderOrder = 2; } });
   return {
-    width: (bb[1][0] - bb[0][0]) * scale,
+    width: Math.abs(bb[1][0] - bb[0][0]) * scale,
     length: rawLength * scale,
     make(color, color2 = 0xd42020) {
       const root = gltf.scene.clone(true);
@@ -98,6 +105,8 @@ export async function loadVehicleModel(M, o) {
 export const VEHICLE_MODELS = {
   marea: { url: 'assets/marea.glb', length: 4.55 },
   hb20: { url: 'assets/hb20.glb', length: 4.0 },
+  gol: { url: 'assets/gol.glb', length: 3.95 },
+  compass: { url: 'assets/compass.glb', length: 4.4 },
   biz: { url: 'assets/biz.glb', length: 2.0 },
 };
 

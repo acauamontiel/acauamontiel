@@ -193,6 +193,15 @@ const CAR_COLORS = [0xe8e8e8, 0xb8bcc2, 0xb3221c, 0x1f3a7a, 0x1f5a3a, 0xd8c9a3, 
 
 /** Templates: sedã (Monza/Vectra), hatch (Gol/Uno), van (Kombi), picape (D-20) e ônibus urbano. */
 export function buildTrafficTemplates() {
+  const list = buildBaseTemplates();
+  const sedan = list.find((t) => t.name === 'sedan'), hatch = list.find((t) => t.name === 'hatch');
+  // Mais dois carros em modelo 3D, reaproveitando a geometria loftada do sedã/hatch como reserva.
+  list.push({ ...sedan, name: 'compass', model: 'compass', w: 1.82, l: 4.4, weight: 3 });
+  list.push({ ...hatch, name: 'gol', model: 'gol', w: 1.66, l: 3.95, weight: 3 });
+  return list;
+}
+
+function buildBaseTemplates() {
   return [
     carTemplate({ name: 'sedan', model: 'marea', w: 1.76, l: 4.55, wheelR: 0.30, wheelBase: 2.60, lightY: 0.66, colors: CAR_COLORS, weight: 4,
       tex: { pillars: [[-0.8, -0.66], [0.42, 0.52], [1.5, 1.7]], doors: [-0.72, 0.48, 1.56], handles: [0.3, 1.4], hood: -0.82, tailgate: 1.72 }, body: {

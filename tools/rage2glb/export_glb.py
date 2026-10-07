@@ -16,6 +16,8 @@ ap.add_argument('--texsize-big', default='farol,lanterna,vehiclelights128,farolv
 ap.add_argument('--texsize', type=int, default=256)
 ap.add_argument('--ground', type=float, default=None, help='z (GTA) do chão; default = centro da roda - raio')
 ap.add_argument('--report', action='store_true')
+ap.add_argument('--generic', action='store_true', help='carro do tráfego: materiais paint/glass genéricos (js/vehicle_models.js)')
+ap.add_argument('--target', type=int, default=0, help='orçamento de triângulos da carroceria (decimação proporcional)')
 ap.add_argument('--curve', default='', help='escurece texturas por curva de tom (gama): nome:gama,nome:gama (fundo escuro, lâmpadas claras)')
 ap.add_argument('--drop-uv', default='', help='remove triângulos pelo centro do UV: gi:umin,umax,vmin,vmax;...')
 args = ap.parse_args()
@@ -66,9 +68,10 @@ mat_cache = {}
 def material(si):
     if si in mat_cache: return mat_cache[si]
     s = d['shaders'][si]; tex = s['params'].get('DiffuseSampler', (None, None))[1]
-    m = {'name': '%s|%s' % (s['name'], tex or ''), 'pbrMetallicRoughness': {'metallicFactor': 0.0, 'roughnessFactor': 0.8}, 'doubleSided': False,
+    gname = 'paint' if s['name'].startswith('vehicle_paint') else ('glass|%s' % (tex or '')) if 'glass' in s['name'] else '%s|%s' % (s['name'], tex or '')
+    m = {'name': gname if args.generic else '%s|%s' % (s['name'], tex or ''), 'pbrMetallicRoughness': {'metallicFactor': 0.0, 'roughnessFactor': 0.8}, 'doubleSided': False,
          'extras': {'shader': s['name'], 'tex': tex or ''}}
-    ti = tex_index(tex) if s['name'] != 'vehicle_paint1' else None
+    ti = tex_index(tex) if not s['name'].startswith('vehicle_paint') else None
     if ti is not None: m['pbrMetallicRoughness']['baseColorTexture'] = {'index': ti}
     else: m['pbrMetallicRoughness']['baseColorFactor'] = FALLBACK.get(s['name'], [0.5, 0.5, 0.5, 1])
     if 'glass' in s['name']: m['alphaMode'] = 'BLEND'; m['doubleSided'] = True
@@ -112,14 +115,25 @@ def build_geometry(g, bone_filter=True, mirror=False, gi=None):
         ind += [a, c, b] if flip else [a, b, c]
     return pos, nor, uv, ind, [sk[vs[v]['blendi'][2]]['name'] for v in used[:1]] if 'blendi' in vs[0] else []
 
-total = 0; manifest = []
+total = 0; manifest = []; collected = []
 for gi, g in enumerate(model['geoms']):
     s = d['shaders'][g['shader']]
     if only and gi not in only: continue
     if gi in skip or s['name'] in skip_shaders: continue
     res = build_geometry(g, gi=gi)
     if not res: continue
+    collected.append((gi, g, res))
+body_tris = sum(len(res[3]) // 3 for _, _, res in collected)
+scale = min(1.0, args.target / max(1, body_tris)) if args.target else 1.0
+if scale < 1: print('carroceria: %d triângulos -> alvo %d' % (body_tris, args.target))
+for gi, g, res in collected:
+    s = d['shaders'][g['shader']]
     pos, nor, uv, ind, bones = res
+    if scale < 1 and len(ind) // 3 > 24:
+        import decimate
+        tris = [ind[i:i+3] for i in range(0, len(ind), 3)]
+        p2, a2, t2 = decimate.decimate(pos, list(zip(nor, uv)), tris, max(24, int(len(tris) * scale)))
+        pos, nor, uv, ind = p2, [a[0] for a in a2], [a[1] for a in a2], [i for t in t2 for i in t]
     tex = s['params'].get('DiffuseSampler', (None, None))[1] or ''
     name = 'g%02d_%s_%s' % (gi, s['name'].replace('vehicle_', ''), re.sub(r'[^A-Za-z0-9]+', '', tex)[:16])
     prim = out.primitive(pos, nor, uv, ind, material(g['shader']))
@@ -168,5 +182,6 @@ if wheel_model and not args.no_wheels:
             print('  nó %s em %s' % (bn, [round(x, 3) for x in p]))
 
 bbmin = conv(d['bbmin']); bbmax = conv(d['bbmax'])
+bbmin, bbmax = [min(a, b) for a, b in zip(bbmin, bbmax)], [max(a, b) for a, b in zip(bbmin, bbmax)]  # conv inverte z
 out.write(args.out, extras={'source': frag['name'], 'bbox': [bbmin, bbmax], 'wheelRadius': wheel_r})
 print('total tris', total, '->', args.out, '%.1f MB' % (__import__('os').path.getsize(args.out)/1e6))

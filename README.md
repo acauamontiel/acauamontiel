@@ -161,6 +161,16 @@ python3 tools/rage2glb/export_car.py biz.dff --out assets/biz.glb --target 7000 
   (`--wheel-frame`) é instanciada e espelhada nos quatro `wheel_*_dummy`;
 - `js/vehicle_models.js` carrega o catálogo (`VEHICLE_MODELS`) e `makeVehicle`/`makeMoto` usam os modelos quando
   carregados; van e picape continuam loftados.
+- O **Jeep Compass** (mod `huntley.dff`) sai pelo mesmo `export_car.py`; o **Gol** é um `.yft` do GTA V e sai pelo
+  `export_glb.py --generic --target 11000`, que nomeia os materiais do mesmo jeito (`paint`, `glass|...`) e decima
+  a carroceria até o orçamento:
+
+```bash
+python3 tools/rage2glb/export_car.py huntley.dff huntley.txd --out assets/compass.glb --skip-frames "_dam,ped_,Box_,interor" --wheel-frame wheel --target 14000
+python3 tools/rage2glb/export_glb.py gol.yft gol.ytd assets/gol.glb --texsize 128 --generic --target 11000 \
+  --skip-shaders vehicle_interior2,vehicle_dash_emissive,vehicle_detail2 --curve lanterna:1.8,vehiclelights128:2.0,vehiclelightsfarol:2.0 \
+  --skip-bones "...,painelveic,painel,painelfrentedial,rad,molas,caixasimplesbyJp,dashglow,overheat,overheat_2"
+```
 
 `tools/viewer.html?game=marea&night&color=2a4a9a&views=isoFL,isoRR,rear` mostra um carro como no jogo
 (`game=hb20`, `game=biz&color2=f2c230` para o baú).
@@ -184,7 +194,7 @@ js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
 assets/bus.glb    modelo do ônibus urbano (idem)
-assets/marea.glb  assets/hb20.glb  assets/biz.glb   carros e moto do tráfego (export_car.py)
+assets/marea.glb  hb20.glb  compass.glb  gol.glb  biz.glb   carros e moto do tráfego
 js/vehicle_models.js  carregador genérico dos carros/moto em GLB
 js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
 tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA: ônibus, carros, motos) → GLB (Python puro)
