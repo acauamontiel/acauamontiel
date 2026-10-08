@@ -610,6 +610,7 @@ export function makeTextures() {
 
   T.busSkin = { turf: makeBusSkin('turf'), santasilvana: makeBusSkin('santasilvana'), santarosa: makeBusSkin('santarosa') };
   T.busSkin.turf.flipY = T.busSkin.santasilvana.flipY = T.busSkin.santarosa.flipY = false;
+  T.busSign = { turf: makeBusDestSign('Guabiroba'), santarosa: makeBusDestSign('Rodoviária'), santasilvana: makeBusDestSign('Padre Réus') };
   return T;
 }
 
@@ -731,6 +732,21 @@ export function makeBusSkin(kind) {
   g.fillStyle = L.roof || L.roofTop; g.fillRect(128, SIDE_H, 64, SIDE_H);
   g.fillStyle = '#17181a'; g.fillRect(192, SIDE_H, 64, SIDE_H);
   return pixelTexture(c, false);
+}
+
+/** Letreiro digital de destino (LED laranja sobre fundo preto), 256x40. */
+export function makeBusDestSign(text) {
+  const [c, g] = canvas(256, 40);
+  g.fillStyle = '#0a0a0c'; g.fillRect(0, 0, 256, 40);
+  g.fillStyle = '#1a1a1e'; g.fillRect(3, 3, 250, 34);
+  g.font = 'bold 26px "Courier New", monospace'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = '#ff9a1c'; g.fillText(text.toUpperCase(), 128, 21, 240);
+  // pontilhado de LED por cima
+  g.fillStyle = 'rgba(10,10,12,0.45)';
+  for (let y = 4; y < 36; y += 3) g.fillRect(3, y, 250, 1);
+  for (let x = 4; x < 252; x += 3) g.fillRect(x, 3, 1, 34);
+  const tex = pixelTexture(c, false); tex.flipY = true;
+  return tex;
 }
 
 const BUS_LIVERIES = {

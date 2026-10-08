@@ -158,7 +158,8 @@ python3 tools/rage2glb/export_dff.py bus.dff bus.txd assets/bus.glb \
   o resultado tem ~9 mil triângulos, com as quatro rodas decimadas;
 - os painéis de carroceria do mod recebem um **UV projetado** (lateral, frente, traseira, teto e assoalho) no layout
   de `makeBusSkin()` em `js/textures.js`, que pinta em canvas as três empresas (Turf, Santa Silvana, Santa Rosa):
-  cor base, saia, teto, nome, número e serpentinas. Assim a pintura do mod não é usada e trocar de empresa é
+  cor base, saia, teto, nome, número e serpentinas; vidros fumê com reflexo e letreiro digital de destino acima do
+  para-brisa (Turf: Guabiroba, Santa Rosa: Rodoviária, Santa Silvana: Padre Réus). Assim a pintura do mod não é usada e trocar de empresa é
   trocar uma textura de 256x128;
 - `js/bus_model.js` carrega o GLB e instancia os ônibus do tráfego (`makeVehicle` usa o modelo quando ele está
   carregado; o ônibus loftado continua como reserva e com `?lowpoly`).

@@ -36,8 +36,8 @@ function fixedMaterial(src, mesh) {
   if (tex === 'dx4-wheels') return { opts: { map, color: 0xa0a0a0 }, envCut: 1 };
   if (tex === 'carplate' || tex === 'carpback') return { opts: { color: 0xd8d8d0, unlit: true }, envCut: 1 };
   if (col[3] < 255 || tex === 'd4exn1glaswall') {
-    // vidros: janelas acesas à noite (o interior foi removido)
-    return { opts: { color: 0xffd9a0, unlit: true, transparent: true, opacity: 0.88, side: THREE.DoubleSide }, envCut: 0.5 };
+    // vidros fumê com reflexo (não se vê o interior, que foi removido)
+    return { opts: { color: 0x0a0d12, envStrength: 0.9, lightScale: 0.3, transparent: true, opacity: 0.96, side: THREE.DoubleSide }, envCut: 0.3 };
   }
   if (map) return { opts: { map }, envCut: 1 };
   const grey = (col[0] + col[1] + col[2]) / 3;
@@ -56,6 +56,17 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
     if (!skins[kind]) skins[kind] = ps1Material({ map: T.busSkin[kind], envStrength: 0.12, lightScale: 0.3 });
     return skins[kind];
   };
+  // Letreiro digital de destino acima do para-brisa (um por empresa).
+  const signs = {};
+  const signMat = (kind) => {
+    if (!signs[kind]) signs[kind] = ps1Material({ map: T.busSign[kind], unlit: true, lightScale: 0 });
+    return signs[kind];
+  };
+  const bb = (gltf.parser.json.extras || {}).bbox || [[-1.5, 0.2, -6], [1.5, 2.7, 6]];
+  const signGeo = new THREE.PlaneGeometry(2.3, 0.36);
+  signGeo.rotateY(Math.PI);
+  signGeo.translate((bb[0][0] + bb[1][0]) / 2, bb[1][1] - 0.32, bb[0][2] - 0.03);
+  signGeo.setAttribute('envCut', new THREE.Float32BufferAttribute(new Float32Array(signGeo.attributes.position.count).fill(1), 1));
   const roles = []; // [mesh, role]
   gltf.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -84,6 +95,7 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
         if (!o.isMesh) return;
         if (o.userData.role === 'livery') o.material = liveryMat(kind);
       });
+      root.add(new THREE.Mesh(signGeo, signMat(kind)));
       const g = new THREE.Group();
       g.add(root);
       return g;
