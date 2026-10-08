@@ -227,4 +227,10 @@ kbd {
 .results { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; margin: 18px auto 0; max-width: 420px; text-shadow: var(--shadow); }
 .result { display: flex; justify-content: space-between; font-size: clamp(16px, 2.6vw, 24px); font-weight: 700; font-style: italic; }
 
-.loading { font-size: 20px; letter-spacing: 0.3em; color: var(--gt-cyan); text-shadow: var(--shadow); }
+.loading { font-size: 20px; letter-spacing: 0.3em; color: var(--gt-cyan); text-shadow: var(--shadow); animation: pulse 1.2s ease-in-out infinite; }
+.loading-track { width: min(60vw, 320px); height: 6px; margin: 14px auto 0; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); }
+#loading-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--gt-cyan), #ff5fb0); transition: width 0.25s; }
+.loading-hint { margin-top: 12px; font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.55); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+#loading { flex-direction: column; text-align: center; }

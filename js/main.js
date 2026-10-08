@@ -32,6 +32,13 @@ const post = new PS1Post(renderer, 640);
 
 const T = makeTextures();
 const M = makeMaterials(T);
+// Tela de carregamento: progresso real dos GLB (GLTFLoader usa o DefaultLoadingManager).
+const loadingEl = document.querySelector('#loading .loading');
+const loadingBar = document.getElementById('loading-bar');
+THREE.DefaultLoadingManager.onProgress = (url, loaded, total) => {
+  if (loadingEl) loadingEl.textContent = 'CARREGANDO… ' + loaded + '/' + total;
+  if (loadingBar) loadingBar.style.width = Math.round(100 * loaded / Math.max(1, total)) + '%';
+};
 // Astra: modelo 3D convertido (assets/astra.glb); se não carregar (ex.: file://), usa o procedural.
 let astra;
 try {
@@ -418,6 +425,9 @@ function warmUp() {
   scene.remove(g);
   g.traverse((o) => { if (o.isMesh) o.frustumCulled = true; });
 }
+if (loadingEl) loadingEl.textContent = 'PREPARANDO…';
+if (loadingBar) loadingBar.style.width = '100%';
+await new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));
 warmUp();
 hud.show('title');
 if (params.has('autostart')) startRun(false);

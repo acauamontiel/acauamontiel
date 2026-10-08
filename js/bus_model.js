@@ -70,11 +70,11 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
         envCutAttribute(o.geometry, envCut);
       }
       o.userData.role = 'fixed';
-      o.userData.mat = fixed.get(o.material);
+      o.material = fixed.get(o.material);
+      if (o.material.transparent) o.renderOrder = 2;
     }
     roles.push(o);
   });
-  for (const o of roles) if (o.userData.role === 'fixed') { o.material = o.userData.mat; if (o.material.transparent) o.renderOrder = 2; }
 
   return {
     make(kind) {

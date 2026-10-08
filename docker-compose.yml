@@ -1,8 +1,12 @@
 services:
   web:
     image: nginx:alpine
-    container_name: pelotas-turismo
-    ports:
-      - "8080:80"
+    container_name: astra
+    networks:
+      - duat
     volumes:
       - ./:/usr/share/nginx/html:ro
+
+networks:
+  duat:
+    external: true

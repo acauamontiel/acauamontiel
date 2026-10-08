@@ -80,9 +80,9 @@ export async function loadVehicleModel(M, o) {
       envCutAttribute(m.geometry, envCut);
     }
     m.userData.role = 'fixed';
-    m.userData.mat = fixed.get(m.material);
+    m.material = fixed.get(m.material); // nunca guardar materiais em userData: clone() serializa em JSON
+    if (m.material.transparent) m.renderOrder = 2;
   });
-  gltf.scene.traverse((m) => { if (m.isMesh && m.userData.role === 'fixed') { m.material = m.userData.mat; if (m.material.transparent) m.renderOrder = 2; } });
   return {
     width: Math.abs(bb[1][0] - bb[0][0]) * scale,
     length: rawLength * scale,

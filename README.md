@@ -13,7 +13,8 @@ O Astra e os ônibus são modelos 3D de verdade (`assets/*.glb`), convertidos de
 docker compose up -d
 ```
 
-Abra <http://localhost:8080>.
+O serviço entra na rede externa `duat` sem publicar porta. Para abrir direto no navegador, crie um
+`docker-compose.override.yml` (ignorado pelo git) com `ports: ["8080:80"]` e abra <http://localhost:8080>.
 
 Qualquer servidor estático também serve (os módulos ES não carregam via `file://`).
 
@@ -204,5 +205,5 @@ js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
 tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA: ônibus, carros, motos) → GLB (Python puro)
 tools/viewer.html visualizador do GLB
 vendor/           three.module.min.js, BufferGeometryUtils.js e GLTFLoader.js (r170, MIT)
-docker-compose.yml  nginx servindo a pasta em :8080
+docker-compose.yml  nginx (container astra) na rede externa duat; para porta local, crie um docker-compose.override.yml com ports
 ```
