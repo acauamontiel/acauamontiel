@@ -238,5 +238,3 @@ kbd {
 .loading-hint { max-width: 100%; line-height: 1.5; }
 @media (max-width: 520px) { .loading { font-size: 16px; letter-spacing: 0.2em; } .loading-hint { font-size: 10px; letter-spacing: 0.08em; } }
 
-.quality { margin-top: 14px; padding: 8px 14px; font: inherit; font-size: 12px; letter-spacing: 0.15em; color: var(--gt-cyan); background: rgba(0,0,0,0.35); border: 1px solid rgba(120,200,255,0.5); cursor: pointer; pointer-events: auto; }
-.quality:hover { background: rgba(120,200,255,0.15); }

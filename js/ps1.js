@@ -5,7 +5,6 @@
 //  - emissivos: geometria (lanternas, faróis, luminárias) e máscara no alpha das texturas
 //    (janelas acesas, vitrines, letreiros)
 import * as THREE from 'three';
-import { SMOOTH } from './quality.js';
 
 THREE.ColorManagement.enabled = false;
 
@@ -238,8 +237,8 @@ export function ps1Material(o = {}) {
 /** Textura canvas com filtro nearest e mipmaps. */
 export function pixelTexture(canvas, repeat = true) {
   const t = new THREE.CanvasTexture(canvas);
-  t.magFilter = SMOOTH ? THREE.LinearFilter : THREE.NearestFilter;
-  t.minFilter = SMOOTH ? THREE.LinearMipmapLinearFilter : THREE.NearestMipmapLinearFilter;
+  t.magFilter = THREE.LinearFilter;
+  t.minFilter = THREE.LinearMipmapLinearFilter;
   t.generateMipmaps = true;
   t.wrapS = t.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
   return t;
@@ -286,8 +285,8 @@ export class PS1Post {
     this.renderer = renderer;
     this.longSide = longSide;
     this.rt = new THREE.WebGLRenderTarget(640, 360, {
-      minFilter: SMOOTH ? THREE.LinearFilter : THREE.NearestFilter,
-      magFilter: SMOOTH ? THREE.LinearFilter : THREE.NearestFilter,
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
       depthBuffer: true,
       stencilBuffer: false,
     });
