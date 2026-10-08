@@ -692,7 +692,10 @@ export function makeBodyTexture(o) {
  */
 export function makeBusSkin(kind) {
   const W = 256, H = 128, SIDE_H = 64, Y0 = 0.23, Y1 = 2.74; // alturas reais da carroceria (m)
-  const [c, g] = canvas(W, H);
+  const S = 4; // resolução final 1024x512, desenhada em coordenadas lógicas de 256x128
+  const [c, g] = canvas(W * S, H * S);
+  g.scale(S, S);
+  let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
   const yAt = (m) => Math.round(SIDE_H * (Y1 - m) / (Y1 - Y0)); // metro -> linha da lateral
   const L = BUS_LIVERIES[kind];
   const skirtY = yAt(Y0 + (Y1 - Y0) * L.skirtTop);
@@ -701,23 +704,29 @@ export function makeBusSkin(kind) {
   g.fillStyle = L.skirt; g.fillRect(0, skirtY, W, SIDE_H - skirtY);
   if (L.roof) { g.fillStyle = L.roof; g.fillRect(0, 0, W, yAt(2.45)); }
   g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, yAt(Y0 + 0.08), W, 2); // friso inferior
-  if (L.ribbons) {
-    // serpentinas pequenas, tipo carnaval, abaixo das janelas
-    for (let i = 0; i < 2; i++) {
-      g.strokeStyle = L.ribbons[i]; g.lineWidth = 1.5; g.beginPath();
-      const y = yAt(1.42) + i * 4;
-      for (let x = 0; x <= W; x += 6) g.lineTo(x, y + ((x / 6 + i) % 2 ? 2 : -2));
-      g.stroke();
-    }
-  }
   const nameY = yAt(1.05);
+  // Pinceladas (Santa Rosa): traços curtos e inclinados, vermelhos e verdes, espalhados pela lataria abaixo
+  // das janelas, mais densos perto do nome e na frente; alguns também na frente e na traseira do ônibus.
+  const stroke = (x, y, len, ang, col) => {
+    g.save(); g.translate(x, y); g.rotate(ang); g.fillStyle = col;
+    g.beginPath(); g.moveTo(-len / 2, -1.1); g.lineTo(len / 2 - 1.5, -1.4); g.lineTo(len / 2, 0.2); g.lineTo(-len / 2 + 1.2, 1.3); g.closePath(); g.fill();
+    g.restore();
+  };
+  const strokes = (x0, x1, y0, y1, n, avoid) => {
+    for (let k = 0; k < n; k++) {
+      const x = x0 + rnd() * (x1 - x0), y = y0 + rnd() * (y1 - y0);
+      if (avoid && x > avoid[0] && x < avoid[1] && y > avoid[2] && y < avoid[3]) continue;
+      stroke(x, y, 6 + rnd() * 6, (rnd() < 0.5 ? -1 : 1) * (0.5 + rnd() * 0.6), L.ribbons[k % 2]);
+    }
+  };
+  if (L.ribbons) strokes(4, W - 4, yAt(1.45), yAt(Y0 + 0.14), 90, [W * 0.34, W * 0.96, nameY - 9, nameY + 9]);
   if (L.plate) { g.fillStyle = L.plate; g.fillRect(Math.round(W * 0.33), nameY - 9, Math.round(W * 0.42), 18); }
   const text = (t, x, y, font, color, maxW, shadow) => {
     g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle';
-    if (shadow) { g.fillStyle = shadow; g.fillText(t, x + 1, y + 1, maxW); }
+    if (shadow) { g.fillStyle = shadow; g.fillText(t, x + 1.4, y + 1.2, maxW); }
     g.fillStyle = color; g.fillText(t, x, y, maxW);
   };
-  text(L.text, Math.round(W * 0.54), nameY, L.font.replace(/\d+px/, (m) => Math.round(parseInt(m) * 0.7) + 'px'), L.textColor, W * 0.4, L.shadow);
+  text(L.text, Math.round(W * (L.ribbons ? 0.65 : 0.54)), nameY, L.font.replace(/\d+px/, (m) => Math.round(parseInt(m) * 0.7) + 'px'), L.textColor, W * (L.ribbons ? 0.58 : 0.4), L.shadow);
   text(L.number, Math.round(W * 0.09), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
   text(L.number, Math.round(W * 0.93), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
   // frente (0-64), traseira (64-128), teto (128-192), assoalho (192-256), na metade de baixo
@@ -728,6 +737,7 @@ export function makeBusSkin(kind) {
     if (L.roof) { g.fillStyle = L.roof; g.fillRect(x0, SIDE_H, 64, yAt(2.45)); }
     if (rear) text(L.number, x0 + 32, fy(0.95), 'bold 12px Arial, sans-serif', L.numberColor || '#111', 40);
     else text(L.text, x0 + 32, fy(2.5), 'bold 8px Arial, sans-serif', L.roof ? '#111' : L.textColor, 56);
+    if (L.ribbons) strokes(x0 + 3, x0 + 61, fy(1.3), fy(Y0 + 0.14), rear ? 10 : 14, rear ? [x0 + 20, x0 + 44, fy(1.05), fy(0.85)] : null);
   }
   g.fillStyle = L.roof || L.roofTop; g.fillRect(128, SIDE_H, 64, SIDE_H);
   g.fillStyle = '#17181a'; g.fillRect(192, SIDE_H, 64, SIDE_H);
@@ -752,7 +762,7 @@ export function makeBusDestSign(text) {
 const BUS_LIVERIES = {
   turf: { base: '#f2f2ee', skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', roofTop: '#e4e4e0' },
   santasilvana: { base: '#7cc4e8', skirt: '#6ab4dc', skirtTop: 0.14, text: 'SANTA SILVANA', font: 'italic bold 15px "Arial Black", Arial, sans-serif', textColor: '#111', number: '41005', roof: null, roofTop: '#6ab4dc', plate: '#f6f6f2' },
-  santarosa: { base: '#f2f2ee', skirt: '#3a3a3c', skirtTop: 0.11, text: 'Santa Rosa', font: 'italic bold 25px Georgia, "Times New Roman", serif', textColor: '#1f7a3a', shadow: '#d42020', number: '37', roof: null, roofTop: '#e4e4e0', ribbons: ['#d42020', '#1f7a3a'] },
+  santarosa: { base: '#f4f4f0', skirt: '#3a3a3c', skirtTop: 0.09, text: 'SANTA ROSA', font: 'italic bold 30px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', roof: null, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
 };
 
 export function makeBusLivery(kind, o) {
