@@ -1,0 +1,4480 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-24T11:04:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1241146935,
+  "lat": -31.7572093,
+  "lon": -52.3797816,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1241146960,
+  "lat": -31.7592195,
+  "lon": -52.3647738,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "emergency"
+  }
+},
+{
+  "type": "node",
+  "id": 2138424864,
+  "lat": -31.7568737,
+  "lon": -52.3788640,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 2472217038,
+  "lat": -31.7565995,
+  "lon": -52.3789390,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "pharmacy",
+    "healthcare": "pharmacy",
+    "name": "Fragafarma"
+  }
+},
+{
+  "type": "node",
+  "id": 2472217043,
+  "lat": -31.7566822,
+  "lon": -52.3782628,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "710",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Unisuper",
+    "shop": "supermarket",
+    "website": "https://www.unisuper.com.br/"
+  }
+},
+{
+  "type": "node",
+  "id": 2472606622,
+  "lat": -31.7580178,
+  "lon": -52.3740085,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "bank",
+    "atm": "yes",
+    "brand": "Banrisul",
+    "brand:wikidata": "Q4857098",
+    "brand:wikipedia": "en:Banrisul",
+    "name": "Banrisul"
+  }
+},
+{
+  "type": "node",
+  "id": 3503313477,
+  "lat": -31.7607525,
+  "lon": -52.3605794,
+  "tags": {
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "fuel",
+    "brand": "Ipiranga",
+    "check_date": "2023-02-19",
+    "name": "Abastecedora Avenida"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650529,
+  "lat": -31.7637725,
+  "lon": -52.3567404,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650530,
+  "lat": -31.7608826,
+  "lon": -52.3608402,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650531,
+  "lat": -31.7607440,
+  "lon": -52.3610719,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282960,
+  "lat": -31.7609346,
+  "lon": -52.3602496,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Tchê Farmácias",
+    "healthcare": "pharmacy",
+    "name": "Farmácia Lideca"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282961,
+  "lat": -31.7585706,
+  "lon": -52.3659439,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias Associadas",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282962,
+  "lat": -31.7578825,
+  "lon": -52.3708503,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BR",
+    "name": "Posto Estoril"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282963,
+  "lat": -31.7583054,
+  "lon": -52.3695528,
+  "tags": {
+    "amenity": "pharmacy",
+    "healthcare": "pharmacy",
+    "name": "Farmácia Bandeira"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282965,
+  "lat": -31.7604872,
+  "lon": -52.3632951,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Agafarma",
+    "brand:wikidata": "Q93735939",
+    "healthcare": "pharmacy",
+    "name": "Agafarma"
+  }
+},
+{
+  "type": "node",
+  "id": 4591282966,
+  "lat": -31.7603233,
+  "lon": -52.3637560,
+  "tags": {
+    "amenity": "bank",
+    "brand": "Caixa Econômica Federal",
+    "brand:wikidata": "Q835283",
+    "name": "Caixa Econômica Federal"
+  }
+},
+{
+  "type": "node",
+  "id": 4663476399,
+  "lat": -31.7605688,
+  "lon": -52.3623326,
+  "tags": {
+    "amenity": "taxi",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 4663476400,
+  "lat": -31.7608137,
+  "lon": -52.3604200,
+  "tags": {
+    "amenity": "atm",
+    "brand": "Banco24Horas",
+    "brand:wikidata": "Q4854069",
+    "name": "Banco24Horas"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794031,
+  "lat": -31.7569158,
+  "lon": -52.3762290,
+  "tags": {
+    "amenity": "nightclub",
+    "name": "Super Kzão"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794032,
+  "lat": -31.7568663,
+  "lon": -52.3766713,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Maxxi Econômica",
+    "healthcare": "pharmacy",
+    "note": "Não vi da última vez que passei pelo local. Talvez tenha fechado"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794033,
+  "lat": -31.7570187,
+  "lon": -52.3753095,
+  "tags": {
+    "amenity": "bank",
+    "brand": "Banco do Brasil",
+    "brand:wikidata": "Q610817",
+    "name": "Banco do Brasil"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794034,
+  "lat": -31.7570771,
+  "lon": -52.3734328,
+  "tags": {
+    "addr:housenumber": "556",
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "bank",
+    "branch": "PAC Fragata",
+    "brand": "Sicredi",
+    "brand:wikidata": "Q3483060",
+    "name": "Sicredi"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794035,
+  "lat": -31.7570733,
+  "lon": -52.3730671,
+  "tags": {
+    "amenity": "school",
+    "name": "Colégio Tiradentes",
+    "operator": "Brigada Militar"
+  }
+},
+{
+  "type": "node",
+  "id": 4681794036,
+  "lat": -31.7576152,
+  "lon": -52.3781650,
+  "tags": {
+    "amenity": "post_office",
+    "name": "ACF Fragata",
+    "operator": "Correios"
+  }
+},
+{
+  "type": "node",
+  "id": 4694410514,
+  "lat": -31.7569768,
+  "lon": -52.3756842,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Preço Popular",
+    "healthcare": "pharmacy",
+    "note": "Não vi da última vez que passei pelo local. Talvez tenha fechado"
+  }
+},
+{
+  "type": "node",
+  "id": 4726221672,
+  "lat": -31.7589169,
+  "lon": -52.3652554,
+  "tags": {
+    "amenity": "bank",
+    "brand": "Poupex"
+  }
+},
+{
+  "type": "node",
+  "id": 4743447303,
+  "lat": -31.7558222,
+  "lon": -52.3891414,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias Associadas",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4743447304,
+  "lat": -31.7558883,
+  "lon": -52.3888919,
+  "tags": {
+    "brand": "Nicolini",
+    "name": "Nicolini",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 4743447305,
+  "lat": -31.7563034,
+  "lon": -52.3875455,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1049",
+    "addr:postcode": "96030-003",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "amenity": "police",
+    "email": "cm.pts.rs@dpf.gov.br",
+    "name": "DPF Pelotas",
+    "operator": "Polícia Federal do Brasil",
+    "operator:en": "Federal Police of Brazil",
+    "operator:wikidata": "Q2289697",
+    "operator:wikipedia": "pt:Polícia Federal do Brasil",
+    "phone": "+55 53 3309 9000"
+  }
+},
+{
+  "type": "node",
+  "id": 4743447307,
+  "lat": -31.7545946,
+  "lon": -52.3925491,
+  "tags": {
+    "amenity": "police",
+    "name": "Posto Fragata",
+    "operator": "Brigada Militar"
+  }
+},
+{
+  "type": "node",
+  "id": 4831687661,
+  "lat": -31.7579150,
+  "lon": -52.3754794,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias Associadas",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4831687662,
+  "lat": -31.7576217,
+  "lon": -52.3699902,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 4831687663,
+  "lat": -31.7634425,
+  "lon": -52.3570713,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 4831687664,
+  "lat": -31.7565816,
+  "lon": -52.3790849,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias Associadas",
+    "fixme": "position_estimated",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4831687665,
+  "lat": -31.7569966,
+  "lon": -52.3755074,
+  "tags": {
+    "name": "Paraíso",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 4867057091,
+  "lat": -31.7566843,
+  "lon": -52.3837486,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 6591319130,
+  "lat": -31.7569215,
+  "lon": -52.3835689,
+  "tags": {
+    "alt_name": "Centro de Referência de Assistência Social Fragata",
+    "amenity": "social_facility",
+    "name": "CRAS Fragata",
+    "note": "Acho que mudou de endereço, revisar",
+    "social_facility": "outreach"
+  }
+},
+{
+  "type": "node",
+  "id": 6900953378,
+  "lat": -31.7555213,
+  "lon": -52.3985591,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6900953379,
+  "lat": -31.7552335,
+  "lon": -52.3981283,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6900953380,
+  "lat": -31.7541391,
+  "lon": -52.3950749,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6900953381,
+  "lat": -31.7546397,
+  "lon": -52.3930562,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659833,
+  "lat": -31.7578992,
+  "lon": -52.3679457,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "A Casa da Alaminuta"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659834,
+  "lat": -31.7580597,
+  "lon": -52.3674671,
+  "tags": {
+    "name": "Angelus Pax",
+    "shop": "funeral_directors"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659835,
+  "lat": -31.7581610,
+  "lon": -52.3671649,
+  "tags": {
+    "name": "Ferragem Treptow",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659836,
+  "lat": -31.7584335,
+  "lon": -52.3663523,
+  "tags": {
+    "name": "Padaria Amaral",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659838,
+  "lat": -31.7585198,
+  "lon": -52.3660946,
+  "tags": {
+    "name": "Lotérica da Duque",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659839,
+  "lat": -31.7586602,
+  "lon": -52.3656790,
+  "tags": {
+    "addr:housenumber": "352",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Rede FrigoCarne",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659840,
+  "lat": -31.7586731,
+  "lon": -52.3654577,
+  "tags": {
+    "craft": "locksmith",
+    "name": "Chaveiro Dias"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659841,
+  "lat": -31.7587833,
+  "lon": -52.3653144,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Judith Restaurante"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659842,
+  "lat": -31.7587671,
+  "lon": -52.3653626,
+  "tags": {
+    "amenity": "doctors",
+    "healthcare": "physiotherapist",
+    "name": "Bianca Wetzel"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659843,
+  "lat": -31.7587426,
+  "lon": -52.3654350,
+  "tags": {
+    "name": "Xerox da Duque",
+    "shop": "copyshop"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659844,
+  "lat": -31.7587265,
+  "lon": -52.3654827,
+  "tags": {
+    "name": "Esquina da Sorte",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659845,
+  "lat": -31.7611538,
+  "lon": -52.3598525,
+  "tags": {
+    "name": "Maciel Gill",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659846,
+  "lat": -31.7611110,
+  "lon": -52.3599300,
+  "tags": {
+    "name": "Pane Nostro",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659847,
+  "lat": -31.7610718,
+  "lon": -52.3600010,
+  "tags": {
+    "brand": "Italínea",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659848,
+  "lat": -31.7610387,
+  "lon": -52.3600610,
+  "tags": {
+    "second_hand": "only",
+    "shop": "motorcycle"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659849,
+  "lat": -31.7609989,
+  "lon": -52.3601331,
+  "tags": {
+    "name": "L&A Ferragem",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659850,
+  "lat": -31.7615500,
+  "lon": -52.3591349,
+  "tags": {
+    "name": "União Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659851,
+  "lat": -31.7616075,
+  "lon": -52.3590306,
+  "tags": {
+    "name": "Lubrisul",
+    "shop": "trade"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659852,
+  "lat": -31.7616524,
+  "lon": -52.3589494,
+  "tags": {
+    "name": "Solar K Baterias",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659853,
+  "lat": -31.7616957,
+  "lon": -52.3588710,
+  "tags": {
+    "name": "Propet",
+    "shop": "pet"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659854,
+  "lat": -31.7617301,
+  "lon": -52.3588086,
+  "tags": {
+    "name": "Marmoaria & Marcenaria Porto",
+    "shop": "trade"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659855,
+  "lat": -31.7618044,
+  "lon": -52.3586741,
+  "tags": {
+    "name": "Esquina da Sorte",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659856,
+  "lat": -31.7618683,
+  "lon": -52.3585583,
+  "tags": {
+    "name": "Tramontini Motores",
+    "shop": "trade",
+    "trade": "agricultural_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659857,
+  "lat": -31.7619222,
+  "lon": -52.3584607,
+  "tags": {
+    "addr:housenumber": "130",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "P. A. Guazina",
+    "shop": "trade"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659858,
+  "lat": -31.7619641,
+  "lon": -52.3583848,
+  "tags": {
+    "name": "Feira Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659862,
+  "lat": -31.7625768,
+  "lon": -52.3572766,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Tio Clóvis Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659863,
+  "lat": -31.7627733,
+  "lon": -52.3569210,
+  "tags": {
+    "name": "Augusto Gás",
+    "shop": "gas"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659865,
+  "lat": -31.7565570,
+  "lon": -52.3792861,
+  "tags": {
+    "name": "Central da Limpeza",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 7644659867,
+  "lat": -31.7570899,
+  "lon": -52.3746738,
+  "tags": {
+    "name": "Mellinho Automóveis e Caminhões",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815409,
+  "lat": -31.7559827,
+  "lon": -52.3832306,
+  "tags": {
+    "addr:housenumber": "870",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Cia. de Pneus",
+    "shop": "tyres"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815410,
+  "lat": -31.7560081,
+  "lon": -52.3830488,
+  "tags": {
+    "name": "Conceito Automóveis",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815411,
+  "lat": -31.7560401,
+  "lon": -52.3828195,
+  "tags": {
+    "name": "Classe A Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815412,
+  "lat": -31.7561185,
+  "lon": -52.3822779,
+  "tags": {
+    "name": "Império Automóveis",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815413,
+  "lat": -31.7561460,
+  "lon": -52.3820905,
+  "tags": {
+    "name": "4 Rodas Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815414,
+  "lat": -31.7561639,
+  "lon": -52.3819680,
+  "tags": {
+    "name": "Andersom",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815415,
+  "lat": -31.7561794,
+  "lon": -52.3818624,
+  "tags": {
+    "name": "Leko Automóveis",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815416,
+  "lat": -31.7561998,
+  "lon": -52.3817229,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Rodízio Pizzaria"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815417,
+  "lat": -31.7560791,
+  "lon": -52.3825468,
+  "tags": {
+    "name": "Aliança Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815418,
+  "lat": -31.7563121,
+  "lon": -52.3809572,
+  "tags": {
+    "name": "Diplomata Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815419,
+  "lat": -31.7564247,
+  "lon": -52.3801889,
+  "tags": {
+    "addr:housenumber": "754",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "G S Car",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815420,
+  "lat": -31.7565122,
+  "lon": -52.3795914,
+  "tags": {
+    "name": "Art Móveis",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815421,
+  "lat": -31.7565725,
+  "lon": -52.3791597,
+  "tags": {
+    "name": "Bazar Doce Mel",
+    "shop": "variety_store"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815422,
+  "lat": -31.7566611,
+  "lon": -52.3784351,
+  "tags": {
+    "amenity": "ice_cream",
+    "name": "Yo Shake!"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815423,
+  "lat": -31.7567239,
+  "lon": -52.3779218,
+  "tags": {
+    "name": "Skenta",
+    "shop": "alcohol"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815424,
+  "lat": -31.7568089,
+  "lon": -52.3771840,
+  "tags": {
+    "shop": "optician"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815425,
+  "lat": -31.7568265,
+  "lon": -52.3770264,
+  "tags": {
+    "name": "Cremolatto Sorvetes",
+    "shop": "ice_cream"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815426,
+  "lat": -31.7568831,
+  "lon": -52.3765205,
+  "tags": {
+    "name": "Rosa Pink",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815427,
+  "lat": -31.7568925,
+  "lon": -52.3764366,
+  "tags": {
+    "name": "Padaria Estrela",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815428,
+  "lat": -31.7569051,
+  "lon": -52.3763242,
+  "tags": {
+    "name": "Tri Legal",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815429,
+  "lat": -31.7569264,
+  "lon": -52.3761339,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Baby Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815430,
+  "lat": -31.7570408,
+  "lon": -52.3751120,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Preço Mais Popular",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815431,
+  "lat": -31.7570696,
+  "lon": -52.3748547,
+  "tags": {
+    "name": "Quality Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815432,
+  "lat": -31.7570886,
+  "lon": -52.3745485,
+  "tags": {
+    "leisure": "fitness_centre",
+    "name": "Vida em Movimento"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815433,
+  "lat": -31.7570876,
+  "lon": -52.3744493,
+  "tags": {
+    "shop": "pet"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815434,
+  "lat": -31.7570868,
+  "lon": -52.3743769,
+  "tags": {
+    "name": "Une",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815435,
+  "lat": -31.7570857,
+  "lon": -52.3742737,
+  "tags": {
+    "name": "Peso Certo Equipamentos Comerciais",
+    "shop": "appliance"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815436,
+  "lat": -31.7570827,
+  "lon": -52.3739747,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias São João",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815437,
+  "lat": -31.7570752,
+  "lon": -52.3732504,
+  "tags": {
+    "addr:housenumber": "552",
+    "addr:street": "Avenida Duque de Caxias",
+    "leisure": "fitness_centre",
+    "name": "Studio Nicki"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815438,
+  "lat": -31.7570264,
+  "lon": -52.3718581,
+  "tags": {
+    "name": "Auto Dez Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815439,
+  "lat": -31.7570122,
+  "lon": -52.3715361,
+  "tags": {
+    "name": "Lojas MGD",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815440,
+  "lat": -31.7570051,
+  "lon": -52.3713752,
+  "tags": {
+    "name": "Malhas Decolor",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815441,
+  "lat": -31.7569931,
+  "lon": -52.3711037,
+  "tags": {
+    "addr:housenumber": "474",
+    "addr:street": "Avenida Duque de Caxias",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815442,
+  "lat": -31.7569982,
+  "lon": -52.3712200,
+  "tags": {
+    "name": "Recanto do Gaúcho",
+    "shop": "leather"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815443,
+  "lat": -31.7569858,
+  "lon": -52.3709396,
+  "tags": {
+    "name": "Toya Motores",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815444,
+  "lat": -31.7568600,
+  "lon": -52.3708902,
+  "tags": {
+    "name": "Marmoaria Nogueira",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7650815445,
+  "lat": -31.7569814,
+  "lon": -52.3708384,
+  "tags": {
+    "name": "Eskimó",
+    "shop": "ice_cream"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835491,
+  "lat": -31.7577546,
+  "lon": -52.3769107,
+  "tags": {
+    "name": "Paulinho Loterias",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835492,
+  "lat": -31.7577404,
+  "lon": -52.3770377,
+  "tags": {
+    "name": "Casa Tupy",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835493,
+  "lat": -31.7577233,
+  "lon": -52.3771901,
+  "tags": {
+    "name": "Confeitaria Fábio Ruas",
+    "shop": "confectionery"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835494,
+  "lat": -31.7577136,
+  "lon": -52.3772769,
+  "tags": {
+    "amenity": "pharmacy",
+    "healthcare": "pharmacy",
+    "name": "Dose Única"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835495,
+  "lat": -31.7577031,
+  "lon": -52.3773702,
+  "tags": {
+    "name": "Polska",
+    "shop": "alcohol"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835496,
+  "lat": -31.7576831,
+  "lon": -52.3775484,
+  "tags": {
+    "name": "Foto Garcia",
+    "shop": "photo"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835497,
+  "lat": -31.7578918,
+  "lon": -52.3756864,
+  "tags": {
+    "name": "Ferragem Casa Progresso",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835498,
+  "lat": -31.7578724,
+  "lon": -52.3758595,
+  "tags": {
+    "name": "Móveis Maciel",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835499,
+  "lat": -31.7578524,
+  "lon": -52.3760380,
+  "tags": {
+    "amenity": "veterinary"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835500,
+  "lat": -31.7578402,
+  "lon": -52.3761230,
+  "tags": {
+    "addr:housenumber": "677",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Clarice Aviamentos",
+    "shop": "sewing"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835501,
+  "lat": -31.7578215,
+  "lon": -52.3763134,
+  "tags": {
+    "name": "Aquarela Tintas",
+    "shop": "paint"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835502,
+  "lat": -31.7579686,
+  "lon": -52.3749531,
+  "tags": {
+    "name": "Sul Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835503,
+  "lat": -31.7579579,
+  "lon": -52.3750634,
+  "tags": {
+    "name": "Triângulo Tintas",
+    "shop": "paint"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835504,
+  "lat": -31.7579456,
+  "lon": -52.3751906,
+  "tags": {
+    "name": "Fragata",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835505,
+  "lat": -31.7579703,
+  "lon": -52.3732211,
+  "tags": {
+    "name": "Império Vidraçaria",
+    "shop": "glaziery"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835506,
+  "lat": -31.7579802,
+  "lon": -52.3733849,
+  "tags": {
+    "building": "university",
+    "name": "Uniasselvi"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835507,
+  "lat": -31.7579256,
+  "lon": -52.3724804,
+  "tags": {
+    "name": "Tri Colchões",
+    "shop": "bed"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835508,
+  "lat": -31.7579056,
+  "lon": -52.3721483,
+  "tags": {
+    "name": "São José Esquadrias",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835509,
+  "lat": -31.7578971,
+  "lon": -52.3720080,
+  "tags": {
+    "name": "Armazém Colosso",
+    "shop": "variety_store"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835510,
+  "lat": -31.7578750,
+  "lon": -52.3716274,
+  "tags": {
+    "name": "Jasmim Floricultura",
+    "shop": "garden_centre"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835511,
+  "lat": -31.7578565,
+  "lon": -52.3710756,
+  "tags": {
+    "name": "Vibrasul",
+    "shop": "tool_hire"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835515,
+  "lat": -31.7585684,
+  "lon": -52.3687576,
+  "tags": {
+    "name": "Duque Comercial",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835516,
+  "lat": -31.7585046,
+  "lon": -52.3689504,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "La Camperita"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835517,
+  "lat": -31.7584628,
+  "lon": -52.3690770,
+  "tags": {
+    "name": "Grand Mármores",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835518,
+  "lat": -31.7584260,
+  "lon": -52.3691882,
+  "tags": {
+    "name": "Destaque Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835519,
+  "lat": -31.7584019,
+  "lon": -52.3692610,
+  "tags": {
+    "craft": "signmaker",
+    "name": "Placas Fragata"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835520,
+  "lat": -31.7583273,
+  "lon": -52.3694866,
+  "tags": {
+    "name": "Ágil Certificação Digital",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835521,
+  "lat": -31.7590344,
+  "lon": -52.3673972,
+  "tags": {
+    "name": "Schulz Tintas",
+    "shop": "paint"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835522,
+  "lat": -31.7589683,
+  "lon": -52.3675888,
+  "tags": {
+    "name": "RD Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835523,
+  "lat": -31.7589123,
+  "lon": -52.3677513,
+  "tags": {
+    "addr:housenumber": "363",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Marques Autopeças",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835524,
+  "lat": -31.7588485,
+  "lon": -52.3679363,
+  "tags": {
+    "name": "Guarany Escapamentos",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835525,
+  "lat": -31.7593443,
+  "lon": -52.3664981,
+  "tags": {
+    "name": "Ramos",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835526,
+  "lat": -31.7597205,
+  "lon": -52.3654455,
+  "tags": {
+    "name": "Loja do Militar",
+    "shop": "military_surplus"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835527,
+  "lat": -31.7597058,
+  "lon": -52.3654864,
+  "tags": {
+    "name": "Adendi",
+    "shop": "shoes"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835528,
+  "lat": -31.7597351,
+  "lon": -52.3654046,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "On Call"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835529,
+  "lat": -31.7596438,
+  "lon": -52.3656591,
+  "tags": {
+    "name": "Var. Carnes",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835530,
+  "lat": -31.7596137,
+  "lon": -52.3657427,
+  "tags": {
+    "name": "Lojas Narce",
+    "shop": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835531,
+  "lat": -31.7595538,
+  "lon": -52.3659095,
+  "tags": {
+    "name": "Lavanderia Aladim",
+    "shop": "laundry"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835532,
+  "lat": -31.7595119,
+  "lon": -52.3660262,
+  "tags": {
+    "name": "Agropecuária Avenida",
+    "shop": "agrarian"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835533,
+  "lat": -31.7594548,
+  "lon": -52.3661853,
+  "tags": {
+    "name": "Adélio Marmoaria",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835534,
+  "lat": -31.7598619,
+  "lon": -52.3650517,
+  "tags": {
+    "name": "Moraes Fruteira",
+    "shop": "greengrocer"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835535,
+  "lat": -31.7598868,
+  "lon": -52.3649821,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Mix Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835536,
+  "lat": -31.7599662,
+  "lon": -52.3647597,
+  "tags": {
+    "name": "VideoSat Electronics",
+    "shop": "electronics"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835537,
+  "lat": -31.7604136,
+  "lon": -52.3635020,
+  "tags": {
+    "clothes": "wedding",
+    "name": "Rosi Noivas",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835538,
+  "lat": -31.7605304,
+  "lon": -52.3631738,
+  "tags": {
+    "name": "Art Pão",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835539,
+  "lat": -31.7606016,
+  "lon": -52.3629736,
+  "tags": {
+    "name": "Moreira",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835540,
+  "lat": -31.7617091,
+  "lon": -52.3608332,
+  "tags": {
+    "craft": "metal_construction",
+    "name": "San Martin Metalúrgica"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835541,
+  "lat": -31.7618144,
+  "lon": -52.3606475,
+  "tags": {
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835542,
+  "lat": -31.7619547,
+  "lon": -52.3603999,
+  "tags": {
+    "amenity": "doctors",
+    "healthcare": "laboratory",
+    "name": "Laboratório Ary Costa"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835543,
+  "lat": -31.7620462,
+  "lon": -52.3602383,
+  "tags": {
+    "name": "Carmania",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835544,
+  "lat": -31.7621809,
+  "lon": -52.3600006,
+  "tags": {
+    "name": "Visão Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835545,
+  "lat": -31.7622556,
+  "lon": -52.3598687,
+  "tags": {
+    "name": "Duque Automóveis",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835546,
+  "lat": -31.7623425,
+  "lon": -52.3597152,
+  "tags": {
+    "name": "Mix Cartuchos",
+    "shop": "computer"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835547,
+  "lat": -31.7624502,
+  "lon": -52.3595251,
+  "tags": {
+    "addr:housenumber": "137",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Invicta Veículos",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835548,
+  "lat": -31.7626761,
+  "lon": -52.3591259,
+  "tags": {
+    "name": "Orbid",
+    "shop": "agrarian"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835549,
+  "lat": -31.7636363,
+  "lon": -52.3574465,
+  "tags": {
+    "name": "Centro Ciclista",
+    "shop": "bicycle"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835550,
+  "lat": -31.7633840,
+  "lon": -52.3578746,
+  "tags": {
+    "leisure": "fitness_centre",
+    "name": "Marcelo Ramalho",
+    "sport": "pilates"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835551,
+  "lat": -31.7632820,
+  "lon": -52.3580548,
+  "tags": {
+    "name": "Marujos Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835552,
+  "lat": -31.7629295,
+  "lon": -52.3586783,
+  "tags": {
+    "name": "Moda Cherry",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835554,
+  "lat": -31.7630910,
+  "lon": -52.3583927,
+  "tags": {
+    "name": "V Automóveis",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835555,
+  "lat": -31.7629689,
+  "lon": -52.3586086,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "restaurant",
+    "name": "Q Sabor"
+  }
+},
+{
+  "type": "node",
+  "id": 7658835556,
+  "lat": -31.7628768,
+  "lon": -52.3587715,
+  "tags": {
+    "name": "BMBA Brik Móveis",
+    "second_hand": "only",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7658870391,
+  "lat": -31.7575081,
+  "lon": -52.3791401,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "767",
+    "addr:postcode": "96030-001",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "name": "de Jung Colchões",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+55 53 99166 4396",
+    "shop": "bed"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023418,
+  "lat": -31.7569905,
+  "lon": -52.3835887,
+  "tags": {
+    "name": "Moto Peças David",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023419,
+  "lat": -31.7569792,
+  "lon": -52.3836954,
+  "tags": {
+    "name": "Móveis São Francisco",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023420,
+  "lat": -31.7569656,
+  "lon": -52.3838231,
+  "tags": {
+    "name": "Fernando Surdinas",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023421,
+  "lat": -31.7569137,
+  "lon": -52.3841861,
+  "tags": {
+    "name": "Minimercado Perez",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023422,
+  "lat": -31.7568812,
+  "lon": -52.3843651,
+  "tags": {
+    "name": "Hotel Marrocos",
+    "tourism": "hotel"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023423,
+  "lat": -31.7568637,
+  "lon": -52.3844609,
+  "tags": {
+    "name": "Rekint Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023424,
+  "lat": -31.7568397,
+  "lon": -52.3845926,
+  "tags": {
+    "addr:housenumber": "957",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Meu Carinho"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023425,
+  "lat": -31.7568153,
+  "lon": -52.3847267,
+  "tags": {
+    "name": "Celta Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023426,
+  "lat": -31.7570122,
+  "lon": -52.3833831,
+  "tags": {
+    "name": "Malba",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023427,
+  "lat": -31.7570306,
+  "lon": -52.3832167,
+  "tags": {
+    "name": "Gold Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023428,
+  "lat": -31.7571166,
+  "lon": -52.3824828,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Roll"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023429,
+  "lat": -31.7571300,
+  "lon": -52.3823685,
+  "tags": {
+    "name": "Auto Dez Multimarcas",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023430,
+  "lat": -31.7571417,
+  "lon": -52.3822686,
+  "tags": {
+    "name": "Princesa Auto Peças",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023431,
+  "lat": -31.7571567,
+  "lon": -52.3821404,
+  "tags": {
+    "name": "Auto Car Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023432,
+  "lat": -31.7571700,
+  "lon": -52.3820273,
+  "tags": {
+    "amenity": "social_centre",
+    "name": "Clube de Empresários do Fragata",
+    "short_name": "CEFRA"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023433,
+  "lat": -31.7572160,
+  "lon": -52.3816347,
+  "tags": {
+    "name": "GFPF",
+    "shop": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023434,
+  "lat": -31.7572297,
+  "lon": -52.3815174,
+  "tags": {
+    "name": "Stilo Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023437,
+  "lat": -31.7573946,
+  "lon": -52.3801094,
+  "tags": {
+    "addr:housenumber": "833",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "JL Padaria",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023438,
+  "lat": -31.7574746,
+  "lon": -52.3794266,
+  "tags": {
+    "amenity": "dentist",
+    "healthcare": "dentist",
+    "name": "Odonto Excellence"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023439,
+  "lat": -31.7574625,
+  "lon": -52.3795299,
+  "tags": {
+    "brand": "Hugo Boss",
+    "brand:wikidata": "Q491627",
+    "brand:wikipedia": "en:Hugo Boss",
+    "name": "Hugo Boss",
+    "shop": "clothes",
+    "short_name": "Boss"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023440,
+  "lat": -31.7574481,
+  "lon": -52.3796528,
+  "tags": {
+    "name": "Lojas Jodin",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023441,
+  "lat": -31.7575381,
+  "lon": -52.3788671,
+  "tags": {
+    "name": "Brasa Carnes",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023442,
+  "lat": -31.7575519,
+  "lon": -52.3787411,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "Television"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023443,
+  "lat": -31.7576064,
+  "lon": -52.3782448,
+  "tags": {
+    "addr:housenumber": "737",
+    "addr:street": "Avenida Duque de Caxias",
+    "name": "Casa de Carnes Garcia",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023444,
+  "lat": -31.7575990,
+  "lon": -52.3783120,
+  "tags": {
+    "name": "Paulinho Loterias",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023445,
+  "lat": -31.7575917,
+  "lon": -52.3783791,
+  "tags": {
+    "amenity": "dentist",
+    "healthcare": "dentist",
+    "name": "Consultório Dent. Amauri Veneciam"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023446,
+  "lat": -31.7575695,
+  "lon": -52.3785805,
+  "tags": {
+    "name": "Atacado de Sorvetes",
+    "shop": "ice_cream"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023447,
+  "lat": -31.7575622,
+  "lon": -52.3786477,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "Duk Informática"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023448,
+  "lat": -31.7576565,
+  "lon": -52.3777892,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Lancheria Cantagalo"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023449,
+  "lat": -31.7576427,
+  "lon": -52.3779144,
+  "tags": {
+    "shop": "greengrocer"
+  }
+},
+{
+  "type": "node",
+  "id": 7681023450,
+  "lat": -31.7576289,
+  "lon": -52.3780397,
+  "tags": {
+    "name": "Mais Q Ferragem",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 7876047209,
+  "lat": -31.7578358,
+  "lon": -52.3762214,
+  "tags": {
+    "name": "Sabrimar",
+    "shop": "clothes"
+  }
+},
+{
+  "type": "node",
+  "id": 7918915397,
+  "lat": -31.7560588,
+  "lon": -52.3843643,
+  "tags": {
+    "crossing": "marked",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7918915398,
+  "lat": -31.7560640,
+  "lon": -52.3843252,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7918915399,
+  "lat": -31.7558532,
+  "lon": -52.3846214,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "backward"
+  }
+},
+{
+  "type": "node",
+  "id": 7918915400,
+  "lat": -31.7559370,
+  "lon": -52.3846508,
+  "tags": {
+    "crossing": "marked",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7921016879,
+  "lat": -31.7636828,
+  "lon": -52.3566082,
+  "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021285,
+  "lat": -31.7634538,
+  "lon": -52.3562031,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021286,
+  "lat": -31.7632195,
+  "lon": -52.3564320,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021287,
+  "lat": -31.7632450,
+  "lon": -52.3563831,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021289,
+  "lat": -31.7637963,
+  "lon": -52.3566563,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021291,
+  "lat": -31.7639453,
+  "lon": -52.3564023,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021292,
+  "lat": -31.7608642,
+  "lon": -52.3609703,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021294,
+  "lat": -31.7573446,
+  "lon": -52.3740307,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021295,
+  "lat": -31.7572992,
+  "lon": -52.3741257,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021304,
+  "lat": -31.7565136,
+  "lon": -52.3851042,
+  "tags": {
+    "crossing": "marked",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 8544865990,
+  "lat": -31.7568101,
+  "lon": -52.3788537,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "backward"
+  }
+},
+{
+  "type": "node",
+  "id": 9634612050,
+  "lat": -31.7556915,
+  "lon": -52.3846477,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 9634612051,
+  "lat": -31.7556413,
+  "lon": -52.3845082,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 9634612052,
+  "lat": -31.7559104,
+  "lon": -52.3849588,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 9634612053,
+  "lat": -31.7565330,
+  "lon": -52.3852163,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 10293594650,
+  "lat": -31.7572149,
+  "lon": -52.3797833,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "backward"
+  }
+},
+{
+  "type": "node",
+  "id": 13126393119,
+  "lat": -31.7550438,
+  "lon": -52.3894196,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 13126393120,
+  "lat": -31.7550933,
+  "lon": -52.3894300,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "way",
+  "id": 77765988,
+  "center": {
+    "lat": -31.7547221,
+    "lon": -52.3969049
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 77765990,
+  "center": {
+    "lat": -31.7590543,
+    "lon": -52.3590011
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108139355,
+  "center": {
+    "lat": -31.7566039,
+    "lon": -52.4002737
+  },
+  "tags": {
+    "alt_name": "Avenida Três de Maio",
+    "destination": "Pelotas (B. Fragata);Retorno",
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida 3 de Maio",
+    "oneway": "yes",
+    "postal_code": "96010-620",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108139358,
+  "center": {
+    "lat": -31.7589849,
+    "lon": -52.3664260
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108139366,
+  "center": {
+    "lat": -31.7556863,
+    "lon": -52.3887553
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108140520,
+  "center": {
+    "lat": -31.7638995,
+    "lon": -52.3565259
+  },
+  "tags": {
+    "alt_name": "Praça Vinte de Setembro; Avenida Duque de Caxias",
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Praça 20 de Setembro",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108141810,
+  "center": {
+    "lat": -31.7515434,
+    "lon": -52.3943353
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "parking:left": "no",
+    "parking:right": "street_side",
+    "postal_code": "96045-010",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 108143424,
+  "center": {
+    "lat": -31.7635646,
+    "lon": -52.3565581
+  },
+  "tags": {
+    "IBGE:CD_ADMINIS": "federal",
+    "fixme": "I believe this is part of an automatic import. It seems that this section doesn sont exist. Maybe it is something planned, but not yet constructed?",
+    "highway": "secondary",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "source": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 132304030,
+  "center": {
+    "lat": -31.7609212,
+    "lon": -52.3719059
+  },
+  "tags": {
+    "bicycle": "yes",
+    "foot": "yes",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Ismael Simões Lopes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 132304095,
+  "center": {
+    "lat": -31.7611806,
+    "lon": -52.3708685
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Cipriano Mascarenhas",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 155081904,
+  "center": {
+    "lat": -31.7652616,
+    "lon": -52.3573437
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua João Simões Lopes Neto",
+    "source": "IBGE",
+    "source:name": "CNEFE/IBGE",
+    "surface": "compacted"
+  }
+},
+{
+  "type": "way",
+  "id": 198179022,
+  "center": {
+    "lat": -31.7637245,
+    "lon": -52.3562377
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal Santa Bárbara",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 203838196,
+  "center": {
+    "lat": -31.7578628,
+    "lon": -52.3808323
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "849",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "leisure": "pitch",
+    "lit": "yes",
+    "name": "Antigo Campo G.A. Farroupilha",
+    "source": "survey",
+    "sport": "soccer",
+    "surface": "grass",
+    "wikipedia": "pt:Grêmio Atlético Farroupilha"
+  }
+},
+{
+  "type": "way",
+  "id": 204577364,
+  "center": {
+    "lat": -31.7563792,
+    "lon": -52.3652306
+  },
+  "tags": {
+    "alt_name": "Rua José Machado Mendonça",
+    "highway": "residential",
+    "name": "Rua Doutor José Machado Mendonça",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 204577369,
+  "center": {
+    "lat": -31.7554170,
+    "lon": -52.3673496
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Bernardo José de Souza",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 210930573,
+  "center": {
+    "lat": -31.7620770,
+    "lon": -52.3674024
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua José Lins do Rego",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 210930579,
+  "center": {
+    "lat": -31.7660024,
+    "lon": -52.3603429
+  },
+  "tags": {
+    "highway": "secondary",
+    "lane_markings": "no",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Doutor Frederico Bastos",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 210930585,
+  "center": {
+    "lat": -31.7596485,
+    "lon": -52.3769079
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Barão de São Luiz",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 210930588,
+  "center": {
+    "lat": -31.7510696,
+    "lon": -52.3790196
+  },
+  "tags": {
+    "alt_name": "Rua Octavio do Amaral Peixoto",
+    "highway": "residential",
+    "name": "Rua Octávio Peixoto",
+    "postal_code": "96040-770",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 210930594,
+  "center": {
+    "lat": -31.7638869,
+    "lon": -52.3613713
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor Darcy Xavier",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 210930597,
+  "center": {
+    "lat": -31.7544135,
+    "lon": -52.3821043
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor José A. de Souza Sobrinho",
+    "source:name": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 210930600,
+  "center": {
+    "lat": -31.7548184,
+    "lon": -52.3779275
+  },
+  "tags": {
+    "alt_name": "Rua Afonso Augusto Moreira Penna",
+    "highway": "residential",
+    "name": "Rua Presidente Affonso Augusto Moreira Penna",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 210930602,
+  "center": {
+    "lat": -31.7523253,
+    "lon": -52.3736589
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Campos Salles",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 210930609,
+  "center": {
+    "lat": -31.7608005,
+    "lon": -52.3729933
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Gervásio Alves Pereira",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 210930614,
+  "center": {
+    "lat": -31.7597358,
+    "lon": -52.3803348
+  },
+  "tags": {
+    "alt_name": "Rua Tenente Lyra",
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Tenente Lira",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 210930616,
+  "center": {
+    "lat": -31.7607410,
+    "lon": -52.3749162
+  },
+  "tags": {
+    "alt_name": "Rua Doutor Arthur Maciel",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Doutor Artur Antunes Maciel",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 210930617,
+  "center": {
+    "lat": -31.7605919,
+    "lon": -52.3760221
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Padre Diogo Feijó",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 221142727,
+  "center": {
+    "lat": -31.7561419,
+    "lon": -52.3759961
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Januário Coelho da Costa",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 221233268,
+  "center": {
+    "lat": -31.7540246,
+    "lon": -52.3892021
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Frei Caneca",
+    "postal_code": "96045-570",
+    "source": "bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 221233300,
+  "center": {
+    "lat": -31.7581264,
+    "lon": -52.3924751
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua José Vieira Pimenta",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "dirt"
+  }
+},
+{
+  "type": "way",
+  "id": 221233304,
+  "center": {
+    "lat": -31.7572422,
+    "lon": -52.3917317
+  },
+  "tags": {
+    "alt_name": "Avenida Imperador Dom Pedro Primeiro",
+    "highway": "tertiary",
+    "name": "Avenida Imperador Dom Pedro I",
+    "source": "bing",
+    "source:name": "local knowledge",
+    "surface": "dirt"
+  }
+},
+{
+  "type": "way",
+  "id": 221233305,
+  "center": {
+    "lat": -31.7630385,
+    "lon": -52.3638279
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Carlos de Carvalho",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 221236274,
+  "center": {
+    "lat": -31.7536211,
+    "lon": -52.3910632
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor Ary Bento Costa",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 221236281,
+  "center": {
+    "lat": -31.7500728,
+    "lon": -52.3968230
+  },
+  "tags": {
+    "alt_name": "Rua Manoel Gomes da Costa",
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua João Carlos Cortelari",
+    "postal_code": "96045-110",
+    "source": "bing",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 221236282,
+  "center": {
+    "lat": -31.7528750,
+    "lon": -52.3946016
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Adolfo Camargo",
+    "postal_code": "96030-022",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 221236285,
+  "center": {
+    "lat": -31.7545102,
+    "lon": -52.3900672
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Alira Pellegrinotti Couto",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221236288,
+  "center": {
+    "lat": -31.7525623,
+    "lon": -52.3865659
+  },
+  "tags": {
+    "alt_name": "Rua Doutor Alvaro Baptista",
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Álvaro Batista",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 222534263,
+  "center": {
+    "lat": -31.7555615,
+    "lon": -52.3690012
+  },
+  "tags": {
+    "landuse": "cemetery",
+    "name": "Cemitério Ecumênico São Francisco de Paula"
+  }
+},
+{
+  "type": "way",
+  "id": 223092839,
+  "center": {
+    "lat": -31.7523681,
+    "lon": -52.3837665
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Pinheiro Machado",
+    "oneway": "no",
+    "postal_code": "96040-500",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 225593097,
+  "center": {
+    "lat": -31.7635780,
+    "lon": -52.3564193
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293"
+  }
+},
+{
+  "type": "way",
+  "id": 225593099,
+  "center": {
+    "lat": -31.7630802,
+    "lon": -52.3563256
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293"
+  }
+},
+{
+  "type": "way",
+  "id": 239483928,
+  "center": {
+    "lat": -31.7540083,
+    "lon": -52.3926087
+  },
+  "tags": {
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "amenity": "fuel",
+    "brand": "BR",
+    "name": "Posto Cortês",
+    "operator": "Petrobras"
+  }
+},
+{
+  "type": "way",
+  "id": 292151296,
+  "center": {
+    "lat": -31.7630874,
+    "lon": -52.3564047
+  },
+  "tags": {
+    "IBGE:CD_ADMINIS": "federal",
+    "highway": "secondary",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "source": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 292151332,
+  "center": {
+    "lat": -31.7629460,
+    "lon": -52.3564957
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96030-000"
+  }
+},
+{
+  "type": "way",
+  "id": 298145694,
+  "center": {
+    "lat": -31.7641969,
+    "lon": -52.3559812
+  },
+  "tags": {
+    "alt_name": "Praça Vinte de Setembro; Avenida Duque de Caxias",
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Praça 20 de Setembro",
+    "oneway": "yes",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 312273285,
+  "center": {
+    "lat": -31.7548139,
+    "lon": -52.3941243
+  },
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "name": "Ciclovia da Avenida Duque",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 333462484,
+  "center": {
+    "lat": -31.7596513,
+    "lon": -52.3602942
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 335956821,
+  "center": {
+    "lat": -31.7593156,
+    "lon": -52.3733399
+  },
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "name": "Ciclovia da Avenida Duque",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 343498466,
+  "center": {
+    "lat": -31.7594568,
+    "lon": -52.3607216
+  },
+  "tags": {
+    "addr:street": "Avenida Bento Gonçalves",
+    "landuse": "industrial",
+    "name": "Coca-Cola"
+  }
+},
+{
+  "type": "way",
+  "id": 347005336,
+  "center": {
+    "lat": -31.7562556,
+    "lon": -52.3997751
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 368405285,
+  "center": {
+    "lat": -31.7627909,
+    "lon": -52.3619704
+  },
+  "tags": {
+    "access": "destination",
+    "alt_name": "Rua Vila Tuiuti",
+    "highway": "service",
+    "name": "Vila Militar Tuiuti",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 368405288,
+  "center": {
+    "lat": -31.7624741,
+    "lon": -52.3624368
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Domingos Guedes Cabral",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 368405306,
+  "center": {
+    "lat": -31.7617477,
+    "lon": -52.3643201
+  },
+  "tags": {
+    "access": "destination",
+    "highway": "service",
+    "name": "Residencial Solar das Palmeiras",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 368405308,
+  "center": {
+    "lat": -31.7617511,
+    "lon": -52.3656299
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Juvenal Silveira da Silva",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 368405310,
+  "center": {
+    "lat": -31.7614600,
+    "lon": -52.3660212
+  },
+  "tags": {
+    "access": "destination",
+    "highway": "service",
+    "name": "Condomínio Humaitá",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 368405331,
+  "center": {
+    "lat": -31.7577575,
+    "lon": -52.3624534
+  },
+  "tags": {
+    "access": "private",
+    "highway": "service",
+    "lanes": "2",
+    "maxspeed": "10",
+    "name": "Village Center III",
+    "service": "driveway",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 368408681,
+  "center": {
+    "lat": -31.7547255,
+    "lon": -52.3974354
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 368408684,
+  "center": {
+    "lat": -31.7551516,
+    "lon": -52.3999479
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Milton Franconi",
+    "postal_code": "96030-023",
+    "source:name": "CNEFE/IBGE",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 368408686,
+  "center": {
+    "lat": -31.7546316,
+    "lon": -52.3984241
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Max Hackbart",
+    "postal_code": "96030-025",
+    "source:name": "CNEFE/IBGE",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 450283064,
+  "center": {
+    "lat": -31.7576433,
+    "lon": -52.3898334
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Doutor Antônio Leivas Leite",
+    "source": "bing",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "dirt"
+  }
+},
+{
+  "type": "way",
+  "id": 450284167,
+  "center": {
+    "lat": -31.7552415,
+    "lon": -52.3720257
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Presidente Prudente de Moraes Barros",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 463337249,
+  "center": {
+    "lat": -31.7593245,
+    "lon": -52.3613685
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Faculdade de Medicina",
+    "operator": "Universidade Federal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 478743849,
+  "center": {
+    "lat": -31.7521238,
+    "lon": -52.3590025
+  },
+  "tags": {
+    "name": "Canal Santa Bárbara",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 481406937,
+  "center": {
+    "lat": -31.7587055,
+    "lon": -52.3779275
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Conselheiro Brusque",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 485008253,
+  "center": {
+    "lat": -31.7580561,
+    "lon": -52.3854508
+  },
+  "tags": {
+    "access": "destination",
+    "highway": "service",
+    "name": "Vila Militar Humaitá",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 491932375,
+  "center": {
+    "lat": -31.7581441,
+    "lon": -52.3667318
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Centro Comercial Bairro Cidade",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 494525929,
+  "center": {
+    "lat": -31.7556848,
+    "lon": -52.3847794
+  },
+  "tags": {
+    "addr:housenumber": "900",
+    "addr:postcode": "96030-002",
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "school",
+    "contact:phone": "+55 53 3221-1250",
+    "isced:level": "1,2",
+    "name": "EMEF Dona Mariana Eufrásia",
+    "official_name": "Escola Municipal de Ensino Fundamental Dona Mariana Eufrásia",
+    "operator": "Secretaria Municipal de Educação e Desporto",
+    "ref:INEP": "43101593"
+  }
+},
+{
+  "type": "way",
+  "id": 500749187,
+  "center": {
+    "lat": -31.7633289,
+    "lon": -52.3564204
+  },
+  "tags": {
+    "alt_name": "Praça Vinte de Setembro; Avenida Duque de Caxias",
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed:lanes": "60|60|40",
+    "name": "Praça 20 de Setembro",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 500749188,
+  "center": {
+    "lat": -31.7631045,
+    "lon": -52.3563740
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293"
+  }
+},
+{
+  "type": "way",
+  "id": 513649797,
+  "center": {
+    "lat": -31.7557195,
+    "lon": -52.3838626
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Rua Olenka Litran de Souza Soares",
+    "addr:suburb": "Fragata",
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "Ginásio do CIEP"
+  }
+},
+{
+  "type": "way",
+  "id": 513649799,
+  "center": {
+    "lat": -31.7554166,
+    "lon": -52.3837646
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 517360391,
+  "center": {
+    "lat": -31.7587980,
+    "lon": -52.3642028
+  },
+  "tags": {
+    "building": "public",
+    "military": "hangar"
+  }
+},
+{
+  "type": "way",
+  "id": 517360394,
+  "center": {
+    "lat": -31.7585811,
+    "lon": -52.3648639
+  },
+  "tags": {
+    "building": "public",
+    "military": "hangar"
+  }
+},
+{
+  "type": "way",
+  "id": 517360397,
+  "center": {
+    "lat": -31.7588765,
+    "lon": -52.3649960
+  },
+  "tags": {
+    "building": "public",
+    "level": "2",
+    "military": "office"
+  }
+},
+{
+  "type": "way",
+  "id": 517360400,
+  "center": {
+    "lat": -31.7590960,
+    "lon": -52.3643508
+  },
+  "tags": {
+    "building": "public",
+    "building:levels": "2",
+    "military": "office"
+  }
+},
+{
+  "type": "way",
+  "id": 544224944,
+  "center": {
+    "lat": -31.7591324,
+    "lon": -52.3636738
+  },
+  "tags": {
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 544224945,
+  "center": {
+    "lat": -31.7593241,
+    "lon": -52.3637839
+  },
+  "tags": {
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 544224946,
+  "center": {
+    "lat": -31.7594079,
+    "lon": -52.3633687
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Restaurante Duque"
+  }
+},
+{
+  "type": "way",
+  "id": 617727028,
+  "center": {
+    "lat": -31.7548861,
+    "lon": -52.3992296
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Professor Francisco de Paula Alves da Fonseca",
+    "postal_code": "96030-020",
+    "source:name": "CNEFE/IBGE",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 617731227,
+  "center": {
+    "lat": -31.7635970,
+    "lon": -52.3567285
+  },
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "name": "Ciclovia da Avenida Duque",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 617731229,
+  "center": {
+    "lat": -31.7634035,
+    "lon": -52.3567568
+  },
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "name": "Ciclovia da Avenida Duque",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 617731231,
+  "center": {
+    "lat": -31.7653035,
+    "lon": -52.3528612
+  },
+  "tags": {
+    "highway": "cycleway",
+    "name": "Ciclofaixa 20 de Setembro",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 642816863,
+  "center": {
+    "lat": -31.7640384,
+    "lon": -52.3574128
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "71",
+    "addr:postcode": "96030-001",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "area": "yes",
+    "description": "Autarquia municipal de tratamento de água, esgoto, resíduos sólidos e drenagem.",
+    "name": "Serviço Autônomo de Saneamento de Pelotas - SANEP",
+    "phone": "+55 53 3026-1144"
+  }
+},
+{
+  "type": "way",
+  "id": 681403107,
+  "center": {
+    "lat": -31.7638853,
+    "lon": -52.3558503
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:postcode": "96015-360",
+    "addr:street": "Praça 20 de Setembro",
+    "addr:suburb": "Centro",
+    "dog": "yes",
+    "leisure": "park",
+    "name": "Praça Vinte de Setembro",
+    "opening_hours": "24/7",
+    "smoking": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 686193524,
+  "center": {
+    "lat": -31.7620692,
+    "lon": -52.3586952
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed:lanes": "60|60|40",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 686197043,
+  "center": {
+    "lat": -31.7624863,
+    "lon": -52.3589912
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-001",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 736669701,
+  "center": {
+    "lat": -31.7553143,
+    "lon": -52.3786248
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Frontino Vieira",
+    "oneway": "no",
+    "source": "survey",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 806247743,
+  "center": {
+    "lat": -31.7577870,
+    "lon": -52.3983880
+  },
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "1",
+    "maxspeed": "50",
+    "name": "Lateral BR-392",
+    "oneway": "yes",
+    "ref": "BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 818608976,
+  "center": {
+    "lat": -31.7619419,
+    "lon": -52.3576887
+  },
+  "tags": {
+    "building": "university",
+    "name": "Laneira",
+    "operator": "Universidade Federal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 820207543,
+  "center": {
+    "lat": -31.7582008,
+    "lon": -52.3702327
+  },
+  "tags": {
+    "name": "Departamento Nacional de Infraestrutura e Transportes",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 848966458,
+  "center": {
+    "lat": -31.7633917,
+    "lon": -52.3562201
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293"
+  }
+},
+{
+  "type": "way",
+  "id": 848966461,
+  "center": {
+    "lat": -31.7568636,
+    "lon": -52.3789596
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 848966462,
+  "center": {
+    "lat": -31.7557552,
+    "lon": -52.3856543
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 952592605,
+  "center": {
+    "lat": -31.7589581,
+    "lon": -52.3831250
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua General Vitorino",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 957838175,
+  "center": {
+    "lat": -31.7567308,
+    "lon": -52.3982474
+  },
+  "tags": {
+    "highway": "service",
+    "name": "Acesso Posto Coqueiro"
+  }
+},
+{
+  "type": "way",
+  "id": 966009333,
+  "center": {
+    "lat": -31.7607902,
+    "lon": -52.3610094
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 967346718,
+  "center": {
+    "lat": -31.7592151,
+    "lon": -52.3702429
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-001",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1000531180,
+  "center": {
+    "lat": -31.7606534,
+    "lon": -52.3589405
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Quinta do Monte",
+    "residential": "condominium"
+  }
+},
+{
+  "type": "way",
+  "id": 1046345320,
+  "center": {
+    "lat": -31.7560664,
+    "lon": -52.3999705
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1067524383,
+  "center": {
+    "lat": -31.7634772,
+    "lon": -52.3582854
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "Escola Freinet"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407885,
+  "center": {
+    "lat": -31.7568362,
+    "lon": -52.3792052
+  },
+  "tags": {
+    "bus:lanes": "|||yes",
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt",
+    "turn:lanes": "left|through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407886,
+  "center": {
+    "lat": -31.7571087,
+    "lon": -52.3764995
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407887,
+  "center": {
+    "lat": -31.7573248,
+    "lon": -52.3735021
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367494,
+  "center": {
+    "lat": -31.7572421,
+    "lon": -52.3794751
+  },
+  "tags": {
+    "bus:lanes": "|||yes",
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-001",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367495,
+  "center": {
+    "lat": -31.7570124,
+    "lon": -52.3814653
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367496,
+  "center": {
+    "lat": -31.7566878,
+    "lon": -52.3839767
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367498,
+  "center": {
+    "lat": -31.7547916,
+    "lon": -52.3928037
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367499,
+  "center": {
+    "lat": -31.7544699,
+    "lon": -52.3942934
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367500,
+  "center": {
+    "lat": -31.7554643,
+    "lon": -52.3984643
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367501,
+  "center": {
+    "lat": -31.7558701,
+    "lon": -52.3991975
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138367502,
+  "center": {
+    "lat": -31.7557247,
+    "lon": -52.3993640
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt",
+    "turn:lanes": "through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138443644,
+  "center": {
+    "lat": -31.7579920,
+    "lon": -52.3652534
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Jornalista Salvador Hitta Porres",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1140027600,
+  "center": {
+    "lat": -31.7594023,
+    "lon": -52.3683251
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Desembargador André da Rocha",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 1160758995,
+  "center": {
+    "lat": -31.7515434,
+    "lon": -52.3944909
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "parking:both": "no",
+    "postal_code": "96045-010",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316243160,
+  "center": {
+    "lat": -31.7653974,
+    "lon": -52.3569490
+  },
+  "tags": {
+    "name": "Canal Santa Bárbara",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1347835988,
+  "center": {
+    "lat": -31.7542807,
+    "lon": -52.3929536
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1347835989,
+  "center": {
+    "lat": -31.7540396,
+    "lon": -52.3944852
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1348631842,
+  "center": {
+    "lat": -31.7546642,
+    "lon": -52.3911817
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1348631843,
+  "center": {
+    "lat": -31.7550508,
+    "lon": -52.3893888
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-003",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1461532954,
+  "center": {
+    "lat": -31.7566282,
+    "lon": -52.3806854
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1461532955,
+  "center": {
+    "lat": -31.7572762,
+    "lon": -52.3723210
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-002",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "relation",
+  "id": 7042113,
+  "center": {
+    "lat": -31.7629588,
+    "lon": -52.3445093
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Centro",
+    "ref": "4",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7051211,
+  "center": {
+    "lat": -31.7675130,
+    "lon": -52.3800812
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Fragata",
+    "ref": "3",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7494460,
+  "center": {
+    "lat": -31.7578925,
+    "lon": -52.3808429
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "849",
+    "addr:postcode": "96030-003",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "building": "construction",
+    "name": "Stok Center",
+    "shop": "supermarket",
+    "type": "multipolygon",
+    "website": "https://www.macroatacadokrolow.com.br/",
+    "wikipedia": "pt:Macro Atacado Krolow"
+  }
+},
+{
+  "type": "relation",
+  "id": 7494468,
+  "center": {
+    "lat": -31.7555195,
+    "lon": -52.3836943
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "20",
+    "addr:postcode": "96040-490",
+    "addr:street": "Rua Olenka Litran de Souza Soares",
+    "addr:suburb": "Fragata",
+    "alt_name": "CIEP",
+    "amenity": "school",
+    "contact:phone": "+55 53 3221-2601",
+    "isced:level": "1,2,3",
+    "name": "EEEB Osmar da Rocha Grafulha",
+    "official_name": "Escola Estadual de Ensino Básico Osmar da Rocha Grafulha",
+    "operator": "Estado do Rio Grande do Sul",
+    "ref:INEP": "43171591",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 7494508,
+  "center": {
+    "lat": -31.7569214,
+    "lon": -52.3634580
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "344",
+    "addr:postcode": "96030-002",
+    "addr:street": "Avenida Duque de Caxias",
+    "addr:suburb": "Fragata",
+    "landuse": "military",
+    "military": "barracks",
+    "name": "Regimento 9º BIMTZ Tuiuti",
+    "phone": "+55 53 3026-5200",
+    "type": "multipolygon",
+    "website": "https://www.eb.mil.br/"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520494,
+  "center": {
+    "lat": -30.9015826,
+    "lon": -52.9775930
+  },
+  "tags": {
+    "DER:RS:modalidade": "semi-direto",
+    "charge": "6.60~94.35",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Santa Maria",
+    "name": "Santa Maria → Rio Grande",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Rio Grande",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520535,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "direto",
+    "charge": "78.75~93.45",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520536,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "executivo",
+    "charge": "102.35~121.50",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520537,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "semi-direto",
+    "charge": "6.60~94.35",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+}
+
+  ]
+}

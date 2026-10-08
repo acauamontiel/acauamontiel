@@ -1,0 +1,1305 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-15T15:22:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 108513834,
+  "bounds": {
+    "minlat": -31.7462958,
+    "minlon": -52.3289798,
+    "maxlat": -31.7395549,
+    "maxlon": -52.3282388
+  },
+  "nodes": [
+    1244808336,
+    3661785081,
+    3661785082,
+    1244808280,
+    3722317296,
+    3661785083,
+    3661785084,
+    6900984845,
+    3661785085,
+    13948899437,
+    1244808441,
+    8605009561,
+    3661785086,
+    1244808354,
+    2956921238,
+    1244808508,
+    1244808237,
+    1244808385
+  ],
+  "geometry": [
+    { "lat": -31.7462958, "lon": -52.3286139 },
+    { "lat": -31.7457862, "lon": -52.3286414 },
+    { "lat": -31.7439263, "lon": -52.3288344 },
+    { "lat": -31.7433864, "lon": -52.3288855 },
+    { "lat": -31.7432055, "lon": -52.3288987 },
+    { "lat": -31.7430137, "lon": -52.3289207 },
+    { "lat": -31.7426332, "lon": -52.3289571 },
+    { "lat": -31.7424527, "lon": -52.3289743 },
+    { "lat": -31.7423947, "lon": -52.3289798 },
+    { "lat": -31.7422852, "lon": -52.3289754 },
+    { "lat": -31.7421436, "lon": -52.3289696 },
+    { "lat": -31.7419948, "lon": -52.3289533 },
+    { "lat": -31.7418104, "lon": -52.3289332 },
+    { "lat": -31.7414724, "lon": -52.3288708 },
+    { "lat": -31.7409035, "lon": -52.3286967 },
+    { "lat": -31.7405665, "lon": -52.3286010 },
+    { "lat": -31.7400632, "lon": -52.3284412 },
+    { "lat": -31.7395549, "lon": -52.3282388 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 108513839,
+  "bounds": {
+    "minlat": -31.7475262,
+    "minlon": -52.3292103,
+    "maxlat": -31.7396030,
+    "maxlon": -52.3286096
+  },
+  "nodes": [
+    1241471064,
+    5984434537,
+    8601914052,
+    10836414591,
+    10836414592,
+    2956921236,
+    2956921237,
+    2956921241,
+    2956921242,
+    13948899436,
+    2956921243,
+    2956921244,
+    3722317310,
+    2956921245,
+    1890281325,
+    1890281337,
+    1244808389,
+    3722317332
+  ],
+  "geometry": [
+    { "lat": -31.7396030, "lon": -52.3287685 },
+    { "lat": -31.7396643, "lon": -52.3286512 },
+    { "lat": -31.7396873, "lon": -52.3286259 },
+    { "lat": -31.7397188, "lon": -52.3286144 },
+    { "lat": -31.7397625, "lon": -52.3286096 },
+    { "lat": -31.7398034, "lon": -52.3286132 },
+    { "lat": -31.7408506, "lon": -52.3289293 },
+    { "lat": -31.7413900, "lon": -52.3290851 },
+    { "lat": -31.7419632, "lon": -52.3291818 },
+    { "lat": -31.7422935, "lon": -52.3292018 },
+    { "lat": -31.7424348, "lon": -52.3292103 },
+    { "lat": -31.7434142, "lon": -52.3291164 },
+    { "lat": -31.7436908, "lon": -52.3290894 },
+    { "lat": -31.7445194, "lon": -52.3290084 },
+    { "lat": -31.7456583, "lon": -52.3288732 },
+    { "lat": -31.7464626, "lon": -52.3288317 },
+    { "lat": -31.7466557, "lon": -52.3288424 },
+    { "lat": -31.7475262, "lon": -52.3288904 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425624,
+  "bounds": {
+    "minlat": -31.7696464,
+    "minlon": -52.3315354,
+    "maxlat": -31.7644629,
+    "maxlon": -52.3298675
+  },
+  "nodes": [
+    1244808339,
+    1244808282,
+    1244808443,
+    2083970070,
+    1244808509,
+    1244808226,
+    3722317630,
+    1244808454,
+    3722317629,
+    1244808300,
+    13830437208,
+    1851216691,
+    1851216701,
+    3722317623,
+    4777585815,
+    3722317598,
+    1851212238
+  ],
+  "geometry": [
+    { "lat": -31.7696464, "lon": -52.3313154 },
+    { "lat": -31.7686803, "lon": -52.3313928 },
+    { "lat": -31.7679763, "lon": -52.3314683 },
+    { "lat": -31.7677414, "lon": -52.3314831 },
+    { "lat": -31.7672922, "lon": -52.3315179 },
+    { "lat": -31.7668532, "lon": -52.3315354 },
+    { "lat": -31.7666696, "lon": -52.3315260 },
+    { "lat": -31.7665283, "lon": -52.3315059 },
+    { "lat": -31.7663880, "lon": -52.3314643 },
+    { "lat": -31.7662735, "lon": -52.3313996 },
+    { "lat": -31.7662281, "lon": -52.3313639 },
+    { "lat": -31.7659775, "lon": -52.3311666 },
+    { "lat": -31.7654143, "lon": -52.3306516 },
+    { "lat": -31.7652592, "lon": -52.3305134 },
+    { "lat": -31.7649947, "lon": -52.3302855 },
+    { "lat": -31.7646138, "lon": -52.3299730 },
+    { "lat": -31.7644629, "lon": -52.3298675 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425656,
+  "bounds": {
+    "minlat": -31.7746472,
+    "minlon": -52.3311049,
+    "maxlat": -31.7727866,
+    "maxlon": -52.3301600
+  },
+  "nodes": [
+    1244808530,
+    1244808409,
+    1244808392,
+    1244808256,
+    1244808311,
+    1244808272
+  ],
+  "geometry": [
+    { "lat": -31.7746472, "lon": -52.3301600 },
+    { "lat": -31.7741208, "lon": -52.3306250 },
+    { "lat": -31.7738499, "lon": -52.3308225 },
+    { "lat": -31.7735895, "lon": -52.3309388 },
+    { "lat": -31.7731540, "lon": -52.3310461 },
+    { "lat": -31.7727866, "lon": -52.3311049 }
+  ],
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425661,
+  "bounds": {
+    "minlat": -31.7748277,
+    "minlon": -52.3301600,
+    "maxlat": -31.7746472,
+    "maxlon": -52.3299704
+  },
+  "nodes": [
+    1851212132,
+    1244808530
+  ],
+  "geometry": [
+    { "lat": -31.7748277, "lon": -52.3299704 },
+    { "lat": -31.7746472, "lon": -52.3301600 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425680,
+  "bounds": {
+    "minlat": -31.7748223,
+    "minlon": -52.3301600,
+    "maxlat": -31.7746472,
+    "maxlon": -52.3301431
+  },
+  "nodes": [
+    1244808530,
+    12804344679,
+    12804344678,
+    1851212208
+  ],
+  "geometry": [
+    { "lat": -31.7746472, "lon": -52.3301600 },
+    { "lat": -31.7747246, "lon": -52.3301431 },
+    { "lat": -31.7747746, "lon": -52.3301450 },
+    { "lat": -31.7748223, "lon": -52.3301568 }
+  ],
+  "tags": {
+    "disused:highway": "secondary",
+    "highway": "cycleway",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 174560344,
+  "bounds": {
+    "minlat": -31.7699169,
+    "minlon": -52.3313154,
+    "maxlat": -31.7696464,
+    "maxlon": -52.3312926
+  },
+  "nodes": [
+    1851212135,
+    8894720584,
+    1244808339
+  ],
+  "geometry": [
+    { "lat": -31.7699169, "lon": -52.3312926 },
+    { "lat": -31.7698354, "lon": -52.3312993 },
+    { "lat": -31.7696464, "lon": -52.3313154 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 178679822,
+  "bounds": {
+    "minlat": -31.7637633,
+    "minlon": -52.3295902,
+    "maxlat": -31.7631307,
+    "maxlon": -52.3295447
+  },
+  "nodes": [
+    1244808257,
+    8022248155
+  ],
+  "geometry": [
+    { "lat": -31.7637633, "lon": -52.3295902 },
+    { "lat": -31.7631307, "lon": -52.3295447 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 221671168,
+  "bounds": {
+    "minlat": -31.7769685,
+    "minlon": -52.3287407,
+    "maxlat": -31.7762744,
+    "maxlon": -52.3281196
+  },
+  "nodes": [
+    2307121009,
+    2307121001
+  ],
+  "geometry": [
+    { "lat": -31.7762744, "lon": -52.3287407 },
+    { "lat": -31.7769685, "lon": -52.3281196 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 333887081,
+  "bounds": {
+    "minlat": -31.7789451,
+    "minlon": -52.3290133,
+    "maxlat": -31.7763406,
+    "maxlon": -52.3270261
+  },
+  "nodes": [
+    2083970105,
+    4777841150,
+    2083970113,
+    4777841149,
+    3409305230,
+    3662626923
+  ],
+  "geometry": [
+    { "lat": -31.7789451, "lon": -52.3270261 },
+    { "lat": -31.7781913, "lon": -52.3275184 },
+    { "lat": -31.7781676, "lon": -52.3275357 },
+    { "lat": -31.7781063, "lon": -52.3275823 },
+    { "lat": -31.7772741, "lon": -52.3282591 },
+    { "lat": -31.7763406, "lon": -52.3290133 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96010-496",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 361837385,
+  "bounds": {
+    "minlat": -31.7700124,
+    "minlon": -52.3312926,
+    "maxlat": -31.7699169,
+    "maxlon": -52.3312851
+  },
+  "nodes": [
+    1244808209,
+    1851212135
+  ],
+  "geometry": [
+    { "lat": -31.7700124, "lon": -52.3312851 },
+    { "lat": -31.7699169, "lon": -52.3312926 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 368390560,
+  "bounds": {
+    "minlat": -31.7796433,
+    "minlon": -52.3281196,
+    "maxlat": -31.7769685,
+    "maxlon": -52.3262799
+  },
+  "nodes": [
+    2307121001,
+    3722317665,
+    3722317666,
+    3722372268,
+    3722317667,
+    3722372263,
+    3722317668,
+    3722317669,
+    3722317670
+  ],
+  "geometry": [
+    { "lat": -31.7769685, "lon": -52.3281196 },
+    { "lat": -31.7773609, "lon": -52.3277538 },
+    { "lat": -31.7775844, "lon": -52.3275982 },
+    { "lat": -31.7778350, "lon": -52.3274271 },
+    { "lat": -31.7784212, "lon": -52.3270269 },
+    { "lat": -31.7786894, "lon": -52.3268472 },
+    { "lat": -31.7795019, "lon": -52.3263027 },
+    { "lat": -31.7795840, "lon": -52.3262799 },
+    { "lat": -31.7796433, "lon": -52.3262947 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 451471676,
+  "bounds": {
+    "minlat": -31.7578235,
+    "minlon": -52.3312631,
+    "maxlat": -31.7509042,
+    "maxlon": -52.3289484
+  },
+  "nodes": [
+    1244808358,
+    8896957113,
+    3661092788,
+    1244808312,
+    1244808522,
+    13706947888,
+    3661092787,
+    3661785077,
+    1244808531,
+    1244808318,
+    3661785078,
+    1244808274,
+    1854458460,
+    1244808410,
+    12973002246,
+    1244808342
+  ],
+  "geometry": [
+    { "lat": -31.7578235, "lon": -52.3312437 },
+    { "lat": -31.7576479, "lon": -52.3312631 },
+    { "lat": -31.7575294, "lon": -52.3312602 },
+    { "lat": -31.7567321, "lon": -52.3311436 },
+    { "lat": -31.7554087, "lon": -52.3309281 },
+    { "lat": -31.7551610, "lon": -52.3308819 },
+    { "lat": -31.7549875, "lon": -52.3308496 },
+    { "lat": -31.7546329, "lon": -52.3307691 },
+    { "lat": -31.7542873, "lon": -52.3306833 },
+    { "lat": -31.7539314, "lon": -52.3305292 },
+    { "lat": -31.7536421, "lon": -52.3304174 },
+    { "lat": -31.7533571, "lon": -52.3302854 },
+    { "lat": -31.7529163, "lon": -52.3300302 },
+    { "lat": -31.7514457, "lon": -52.3291828 },
+    { "lat": -31.7510068, "lon": -52.3289928 },
+    { "lat": -31.7509042, "lon": -52.3289484 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 575603410,
+  "bounds": {
+    "minlat": -31.7762744,
+    "minlon": -52.3293034,
+    "maxlat": -31.7756422,
+    "maxlon": -52.3287407
+  },
+  "nodes": [
+    2307121009,
+    2307120950
+  ],
+  "geometry": [
+    { "lat": -31.7762744, "lon": -52.3287407 },
+    { "lat": -31.7756422, "lon": -52.3293034 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 575603416,
+  "bounds": {
+    "minlat": -31.7688280,
+    "minlon": -52.3318224,
+    "maxlat": -31.7642170,
+    "maxlon": -52.3300112
+  },
+  "nodes": [
+    5522926769,
+    7768516039,
+    5984434449,
+    5522926770,
+    7768516035,
+    5522926771,
+    7768516037,
+    7768516036,
+    7768516038,
+    5522926772,
+    5522926773,
+    5522926774,
+    5522926775,
+    4792583991
+  ],
+  "geometry": [
+    { "lat": -31.7642170, "lon": -52.3300112 },
+    { "lat": -31.7643824, "lon": -52.3300736 },
+    { "lat": -31.7644633, "lon": -52.3301138 },
+    { "lat": -31.7646241, "lon": -52.3302399 },
+    { "lat": -31.7651737, "lon": -52.3307253 },
+    { "lat": -31.7657062, "lon": -52.3312403 },
+    { "lat": -31.7658715, "lon": -52.3313771 },
+    { "lat": -31.7660676, "lon": -52.3315139 },
+    { "lat": -31.7662443, "lon": -52.3316212 },
+    { "lat": -31.7664462, "lon": -52.3317191 },
+    { "lat": -31.7666970, "lon": -52.3317942 },
+    { "lat": -31.7670288, "lon": -52.3318224 },
+    { "lat": -31.7677592, "lon": -52.3317975 },
+    { "lat": -31.7688280, "lon": -52.3317124 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 725054252,
+  "bounds": {
+    "minlat": -31.7476029,
+    "minlon": -52.3286632,
+    "maxlat": -31.7462958,
+    "maxlon": -52.3286139
+  },
+  "nodes": [
+    1854458306,
+    1244808336
+  ],
+  "geometry": [
+    { "lat": -31.7476029, "lon": -52.3286632 },
+    { "lat": -31.7462958, "lon": -52.3286139 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 725054254,
+  "bounds": {
+    "minlat": -31.7553753,
+    "minlon": -52.3311382,
+    "maxlat": -31.7504470,
+    "maxlon": -52.3291133
+  },
+  "nodes": [
+    1241484406,
+    1241484439,
+    12973002245,
+    3408742236,
+    1244808343,
+    2082532338,
+    8605405937,
+    3408742235,
+    1244808221,
+    2082532337,
+    1244808276,
+    3661092785,
+    1244808393,
+    1244808491
+  ],
+  "geometry": [
+    { "lat": -31.7504470, "lon": -52.3291133 },
+    { "lat": -31.7507448, "lon": -52.3291341 },
+    { "lat": -31.7509177, "lon": -52.3291936 },
+    { "lat": -31.7511907, "lon": -52.3292877 },
+    { "lat": -31.7512849, "lon": -52.3293216 },
+    { "lat": -31.7513553, "lon": -52.3293637 },
+    { "lat": -31.7517927, "lon": -52.3296176 },
+    { "lat": -31.7525181, "lon": -52.3300387 },
+    { "lat": -31.7531035, "lon": -52.3303816 },
+    { "lat": -31.7532749, "lon": -52.3304814 },
+    { "lat": -31.7536081, "lon": -52.3306426 },
+    { "lat": -31.7538444, "lon": -52.3307525 },
+    { "lat": -31.7545194, "lon": -52.3309538 },
+    { "lat": -31.7553753, "lon": -52.3311382 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 725054255,
+  "bounds": {
+    "minlat": -31.7477943,
+    "minlon": -52.3289049,
+    "maxlat": -31.7475262,
+    "maxlon": -52.3288904
+  },
+  "nodes": [
+    3722317332,
+    1244808497
+  ],
+  "geometry": [
+    { "lat": -31.7475262, "lon": -52.3288904 },
+    { "lat": -31.7477943, "lon": -52.3289049 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 807400389,
+  "bounds": {
+    "minlat": -31.7509042,
+    "minlon": -52.3289484,
+    "maxlat": -31.7496926,
+    "maxlon": -52.3288259
+  },
+  "nodes": [
+    1244808342,
+    3661785079,
+    1244808490,
+    3661785080,
+    1244808444
+  ],
+  "geometry": [
+    { "lat": -31.7509042, "lon": -52.3289484 },
+    { "lat": -31.7507413, "lon": -52.3289073 },
+    { "lat": -31.7505702, "lon": -52.3288835 },
+    { "lat": -31.7501158, "lon": -52.3288398 },
+    { "lat": -31.7496926, "lon": -52.3288259 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 807400390,
+  "bounds": {
+    "minlat": -31.7497107,
+    "minlon": -52.3290500,
+    "maxlat": -31.7477943,
+    "maxlon": -52.3289049
+  },
+  "nodes": [
+    1244808497,
+    1890281290,
+    1244808456,
+    1244808446
+  ],
+  "geometry": [
+    { "lat": -31.7477943, "lon": -52.3289049 },
+    { "lat": -31.7484473, "lon": -52.3289326 },
+    { "lat": -31.7493108, "lon": -52.3290173 },
+    { "lat": -31.7497107, "lon": -52.3290500 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 846165044,
+  "bounds": {
+    "minlat": -31.7629419,
+    "minlon": -52.3295384,
+    "maxlat": -31.7629214,
+    "maxlon": -52.3295360
+  },
+  "nodes": [
+    1244808555,
+    8896957109
+  ],
+  "geometry": [
+    { "lat": -31.7629419, "lon": -52.3295384 },
+    { "lat": -31.7629214, "lon": -52.3295360 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824826,
+  "bounds": {
+    "minlat": -31.7642170,
+    "minlon": -52.3300492,
+    "maxlat": -31.7640655,
+    "maxlon": -52.3300058
+  },
+  "nodes": [
+    7714319243,
+    8894579445,
+    8894579446,
+    7911442017,
+    5522926769
+  ],
+  "geometry": [
+    { "lat": -31.7640655, "lon": -52.3300492 },
+    { "lat": -31.7640956, "lon": -52.3300239 },
+    { "lat": -31.7641309, "lon": -52.3300125 },
+    { "lat": -31.7641777, "lon": -52.3300058 },
+    { "lat": -31.7642170, "lon": -52.3300112 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824827,
+  "bounds": {
+    "minlat": -31.7644629,
+    "minlon": -52.3298675,
+    "maxlat": -31.7641787,
+    "maxlon": -52.3296882
+  },
+  "nodes": [
+    1851212238,
+    7911442021,
+    7911442019
+  ],
+  "geometry": [
+    { "lat": -31.7644629, "lon": -52.3298675 },
+    { "lat": -31.7642665, "lon": -52.3297436 },
+    { "lat": -31.7641787, "lon": -52.3296882 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824831,
+  "bounds": {
+    "minlat": -31.7626549,
+    "minlon": -52.3295439,
+    "maxlat": -31.7624111,
+    "maxlon": -52.3295378
+  },
+  "nodes": [
+    7894483747,
+    7911442028
+  ],
+  "geometry": [
+    { "lat": -31.7626549, "lon": -52.3295378 },
+    { "lat": -31.7624111, "lon": -52.3295439 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824834,
+  "bounds": {
+    "minlat": -31.7624111,
+    "minlon": -52.3295439,
+    "maxlat": -31.7618852,
+    "maxlon": -52.3295178
+  },
+  "nodes": [
+    7911442028,
+    7911442023,
+    1244808279
+  ],
+  "geometry": [
+    { "lat": -31.7624111, "lon": -52.3295439 },
+    { "lat": -31.7622102, "lon": -52.3295411 },
+    { "lat": -31.7618852, "lon": -52.3295178 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 860893281,
+  "bounds": {
+    "minlat": -31.7395549,
+    "minlon": -52.3282388,
+    "maxlat": -31.7387230,
+    "maxlon": -52.3280665
+  },
+  "nodes": [
+    1244808385,
+    3661785087,
+    3661785088,
+    1244808304,
+    3661824193,
+    3661824192
+  ],
+  "geometry": [
+    { "lat": -31.7395549, "lon": -52.3282388 },
+    { "lat": -31.7392663, "lon": -52.3281861 },
+    { "lat": -31.7391219, "lon": -52.3281603 },
+    { "lat": -31.7389919, "lon": -52.3281335 },
+    { "lat": -31.7388563, "lon": -52.3281048 },
+    { "lat": -31.7387230, "lon": -52.3280665 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 891740069,
+  "bounds": {
+    "minlat": -31.7727866,
+    "minlon": -52.3312851,
+    "maxlat": -31.7700124,
+    "maxlon": -52.3311049
+  },
+  "nodes": [
+    1244808272,
+    1851212134,
+    1851212242,
+    3662601130,
+    3663353489,
+    1244808209
+  ],
+  "geometry": [
+    { "lat": -31.7727866, "lon": -52.3311049 },
+    { "lat": -31.7720638, "lon": -52.3311585 },
+    { "lat": -31.7713719, "lon": -52.3312095 },
+    { "lat": -31.7705254, "lon": -52.3312685 },
+    { "lat": -31.7702744, "lon": -52.3312844 },
+    { "lat": -31.7700124, "lon": -52.3312851 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1140252525,
+  "bounds": {
+    "minlat": -31.7504470,
+    "minlon": -52.3291133,
+    "maxlat": -31.7497107,
+    "maxlon": -52.3290500
+  },
+  "nodes": [
+    1244808446,
+    1241484406
+  ],
+  "geometry": [
+    { "lat": -31.7497107, "lon": -52.3290500 },
+    { "lat": -31.7504470, "lon": -52.3291133 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1140252526,
+  "bounds": {
+    "minlat": -31.7496926,
+    "minlon": -52.3288259,
+    "maxlat": -31.7476029,
+    "maxlon": -52.3286632
+  },
+  "nodes": [
+    1244808444,
+    1244808213,
+    1890281366,
+    1854458471,
+    1854458306
+  ],
+  "geometry": [
+    { "lat": -31.7496926, "lon": -52.3288259 },
+    { "lat": -31.7490731, "lon": -52.3287894 },
+    { "lat": -31.7484497, "lon": -52.3287119 },
+    { "lat": -31.7479567, "lon": -52.3286759 },
+    { "lat": -31.7476029, "lon": -52.3286632 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1141594452,
+  "bounds": {
+    "minlat": -31.7576969,
+    "minlon": -52.3315164,
+    "maxlat": -31.7553753,
+    "maxlon": -52.3311382
+  },
+  "nodes": [
+    1244808491,
+    1244808228,
+    3722401837,
+    4472650525,
+    1244808552
+  ],
+  "geometry": [
+    { "lat": -31.7553753, "lon": -52.3311382 },
+    { "lat": -31.7564187, "lon": -52.3313386 },
+    { "lat": -31.7565293, "lon": -52.3313586 },
+    { "lat": -31.7576151, "lon": -52.3315065 },
+    { "lat": -31.7576969, "lon": -52.3315164 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1141594453,
+  "bounds": {
+    "minlat": -31.7627296,
+    "minlon": -52.3315164,
+    "maxlat": -31.7576969,
+    "maxlon": -52.3297557
+  },
+  "nodes": [
+    1244808552,
+    10655163973,
+    1244808412,
+    1244808240,
+    3722401852,
+    3722401856,
+    1244808515,
+    1244808302,
+    1244808353,
+    5410900991,
+    7911442015,
+    7911442033,
+    7768516040
+  ],
+  "geometry": [
+    { "lat": -31.7576969, "lon": -52.3315164 },
+    { "lat": -31.7578392, "lon": -52.3314955 },
+    { "lat": -31.7584166, "lon": -52.3312304 },
+    { "lat": -31.7589911, "lon": -52.3309479 },
+    { "lat": -31.7590555, "lon": -52.3309134 },
+    { "lat": -31.7598950, "lon": -52.3305639 },
+    { "lat": -31.7609020, "lon": -52.3300954 },
+    { "lat": -31.7613299, "lon": -52.3298979 },
+    { "lat": -31.7616093, "lon": -52.3298000 },
+    { "lat": -31.7619650, "lon": -52.3297557 },
+    { "lat": -31.7626572, "lon": -52.3298080 },
+    { "lat": -31.7626942, "lon": -52.3298114 },
+    { "lat": -31.7627296, "lon": -52.3298107 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1144530723,
+  "bounds": {
+    "minlat": -31.7763406,
+    "minlon": -52.3301016,
+    "maxlat": -31.7750398,
+    "maxlon": -52.3290133
+  },
+  "nodes": [
+    3662626923,
+    3409305231,
+    8776290422
+  ],
+  "geometry": [
+    { "lat": -31.7763406, "lon": -52.3290133 },
+    { "lat": -31.7762859, "lon": -52.3290605 },
+    { "lat": -31.7750398, "lon": -52.3301016 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "narrow": "yes",
+    "postal_code": "96010-496",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 1174646122,
+  "bounds": {
+    "minlat": -31.7387230,
+    "minlon": -52.3280665,
+    "maxlat": -31.7385425,
+    "maxlon": -52.3279860
+  },
+  "nodes": [
+    3661824192,
+    10836414589,
+    10836414590,
+    1241471022
+  ],
+  "geometry": [
+    { "lat": -31.7387230, "lon": -52.3280665 },
+    { "lat": -31.7386695, "lon": -52.3280509 },
+    { "lat": -31.7386243, "lon": -52.3280323 },
+    { "lat": -31.7385425, "lon": -52.3279860 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "destination": "Avenida República do Libano;Avenida São Francisco de Paula",
+    "highway": "secondary_link",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365939,
+  "bounds": {
+    "minlat": -31.7627284,
+    "minlon": -52.3295378,
+    "maxlat": -31.7626549,
+    "maxlon": -52.3295349
+  },
+  "nodes": [
+    7894483746,
+    7894483747
+  ],
+  "geometry": [
+    { "lat": -31.7627284, "lon": -52.3295349 },
+    { "lat": -31.7626549, "lon": -52.3295378 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365941,
+  "bounds": {
+    "minlat": -31.7629214,
+    "minlon": -52.3295360,
+    "maxlat": -31.7627284,
+    "maxlon": -52.3295349
+  },
+  "nodes": [
+    8896957109,
+    7894483746
+  ],
+  "geometry": [
+    { "lat": -31.7629214, "lon": -52.3295360 },
+    { "lat": -31.7627284, "lon": -52.3295349 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365942,
+  "bounds": {
+    "minlat": -31.7631307,
+    "minlon": -52.3295447,
+    "maxlat": -31.7629419,
+    "maxlon": -52.3295384
+  },
+  "nodes": [
+    8022248155,
+    1244808555
+  ],
+  "geometry": [
+    { "lat": -31.7631307, "lon": -52.3295447 },
+    { "lat": -31.7629419, "lon": -52.3295384 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1523570940,
+  "bounds": {
+    "minlat": -31.7618852,
+    "minlon": -52.3312437,
+    "maxlat": -31.7578235,
+    "maxlon": -52.3295178
+  },
+  "nodes": [
+    1244808279,
+    5984434538,
+    1244808439,
+    1852331156,
+    1244808507,
+    1244808285,
+    4472650526,
+    5236662017,
+    1244808358
+  ],
+  "geometry": [
+    { "lat": -31.7618852, "lon": -52.3295178 },
+    { "lat": -31.7616287, "lon": -52.3295546 },
+    { "lat": -31.7614245, "lon": -52.3296176 },
+    { "lat": -31.7606799, "lon": -52.3299475 },
+    { "lat": -31.7595944, "lon": -52.3304397 },
+    { "lat": -31.7589632, "lon": -52.3307119 },
+    { "lat": -31.7582818, "lon": -52.3310099 },
+    { "lat": -31.7581938, "lon": -52.3310529 },
+    { "lat": -31.7578235, "lon": -52.3312437 }
+  ],
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+}
+
+  ]
+}

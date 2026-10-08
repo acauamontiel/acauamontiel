@@ -1,0 +1,8775 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-15T15:22:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 914518518,
+  "lat": -31.7628522,
+  "lon": -52.3339279,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189520,
+  "lat": -31.7592194,
+  "lon": -52.3448220,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189541,
+  "lat": -31.7588809,
+  "lon": -52.3458682,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189543,
+  "lat": -31.7597837,
+  "lon": -52.3436771,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189604,
+  "lat": -31.7590972,
+  "lon": -52.3459608,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189667,
+  "lat": -31.7606121,
+  "lon": -52.3402948,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189696,
+  "lat": -31.7595773,
+  "lon": -52.3435912,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189700,
+  "lat": -31.7604582,
+  "lon": -52.3415333,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189728,
+  "lat": -31.7599160,
+  "lon": -52.3424875,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189737,
+  "lat": -31.7626292,
+  "lon": -52.3338347,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189749,
+  "lat": -31.7594305,
+  "lon": -52.3449069,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1241189751,
+  "lat": -31.7601292,
+  "lon": -52.3425753,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1407200638,
+  "lat": -31.7008027,
+  "lon": -52.3620079,
+  "tags": {
+    "brand": "Bosch",
+    "name": "Bosch Truck Service",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174789,
+  "lat": -31.7602478,
+  "lon": -52.3414388,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174799,
+  "lat": -31.7608259,
+  "lon": -52.3403846,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174802,
+  "lat": -31.7609388,
+  "lon": -52.3392534,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174804,
+  "lat": -31.7611469,
+  "lon": -52.3393493,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174819,
+  "lat": -31.7617552,
+  "lon": -52.3366262,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174823,
+  "lat": -31.7619844,
+  "lon": -52.3367100,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174827,
+  "lat": -31.7620768,
+  "lon": -52.3356304,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1675174830,
+  "lat": -31.7622894,
+  "lon": -52.3357149,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498650,
+  "lat": -31.7605069,
+  "lon": -52.3401109,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Ipiranga",
+    "brand:wikidata": "Q2081136"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498656,
+  "lat": -31.7609180,
+  "lon": -52.3406973,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:wikidata": "Q110716465",
+    "name": "Shell"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498658,
+  "lat": -31.7634607,
+  "lon": -52.3309396,
+  "tags": {
+    "amenity": "doctors",
+    "healthcare": "laboratory",
+    "name": "Laboratório Antonello"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498661,
+  "lat": -31.7618999,
+  "lon": -52.3356746,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BR",
+    "name": "Posto Modelo",
+    "operator": "Rede SIM"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498664,
+  "lat": -31.7620086,
+  "lon": -52.3372147,
+  "tags": {
+    "amenity": "fuel",
+    "fuel:octane_87": "yes",
+    "name": "Posto da Bento",
+    "self_service": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2082498958,
+  "lat": -31.7629291,
+  "lon": -52.3323971,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:wikidata": "Q244457",
+    "brand:wikipedia": "en:Subway (restaurant)",
+    "cuisine": "sandwich",
+    "drive_through": "yes",
+    "name": "Subway",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2082529695,
+  "lat": -31.7614340,
+  "lon": -52.3368223,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3460",
+    "addr:postcode": "96015-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "restaurant",
+    "cuisine": "barbecue;gaucho",
+    "name": "Churrascaria Lobão",
+    "phone": "+55 53 3225-6197"
+  }
+},
+{
+  "type": "node",
+  "id": 2137257752,
+  "lat": -31.7598358,
+  "lon": -52.3441527,
+  "tags": {
+    "addr:housenumber": "4123",
+    "addr:postcode": "96015-145",
+    "addr:street": "Avenida Bento Gonçalves",
+    "description": "Computadores, assistência técnica, projetos de infraestrutura e sistemas",
+    "name": "TERA Informática",
+    "shop": "hifi",
+    "source": "GPS",
+    "website": "http://www.tera.net.br"
+  }
+},
+{
+  "type": "node",
+  "id": 3372043553,
+  "lat": -31.7568914,
+  "lon": -52.3565135,
+  "tags": {
+    "historic": "monument",
+    "name": "Monumento à Pelota"
+  }
+},
+{
+  "type": "node",
+  "id": 3503313477,
+  "lat": -31.7607525,
+  "lon": -52.3605794,
+  "tags": {
+    "addr:street": "Avenida Duque de Caxias",
+    "amenity": "fuel",
+    "brand": "Ipiranga",
+    "check_date": "2023-02-19",
+    "name": "Abastecedora Avenida"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650530,
+  "lat": -31.7608826,
+  "lon": -52.3608402,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650531,
+  "lat": -31.7607440,
+  "lon": -52.3610719,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4569333881,
+  "lat": -31.7599177,
+  "lon": -52.3438912,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Panvel",
+    "brand:wikidata": "Q10344254",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Panvel",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 4569333882,
+  "lat": -31.7596214,
+  "lon": -52.3448372,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "São João",
+    "brand:wikidata": "Q62663306",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "São João",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 4569333883,
+  "lat": -31.7610306,
+  "lon": -52.3403375,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "São João",
+    "brand:wikidata": "Q62663306",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "São João"
+  }
+},
+{
+  "type": "node",
+  "id": 4569365792,
+  "lat": -31.7591489,
+  "lon": -52.3444353,
+  "tags": {
+    "amenity": "bank",
+    "atm": "yes",
+    "brand": "Banco do Brasil",
+    "brand:wikidata": "Q610817",
+    "name": "Banco do Brasil"
+  }
+},
+{
+  "type": "node",
+  "id": 4575546837,
+  "lat": -31.7591868,
+  "lon": -52.3443148,
+  "tags": {
+    "amenity": "bank",
+    "brand": "Itaú Unibanco",
+    "brand:wikidata": "Q1424293",
+    "name": "Itaú"
+  }
+},
+{
+  "type": "node",
+  "id": 4575546838,
+  "lat": -31.7594706,
+  "lon": -52.3434111,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Preço Popular",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4575546839,
+  "lat": -31.7607451,
+  "lon": -52.3393520,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "São João",
+    "brand:wikidata": "Q62663306",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "São João"
+  }
+},
+{
+  "type": "node",
+  "id": 4579527587,
+  "lat": -31.7614121,
+  "lon": -52.3391193,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Farmácias Associadas",
+    "healthcare": "pharmacy"
+  }
+},
+{
+  "type": "node",
+  "id": 4579954244,
+  "lat": -31.7597355,
+  "lon": -52.3444731,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pasta;pizza",
+    "name": "Cantina da Bento"
+  }
+},
+{
+  "type": "node",
+  "id": 4590999953,
+  "lat": -31.7624226,
+  "lon": -52.3358927,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Panvel",
+    "brand:wikidata": "Q10344254",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Panvel"
+  }
+},
+{
+  "type": "node",
+  "id": 4626137332,
+  "lat": -31.7628453,
+  "lon": -52.3326639,
+  "tags": {
+    "addr:housenumber": "3036",
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "police",
+    "name": "Comando Regional da Brigada Militar"
+  }
+},
+{
+  "type": "node",
+  "id": 4626137333,
+  "lat": -31.7625282,
+  "lon": -52.3336738,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Centro",
+    "amenity": "police",
+    "name": "5º Batalhão de Polícia de Choque",
+    "operator": "Brigada Militar"
+  }
+},
+{
+  "type": "node",
+  "id": 4633647734,
+  "lat": -31.7605578,
+  "lon": -52.3392787,
+  "tags": {
+    "building": "university",
+    "name": "Uninter Pelotas",
+    "operator": "Centro Universitário Uninter"
+  }
+},
+{
+  "type": "node",
+  "id": 4654660628,
+  "lat": -31.7599256,
+  "lon": -52.3419621,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Buffet Griep",
+    "self_service": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4654660629,
+  "lat": -31.7599500,
+  "lon": -52.3418842,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Chicão Pizza"
+  }
+},
+{
+  "type": "node",
+  "id": 4654660630,
+  "lat": -31.7606705,
+  "lon": -52.3414875,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Vó Percília",
+    "self_service": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4654660631,
+  "lat": -31.7626415,
+  "lon": -52.3351939,
+  "tags": {
+    "addr:housenumber": "3247",
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "restaurant",
+    "name": "Paiol",
+    "self_service": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4654660634,
+  "lat": -31.7595407,
+  "lon": -52.3450950,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Sanata Mix"
+  }
+},
+{
+  "type": "node",
+  "id": 4660439671,
+  "lat": -31.7603151,
+  "lon": -52.3417117,
+  "tags": {
+    "amenity": "taxi",
+    "phone": "+55 53 3222-3050"
+  }
+},
+{
+  "type": "node",
+  "id": 4660439672,
+  "lat": -31.7597415,
+  "lon": -52.3435252,
+  "tags": {
+    "amenity": "taxi",
+    "opening_hours": "24/7",
+    "phone": "+55 53 3222-1001"
+  }
+},
+{
+  "type": "node",
+  "id": 4663476400,
+  "lat": -31.7608137,
+  "lon": -52.3604200,
+  "tags": {
+    "amenity": "atm",
+    "brand": "Banco24Horas",
+    "brand:wikidata": "Q4854069",
+    "name": "Banco24Horas"
+  }
+},
+{
+  "type": "node",
+  "id": 4665515214,
+  "lat": -31.7621886,
+  "lon": -52.3355265,
+  "tags": {
+    "amenity": "taxi",
+    "phone": "+55 53 3222-6300"
+  }
+},
+{
+  "type": "node",
+  "id": 4665515215,
+  "lat": -31.7621047,
+  "lon": -52.3357992,
+  "tags": {
+    "amenity": "taxi",
+    "opening_hours": "24/7",
+    "phone": "+55 53 3222-4188"
+  }
+},
+{
+  "type": "node",
+  "id": 4665515216,
+  "lat": -31.7620976,
+  "lon": -52.3371760,
+  "tags": {
+    "amenity": "atm",
+    "brand": "Banrisul",
+    "brand:wikidata": "Q4857098",
+    "name": "Banrisul",
+    "operator": "Banrisul",
+    "operator:wikidata": "Q4857098"
+  }
+},
+{
+  "type": "node",
+  "id": 4665515217,
+  "lat": -31.7626051,
+  "lon": -52.3334287,
+  "tags": {
+    "amenity": "pharmacy",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Farmácia Bioderm"
+  }
+},
+{
+  "type": "node",
+  "id": 4689305014,
+  "lat": -31.7615051,
+  "lon": -52.3388224,
+  "tags": {
+    "name": "Procergs - Coordenadoria Regional Pelotas",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4689305015,
+  "lat": -31.7615377,
+  "lon": -52.3387183,
+  "tags": {
+    "addr:housenumber": "153",
+    "addr:street": "Parque Dom Antônio Zatera",
+    "amenity": "restaurant",
+    "cuisine": "barbecue;seafood",
+    "name": "Cruz de Malta"
+  }
+},
+{
+  "type": "node",
+  "id": 4689305016,
+  "lat": -31.7622020,
+  "lon": -52.3365971,
+  "tags": {
+    "amenity": "post_office",
+    "brand": "Empresa Brasileira de Correios e Telégrafos",
+    "brand:short": "Correios",
+    "brand:wikidata": "Q3375004",
+    "name": "AGF Avenida Bento Gonçalves",
+    "operator": "Correios"
+  }
+},
+{
+  "type": "node",
+  "id": 4694011227,
+  "lat": -31.7625239,
+  "lon": -52.3355696,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "dessert",
+    "name": "Vanille",
+    "shop": "confectionery"
+  }
+},
+{
+  "type": "node",
+  "id": 4708592054,
+  "lat": -31.7618044,
+  "lon": -52.3378669,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Parque Dom Antônio Zatera",
+    "amenity": "cafe",
+    "cuisine": "dessert",
+    "name": "Berola"
+  }
+},
+{
+  "type": "node",
+  "id": 4765491830,
+  "lat": -31.7617601,
+  "lon": -52.3361197,
+  "tags": {
+    "name": "Consórcio de transporte coletivo de pelotas",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 4765491831,
+  "lat": -31.7615934,
+  "lon": -52.3366508,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Estação da Pizza"
+  }
+},
+{
+  "type": "node",
+  "id": 4790689307,
+  "lat": -31.7623378,
+  "lon": -52.3361635,
+  "tags": {
+    "amenity": "studio",
+    "name": "Rádio Cultura",
+    "studio": "radio"
+  }
+},
+{
+  "type": "node",
+  "id": 4810632222,
+  "lat": -31.7610001,
+  "lon": -52.3395351,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 4838784594,
+  "lat": -31.7613509,
+  "lon": -52.3393150,
+  "tags": {
+    "name": "Panificadora Avenida",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 4840154035,
+  "lat": -31.7606633,
+  "lon": -52.3406123,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 4862620294,
+  "lat": -31.7608761,
+  "lon": -52.3387532,
+  "tags": {
+    "historic": "memorial",
+    "name": "Altar da Pátria"
+  }
+},
+{
+  "type": "node",
+  "id": 4862620295,
+  "lat": -31.7614742,
+  "lon": -52.3380487,
+  "tags": {
+    "amenity": "taxi"
+  }
+},
+{
+  "type": "node",
+  "id": 4867057087,
+  "lat": -31.7637016,
+  "lon": -52.3301045,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "476",
+    "addr:postcode": "96085-000",
+    "addr:street": "Avenida Ferreira Viana",
+    "addr:suburb": "Areal",
+    "amenity": "pharmacy",
+    "brand": "Panvel",
+    "healthcare": "pharmacy",
+    "name": "Panvel Farmácias",
+    "not:brand:wikidata": "Q10344254"
+  }
+},
+{
+  "type": "node",
+  "id": 4868319465,
+  "lat": -31.7632586,
+  "lon": -52.3313976,
+  "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6380757011,
+  "lat": -31.7634357,
+  "lon": -52.3323893,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Centro",
+    "amenity": "restaurant",
+    "cuisine": "steak_house",
+    "name": "Churrascaria Prátika"
+  }
+},
+{
+  "type": "node",
+  "id": 7357374927,
+  "lat": -31.7608647,
+  "lon": -52.3405489,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "La Carreta"
+  }
+},
+{
+  "type": "node",
+  "id": 7373829197,
+  "lat": -31.7621095,
+  "lon": -52.3368924,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Confraria da Pizza"
+  }
+},
+{
+  "type": "node",
+  "id": 7395981928,
+  "lat": -31.7624865,
+  "lon": -52.3356891,
+  "tags": {
+    "name": "Vital",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7400172238,
+  "lat": -31.7612700,
+  "lon": -52.3395733,
+  "tags": {
+    "name": "Cartão de Todos",
+    "operator": "Prefeitura Municipal de Pelotas",
+    "shop": "ticket"
+  }
+},
+{
+  "type": "node",
+  "id": 7447374291,
+  "lat": -31.7617189,
+  "lon": -52.3384705,
+  "tags": {
+    "amenity": "dentist",
+    "healthcare": "dentist"
+  }
+},
+{
+  "type": "node",
+  "id": 7447374292,
+  "lat": -31.7616279,
+  "lon": -52.3384304,
+  "tags": {
+    "name": "M4 Imóveis",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 7468701819,
+  "lat": -31.7607088,
+  "lon": -52.3417954,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "Eletroluz"
+  }
+},
+{
+  "type": "node",
+  "id": 7468701820,
+  "lat": -31.7605898,
+  "lon": -52.3417453,
+  "tags": {
+    "emergency": "ambulance_station",
+    "name": "Ambulatório União"
+  }
+},
+{
+  "type": "node",
+  "id": 7468701831,
+  "lat": -31.7598287,
+  "lon": -52.3414280,
+  "tags": {
+    "name": "Boticário",
+    "shop": "cosmetics"
+  }
+},
+{
+  "type": "node",
+  "id": 7468701832,
+  "lat": -31.7598981,
+  "lon": -52.3414568,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Daia Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 7468701833,
+  "lat": -31.7600627,
+  "lon": -52.3415253,
+  "tags": {
+    "name": "JL Casarin",
+    "shop": "sports"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378070,
+  "lat": -31.7595911,
+  "lon": -52.3424922,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "BBQ"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378072,
+  "lat": -31.7598202,
+  "lon": -52.3422977,
+  "tags": {
+    "name": "Gelei",
+    "shop": "alcohol"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378073,
+  "lat": -31.7602908,
+  "lon": -52.3427906,
+  "tags": {
+    "amenity": "dojo",
+    "name": "Instituto Hwarang",
+    "sport": "hapkido"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378074,
+  "lat": -31.7603492,
+  "lon": -52.3428155,
+  "tags": {
+    "name": "Correaria Dima",
+    "shop": "leather"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378075,
+  "lat": -31.7603785,
+  "lon": -52.3425358,
+  "tags": {
+    "name": "Sollarys",
+    "office": "accountant"
+  }
+},
+{
+  "type": "node",
+  "id": 7504378076,
+  "lat": -31.7604563,
+  "lon": -52.3425690,
+  "tags": {
+    "amenity": "events_venue",
+    "name": "Happy Day"
+  }
+},
+{
+  "type": "node",
+  "id": 7516100638,
+  "lat": -31.7601230,
+  "lon": -52.3436859,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "LG"
+  }
+},
+{
+  "type": "node",
+  "id": 7516100639,
+  "lat": -31.7600952,
+  "lon": -52.3439660,
+  "tags": {
+    "name": "A&N Refrigeração Automotiva e Injeção Eletrônica",
+    "service": "electrical",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7516155830,
+  "lat": -31.7592851,
+  "lon": -52.3433330,
+  "tags": {
+    "name": "Ávila Contabilidade",
+    "office": "accountant"
+  }
+},
+{
+  "type": "node",
+  "id": 7516155832,
+  "lat": -31.7591721,
+  "lon": -52.3435772,
+  "tags": {
+    "name": "Silva Contabilidade",
+    "office": "accountant"
+  }
+},
+{
+  "type": "node",
+  "id": 7516155833,
+  "lat": -31.7593896,
+  "lon": -52.3436688,
+  "tags": {
+    "amenity": "ice_cream",
+    "name": "Cremolatto"
+  }
+},
+{
+  "type": "node",
+  "id": 7519904681,
+  "lat": -31.7597370,
+  "lon": -52.3448847,
+  "tags": {
+    "amenity": "doctors",
+    "healthcare": "physiotherapist",
+    "name": "Maurício Tavares Barbosa"
+  }
+},
+{
+  "type": "node",
+  "id": 7519921485,
+  "lat": -31.7589525,
+  "lon": -52.3445623,
+  "tags": {
+    "name": "Protege",
+    "office": "security"
+  }
+},
+{
+  "type": "node",
+  "id": 7543044298,
+  "lat": -31.7587556,
+  "lon": -52.3456877,
+  "tags": {
+    "amenity": "police",
+    "name": "3ª Coordenadoria Regional de Perícias",
+    "operator": "Polícia Civil do Brasil",
+    "operator:wikidata": "Q206882"
+  }
+},
+{
+  "type": "node",
+  "id": 7543044299,
+  "lat": -31.7592867,
+  "lon": -52.3459058,
+  "tags": {
+    "name": "Aqua Cor",
+    "shop": "paint"
+  }
+},
+{
+  "type": "node",
+  "id": 7543044300,
+  "lat": -31.7593410,
+  "lon": -52.3459280,
+  "tags": {
+    "addr:housenumber": "1624",
+    "addr:street": "Rua Marcílio Dias",
+    "name": "Da Casa",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 7543044301,
+  "lat": -31.7593845,
+  "lon": -52.3459459,
+  "tags": {
+    "name": "Taipa Corretora de Seguros",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 7543044302,
+  "lat": -31.7594655,
+  "lon": -52.3459792,
+  "tags": {
+    "name": "Acadêmica Papelaria",
+    "shop": "stationery"
+  }
+},
+{
+  "type": "node",
+  "id": 7714319239,
+  "lat": -31.7639093,
+  "lon": -52.3296773,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7714319242,
+  "lat": -31.7640356,
+  "lon": -52.3300285,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7714376684,
+  "lat": -31.7582751,
+  "lon": -52.3480630,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7894483715,
+  "lat": -31.7315732,
+  "lon": -52.3895732,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7894483716,
+  "lat": -31.7348205,
+  "lon": -52.3922104,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7895463626,
+  "lat": -31.7280718,
+  "lon": -52.3866680,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7895463652,
+  "lat": -31.7577955,
+  "lon": -52.3589888,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 7895463653,
+  "lat": -31.7576710,
+  "lon": -52.3581351,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442020,
+  "lat": -31.7641557,
+  "lon": -52.3297617,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442021,
+  "lat": -31.7642665,
+  "lon": -52.3297436,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021285,
+  "lat": -31.7634538,
+  "lon": -52.3562031,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7921021292,
+  "lat": -31.7608642,
+  "lon": -52.3609703,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 8022248136,
+  "lat": -31.7657222,
+  "lon": -52.3254345,
+  "tags": {
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "Terminal Navegantes",
+    "operator": "CTCP",
+    "public_transport": "station",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8022248141,
+  "lat": -31.7639902,
+  "lon": -52.3295018,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287305,
+  "lat": -31.7627756,
+  "lon": -52.3328858,
+  "tags": {
+    "amenity": "community_centre",
+    "community_centre": "club_home",
+    "name": "Associação de Inativos da Brigada Militar de Pelotas"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287306,
+  "lat": -31.7626596,
+  "lon": -52.3332552,
+  "tags": {
+    "amenity": "parking",
+    "name": "Suprema"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287307,
+  "lat": -31.7626379,
+  "lon": -52.3333243,
+  "tags": {
+    "name": "Oficina Mansur",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287308,
+  "lat": -31.7626203,
+  "lon": -52.3333806,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "sushi"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287309,
+  "lat": -31.7620697,
+  "lon": -52.3351339,
+  "tags": {
+    "addr:housenumber": "3274",
+    "addr:street": "Avenida Bento Gonçalves",
+    "healthcare": "physiotherapist",
+    "name": "Vida Centro Saúde"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287310,
+  "lat": -31.7625065,
+  "lon": -52.3356253,
+  "tags": {
+    "amenity": "bar",
+    "name": "Pássaro Azul"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287312,
+  "lat": -31.7622616,
+  "lon": -52.3355376,
+  "tags": {
+    "name": "Pinho Floricultura",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287313,
+  "lat": -31.7622627,
+  "lon": -52.3364033,
+  "tags": {
+    "addr:housenumber": "3385",
+    "addr:street": "Avenida Bento Gonçalves",
+    "name": "Papelaria Oriente",
+    "shop": "stationery"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287314,
+  "lat": -31.7622388,
+  "lon": -52.3364797,
+  "tags": {
+    "name": "Pérola Negra Bebidas e Conveniências",
+    "shop": "alcohol"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287315,
+  "lat": -31.7622212,
+  "lon": -52.3365360,
+  "tags": {
+    "addr:housenumber": "3395",
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "restaurant",
+    "name": "Pizzaria Pérola Negra"
+  }
+},
+{
+  "type": "node",
+  "id": 8119287316,
+  "lat": -31.7623165,
+  "lon": -52.3362317,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Alô Pizza",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294317,
+  "lat": -31.7623899,
+  "lon": -52.3359972,
+  "tags": {
+    "name": "SulCampo",
+    "shop": "agrarian"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294318,
+  "lat": -31.7615601,
+  "lon": -52.3367566,
+  "tags": {
+    "name": "Criativa Sleep Confort",
+    "shop": "bed"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294319,
+  "lat": -31.7617961,
+  "lon": -52.3360052,
+  "tags": {
+    "name": "Arc. Cert Certificação Digital",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294320,
+  "lat": -31.7617781,
+  "lon": -52.3360624,
+  "tags": {
+    "name": "Commander",
+    "office": "security"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294321,
+  "lat": -31.7617062,
+  "lon": -52.3362915,
+  "tags": {
+    "amenity": "bar",
+    "name": "Botequim da Praça"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294322,
+  "lat": -31.7616702,
+  "lon": -52.3364060,
+  "tags": {
+    "name": "Ferragem Rezende",
+    "shop": "hardware"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294323,
+  "lat": -31.7616523,
+  "lon": -52.3364633,
+  "tags": {
+    "name": "Emílio Nunes Corretora de Seguros",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294324,
+  "lat": -31.7616944,
+  "lon": -52.3370973,
+  "tags": {
+    "name": "Jardim de Alá",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294325,
+  "lat": -31.7620653,
+  "lon": -52.3370337,
+  "tags": {
+    "addr:housenumber": "3447",
+    "addr:street": "Avenida Bento Gonçalves",
+    "leisure": "fitness_centre",
+    "name": "Teka Academia"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294326,
+  "lat": -31.7620519,
+  "lon": -52.3371959,
+  "tags": {
+    "opening_hours": "24/7",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294327,
+  "lat": -31.7617531,
+  "lon": -52.3380306,
+  "tags": {
+    "amenity": "bar",
+    "name": "Boteco Gato Pelado"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294328,
+  "lat": -31.7617775,
+  "lon": -52.3379528,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "empanada",
+    "name": "Pastel do Gaúcho"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294329,
+  "lat": -31.7618293,
+  "lon": -52.3377872,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Parque Dom Antônio Zatera",
+    "amenity": "dentist",
+    "healthcare": "dentist",
+    "name": "Oral Sin Implantes"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294330,
+  "lat": -31.7618845,
+  "lon": -52.3376109,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bistrô do Parque"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294331,
+  "lat": -31.7619014,
+  "lon": -52.3375572,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "La Casa da Pizza"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294332,
+  "lat": -31.7614734,
+  "lon": -52.3389236,
+  "tags": {
+    "name": "Agplan",
+    "office": "engineer"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294333,
+  "lat": -31.7614592,
+  "lon": -52.3389692,
+  "tags": {
+    "name": "Corretora de Seguros Aliança",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294334,
+  "lat": -31.7614379,
+  "lon": -52.3390370,
+  "tags": {
+    "name": "Arte & Luz",
+    "shop": "interior_decoration"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294335,
+  "lat": -31.7613869,
+  "lon": -52.3391998,
+  "tags": {
+    "name": "Deia's House",
+    "shop": "interior_decoration"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294336,
+  "lat": -31.7609085,
+  "lon": -52.3395836,
+  "tags": {
+    "name": "Maria Moello",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294337,
+  "lat": -31.7607023,
+  "lon": -52.3394884,
+  "tags": {
+    "amenity": "bar"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294338,
+  "lat": -31.7606769,
+  "lon": -52.3395696,
+  "tags": {
+    "name": "Papelaria Luisa",
+    "shop": "stationery"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294339,
+  "lat": -31.7611109,
+  "lon": -52.3400813,
+  "tags": {
+    "name": "João das Rosas",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294340,
+  "lat": -31.7611355,
+  "lon": -52.3400025,
+  "tags": {
+    "addr:housenumber": "3769",
+    "addr:street": "Avenida Bento Gonçalves",
+    "leisure": "fitness_centre",
+    "name": "Academia MP Fit"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294342,
+  "lat": -31.7611918,
+  "lon": -52.3398230,
+  "tags": {
+    "name": "Multi Tintas Cor",
+    "shop": "paint"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294343,
+  "lat": -31.7607564,
+  "lon": -52.3400719,
+  "tags": {
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294344,
+  "lat": -31.7605873,
+  "lon": -52.3406102,
+  "tags": {
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294345,
+  "lat": -31.7603670,
+  "lon": -52.3413061,
+  "tags": {
+    "name": "Flora Urbana Floricultura",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294346,
+  "lat": -31.7601436,
+  "lon": -52.3412676,
+  "tags": {
+    "name": "SCA",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294347,
+  "lat": -31.7607336,
+  "lon": -52.3412859,
+  "tags": {
+    "name": "FT Lan House",
+    "shop": "copyshop"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294348,
+  "lat": -31.7601822,
+  "lon": -52.3418888,
+  "tags": {
+    "name": "Virgínia Flores da Cascata",
+    "shop": "florist"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294349,
+  "lat": -31.7605305,
+  "lon": -52.3419346,
+  "tags": {
+    "name": "Michel Loterias",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294350,
+  "lat": -31.7604458,
+  "lon": -52.3422049,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Pizzaria Open da Bento"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294351,
+  "lat": -31.7599800,
+  "lon": -52.3417887,
+  "tags": {
+    "shop": "alcohol"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294356,
+  "lat": -31.7604018,
+  "lon": -52.3423455,
+  "tags": {
+    "name": "Agência de Viagens e Turismo CB",
+    "shop": "travel_agency"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294357,
+  "lat": -31.7603687,
+  "lon": -52.3424511,
+  "tags": {
+    "shop": "antiques"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294358,
+  "lat": -31.7596685,
+  "lon": -52.3427807,
+  "tags": {
+    "name": "Berola",
+    "shop": "confectionery"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294359,
+  "lat": -31.7601385,
+  "lon": -52.3431861,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Lilian Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294360,
+  "lat": -31.7600752,
+  "lon": -52.3433882,
+  "tags": {
+    "addr:housenumber": "4049",
+    "addr:street": "Avenida Bento Gonçalves",
+    "name": "Da Bento Alimentos",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294361,
+  "lat": -31.7600411,
+  "lon": -52.3434973,
+  "tags": {
+    "amenity": "restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294362,
+  "lat": -31.7595817,
+  "lon": -52.3430571,
+  "tags": {
+    "name": "Sakos & Sakolas",
+    "shop": "packaging"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294363,
+  "lat": -31.7595549,
+  "lon": -52.3431426,
+  "tags": {
+    "addr:housenumber": "4056",
+    "addr:street": "Avenida Bento Gonçalves",
+    "name": "Pampa Loterias",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294364,
+  "lat": -31.7592866,
+  "lon": -52.3439969,
+  "tags": {
+    "name": "Só Fiat",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294365,
+  "lat": -31.7592633,
+  "lon": -52.3440710,
+  "tags": {
+    "name": "Chevro Peças",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294367,
+  "lat": -31.7590102,
+  "lon": -52.3448770,
+  "tags": {
+    "amenity": "community_centre",
+    "community_centre": "club_home",
+    "name": "Estrela F.C."
+  }
+},
+{
+  "type": "node",
+  "id": 8119294368,
+  "lat": -31.7588860,
+  "lon": -52.3452727,
+  "tags": {
+    "name": "Albuquerque Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294369,
+  "lat": -31.7597849,
+  "lon": -52.3443153,
+  "tags": {
+    "amenity": "fast_food"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294370,
+  "lat": -31.7598093,
+  "lon": -52.3442372,
+  "tags": {
+    "shop": "second_hand"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294371,
+  "lat": -31.7598577,
+  "lon": -52.3440828,
+  "tags": {
+    "amenity": "taxi",
+    "name": "Moto Táxi União",
+    "opening_hours": "24/7",
+    "phone": "+55 53 3227-5010",
+    "taxi_vehicle": "motorcycle"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294372,
+  "lat": -31.7594656,
+  "lon": -52.3453348,
+  "tags": {
+    "craft": "hvac",
+    "name": "PosFrio"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294373,
+  "lat": -31.7594281,
+  "lon": -52.3454544,
+  "tags": {
+    "name": "Pioneiro AutoPeças",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294374,
+  "lat": -31.7594074,
+  "lon": -52.3455204,
+  "tags": {
+    "addr:housenumber": "4265",
+    "addr:street": "Avenida Bento Gonçalves",
+    "name": "RefriMáquinas",
+    "shop": "trade"
+  }
+},
+{
+  "type": "node",
+  "id": 8119294375,
+  "lat": -31.7593654,
+  "lon": -52.3456546,
+  "tags": {
+    "name": "Comercial de Rolamentos Pelotas",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 8713078331,
+  "lat": -31.7355251,
+  "lon": -52.3928133,
+  "tags": {
+    "crossing_ref": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 8713078341,
+  "lat": -31.7348821,
+  "lon": -52.3922942,
+  "tags": {
+    "crossing_ref": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 9800645375,
+  "lat": -31.7310834,
+  "lon": -52.3899228,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9968991792,
+  "lat": -31.7650839,
+  "lon": -52.3253708,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2134",
+    "addr:postcode": "96075-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "name": "Padaria Viegas",
+    "opening_hours": "Mo-Su 07:00-20:00",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 9969051520,
+  "lat": -31.7672937,
+  "lon": -52.3199536,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1549",
+    "addr:postcode": "96075-000",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "São Gonçalo",
+    "amenity": "restaurant",
+    "name": "Misther Açaí"
+  }
+},
+{
+  "type": "node",
+  "id": 9969051534,
+  "lat": -31.7653416,
+  "lon": -52.3267115,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2449",
+    "addr:postcode": "96015-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Porto",
+    "name": "Padaria Doce Amor",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 9969051535,
+  "lat": -31.7657202,
+  "lon": -52.3250351,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2027",
+    "addr:postcode": "96075-005",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Cruzeiro",
+    "name": "Casa do Ovo",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 10293601123,
+  "lat": -31.7346556,
+  "lon": -52.3928659,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10602382873,
+  "lat": -31.7604935,
+  "lon": -52.3405351,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 10602675817,
+  "lat": -31.7602516,
+  "lon": -52.3607621,
+  "tags": {
+    "highway": "bus_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 10602675818,
+  "lat": -31.7586661,
+  "lon": -52.3463583,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 10624112512,
+  "lat": -31.7590454,
+  "lon": -52.3462478,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 10624213640,
+  "lat": -31.7637176,
+  "lon": -52.3312077,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 11103595247,
+  "lat": -31.7600488,
+  "lon": -52.3439453,
+  "tags": {
+    "addr:housenumber": "479",
+    "name": "Barbearia Route 44",
+    "shop": "hairdresser"
+  }
+},
+{
+  "type": "node",
+  "id": 11390363408,
+  "lat": -31.7636633,
+  "lon": -52.3311234,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 11738025139,
+  "lat": -31.7427718,
+  "lon": -52.3990014,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11738061993,
+  "lat": -31.7427321,
+  "lon": -52.3985099,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11738061994,
+  "lat": -31.7423952,
+  "lon": -52.3985750,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11875848299,
+  "lat": -31.7613712,
+  "lon": -52.3382467,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 12212854898,
+  "lat": -31.7577201,
+  "lon": -52.3512887,
+  "tags": {
+    "name": "Fragata",
+    "place": "suburb"
+  }
+},
+{
+  "type": "way",
+  "id": 34777352,
+  "center": {
+    "lat": -31.7154229,
+    "lon": -52.3757191
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 34777353,
+  "center": {
+    "lat": -31.7160298,
+    "lon": -52.3763109
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 77765990,
+  "center": {
+    "lat": -31.7590543,
+    "lon": -52.3590011
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108139358,
+  "center": {
+    "lat": -31.7589849,
+    "lon": -52.3664260
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108143425,
+  "center": {
+    "lat": -31.7335131,
+    "lon": -52.3915701
+  },
+  "tags": {
+    "embankment": "yes",
+    "foot": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108143427,
+  "center": {
+    "lat": -31.7564982,
+    "lon": -52.3573280
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente João Goulart;Avenida Francisco Caruccio",
+    "highway": "primary",
+    "lanes": "1",
+    "maxspeed": "60",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145212,
+  "center": {
+    "lat": -31.7566309,
+    "lon": -52.3561062
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "primary",
+    "lanes": "3",
+    "layer": "1",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145216,
+  "center": {
+    "lat": -31.7573639,
+    "lon": -52.3522203
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 108145219,
+  "center": {
+    "lat": -31.7568579,
+    "lon": -52.3560197
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "primary",
+    "lanes": "2",
+    "layer": "1",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145223,
+  "center": {
+    "lat": -31.7568061,
+    "lon": -52.3566784
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145225,
+  "center": {
+    "lat": -31.7576435,
+    "lon": -52.3566137
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "1",
+    "maxspeed": "40",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108148346,
+  "center": {
+    "lat": -31.7140942,
+    "lon": -52.3744270
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108148347,
+  "center": {
+    "lat": -31.7192457,
+    "lon": -52.3793718
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 127076555,
+  "center": {
+    "lat": -31.7065778,
+    "lon": -52.3680832
+  },
+  "tags": {
+    "alt_name": "Avenida Vinte e Cinco de Julho",
+    "highway": "tertiary",
+    "name": "Avenida 25 de Julho",
+    "oneway": "yes",
+    "postal_code": "96050-560",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 127076556,
+  "center": {
+    "lat": -31.7075017,
+    "lon": -52.3670386
+  },
+  "tags": {
+    "alt_name": "Avenida Vinte e Cinco de Julho",
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Avenida 25 de Julho",
+    "oneway": "yes",
+    "postal_code": "96050-560",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081912,
+  "center": {
+    "lat": -31.7549365,
+    "lon": -52.3425991
+  },
+  "tags": {
+    "alt_name": "Rua Professor Doutor Araujo",
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Rua Professor Doutor Araújo",
+    "oneway": "yes",
+    "oneway:bicycle": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081914,
+  "center": {
+    "lat": -31.7636432,
+    "lon": -52.3453084
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Santos Dumont",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081934,
+  "center": {
+    "lat": -31.7536196,
+    "lon": -52.3386916
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Marechal Deodoro",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081942,
+  "center": {
+    "lat": -31.7635468,
+    "lon": -52.3403657
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Andrade Neves",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081947,
+  "center": {
+    "lat": -31.7572987,
+    "lon": -52.3414007
+  },
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "lit": "yes",
+    "maxspeed": "40",
+    "name": "Rua Barão de Santa Tecla",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 155081948,
+  "center": {
+    "lat": -31.7611836,
+    "lon": -52.3334395
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lane_markings": "no",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "40",
+    "name": "Rua Almirante Barroso",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081960,
+  "center": {
+    "lat": -31.7637931,
+    "lon": -52.3333020
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 155081964,
+  "center": {
+    "lat": -31.7611138,
+    "lon": -52.3321115
+  },
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Rua Doutor Edmundo Berchon",
+    "sidewalk": "both",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 155081965,
+  "center": {
+    "lat": -31.7553160,
+    "lon": -52.3418021
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Rua Santos Dumont",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081975,
+  "center": {
+    "lat": -31.7604280,
+    "lon": -52.3378699
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Dom Antônio Zatera"
+  }
+},
+{
+  "type": "way",
+  "id": 155081976,
+  "center": {
+    "lat": -31.7609966,
+    "lon": -52.3359978
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Centro",
+    "leisure": "pitch",
+    "lit": "yes",
+    "name": "E.C. Pelotas",
+    "sport": "soccer",
+    "surface": "grass"
+  }
+},
+{
+  "type": "way",
+  "id": 174415036,
+  "center": {
+    "lat": -31.7681549,
+    "lon": -52.3250560
+  },
+  "tags": {
+    "alt_name": "Rua dos Direitos Humanos",
+    "highway": "residential",
+    "name": "Rua Direitos Humanos",
+    "oneway": "no",
+    "postal_code": "96076-348",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415042,
+  "center": {
+    "lat": -31.7684374,
+    "lon": -52.3183369
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Vereador José Pederzoli Sobrinho",
+    "postal_code": "96076-250",
+    "source:name": "IBGE",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415044,
+  "center": {
+    "lat": -31.7674308,
+    "lon": -52.3215467
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Professor Oswaldo de Pinho Louzada",
+    "postal_code": "96075-190",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415045,
+  "center": {
+    "lat": -31.7671273,
+    "lon": -52.3225279
+  },
+  "tags": {
+    "alt_name": "Travessa 1 Navegantes Segundo",
+    "highway": "residential",
+    "name": "Travessa Um - Navegantes II",
+    "postal_code": "96076-230",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415061,
+  "center": {
+    "lat": -31.7696274,
+    "lon": -52.3145260
+  },
+  "tags": {
+    "alt_name": "Travessa Dez",
+    "highway": "residential",
+    "name": "Travessa Dez - Navegantes II",
+    "postal_code": "96076-030",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415066,
+  "center": {
+    "lat": -31.7691542,
+    "lon": -52.3160437
+  },
+  "tags": {
+    "alt_name": "Travessa 7 Navegantes 2",
+    "highway": "residential",
+    "name": "Travessa Sete - Navegantes II",
+    "postal_code": "96076-320",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415070,
+  "center": {
+    "lat": -31.7705694,
+    "lon": -52.3141916
+  },
+  "tags": {
+    "alt_name": "Rua 15",
+    "highway": "residential",
+    "name": "Rua Quinze - Navegantes II",
+    "postal_code": "96076-200",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415077,
+  "center": {
+    "lat": -31.7672774,
+    "lon": -52.3220266
+  },
+  "tags": {
+    "alt_name": "Travessa 2 Navegantes Segundo",
+    "highway": "residential",
+    "name": "Travessa Francisco de Paula Moraes",
+    "postal_code": "96076-040",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415081,
+  "center": {
+    "lat": -31.7693053,
+    "lon": -52.3155470
+  },
+  "tags": {
+    "alt_name": "Travessa 8",
+    "highway": "residential",
+    "name": "Travessa Oito - Navegantes II",
+    "postal_code": "96076-070",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174415085,
+  "center": {
+    "lat": -31.7709035,
+    "lon": -52.3121036
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Rio Grande",
+    "oneway": "no",
+    "postal_code": "96076-240",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174415087,
+  "center": {
+    "lat": -31.7682688,
+    "lon": -52.3188751
+  },
+  "tags": {
+    "alt_name": "Rua 6 Navegantes 2",
+    "highway": "residential",
+    "name": "Rua Professor Ney Gusmão de Oliveira",
+    "postal_code": "96076-314"
+  }
+},
+{
+  "type": "way",
+  "id": 174415095,
+  "center": {
+    "lat": -31.7708973,
+    "lon": -52.3119485
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000"
+  }
+},
+{
+  "type": "way",
+  "id": 174415096,
+  "center": {
+    "lat": -31.7694631,
+    "lon": -52.3150316
+  },
+  "tags": {
+    "alt_name": "Travessa 9",
+    "highway": "residential",
+    "name": "Travessa Nove - Navegantes II",
+    "postal_code": "96076-170",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174418494,
+  "center": {
+    "lat": -31.7661012,
+    "lon": -52.3234884
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174425624,
+  "center": {
+    "lat": -31.7670546,
+    "lon": -52.3307014
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425631,
+  "center": {
+    "lat": -31.7720889,
+    "lon": -52.3154558
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Rio Grande",
+    "postal_code": "96076-240",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174560326,
+  "center": {
+    "lat": -31.7655327,
+    "lon": -52.3252154
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Rua Barros Cassal",
+    "postal_code": "96077-540",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 174560342,
+  "center": {
+    "lat": -31.7643974,
+    "lon": -52.3231721
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Barão de Cotegipe",
+    "oneway": "no",
+    "postal_code": "96075-030",
+    "source:name": "Câmara de Vereadores de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 174560346,
+  "center": {
+    "lat": -31.7651365,
+    "lon": -52.3258559
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174563030,
+  "center": {
+    "lat": -31.7652577,
+    "lon": -52.3270574
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563034,
+  "center": {
+    "lat": -31.7651697,
+    "lon": -52.3273248
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563040,
+  "center": {
+    "lat": -31.7649421,
+    "lon": -52.3283938
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563042,
+  "center": {
+    "lat": -31.7650442,
+    "lon": -52.3277384
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563044,
+  "center": {
+    "lat": -31.7648366,
+    "lon": -52.3288618
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563046,
+  "center": {
+    "lat": -31.7650113,
+    "lon": -52.3281591
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563048,
+  "center": {
+    "lat": -31.7647141,
+    "lon": -52.3290924
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563056,
+  "center": {
+    "lat": -31.7659988,
+    "lon": -52.3256493
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563062,
+  "center": {
+    "lat": -31.7649170,
+    "lon": -52.3285322
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563073,
+  "center": {
+    "lat": -31.7645975,
+    "lon": -52.3291909
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563085,
+  "center": {
+    "lat": -31.7644533,
+    "lon": -52.3295565
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563093,
+  "center": {
+    "lat": -31.7650099,
+    "lon": -52.3278715
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563100,
+  "center": {
+    "lat": -31.7645399,
+    "lon": -52.3293096
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563103,
+  "center": {
+    "lat": -31.7657050,
+    "lon": -52.3259587
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563104,
+  "center": {
+    "lat": -31.7645001,
+    "lon": -52.3294422
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563113,
+  "center": {
+    "lat": -31.7659603,
+    "lon": -52.3257871
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563121,
+  "center": {
+    "lat": -31.7652010,
+    "lon": -52.3271884
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563125,
+  "center": {
+    "lat": -31.7658472,
+    "lon": -52.3263192
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563126,
+  "center": {
+    "lat": -31.7652947,
+    "lon": -52.3269331
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563130,
+  "center": {
+    "lat": -31.7648835,
+    "lon": -52.3287371
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563131,
+  "center": {
+    "lat": -31.7658009,
+    "lon": -52.3264502
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563132,
+  "center": {
+    "lat": -31.7647616,
+    "lon": -52.3289750
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563133,
+  "center": {
+    "lat": -31.7657339,
+    "lon": -52.3258334
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563138,
+  "center": {
+    "lat": -31.7650546,
+    "lon": -52.3280335
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 178679822,
+  "center": {
+    "lat": -31.7634470,
+    "lon": -52.3295674
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 198179022,
+  "center": {
+    "lat": -31.7637245,
+    "lon": -52.3562377
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal Santa Bárbara",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 203496986,
+  "center": {
+    "lat": -31.7560935,
+    "lon": -52.3515214
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Visconde de Sinimbu",
+    "source": "Bing",
+    "source:name": "CNEFE/IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 203496989,
+  "center": {
+    "lat": -31.7565386,
+    "lon": -52.3472536
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Bernardo Pires",
+    "source": "Bing",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 203838187,
+  "center": {
+    "lat": -31.7349351,
+    "lon": -52.3934678
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Herbert Hadler",
+    "oneway": "yes",
+    "postal_code": "96050-460",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 203838212,
+  "center": {
+    "lat": -31.7296712,
+    "lon": -52.3843162
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Pinheiro Machado",
+    "oneway": "yes",
+    "parking:both": "no",
+    "postal_code": "96040-500",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 203838216,
+  "center": {
+    "lat": -31.7563935,
+    "lon": -52.3598846
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Rua Almirante Guilobel",
+    "oneway": "yes",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 203838233,
+  "center": {
+    "lat": -31.7436410,
+    "lon": -52.3911691
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Rua Major Francisco Nunes de Souza",
+    "postal_code": "96045-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 203838256,
+  "center": {
+    "lat": -31.7585821,
+    "lon": -52.3597950
+  },
+  "tags": {
+    "highway": "primary_link",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Guabiroba",
+    "oneway": "yes",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 221233241,
+  "center": {
+    "lat": -31.7599489,
+    "lon": -52.3508668
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Albuquerque de Barros",
+    "source": "bing",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 223623832,
+  "center": {
+    "lat": -31.7022445,
+    "lon": -52.3531322
+  },
+  "tags": {
+    "alt_name": "Rua Vinte e Dois de Maio",
+    "highway": "residential",
+    "name": "Rua 22 de Maio",
+    "source": "bing",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 223623843,
+  "center": {
+    "lat": -31.7020404,
+    "lon": -52.3528639
+  },
+  "tags": {
+    "alt_name": "Rua Engenheiro Benjamin Cordeiro Dias",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua José Rizollo",
+    "source": "bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 224510439,
+  "center": {
+    "lat": -31.7632008,
+    "lon": -52.3319810
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 224510441,
+  "center": {
+    "lat": -31.7614241,
+    "lon": -52.3344963
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Santa Cruz",
+    "oneway": "no",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 246573343,
+  "center": {
+    "lat": -31.7209687,
+    "lon": -52.3772835
+  },
+  "tags": {
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Tourist Parque Hotel",
+    "operator": "Rede Manta de Lazer e Turismo",
+    "tourism": "hotel",
+    "website": "https://www.hoteismanta.com.br/tourist"
+  }
+},
+{
+  "type": "way",
+  "id": 253556704,
+  "center": {
+    "lat": -31.7619084,
+    "lon": -52.3543051
+  },
+  "tags": {
+    "fixme": "Ajustar contorno à área onde predominam moradias vizinhas.",
+    "landuse": "residential",
+    "name": "Ocupação Santa Bárbara Norte",
+    "source": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 253556762,
+  "center": {
+    "lat": -31.7021080,
+    "lon": -52.3529925
+  },
+  "tags": {
+    "alt_name": "Vila Peres Vinte e Dois de Maio",
+    "fixme": "Melhorar nome após hífens: se nome alternativo bote em alt_name; remova se usado só pelo IBGE; se denotar várias vilas, quebre em áreas distintas ou bote o prefixo Vila em cada nome.",
+    "landuse": "residential",
+    "name": "Vila Leito da Via Férrea - Vila Peres 22 de Maio",
+    "source": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 286809160,
+  "center": {
+    "lat": -31.7644359,
+    "lon": -52.3280879
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 286809161,
+  "center": {
+    "lat": -31.7646137,
+    "lon": -52.3263668
+  },
+  "tags": {
+    "alt_name": "Rua São João Batista de La Sale",
+    "highway": "residential",
+    "name": "Rua São João Batista de La Salle",
+    "oneway": "no",
+    "source:name": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 286809163,
+  "center": {
+    "lat": -31.7652303,
+    "lon": -52.3262989
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 298145691,
+  "center": {
+    "lat": -31.7638018,
+    "lon": -52.3555913
+  },
+  "tags": {
+    "alt_name": "Praça Vinte de Setembro; Avenida Duque de Caxias",
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "maxspeed:lanes": "60|60|40",
+    "name": "Praça 20 de Setembro",
+    "oneway": "yes",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 312271354,
+  "center": {
+    "lat": -31.7610015,
+    "lon": -52.3360442
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "300",
+    "addr:postcode": "96015-180",
+    "addr:street": "Parque Dom Antônio Zatera",
+    "addr:suburb": "Centro",
+    "leisure": "stadium",
+    "name": "Estádio Boca do Lobo",
+    "sport": "soccer",
+    "website": "www.ecpelotas.com.br/",
+    "wikidata": "Q5401979",
+    "wikipedia": "pt:Estádio Boca do Lobo"
+  }
+},
+{
+  "type": "way",
+  "id": 323283242,
+  "center": {
+    "lat": -31.7636120,
+    "lon": -52.3287160
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2300",
+    "addr:postcode": "96077-686",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Areal",
+    "brand": "Carrefour",
+    "brand:wikidata": "Q217599",
+    "building": "supermarket",
+    "contact:phone": "+55 53 2128-7201",
+    "name": "Carrefour",
+    "old_name": "Hipermercado BIG",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Carrefour Brasil",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 323289034,
+  "center": {
+    "lat": -31.7296681,
+    "lon": -52.3828134
+  },
+  "tags": {
+    "addr:street": "Avenida Presidente João Goulart",
+    "amenity": "conference_centre",
+    "building": "yes",
+    "community_centre": "events_venue",
+    "layer": "1",
+    "name": "Centro de Eventos da Fenadoce",
+    "website": "https://fenadoce.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 333462484,
+  "center": {
+    "lat": -31.7596513,
+    "lon": -52.3602942
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 333465282,
+  "center": {
+    "lat": -31.7428204,
+    "lon": -52.3988510
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "postal_code": "96045-010",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 333558174,
+  "center": {
+    "lat": -31.7665151,
+    "lon": -52.3366368
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Santa Cruz",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 333622352,
+  "center": {
+    "lat": -31.7592405,
+    "lon": -52.3472463
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1597",
+    "addr:postcode": "96020-480",
+    "addr:street": "Rua Marcílio Dias",
+    "addr:suburb": "Centro",
+    "amenity": "school",
+    "contact:phone": "+55 53 3225-8293",
+    "isced:level": "0,1,2,3",
+    "name": "Colégio Municipal Pelotense",
+    "ref:INEP": "43100104",
+    "religion": "none",
+    "website": "https://www.colegiopelotense.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 333623144,
+  "center": {
+    "lat": -31.7593983,
+    "lon": -52.3442066
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 333623145,
+  "center": {
+    "lat": -31.7651146,
+    "lon": -52.3348746
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Almirante Barroso",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 333888145,
+  "center": {
+    "lat": -31.7631893,
+    "lon": -52.3347122
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3036",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Centro",
+    "landuse": "military",
+    "military": "barracks",
+    "name": "Quartel da Brigada Militar",
+    "phone": "+55 53 3309-5350",
+    "website": "http://www.bmpelotas.com.br/blog/"
+  }
+},
+{
+  "type": "way",
+  "id": 335956821,
+  "center": {
+    "lat": -31.7593156,
+    "lon": -52.3733399
+  },
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "name": "Ciclovia da Avenida Duque",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 336067963,
+  "center": {
+    "lat": -31.7616999,
+    "lon": -52.3372042
+  },
+  "tags": {
+    "highway": "tertiary",
+    "maxspeed": "40",
+    "name": "Rua Padre Anchieta",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340315072,
+  "center": {
+    "lat": -31.7570295,
+    "lon": -52.3565404
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340315075,
+  "center": {
+    "lat": -31.7564586,
+    "lon": -52.3571836
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente João Goulart;Avenida Francisco Caruccio",
+    "highway": "primary",
+    "lanes": "1",
+    "maxspeed": "60",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340315079,
+  "center": {
+    "lat": -31.7579356,
+    "lon": -52.3589631
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 340315083,
+  "center": {
+    "lat": -31.7577159,
+    "lon": -52.3567566
+  },
+  "tags": {
+    "destination": "Centro",
+    "highway": "secondary",
+    "lanes": "1",
+    "maxspeed": "40",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340315086,
+  "center": {
+    "lat": -31.7569980,
+    "lon": -52.3568120
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340316355,
+  "center": {
+    "lat": -31.7568556,
+    "lon": -52.3573862
+  },
+  "tags": {
+    "destination": "B. Fragata;Rodoviária",
+    "highway": "primary_link",
+    "maxspeed": "60",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340316356,
+  "center": {
+    "lat": -31.7567520,
+    "lon": -52.3568126
+  },
+  "tags": {
+    "destination:ref": "BR-116",
+    "highway": "primary_link",
+    "maxspeed": "60",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 343498466,
+  "center": {
+    "lat": -31.7594568,
+    "lon": -52.3607216
+  },
+  "tags": {
+    "addr:street": "Avenida Bento Gonçalves",
+    "landuse": "industrial",
+    "name": "Coca-Cola"
+  }
+},
+{
+  "type": "way",
+  "id": 344501051,
+  "center": {
+    "lat": -31.6776899,
+    "lon": -52.3922257
+  },
+  "tags": {
+    "description": "abandoned",
+    "electrified": "no",
+    "name": "Antiga Ferrovia Pelotas/Canguçu",
+    "railway": "abandoned"
+  }
+},
+{
+  "type": "way",
+  "id": 346349728,
+  "center": {
+    "lat": -31.7585548,
+    "lon": -52.3486255
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "4569",
+    "addr:postcode": "96015-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Centro",
+    "alt_name": "Hemocentro Regional",
+    "blood:platelets": "yes",
+    "blood:whole": "yes",
+    "building": "yes",
+    "contact:phone": "+55 51 3288 9193",
+    "donation:compensation": "no",
+    "email": "captacao-hemopel@saude.rs.gov.br",
+    "healthcare": "blood_donation",
+    "name": "Hemocentro Regional de Pelotas",
+    "opening_hours": "Mo-Fr 08:00-17:30; PH off",
+    "short_name": "HemoPel",
+    "website": "https://saude.rs.gov.br/hemocentro-regional-de-pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 346628367,
+  "center": {
+    "lat": -31.7572138,
+    "lon": -52.3568935
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 346628368,
+  "center": {
+    "lat": -31.7568782,
+    "lon": -52.3570681
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 346628370,
+  "center": {
+    "lat": -31.7571138,
+    "lon": -52.3571636
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 351526227,
+  "center": {
+    "lat": -31.7232374,
+    "lon": -52.3853445
+  },
+  "tags": {
+    "destination": "Canguçu;Santa Maria",
+    "destination:ref": "BR-392",
+    "highway": "trunk_link",
+    "lanes": "1",
+    "maxspeed": "40",
+    "name": "Saída 523",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 352634452,
+  "center": {
+    "lat": -31.7277459,
+    "lon": -52.3819288
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Saída para Rodovia Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "surface": "asphalt",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 352700564,
+  "center": {
+    "lat": -31.7209427,
+    "lon": -52.3806478
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 361638828,
+  "center": {
+    "lat": -31.7627532,
+    "lon": -52.3376519
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Padre Anchieta",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 361837383,
+  "center": {
+    "lat": -31.7657089,
+    "lon": -52.3247254
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 366824189,
+  "center": {
+    "lat": -31.7160921,
+    "lon": -52.3762328
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824190,
+  "center": {
+    "lat": -31.7154811,
+    "lon": -52.3756334
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824191,
+  "center": {
+    "lat": -31.7141520,
+    "lon": -52.3743479
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824192,
+  "center": {
+    "lat": -31.7102658,
+    "lon": -52.3705811
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824465,
+  "center": {
+    "lat": -31.7070865,
+    "lon": -52.3676291
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824466,
+  "center": {
+    "lat": -31.7102129,
+    "lon": -52.3706600
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824467,
+  "center": {
+    "lat": -31.7071339,
+    "lon": -52.3675350
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366824468,
+  "center": {
+    "lat": -31.7012630,
+    "lon": -52.3618352
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 366825444,
+  "center": {
+    "lat": -31.7012120,
+    "lon": -52.3619257
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 368390456,
+  "center": {
+    "lat": -31.7657157,
+    "lon": -52.3239039
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-005"
+  }
+},
+{
+  "type": "way",
+  "id": 368390538,
+  "center": {
+    "lat": -31.7711548,
+    "lon": -52.3095680
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Cidade de Rio Grande",
+    "postal_code": "96076-240"
+  }
+},
+{
+  "type": "way",
+  "id": 368390543,
+  "center": {
+    "lat": -31.7712204,
+    "lon": -52.3118427
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-000"
+  }
+},
+{
+  "type": "way",
+  "id": 368390544,
+  "center": {
+    "lat": -31.7663040,
+    "lon": -52.3245716
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Lázaro Zamenhof",
+    "postal_code": "96075-120"
+  }
+},
+{
+  "type": "way",
+  "id": 368390545,
+  "center": {
+    "lat": -31.7664046,
+    "lon": -52.3239790
+  },
+  "tags": {
+    "highway": "service",
+    "name": "Travessa dos Direitos Humanos",
+    "service": "alley"
+  }
+},
+{
+  "type": "way",
+  "id": 368398782,
+  "center": {
+    "lat": -31.7596707,
+    "lon": -52.3511812
+  },
+  "tags": {
+    "alt_name": "Rua Rosah Russumanu",
+    "highway": "service",
+    "name": "Rua Rosah Russomano",
+    "service": "alley",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 368398786,
+  "center": {
+    "lat": -31.7601904,
+    "lon": -52.3551932
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Travessa Santa Bárbara para Bento Gonçalves"
+  }
+},
+{
+  "type": "way",
+  "id": 376973198,
+  "center": {
+    "lat": -31.7636084,
+    "lon": -52.3315292
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96075-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 376973199,
+  "center": {
+    "lat": -31.7588871,
+    "lon": -52.3482754
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Bernardo Pires",
+    "source": "Bing",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 376973200,
+  "center": {
+    "lat": -31.7575998,
+    "lon": -52.3499422
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 401269910,
+  "center": {
+    "lat": -31.7643003,
+    "lon": -52.3278868
+  },
+  "tags": {
+    "amenity": "parking",
+    "operator": "Hipermercado BIG"
+  }
+},
+{
+  "type": "way",
+  "id": 414694939,
+  "center": {
+    "lat": -31.7009810,
+    "lon": -52.3620897
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "70",
+    "name": "Lateral BR-116 Sul",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 450583887,
+  "center": {
+    "lat": -31.7317628,
+    "lon": -52.3860684
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Giusepe Mattea",
+    "oneway": "yes",
+    "parking:both": "no",
+    "postal_code": "96050-080",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 461443043,
+  "center": {
+    "lat": -31.7617200,
+    "lon": -52.3350935
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2810",
+    "addr:street": "Rua Gonçalves Chaves",
+    "addr:suburb": "Centro",
+    "building": "yes",
+    "layer": "1",
+    "name": "Nacional",
+    "operator": "Carrefour Brasil",
+    "shop": "supermarket",
+    "wikipedia": "pt:Nacional (supermercado)"
+  }
+},
+{
+  "type": "way",
+  "id": 461924634,
+  "center": {
+    "lat": -31.7634016,
+    "lon": -52.3297403
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924637,
+  "center": {
+    "lat": -31.7651201,
+    "lon": -52.3306886
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 462380790,
+  "center": {
+    "lat": -31.7629690,
+    "lon": -52.3475497
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxlength:hgv": "10",
+    "maxspeed": "50",
+    "name": "Rua Marcílio Dias",
+    "postal_code": "96020-480",
+    "source": "Bing",
+    "source:maxlength:hgv": "Placa junto a sinaleira da Marcílio Dias ao atravessar a Bento Gonçalves",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 462621656,
+  "center": {
+    "lat": -31.7600574,
+    "lon": -52.3405569
+  },
+  "tags": {
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "place_of_worship",
+    "building": "church",
+    "denomination": "neo-pentecostal",
+    "name": "Igreja Universal do Reino de Deus",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 466946152,
+  "center": {
+    "lat": -31.7677578,
+    "lon": -52.3204874
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor Salvador Balreira",
+    "oneway": "no",
+    "postal_code": "96075-620"
+  }
+},
+{
+  "type": "way",
+  "id": 466946153,
+  "center": {
+    "lat": -31.7686085,
+    "lon": -52.3178055
+  },
+  "tags": {
+    "alt_name": "Rua 6 Navegantes 2",
+    "highway": "residential",
+    "name": "Rua Seis - Navegantes II",
+    "postal_code": "96076-110",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 466946154,
+  "center": {
+    "lat": -31.7697771,
+    "lon": -52.3140576
+  },
+  "tags": {
+    "alt_name": "Travessa 11",
+    "highway": "residential",
+    "name": "Travessa Onze - Navegantes II",
+    "postal_code": "96076-290",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 466946156,
+  "center": {
+    "lat": -31.7706702,
+    "lon": -52.3136882
+  },
+  "tags": {
+    "alt_name": "Travessa 12",
+    "highway": "residential",
+    "name": "Travessa Doze - Navegantes II",
+    "postal_code": "96076-270",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 466946157,
+  "center": {
+    "lat": -31.7706803,
+    "lon": -52.3130592
+  },
+  "tags": {
+    "alt_name": "Travessa 13",
+    "highway": "residential",
+    "name": "Travessa Treze - Navegantes II",
+    "postal_code": "96076-292",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 466946158,
+  "center": {
+    "lat": -31.7705599,
+    "lon": -52.3123813
+  },
+  "tags": {
+    "alt_name": "Travessa 14",
+    "highway": "residential",
+    "name": "Travessa Quatorze - Navegantes II",
+    "postal_code": "96076-294",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 467221939,
+  "center": {
+    "lat": -31.7577253,
+    "lon": -52.3482595
+  },
+  "tags": {
+    "location": "outdoor",
+    "name": "Subestação Pelotas 2",
+    "operator": "CEEE",
+    "operator:wikidata": "Q10291701",
+    "power": "substation",
+    "substation": "distribution"
+  }
+},
+{
+  "type": "way",
+  "id": 477188610,
+  "center": {
+    "lat": -31.7626316,
+    "lon": -52.3387345
+  },
+  "tags": {
+    "alt_name": "Rua 15 de Novembro",
+    "cycleway:left": "lane",
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Rua Quinze de Novembro",
+    "oneway": "yes",
+    "oneway:bicycle": "no",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 477188611,
+  "center": {
+    "lat": -31.7613909,
+    "lon": -52.3381778
+  },
+  "tags": {
+    "alt_name": "Rua 15 de Novembro",
+    "highway": "residential",
+    "name": "Rua Quinze de Novembro",
+    "oneway": "yes",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 478743849,
+  "center": {
+    "lat": -31.7521238,
+    "lon": -52.3590025
+  },
+  "tags": {
+    "name": "Canal Santa Bárbara",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 479290364,
+  "center": {
+    "lat": -31.7352331,
+    "lon": -52.3932784
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 485008257,
+  "center": {
+    "lat": -31.7662283,
+    "lon": -52.3270537
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Village Center"
+  }
+},
+{
+  "type": "way",
+  "id": 491930313,
+  "center": {
+    "lat": -31.7553461,
+    "lon": -52.3546659
+  },
+  "tags": {
+    "brand": "Ford",
+    "brand:wikidata": "Q44294",
+    "landuse": "commercial",
+    "name": "Satte Alam",
+    "shop": "car"
+  }
+},
+{
+  "type": "way",
+  "id": 500742816,
+  "center": {
+    "lat": -31.7585421,
+    "lon": -52.3469502
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 500742817,
+  "center": {
+    "lat": -31.7589891,
+    "lon": -52.3459145
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Rua Marcílio Dias",
+    "postal_code": "96020-480",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 501292456,
+  "center": {
+    "lat": -31.7065510,
+    "lon": -52.3648967
+  },
+  "tags": {
+    "name": "Sanga da Barbuda",
+    "source": "Bing",
+    "source:name": "Anexo M01 da Lei nº5502/2008",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 501292457,
+  "center": {
+    "lat": -31.7038937,
+    "lon": -52.3645829
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Sanga da Barbuda",
+    "source": "Bing",
+    "source:name": "Anexo M01 da Lei nº5502/2008",
+    "tunnel": "culvert",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 501292458,
+  "center": {
+    "lat": -31.7020331,
+    "lon": -52.3642409
+  },
+  "tags": {
+    "name": "Sanga da Barbuda",
+    "source": "Bing",
+    "source:name": "Anexo M01 da Lei nº5502/2008",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 501292761,
+  "center": {
+    "lat": -31.7667569,
+    "lon": -52.3209930
+  },
+  "tags": {
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 513609301,
+  "center": {
+    "lat": -31.7200552,
+    "lon": -52.3792844
+  },
+  "tags": {
+    "amenity": "fuel"
+  }
+},
+{
+  "type": "way",
+  "id": 514246622,
+  "center": {
+    "lat": -31.7285826,
+    "lon": -52.3811453
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 524179116,
+  "center": {
+    "lat": -31.7241935,
+    "lon": -52.3834710
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 524179120,
+  "center": {
+    "lat": -31.7320020,
+    "lon": -52.3905829
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 524179121,
+  "center": {
+    "lat": -31.7338970,
+    "lon": -52.3921503
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621893,
+  "center": {
+    "lat": -31.7068205,
+    "lon": -52.3677818
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Lateral BR-116 Sul",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621896,
+  "center": {
+    "lat": -31.7075164,
+    "lon": -52.3675179
+  },
+  "tags": {
+    "highway": "motorway_link",
+    "maxspeed": "60",
+    "name": "Lateral BR-116 Norte",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621898,
+  "center": {
+    "lat": -31.7085913,
+    "lon": -52.3692903
+  },
+  "tags": {
+    "destination": "BR-116 Sul",
+    "destination:ref": "br-116",
+    "highway": "motorway_link",
+    "maxspeed": "60",
+    "name": "Lateral BR-116 Sul",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621899,
+  "center": {
+    "lat": -31.7090264,
+    "lon": -52.3691792
+  },
+  "tags": {
+    "destination": "Pelotas;Sitio Floresta",
+    "destination:street": "Avenida 25 de Julho",
+    "highway": "motorway_link",
+    "maxspeed": "60",
+    "name": "Lateral BR-116 Norte",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621921,
+  "center": {
+    "lat": -31.7076126,
+    "lon": -52.3671416
+  },
+  "tags": {
+    "alt_name": "Avenida Vinte e Cinco de Julho",
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Avenida 25 de Julho",
+    "oneway": "yes",
+    "postal_code": "96050-560",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621922,
+  "center": {
+    "lat": -31.7064591,
+    "lon": -52.3679690
+  },
+  "tags": {
+    "alt_name": "Avenida Vinte e Cinco de Julho",
+    "highway": "tertiary",
+    "name": "Avenida 25 de Julho",
+    "oneway": "yes",
+    "postal_code": "96050-560",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621936,
+  "center": {
+    "lat": -31.7350715,
+    "lon": -52.3928762
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 526621937,
+  "center": {
+    "lat": -31.7367298,
+    "lon": -52.3942842
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 541869705,
+  "center": {
+    "lat": -31.7642358,
+    "lon": -52.3269448
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "142",
+    "addr:postcode": "96075-140",
+    "addr:street": "Rua Marquês de Maricá",
+    "addr:suburb": "Areal",
+    "amenity": "school",
+    "name": "Escola La Salle Hipólito Leite",
+    "phone": "+55 53 3279-3701",
+    "source": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 543937889,
+  "center": {
+    "lat": -31.7572047,
+    "lon": -52.3603711
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Almirante Guilobel",
+    "oneway": "yes",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 547515955,
+  "center": {
+    "lat": -31.7663413,
+    "lon": -52.3139975
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida São Francisco de Paula",
+    "postal_code": "96080-730",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 547515956,
+  "center": {
+    "lat": -31.7655193,
+    "lon": -52.3214497
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Mozart Victor Russomano",
+    "oneway": "yes",
+    "postal_code": "96075-168",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 547515961,
+  "center": {
+    "lat": -31.7685261,
+    "lon": -52.3138995
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Lígia Antunes Leivas",
+    "postal_code": "96075-156",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 552581178,
+  "center": {
+    "lat": -31.7351279,
+    "lon": -52.3927830
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 552581179,
+  "center": {
+    "lat": -31.7335651,
+    "lon": -52.3914669
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566101540,
+  "center": {
+    "lat": -31.7407708,
+    "lon": -52.3972565
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "40",
+    "name": "Avenida Geraldo José Maciel",
+    "oneway": "yes",
+    "postal_code": "96045-004",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566101542,
+  "center": {
+    "lat": -31.7284871,
+    "lon": -52.3870399
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293;BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123879,
+  "center": {
+    "lat": -31.7264708,
+    "lon": -52.3853644
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123880,
+  "center": {
+    "lat": -31.7225760,
+    "lon": -52.3826473
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123886,
+  "center": {
+    "lat": -31.7225209,
+    "lon": -52.3821011
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "merge_to_right|through"
+  }
+},
+{
+  "type": "way",
+  "id": 566123887,
+  "center": {
+    "lat": -31.7282971,
+    "lon": -52.3812734
+  },
+  "tags": {
+    "IBGE:CD_ADMINIS": "federal",
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Presidente João Goulart",
+    "postal_code": "96040-000",
+    "ref": "BR-293",
+    "shoulder": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123893,
+  "center": {
+    "lat": -31.7292688,
+    "lon": -52.3883319
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "1",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293;BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123895,
+  "center": {
+    "lat": -31.7211919,
+    "lon": -52.3813861
+  },
+  "tags": {
+    "destination:ref": "BR-392",
+    "highway": "trunk",
+    "lanes": "1",
+    "maxspeed": "80",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123896,
+  "center": {
+    "lat": -31.7268151,
+    "lon": -52.3862272
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123897,
+  "center": {
+    "lat": -31.7285370,
+    "lon": -52.3877102
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "3",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293;BR-392;BR-471",
+    "surface": "asphalt",
+    "turn:lanes": "merge_to_right|through"
+  }
+},
+{
+  "type": "way",
+  "id": 566123898,
+  "center": {
+    "lat": -31.7215443,
+    "lon": -52.3812902
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "1",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123899,
+  "center": {
+    "lat": -31.7201909,
+    "lon": -52.3800355
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566123901,
+  "center": {
+    "lat": -31.7190087,
+    "lon": -52.3789797
+  },
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "1",
+    "maxspeed": "80",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 566315419,
+  "center": {
+    "lat": -31.7382088,
+    "lon": -52.3957269
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 575603416,
+  "center": {
+    "lat": -31.7665225,
+    "lon": -52.3309168
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 617731231,
+  "center": {
+    "lat": -31.7653035,
+    "lon": -52.3528612
+  },
+  "tags": {
+    "highway": "cycleway",
+    "name": "Ciclofaixa 20 de Setembro",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 681396118,
+  "center": {
+    "lat": -31.7626048,
+    "lon": -52.3545641
+  },
+  "tags": {
+    "ele": "50",
+    "landuse": "residential",
+    "level": "4",
+    "name": "Ana Terra"
+  }
+},
+{
+  "type": "way",
+  "id": 681403107,
+  "center": {
+    "lat": -31.7638853,
+    "lon": -52.3558503
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:postcode": "96015-360",
+    "addr:street": "Praça 20 de Setembro",
+    "addr:suburb": "Centro",
+    "dog": "yes",
+    "leisure": "park",
+    "name": "Praça Vinte de Setembro",
+    "opening_hours": "24/7",
+    "smoking": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 686193524,
+  "center": {
+    "lat": -31.7620692,
+    "lon": -52.3586952
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed:lanes": "60|60|40",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "postal_code": "96030-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 736378689,
+  "center": {
+    "lat": -31.7719735,
+    "lon": -52.3142400
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Cidade de Rio Grande",
+    "postal_code": "96076-240"
+  }
+},
+{
+  "type": "way",
+  "id": 737438924,
+  "center": {
+    "lat": -31.7570550,
+    "lon": -52.3486497
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor Albuquerque de Barros"
+  }
+},
+{
+  "type": "way",
+  "id": 764490669,
+  "center": {
+    "lat": -31.7621612,
+    "lon": -52.3345365
+  },
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "McDonald's",
+    "brand:wikidata": "Q38076",
+    "brand:wikipedia": "en:McDonald's",
+    "building": "yes",
+    "cuisine": "burger",
+    "name": "McDonald's",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 783195112,
+  "center": {
+    "lat": -31.7337942,
+    "lon": -52.3914458
+  },
+  "tags": {
+    "alt_name": "Avenida Geraldo José Maciel",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 785410586,
+  "center": {
+    "lat": -31.7608336,
+    "lon": -52.3403886
+  },
+  "tags": {
+    "bus:lanes": "|||yes",
+    "busway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "4",
+    "lanes:bus": "1",
+    "maxspeed": "40",
+    "name": "Rua General Osório",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 785410589,
+  "center": {
+    "lat": -31.7597854,
+    "lon": -52.3399344
+  },
+  "tags": {
+    "busway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "40",
+    "name": "Rua General Osório",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 826235738,
+  "center": {
+    "lat": -31.7630213,
+    "lon": -52.3329756
+  },
+  "tags": {
+    "amenity": "parking",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 826235739,
+  "center": {
+    "lat": -31.7625785,
+    "lon": -52.3344290
+  },
+  "tags": {
+    "amenity": "parking",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 826235740,
+  "center": {
+    "lat": -31.7622910,
+    "lon": -52.3353175
+  },
+  "tags": {
+    "amenity": "parking",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 826235741,
+  "center": {
+    "lat": -31.7620283,
+    "lon": -52.3361951
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 826235742,
+  "center": {
+    "lat": -31.7617881,
+    "lon": -52.3369550
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 830928845,
+  "center": {
+    "lat": -31.7634392,
+    "lon": -52.3245466
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Barros Cassal",
+    "postal_code": "96077-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 846165029,
+  "center": {
+    "lat": -31.7429820,
+    "lon": -52.3986369
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "postal_code": "96045-010",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 846165031,
+  "center": {
+    "lat": -31.7309357,
+    "lon": -52.3931889
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Lauro Ribeiro",
+    "postal_code": "96050-480",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824825,
+  "center": {
+    "lat": -31.7641221,
+    "lon": -52.3298687
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824826,
+  "center": {
+    "lat": -31.7641413,
+    "lon": -52.3300275
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824827,
+  "center": {
+    "lat": -31.7643208,
+    "lon": -52.3297778
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824829,
+  "center": {
+    "lat": -31.7645419,
+    "lon": -52.3285303
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 847824833,
+  "center": {
+    "lat": -31.7630908,
+    "lon": -52.3309862
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 848966458,
+  "center": {
+    "lat": -31.7633917,
+    "lon": -52.3562201
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Avenida Presidente João Goulart",
+    "oneway": "yes",
+    "postal_code": "96040-000",
+    "ref": "BR-293"
+  }
+},
+{
+  "type": "way",
+  "id": 849364926,
+  "center": {
+    "lat": -31.7276761,
+    "lon": -52.3874357
+  },
+  "tags": {
+    "military": "checkpoint",
+    "name": "ANTT - Agência Nacional de Transportes Terrestres"
+  }
+},
+{
+  "type": "way",
+  "id": 849364930,
+  "center": {
+    "lat": -31.7284319,
+    "lon": -52.3861214
+  },
+  "tags": {
+    "landuse": "industrial",
+    "name": "Dipesul - Volvo"
+  }
+},
+{
+  "type": "way",
+  "id": 849364942,
+  "center": {
+    "lat": -31.7342845,
+    "lon": -52.3907393
+  },
+  "tags": {
+    "name": "Rodokurtz",
+    "service:vehicle:truck_repair": "yes",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 849364950,
+  "center": {
+    "lat": -31.7376450,
+    "lon": -52.3973419
+  },
+  "tags": {
+    "man_made": "silo",
+    "name": "Zanetti"
+  }
+},
+{
+  "type": "way",
+  "id": 849364952,
+  "center": {
+    "lat": -31.7384009,
+    "lon": -52.3947869
+  },
+  "tags": {
+    "building": "industrial",
+    "name": "Pepsico do Brasil Ltda"
+  }
+},
+{
+  "type": "way",
+  "id": 849364954,
+  "center": {
+    "lat": -31.7362858,
+    "lon": -52.3932559
+  },
+  "tags": {
+    "access": "private",
+    "highway": "service",
+    "name": "Estacinamento Puro Grão",
+    "oneway": "yes",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 849364955,
+  "center": {
+    "lat": -31.7361902,
+    "lon": -52.3931676
+  },
+  "tags": {
+    "access": "private",
+    "highway": "service",
+    "name": "Estacionamento Puro Grão",
+    "oneway": "yes",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 858580442,
+  "center": {
+    "lat": -31.7026945,
+    "lon": -52.3595229
+  },
+  "tags": {
+    "industrial": "warehouse",
+    "landuse": "industrial",
+    "name": "Engenho São Bento"
+  }
+},
+{
+  "type": "way",
+  "id": 860250897,
+  "center": {
+    "lat": -31.7367204,
+    "lon": -52.3941348
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 860519329,
+  "center": {
+    "lat": -31.7382660,
+    "lon": -52.3951933
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 860704562,
+  "center": {
+    "lat": -31.7656104,
+    "lon": -52.3255807
+  },
+  "tags": {
+    "amenity": "bus_station",
+    "bus": "yes",
+    "internet_access": "no",
+    "name": "Terminal Navegantes",
+    "operator": "CTCP",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "way",
+  "id": 868679152,
+  "center": {
+    "lat": -31.7313162,
+    "lon": -52.3895800
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 868679153,
+  "center": {
+    "lat": -31.7313551,
+    "lon": -52.3897653
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 871705182,
+  "center": {
+    "lat": -31.7596878,
+    "lon": -52.3420577
+  },
+  "tags": {
+    "building": "yes",
+    "disused:amenity": "theatre",
+    "name": "Teatro Avenida"
+  }
+},
+{
+  "type": "way",
+  "id": 881136079,
+  "center": {
+    "lat": -31.7424298,
+    "lon": -52.3991844
+  },
+  "tags": {
+    "bridge": "yes",
+    "check_date": "2020-12-09",
+    "highway": "secondary",
+    "lanes": "2",
+    "layer": "1",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "opening_date": "28/02/2022",
+    "postal_code": "96050-510",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 885513400,
+  "center": {
+    "lat": -31.7426475,
+    "lon": -52.3988264
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 885513402,
+  "center": {
+    "lat": -31.7380994,
+    "lon": -52.3953110
+  },
+  "tags": {
+    "embankment": "yes",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "ref": "BR-116;BR-293;BR-392;BR-471",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 889026681,
+  "center": {
+    "lat": -31.7406332,
+    "lon": -52.3978563
+  },
+  "tags": {
+    "name": "Virgílio Costa",
+    "place": "locality"
+  }
+},
+{
+  "type": "way",
+  "id": 891932628,
+  "center": {
+    "lat": -31.7307160,
+    "lon": -52.3925557
+  },
+  "tags": {
+    "name": "Vega",
+    "place": "locality"
+  }
+},
+{
+  "type": "way",
+  "id": 909312274,
+  "center": {
+    "lat": -31.7071820,
+    "lon": -52.3671809
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Lateral BR-116 Norte",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 919951100,
+  "center": {
+    "lat": -31.7308120,
+    "lon": -52.3859981
+  },
+  "tags": {
+    "landuse": "retail",
+    "name": "Lifemed"
+  }
+},
+{
+  "type": "way",
+  "id": 936189256,
+  "center": {
+    "lat": -31.7567342,
+    "lon": -52.3556569
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 936335785,
+  "center": {
+    "lat": -31.7569188,
+    "lon": -52.3519204
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Visconde de Sinimbu",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 936335788,
+  "center": {
+    "lat": -31.7569403,
+    "lon": -52.3518499
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Visconde de Sinimbu",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "CNEFE/IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 955937339,
+  "center": {
+    "lat": -31.7352969,
+    "lon": -52.3924722
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Herbert Hadler",
+    "oneway": "yes",
+    "postal_code": "96050-460",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 961498594,
+  "center": {
+    "lat": -31.7077867,
+    "lon": -52.3688697
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 961570758,
+  "center": {
+    "lat": -31.7653699,
+    "lon": -52.3251462
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Rua Barros Cassal",
+    "postal_code": "96077-540",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 961570759,
+  "center": {
+    "lat": -31.7654465,
+    "lon": -52.3251784
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "secondary",
+    "layer": "1",
+    "name": "Rua Barros Cassal",
+    "postal_code": "96077-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966009333,
+  "center": {
+    "lat": -31.7607902,
+    "lon": -52.3610094
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "primary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "60",
+    "name": "Avenida Duque de Caxias",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966970339,
+  "center": {
+    "lat": -31.7640449,
+    "lon": -52.3301118
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966971354,
+  "center": {
+    "lat": -31.7596805,
+    "lon": -52.3436341
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "40",
+    "name": "Rua Santos Dumont",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966971355,
+  "center": {
+    "lat": -31.7593249,
+    "lon": -52.3448645
+  },
+  "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "secondary",
+    "maxspeed": "40",
+    "name": "Rua Professor Doutor Araújo",
+    "oneway": "yes",
+    "oneway:bicycle": "no",
+    "source:cycleway:right": "local knowledge",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1015291426,
+  "center": {
+    "lat": -31.7351716,
+    "lon": -52.3922242
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Herbert Hadler",
+    "oneway": "yes",
+    "postal_code": "96050-460",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1015297644,
+  "center": {
+    "lat": -31.7273229,
+    "lon": -52.3823999
+  },
+  "tags": {
+    "destination": "BR-116",
+    "highway": "trunk_link",
+    "lanes": "1",
+    "maxspeed": "60",
+    "name": "Saída para Rodovia Bento Gonçalves",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1017201427,
+  "center": {
+    "lat": -31.7422083,
+    "lon": -52.3988832
+  },
+  "tags": {
+    "bridge": "yes",
+    "check_date": "2020-12-09",
+    "highway": "secondary",
+    "lanes": "2",
+    "layer": "1",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "opening_date": "28/02/2022",
+    "postal_code": "96050-510",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1021349390,
+  "center": {
+    "lat": -31.7350385,
+    "lon": -52.3934775
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Herbert Hadler",
+    "oneway": "yes",
+    "postal_code": "96050-460",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1021349391,
+  "center": {
+    "lat": -31.7365054,
+    "lon": -52.3943212
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1037870315,
+  "center": {
+    "lat": -31.7424925,
+    "lon": -52.3986464
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1037870316,
+  "center": {
+    "lat": -31.7428443,
+    "lon": -52.3991016
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1040492394,
+  "center": {
+    "lat": -31.7428559,
+    "lon": -52.3985340
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "postal_code": "96045-010",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1043562777,
+  "center": {
+    "lat": -31.7312451,
+    "lon": -52.3893558
+  },
+  "tags": {
+    "alt_name": "Avenida Geraldo José Maciel",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046370,
+  "center": {
+    "lat": -31.7649864,
+    "lon": -52.3248612
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "905",
+    "addr:postcode": "96077-540",
+    "addr:street": "Rua Barros Cassal",
+    "addr:suburb": "Areal",
+    "building": "yes",
+    "name": "Comercial Cruzeiro",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046372,
+  "center": {
+    "lat": -31.7651278,
+    "lon": -52.3252099
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "934",
+    "addr:postcode": "96077-540",
+    "addr:street": "Rua Barros Cassal",
+    "addr:suburb": "Areal",
+    "building": "yes",
+    "name": "Casa de Carnes Rainha do Mar",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046374,
+  "center": {
+    "lat": -31.7653735,
+    "lon": -52.3266444
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2449",
+    "addr:postcode": "96015-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Porto",
+    "building": "yes",
+    "name": "Doce Amor Padaria & Confeitaria",
+    "shop": "pastry"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046375,
+  "center": {
+    "lat": -31.7658388,
+    "lon": -52.3248071
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1995",
+    "addr:postcode": "96075-005",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Cruzeiro",
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Bufo's Lanches"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046376,
+  "center": {
+    "lat": -31.7662732,
+    "lon": -52.3232863
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1859",
+    "addr:postcode": "96015-140",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Porto",
+    "building": "yes",
+    "name": "Central Rações",
+    "shop": "pet"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046377,
+  "center": {
+    "lat": -31.7665092,
+    "lon": -52.3226211
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1819",
+    "addr:postcode": "96075-000",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Porto",
+    "building": "yes",
+    "name": "Açougue do Paulo",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "way",
+  "id": 1131175528,
+  "center": {
+    "lat": -31.7347252,
+    "lon": -52.3912985
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1922",
+    "addr:postcode": "96050-460",
+    "addr:street": "Avenida Herbert Hadler",
+    "addr:suburb": "Fragata",
+    "depot": "truck",
+    "industrial": "depot",
+    "landuse": "industrial",
+    "name": "Onze Construtora E Urbanizadora"
+  }
+},
+{
+  "type": "way",
+  "id": 1133847661,
+  "center": {
+    "lat": -31.7568490,
+    "lon": -52.3569060
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida João Goulart",
+    "oneway": "yes",
+    "ref": "BR-293",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1133847663,
+  "center": {
+    "lat": -31.7572840,
+    "lon": -52.3570495
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1133847664,
+  "center": {
+    "lat": -31.7571341,
+    "lon": -52.3578240
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136232573,
+  "center": {
+    "lat": -31.7280350,
+    "lon": -52.3870024
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "BR-116",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136232574,
+  "center": {
+    "lat": -31.7254548,
+    "lon": -52.3848589
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxheight": "5.5",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136232575,
+  "center": {
+    "lat": -31.7255277,
+    "lon": -52.3847820
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxheight": "5.5",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136232576,
+  "center": {
+    "lat": -31.7280086,
+    "lon": -52.3868372
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243746,
+  "center": {
+    "lat": -31.7300774,
+    "lon": -52.3890153
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243747,
+  "center": {
+    "lat": -31.7253604,
+    "lon": -52.3849721
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxheight": "5.5",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243748,
+  "center": {
+    "lat": -31.7250488,
+    "lon": -52.3847193
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-293",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243749,
+  "center": {
+    "lat": -31.7254243,
+    "lon": -52.3844936
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243750,
+  "center": {
+    "lat": -31.7256191,
+    "lon": -52.3846542
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxheight": "5.5",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-392;BR-471",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136243751,
+  "center": {
+    "lat": -31.7242232,
+    "lon": -52.3840281
+  },
+  "tags": {
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136262768,
+  "center": {
+    "lat": -31.7425019,
+    "lon": -52.3987062
+  },
+  "tags": {
+    "check_date": "2020-12-09",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "opening_date": "28/02/2022",
+    "postal_code": "96050-510",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136262770,
+  "center": {
+    "lat": -31.7427151,
+    "lon": -52.3990101
+  },
+  "tags": {
+    "check_date": "2020-12-09",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Cidade de Lisboa",
+    "oneway": "yes",
+    "opening_date": "28/02/2022",
+    "postal_code": "96050-510",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136262772,
+  "center": {
+    "lat": -31.7423288,
+    "lon": -52.3990613
+  },
+  "tags": {
+    "layer": "1",
+    "man_made": "bridge",
+    "name": "Viaduto Cidade de Lisboa"
+  }
+},
+{
+  "type": "way",
+  "id": 1136281876,
+  "center": {
+    "lat": -31.7633174,
+    "lon": -52.3427439
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "40",
+    "name": "Rua Marechal Deodoro",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1136281877,
+  "center": {
+    "lat": -31.7603530,
+    "lon": -52.3414861
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "4",
+    "maxspeed": "40",
+    "name": "Rua Marechal Deodoro",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "left|left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1136281879,
+  "center": {
+    "lat": -31.7614533,
+    "lon": -52.3406525
+  },
+  "tags": {
+    "bus:lanes": "||yes",
+    "busway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "maxspeed": "40",
+    "name": "Rua General Osório",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335669,
+  "center": {
+    "lat": -31.7639115,
+    "lon": -52.3305534
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96075-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335671,
+  "center": {
+    "lat": -31.7651501,
+    "lon": -52.3254091
+  },
+  "tags": {
+    "building": "retail",
+    "name": "Centro Comercial Rainha do Mar",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335673,
+  "center": {
+    "lat": -31.7685111,
+    "lon": -52.3173865
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1137355329,
+  "center": {
+    "lat": -31.7676481,
+    "lon": -52.3235801
+  },
+  "tags": {
+    "alt_name": "Avenida Arthur de Souza Costa;Rua Arthur de Souza Costa",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Avenida Artur de Souza Costa",
+    "oneway": "no",
+    "postal_code": "96075-520",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394963,
+  "center": {
+    "lat": -31.7604300,
+    "lon": -52.3408668
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394964,
+  "center": {
+    "lat": -31.7607755,
+    "lon": -52.3397741
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394965,
+  "center": {
+    "lat": -31.7611087,
+    "lon": -52.3386925
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394966,
+  "center": {
+    "lat": -31.7614339,
+    "lon": -52.3376444
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394967,
+  "center": {
+    "lat": -31.7616723,
+    "lon": -52.3368917
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394968,
+  "center": {
+    "lat": -31.7621905,
+    "lon": -52.3352509
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394969,
+  "center": {
+    "lat": -31.7621668,
+    "lon": -52.3367863
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Felix da Cunha",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394970,
+  "center": {
+    "lat": -31.7618698,
+    "lon": -52.3366681
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Felix da Cunha",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "left|left"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394972,
+  "center": {
+    "lat": -31.7626933,
+    "lon": -52.3370089
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Felix da Cunha",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407888,
+  "center": {
+    "lat": -31.7590502,
+    "lon": -52.3453451
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407889,
+  "center": {
+    "lat": -31.7599125,
+    "lon": -52.3425150
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138418541,
+  "center": {
+    "lat": -31.7618174,
+    "lon": -52.3458845
+  },
+  "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Professor Doutor Araújo",
+    "oneway": "yes",
+    "oneway:bicycle": "no",
+    "source:cycleway:right": "local knowledge",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1138418542,
+  "center": {
+    "lat": -31.7592638,
+    "lon": -52.3454338
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138418543,
+  "center": {
+    "lat": -31.7587553,
+    "lon": -52.3470377
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204660,
+  "center": {
+    "lat": -31.7626908,
+    "lon": -52.3344489
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204661,
+  "center": {
+    "lat": -31.7624094,
+    "lon": -52.3353424
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204662,
+  "center": {
+    "lat": -31.7621369,
+    "lon": -52.3362124
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204663,
+  "center": {
+    "lat": -31.7618975,
+    "lon": -52.3369806
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204664,
+  "center": {
+    "lat": -31.7616569,
+    "lon": -52.3377376
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204665,
+  "center": {
+    "lat": -31.7613250,
+    "lon": -52.3387867
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204666,
+  "center": {
+    "lat": -31.7609864,
+    "lon": -52.3398670
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204667,
+  "center": {
+    "lat": -31.7606421,
+    "lon": -52.3409590
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204668,
+  "center": {
+    "lat": -31.7602937,
+    "lon": -52.3420543
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204669,
+  "center": {
+    "lat": -31.7599565,
+    "lon": -52.3431262
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204670,
+  "center": {
+    "lat": -31.7596071,
+    "lon": -52.3442920
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218449,
+  "center": {
+    "lat": -31.7619160,
+    "lon": -52.3361283
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218450,
+  "center": {
+    "lat": -31.7624667,
+    "lon": -52.3343530
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218451,
+  "center": {
+    "lat": -31.7628753,
+    "lon": -52.3330283
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218452,
+  "center": {
+    "lat": -31.7631352,
+    "lon": -52.3330270
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1141833525,
+  "center": {
+    "lat": -31.7031277,
+    "lon": -52.3633463
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "50",
+    "name": "Lateral BR-116 Norte",
+    "oneway": "yes",
+    "postal_code": "96070-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1143742179,
+  "center": {
+    "lat": -31.7621831,
+    "lon": -52.3356726
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1143742180,
+  "center": {
+    "lat": -31.7612527,
+    "lon": -52.3352883
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 1143792047,
+  "center": {
+    "lat": -31.7572026,
+    "lon": -52.3451874
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "3",
+    "lanes:backward": "1",
+    "lanes:forward": "2",
+    "maxspeed": "60",
+    "name": "Rua Marcílio Dias",
+    "postal_code": "96020-480",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1143913755,
+  "center": {
+    "lat": -31.7652734,
+    "lon": -52.3251072
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:backward": "2",
+    "lanes:forward": "1",
+    "name": "Rua Barros Cassal",
+    "postal_code": "96077-540",
+    "surface": "asphalt",
+    "turn:lanes:backward": "through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1144544326,
+  "center": {
+    "lat": -31.7642319,
+    "lon": -52.3365638
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1144903961,
+  "center": {
+    "lat": -31.7705312,
+    "lon": -52.3140071
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Lázaro Zamenhof",
+    "oneway": "no",
+    "postal_code": "96075-120",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1202046532,
+  "center": {
+    "lat": -31.7574117,
+    "lon": -52.3483958
+  },
+  "tags": {
+    "landuse": "industrial",
+    "name": "Grupo Setup"
+  }
+},
+{
+  "type": "way",
+  "id": 1230972808,
+  "center": {
+    "lat": -31.7672531,
+    "lon": -52.3111708
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida São Francisco de Paula",
+    "postal_code": "96080-730",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 1231003243,
+  "center": {
+    "lat": -31.7339292,
+    "lon": -52.3930630
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:postcode": "96050-460",
+    "addr:street": "Avenida Herbert Hadler",
+    "addr:suburb": "Fragata",
+    "agrarian": "tratores;colheitadeira",
+    "name": "Super Tratores",
+    "shop": "agrarian"
+  }
+},
+{
+  "type": "way",
+  "id": 1233977706,
+  "center": {
+    "lat": -31.7605110,
+    "lon": -52.3535116
+  },
+  "tags": {
+    "name": "Antigo Leito do Canal Santa Bárbara",
+    "waterway": "river"
+  }
+},
+{
+  "type": "way",
+  "id": 1233977712,
+  "center": {
+    "lat": -31.7581643,
+    "lon": -52.3536002
+  },
+  "tags": {
+    "name": "Antigo Leito do Canal Santa Bárbara",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1235317222,
+  "center": {
+    "lat": -31.7578171,
+    "lon": -52.3605735
+  },
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Hospital Escola - UFPel"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338382,
+  "center": {
+    "lat": -31.7654542,
+    "lon": -52.3224788
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "12"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338383,
+  "center": {
+    "lat": -31.7657246,
+    "lon": -52.3232919
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "12"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338384,
+  "center": {
+    "lat": -31.7651595,
+    "lon": -52.3236282
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "12"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401632,
+  "center": {
+    "lat": -31.7578606,
+    "lon": -52.3510748
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401633,
+  "center": {
+    "lat": -31.7577568,
+    "lon": -52.3509911
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401637,
+  "center": {
+    "lat": -31.7582114,
+    "lon": -52.3509647
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401638,
+  "center": {
+    "lat": -31.7580197,
+    "lon": -52.3512427
+  },
+  "tags": {
+    "building": "yes",
+    "layer": "-1"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401639,
+  "center": {
+    "lat": -31.7578886,
+    "lon": -52.3506904
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401640,
+  "center": {
+    "lat": -31.7577828,
+    "lon": -52.3518462
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401678,
+  "center": {
+    "lat": -31.7632148,
+    "lon": -52.3342610
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401679,
+  "center": {
+    "lat": -31.7627935,
+    "lon": -52.3345760
+  },
+  "tags": {
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1275857806,
+  "center": {
+    "lat": -31.7676882,
+    "lon": -52.3167463
+  },
+  "tags": {
+    "highway": "construction",
+    "name": "Rua Leda Simões Lopes",
+    "postal_code": "96075-152"
+  }
+},
+{
+  "type": "way",
+  "id": 1275857807,
+  "center": {
+    "lat": -31.7665761,
+    "lon": -52.3187577
+  },
+  "tags": {
+    "construction": "unclassified",
+    "highway": "construction",
+    "name": "Rua Antoninha Berchon Sampaio",
+    "postal": "96075-150"
+  }
+},
+{
+  "type": "way",
+  "id": 1275857808,
+  "center": {
+    "lat": -31.7670708,
+    "lon": -52.3195157
+  },
+  "tags": {
+    "construction": "tertiary",
+    "highway": "construction",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-005"
+  }
+},
+{
+  "type": "way",
+  "id": 1275857810,
+  "center": {
+    "lat": -31.7659301,
+    "lon": -52.3203693
+  },
+  "tags": {
+    "construction": "unclassified",
+    "highway": "construction",
+    "name": "Rua Nove"
+  }
+},
+{
+  "type": "way",
+  "id": 1279259924,
+  "center": {
+    "lat": -31.7612176,
+    "lon": -52.3387094
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 1279259925,
+  "center": {
+    "lat": -31.7608604,
+    "lon": -52.3398338
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 1279259926,
+  "center": {
+    "lat": -31.7615341,
+    "lon": -52.3376979
+  },
+  "tags": {
+    "amenity": "parking"
+  }
+},
+{
+  "type": "way",
+  "id": 1301852249,
+  "center": {
+    "lat": -31.7264424,
+    "lon": -52.3819678
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "8578",
+    "addr:postcode": "96040000",
+    "addr:street": "Avenida Presidente João Goulart",
+    "addr:suburb": "Fragata",
+    "building": "yes",
+    "name": "Tacopel Tacógrafos",
+    "phone": "+555332710354",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "way",
+  "id": 1302622460,
+  "center": {
+    "lat": -31.7569342,
+    "lon": -52.3572217
+  },
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1319736677,
+  "center": {
+    "lat": -31.7560319,
+    "lon": -52.3543303
+  },
+  "tags": {
+    "addr:street": "Avenida Bento Gonçalves",
+    "amenity": "fuel",
+    "building": "roof",
+    "self_service": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1319738522,
+  "center": {
+    "lat": -31.7603985,
+    "lon": -52.3398807
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Ipiranga",
+    "brand:wikidata": "Q2081136",
+    "building": "roof",
+    "fuel:etanol_comum": "yes",
+    "fuel:gasoline_87": "yes",
+    "layer": "1",
+    "self_service": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1319738523,
+  "center": {
+    "lat": -31.7611373,
+    "lon": -52.3399163
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "baptist",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 1319738524,
+  "center": {
+    "lat": -31.7609143,
+    "lon": -52.3407280
+  },
+  "tags": {
+    "addr:street": "Rua General Osório",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:wikidata": "Q110716465",
+    "building": "roof",
+    "fuel:etanol_comum": "yes",
+    "fuel:gasoline_87": "yes",
+    "name": "Abastecedora Paulo Moreira",
+    "self_service": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1342109045,
+  "center": {
+    "lat": -31.7309189,
+    "lon": -52.3897112
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Um",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1342109046,
+  "center": {
+    "lat": -31.7236870,
+    "lon": -52.3833907
+  },
+  "tags": {
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:hgv": "80",
+    "name": "Rodovia General Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96050-470",
+    "ref": "BR-116",
+    "source:name": "Lei federal 13577/2017",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1346412885,
+  "center": {
+    "lat": -31.7655850,
+    "lon": -52.3220983
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Mozart Victor Russomano",
+    "oneway": "yes",
+    "postal_code": "96075-168"
+  }
+},
+{
+  "type": "way",
+  "id": 1346523150,
+  "center": {
+    "lat": -31.7654412,
+    "lon": -52.3252135
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "secondary_link",
+    "layer": "1",
+    "name": "Rua Barros Cassal",
+    "oneway": "yes",
+    "postal_code": "96077-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1346523151,
+  "center": {
+    "lat": -31.7653638,
+    "lon": -52.3251786
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Rua Barros Cassal",
+    "oneway": "yes",
+    "postal_code": "96077-540"
+  }
+},
+{
+  "type": "way",
+  "id": 1346523152,
+  "center": {
+    "lat": -31.7655237,
+    "lon": -52.3252506
+  },
+  "tags": {
+    "highway": "secondary_link",
+    "name": "Rua Barros Cassal",
+    "oneway": "yes",
+    "postal_code": "96077-540"
+  }
+},
+{
+  "type": "way",
+  "id": 1351432486,
+  "center": {
+    "lat": -31.7607634,
+    "lon": -52.3368093
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Padre Anchieta",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1351432488,
+  "center": {
+    "lat": -31.7602041,
+    "lon": -52.3389557
+  },
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:right": "no",
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Andrade Neves",
+    "oneway": "yes",
+    "oneway:bicycle": "no",
+    "source:cycleway:left": "local knowledge",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1497763853,
+  "center": {
+    "lat": -31.7630003,
+    "lon": -52.3258122
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Cruzeiro do Sul",
+    "place": "neighbourhood",
+    "residential": "urban"
+  }
+},
+{
+  "type": "way",
+  "id": 1497763857,
+  "center": {
+    "lat": -31.7647939,
+    "lon": -52.3250597
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Cruzeiro so Sul II",
+    "place": "neighbourhood",
+    "residential": "urban"
+  }
+},
+{
+  "type": "way",
+  "id": 1511161610,
+  "center": {
+    "lat": -31.7566555,
+    "lon": -52.3537981
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1511161611,
+  "center": {
+    "lat": -31.7583084,
+    "lon": -52.3480735
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Bernardo Pires",
+    "source": "Bing",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 1511161612,
+  "center": {
+    "lat": -31.7583031,
+    "lon": -52.3484677
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "relation",
+  "id": 2739201,
+  "center": {
+    "lat": -31.7589666,
+    "lon": -52.3525224
+  },
+  "tags": {
+    "addr:housenumber": "5073",
+    "addr:street": "Avenida Bento Gonçalves",
+    "addr:suburb": "Fragata",
+    "alt_name": "SENAI Pelotas",
+    "amenity": "college",
+    "email": "pelotas@senairs.org.br",
+    "name": "Centro de Formação Profissional SENAI Eraldo Giacobbe",
+    "opening_hours": "Mo-Fr 08:00-20:00; PH off",
+    "operator": "Serviço Nacional da Indústria",
+    "operator:type": "private_non_profit",
+    "phone": "+55 53 3310 1520",
+    "type": "multipolygon",
+    "website": "https://www.senairs.org.br/unidades/senai-pelotas"
+  }
+},
+{
+  "type": "relation",
+  "id": 4551469,
+  "center": {
+    "lat": -28.8154113,
+    "lon": -50.9746543
+  },
+  "tags": {
+    "name": "Rodovia Régis Bittencourt / General Bento Gonçalves",
+    "network": "BR",
+    "note": "BR-116 PR-RS",
+    "ref": "BR-116",
+    "route": "road",
+    "source:name": "Lei 13.577/2017",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7037760,
+  "center": {
+    "lat": -31.6867595,
+    "lon": -52.3252258
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Três Vendas",
+    "ref": "1",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7037769,
+  "center": {
+    "lat": -31.7672184,
+    "lon": -52.3031078
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "São Gonçalo",
+    "ref": "6",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7042113,
+  "center": {
+    "lat": -31.7629588,
+    "lon": -52.3445093
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Centro",
+    "ref": "4",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7051211,
+  "center": {
+    "lat": -31.7675130,
+    "lon": -52.3800812
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Fragata",
+    "ref": "3",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7061629,
+  "center": {
+    "lat": -31.7168579,
+    "lon": -52.4183876
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Barragem",
+    "ref": "2",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7103955,
+  "center": {
+    "lat": -31.7164509,
+    "lon": -52.3764819
+  },
+  "tags": {
+    "name": "Represa Santa Bárbara",
+    "natural": "water",
+    "type": "multipolygon",
+    "water": "reservoir"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520428,
+  "center": {
+    "lat": -31.7563835,
+    "lon": -52.3592694
+  },
+  "tags": {
+    "landuse": "grass",
+    "leisure": "park",
+    "name": "Praça Rodoviária",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520494,
+  "center": {
+    "lat": -30.9015826,
+    "lon": -52.9775930
+  },
+  "tags": {
+    "DER:RS:modalidade": "semi-direto",
+    "charge": "6.60~94.35",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Santa Maria",
+    "name": "Santa Maria → Rio Grande",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Rio Grande",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520535,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "direto",
+    "charge": "78.75~93.45",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520536,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "executivo",
+    "charge": "102.35~121.50",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 9520537,
+  "center": {
+    "lat": -30.8996004,
+    "lon": -52.9791951
+  },
+  "tags": {
+    "DER:RS:modalidade": "semi-direto",
+    "charge": "6.60~94.35",
+    "fixme": "Trajeto impreciso e/ou incompleto, necessita verificação.",
+    "from": "Rio Grande",
+    "name": "Rio Grande → Santa Maria",
+    "public_transport:version": "2",
+    "route": "bus",
+    "to": "Santa Maria",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12863457,
+  "center": {
+    "lat": -31.7372408,
+    "lon": -52.3934598
+  },
+  "tags": {
+    "building": "yes",
+    "man_made": "silo",
+    "name": "Puro Grão",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}

@@ -1,0 +1,2103 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-24T11:04:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 77765990,
+  "bounds": {
+    "minlat": -31.7608266,
+    "minlon": -52.3609394,
+    "maxlat": -31.7572819,
+    "maxlon": -52.3570627
+  },
+  "nodes": [
+    914518423,
+    7768544125,
+    3372046567,
+    3372046573,
+    2138424906,
+    914518480,
+    7768544117,
+    914518483,
+    3531424742,
+    3531424740,
+    1241189698,
+    1241189736,
+    7768544118,
+    914518487,
+    3722477302,
+    914518491,
+    10570865663,
+    914518494
+  ],
+  "geometry": [
+    { "lat": -31.7608266, "lon": -52.3609394 },
+    { "lat": -31.7600700, "lon": -52.3603931 },
+    { "lat": -31.7593700, "lon": -52.3598534 },
+    { "lat": -31.7590414, "lon": -52.3596021 },
+    { "lat": -31.7585108, "lon": -52.3591813 },
+    { "lat": -31.7583624, "lon": -52.3590627 },
+    { "lat": -31.7581639, "lon": -52.3589079 },
+    { "lat": -31.7580145, "lon": -52.3587776 },
+    { "lat": -31.7579051, "lon": -52.3586570 },
+    { "lat": -31.7578037, "lon": -52.3585137 },
+    { "lat": -31.7577035, "lon": -52.3583300 },
+    { "lat": -31.7576155, "lon": -52.3581338 },
+    { "lat": -31.7575719, "lon": -52.3579985 },
+    { "lat": -31.7574847, "lon": -52.3577394 },
+    { "lat": -31.7574594, "lon": -52.3576167 },
+    { "lat": -31.7574002, "lon": -52.3573992 },
+    { "lat": -31.7573336, "lon": -52.3571656 },
+    { "lat": -31.7572819, "lon": -52.3570627 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145212,
+  "bounds": {
+    "minlat": -31.7567576,
+    "minlon": -52.3564683,
+    "maxlat": -31.7565041,
+    "maxlon": -52.3557440
+  },
+  "nodes": [
+    1241189745,
+    1241189721
+  ],
+  "geometry": [
+    { "lat": -31.7565041, "lon": -52.3557440 },
+    { "lat": -31.7567576, "lon": -52.3564683 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "primary",
+    "lanes": "3",
+    "layer": "1",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145216,
+  "bounds": {
+    "minlat": -31.7581928,
+    "minlon": -52.3556199,
+    "maxlat": -31.7565349,
+    "maxlon": -52.3488206
+  },
+  "nodes": [
+    1241189703,
+    7768544130,
+    914518506,
+    7768544131,
+    914518511,
+    7774461939,
+    1241189743,
+    7774461940,
+    1241189517,
+    7774461943,
+    8676248170,
+    914518516,
+    1241189609,
+    7774461946,
+    8678423242,
+    3722401867,
+    1241189663,
+    2302811781,
+    13812531875
+  ],
+  "geometry": [
+    { "lat": -31.7567214, "lon": -52.3556199 },
+    { "lat": -31.7566351, "lon": -52.3553453 },
+    { "lat": -31.7565770, "lon": -52.3551223 },
+    { "lat": -31.7565454, "lon": -52.3549488 },
+    { "lat": -31.7565349, "lon": -52.3546226 },
+    { "lat": -31.7565423, "lon": -52.3543795 },
+    { "lat": -31.7565656, "lon": -52.3541279 },
+    { "lat": -31.7566098, "lon": -52.3539129 },
+    { "lat": -31.7566621, "lon": -52.3537177 },
+    { "lat": -31.7569594, "lon": -52.3527480 },
+    { "lat": -31.7571701, "lon": -52.3520759 },
+    { "lat": -31.7572123, "lon": -52.3519650 },
+    { "lat": -31.7572639, "lon": -52.3517807 },
+    { "lat": -31.7576140, "lon": -52.3506747 },
+    { "lat": -31.7578777, "lon": -52.3498194 },
+    { "lat": -31.7579225, "lon": -52.3496741 },
+    { "lat": -31.7580134, "lon": -52.3493899 },
+    { "lat": -31.7580549, "lon": -52.3492620 },
+    { "lat": -31.7581928, "lon": -52.3488206 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 108145219,
+  "bounds": {
+    "minlat": -31.7569689,
+    "minlon": -52.3563453,
+    "maxlat": -31.7567470,
+    "maxlon": -52.3556940
+  },
+  "nodes": [
+    1241189548,
+    8674904016
+  ],
+  "geometry": [
+    { "lat": -31.7569689, "lon": -52.3563453 },
+    { "lat": -31.7567470, "lon": -52.3556940 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "primary",
+    "lanes": "2",
+    "layer": "1",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108145223,
+  "bounds": {
+    "minlat": -31.7568547,
+    "minlon": -52.3568884,
+    "maxlat": -31.7567576,
+    "maxlon": -52.3564683
+  },
+  "nodes": [
+    1241189721,
+    3475323454,
+    7768544135,
+    3475315934
+  ],
+  "geometry": [
+    { "lat": -31.7567576, "lon": -52.3564683 },
+    { "lat": -31.7568025, "lon": -52.3566570 },
+    { "lat": -31.7568153, "lon": -52.3567108 },
+    { "lat": -31.7568547, "lon": -52.3568884 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174415095,
+  "bounds": {
+    "minlat": -31.7711127,
+    "minlon": -52.3120215,
+    "maxlat": -31.7706818,
+    "maxlon": -52.3118756
+  },
+  "nodes": [
+    1851118394,
+    1851118382
+  ],
+  "geometry": [
+    { "lat": -31.7711127, "lon": -52.3118756 },
+    { "lat": -31.7706818, "lon": -52.3120215 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000"
+  }
+},
+{
+  "type": "way",
+  "id": 174418494,
+  "bounds": {
+    "minlat": -31.7663404,
+    "minlon": -52.3242254,
+    "maxlat": -31.7658621,
+    "maxlon": -52.3227515
+  },
+  "nodes": [
+    1851118292,
+    1851118212,
+    1852331120
+  ],
+  "geometry": [
+    { "lat": -31.7663404, "lon": -52.3227515 },
+    { "lat": -31.7661603, "lon": -52.3233148 },
+    { "lat": -31.7658621, "lon": -52.3242254 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174560346,
+  "bounds": {
+    "minlat": -31.7653566,
+    "minlon": -52.3265709,
+    "maxlat": -31.7649165,
+    "maxlon": -52.3251409
+  },
+  "nodes": [
+    1852331115,
+    12454476019,
+    5261221234,
+    5261221233
+  ],
+  "geometry": [
+    { "lat": -31.7653566, "lon": -52.3251409 },
+    { "lat": -31.7653473, "lon": -52.3251712 },
+    { "lat": -31.7649352, "lon": -52.3265102 },
+    { "lat": -31.7649165, "lon": -52.3265709 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 224510439,
+  "bounds": {
+    "minlat": -31.7632803,
+    "minlon": -52.3322220,
+    "maxlat": -31.7631213,
+    "maxlon": -52.3317400
+  },
+  "nodes": [
+    1241189693,
+    1675174839
+  ],
+  "geometry": [
+    { "lat": -31.7632803, "lon": -52.3317400 },
+    { "lat": -31.7631213, "lon": -52.3322220 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 286809160,
+  "bounds": {
+    "minlat": -31.7649165,
+    "minlon": -52.3296048,
+    "maxlat": -31.7639554,
+    "maxlon": -52.3265709
+  },
+  "nodes": [
+    5261221233,
+    4037037123,
+    8022248141,
+    2904811886
+  ],
+  "geometry": [
+    { "lat": -31.7649165, "lon": -52.3265709 },
+    { "lat": -31.7642820, "lon": -52.3286044 },
+    { "lat": -31.7639902, "lon": -52.3295018 },
+    { "lat": -31.7639554, "lon": -52.3296048 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 286809163,
+  "bounds": {
+    "minlat": -31.7655557,
+    "minlon": -52.3273724,
+    "maxlat": -31.7649050,
+    "maxlon": -52.3252253
+  },
+  "nodes": [
+    1851118419,
+    5261221235,
+    1851212206,
+    1851212110,
+    8022248137,
+    12454476018,
+    1851212111
+  ],
+  "geometry": [
+    { "lat": -31.7649050, "lon": -52.3273724 },
+    { "lat": -31.7651266, "lon": -52.3266605 },
+    { "lat": -31.7652014, "lon": -52.3264203 },
+    { "lat": -31.7652298, "lon": -52.3263246 },
+    { "lat": -31.7653913, "lon": -52.3257796 },
+    { "lat": -31.7655453, "lon": -52.3252603 },
+    { "lat": -31.7655557, "lon": -52.3252253 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 333462484,
+  "bounds": {
+    "minlat": -31.7607538,
+    "minlon": -52.3610793,
+    "maxlat": -31.7585487,
+    "maxlon": -52.3595090
+  },
+  "nodes": [
+    1241189602,
+    2138424684,
+    3372046570,
+    7768544121,
+    1241189731,
+    4472650531,
+    1241189672
+  ],
+  "geometry": [
+    { "lat": -31.7585487, "lon": -52.3595090 },
+    { "lat": -31.7588996, "lon": -52.3597997 },
+    { "lat": -31.7590675, "lon": -52.3599275 },
+    { "lat": -31.7595053, "lon": -52.3602071 },
+    { "lat": -31.7599218, "lon": -52.3604729 },
+    { "lat": -31.7607440, "lon": -52.3610719 },
+    { "lat": -31.7607538, "lon": -52.3610793 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 333623144,
+  "bounds": {
+    "minlat": -31.7595773,
+    "minlon": -52.3448220,
+    "maxlat": -31.7592194,
+    "maxlon": -52.3435912
+  },
+  "nodes": [
+    1241189696,
+    1241189520
+  ],
+  "geometry": [
+    { "lat": -31.7595773, "lon": -52.3435912 },
+    { "lat": -31.7592194, "lon": -52.3448220 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 340315072,
+  "bounds": {
+    "minlat": -31.7570901,
+    "minlon": -52.3567355,
+    "maxlat": -31.7569689,
+    "maxlon": -52.3563453
+  },
+  "nodes": [
+    3475323460,
+    7768544129,
+    3722401891,
+    1241189548
+  ],
+  "geometry": [
+    { "lat": -31.7570901, "lon": -52.3567355 },
+    { "lat": -31.7570591, "lon": -52.3566056 },
+    { "lat": -31.7569849, "lon": -52.3563941 },
+    { "lat": -31.7569689, "lon": -52.3563453 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 340315079,
+  "bounds": {
+    "minlat": -31.7585487,
+    "minlon": -52.3595090,
+    "maxlat": -31.7573225,
+    "maxlon": -52.3584172
+  },
+  "nodes": [
+    1241189631,
+    1241189545,
+    7768544113,
+    1241189670,
+    7768544115,
+    7768544114,
+    1241189602
+  ],
+  "geometry": [
+    { "lat": -31.7573225, "lon": -52.3584172 },
+    { "lat": -31.7575317, "lon": -52.3586828 },
+    { "lat": -31.7576385, "lon": -52.3587883 },
+    { "lat": -31.7577952, "lon": -52.3589259 },
+    { "lat": -31.7579751, "lon": -52.3590733 },
+    { "lat": -31.7581719, "lon": -52.3592230 },
+    { "lat": -31.7585487, "lon": -52.3595090 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 346628367,
+  "bounds": {
+    "minlat": -31.7572861,
+    "minlon": -52.3570364,
+    "maxlat": -31.7571414,
+    "maxlon": -52.3567506
+  },
+  "nodes": [
+    10570865662,
+    3531423938,
+    7768544128,
+    3531423936,
+    914518495
+  ],
+  "geometry": [
+    { "lat": -31.7572861, "lon": -52.3570364 },
+    { "lat": -31.7572836, "lon": -52.3569471 },
+    { "lat": -31.7572562, "lon": -52.3568638 },
+    { "lat": -31.7572069, "lon": -52.3567958 },
+    { "lat": -31.7571414, "lon": -52.3567506 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code:country": "96015-215",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 346628368,
+  "bounds": {
+    "minlat": -31.7569226,
+    "minlon": -52.3572126,
+    "maxlat": -31.7568337,
+    "maxlon": -52.3569236
+  },
+  "nodes": [
+    1241189532,
+    12051761844,
+    3531423931,
+    3475315938,
+    3531423929
+  ],
+  "geometry": [
+    { "lat": -31.7568434, "lon": -52.3569236 },
+    { "lat": -31.7568337, "lon": -52.3570032 },
+    { "lat": -31.7568447, "lon": -52.3570826 },
+    { "lat": -31.7568753, "lon": -52.3571546 },
+    { "lat": -31.7569226, "lon": -52.3572126 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 361837383,
+  "bounds": {
+    "minlat": -31.7658621,
+    "minlon": -52.3252253,
+    "maxlat": -31.7655557,
+    "maxlon": -52.3242254
+  },
+  "nodes": [
+    1852331120,
+    1851212111
+  ],
+  "geometry": [
+    { "lat": -31.7658621, "lon": -52.3242254 },
+    { "lat": -31.7655557, "lon": -52.3252253 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 368390456,
+  "bounds": {
+    "minlat": -31.7660749,
+    "minlon": -52.3251409,
+    "maxlat": -31.7653566,
+    "maxlon": -52.3226668
+  },
+  "nodes": [
+    1852331115,
+    1852331164,
+    11418062292,
+    3722317276,
+    11418062293
+  ],
+  "geometry": [
+    { "lat": -31.7653566, "lon": -52.3251409 },
+    { "lat": -31.7656642, "lon": -52.3240647 },
+    { "lat": -31.7657695, "lon": -52.3237081 },
+    { "lat": -31.7660264, "lon": -52.3228252 },
+    { "lat": -31.7660749, "lon": -52.3226668 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-005"
+  }
+},
+{
+  "type": "way",
+  "id": 368390543,
+  "bounds": {
+    "minlat": -31.7713280,
+    "minlon": -52.3118756,
+    "maxlat": -31.7711127,
+    "maxlon": -52.3118098
+  },
+  "nodes": [
+    1851118394,
+    5583368334,
+    3722317590
+  ],
+  "geometry": [
+    { "lat": -31.7711127, "lon": -52.3118756 },
+    { "lat": -31.7712572, "lon": -52.3118288 },
+    { "lat": -31.7713280, "lon": -52.3118098 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-000"
+  }
+},
+{
+  "type": "way",
+  "id": 376973198,
+  "bounds": {
+    "minlat": -31.7637986,
+    "minlon": -52.3321261,
+    "maxlat": -31.7634183,
+    "maxlon": -52.3309322
+  },
+  "nodes": [
+    3136119550,
+    10624213640,
+    1675174848
+  ],
+  "geometry": [
+    { "lat": -31.7634183, "lon": -52.3321261 },
+    { "lat": -31.7637176, "lon": -52.3312077 },
+    { "lat": -31.7637986, "lon": -52.3309322 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96075-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 376973200,
+  "bounds": {
+    "minlat": -31.7582033,
+    "minlon": -52.3518522,
+    "maxlat": -31.7569963,
+    "maxlon": -52.3480322
+  },
+  "nodes": [
+    2135116130,
+    1241189787,
+    6904145823,
+    8678378607,
+    1241189560,
+    8676248169
+  ],
+  "geometry": [
+    { "lat": -31.7582033, "lon": -52.3480322 },
+    { "lat": -31.7578314, "lon": -52.3492273 },
+    { "lat": -31.7578130, "lon": -52.3492909 },
+    { "lat": -31.7574770, "lon": -52.3503484 },
+    { "lat": -31.7570489, "lon": -52.3516850 },
+    { "lat": -31.7569963, "lon": -52.3518522 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 500742816,
+  "bounds": {
+    "minlat": -31.7588809,
+    "minlon": -52.3480322,
+    "maxlat": -31.7582033,
+    "maxlon": -52.3458682
+  },
+  "nodes": [
+    1241189541,
+    2135116130
+  ],
+  "geometry": [
+    { "lat": -31.7588809, "lon": -52.3458682 },
+    { "lat": -31.7582033, "lon": -52.3480322 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824825,
+  "bounds": {
+    "minlat": -31.7641787,
+    "minlon": -52.3300492,
+    "maxlat": -31.7640655,
+    "maxlon": -52.3296882
+  },
+  "nodes": [
+    7714319243,
+    7911442020,
+    7911442019
+  ],
+  "geometry": [
+    { "lat": -31.7640655, "lon": -52.3300492 },
+    { "lat": -31.7641557, "lon": -52.3297617 },
+    { "lat": -31.7641787, "lon": -52.3296882 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824829,
+  "bounds": {
+    "minlat": -31.7649050,
+    "minlon": -52.3296882,
+    "maxlat": -31.7641787,
+    "maxlon": -52.3273724
+  },
+  "nodes": [
+    7911442019,
+    1851118419
+  ],
+  "geometry": [
+    { "lat": -31.7641787, "lon": -52.3296882 },
+    { "lat": -31.7649050, "lon": -52.3273724 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 936189256,
+  "bounds": {
+    "minlat": -31.7567470,
+    "minlon": -52.3556940,
+    "maxlat": -31.7567214,
+    "maxlon": -52.3556199
+  },
+  "nodes": [
+    8674904016,
+    1241189703
+  ],
+  "geometry": [
+    { "lat": -31.7567470, "lon": -52.3556940 },
+    { "lat": -31.7567214, "lon": -52.3556199 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966970339,
+  "bounds": {
+    "minlat": -31.7640655,
+    "minlon": -52.3301745,
+    "maxlat": -31.7640243,
+    "maxlon": -52.3300492
+  },
+  "nodes": [
+    1244808482,
+    7714319243
+  ],
+  "geometry": [
+    { "lat": -31.7640243, "lon": -52.3301745 },
+    { "lat": -31.7640655, "lon": -52.3300492 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1133847663,
+  "bounds": {
+    "minlat": -31.7572861,
+    "minlon": -52.3570627,
+    "maxlat": -31.7572819,
+    "maxlon": -52.3570364
+  },
+  "nodes": [
+    914518494,
+    10653240755,
+    10653240753,
+    10570865662
+  ],
+  "geometry": [
+    { "lat": -31.7572819, "lon": -52.3570627 },
+    { "lat": -31.7572836, "lon": -52.3570540 },
+    { "lat": -31.7572850, "lon": -52.3570452 },
+    { "lat": -31.7572861, "lon": -52.3570364 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1133847664,
+  "bounds": {
+    "minlat": -31.7573225,
+    "minlon": -52.3584172,
+    "maxlat": -31.7569457,
+    "maxlon": -52.3572309
+  },
+  "nodes": [
+    1241189754,
+    3475323452,
+    2317641859,
+    1241189631
+  ],
+  "geometry": [
+    { "lat": -31.7569457, "lon": -52.3572309 },
+    { "lat": -31.7570058, "lon": -52.3574960 },
+    { "lat": -31.7571692, "lon": -52.3579370 },
+    { "lat": -31.7573225, "lon": -52.3584172 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335669,
+  "bounds": {
+    "minlat": -31.7640243,
+    "minlon": -52.3309322,
+    "maxlat": -31.7637986,
+    "maxlon": -52.3301745
+  },
+  "nodes": [
+    1675174848,
+    7714376594,
+    8897147623,
+    1244808482
+  ],
+  "geometry": [
+    { "lat": -31.7637986, "lon": -52.3309322 },
+    { "lat": -31.7639149, "lon": -52.3305463 },
+    { "lat": -31.7640036, "lon": -52.3302448 },
+    { "lat": -31.7640243, "lon": -52.3301745 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96075-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335673,
+  "bounds": {
+    "minlat": -31.7706818,
+    "minlon": -52.3227515,
+    "maxlat": -31.7663404,
+    "maxlon": -52.3120215
+  },
+  "nodes": [
+    1851118382,
+    4616432356,
+    3662601125,
+    3662601124,
+    1851118277,
+    3662601126,
+    1851118188,
+    1851118390,
+    1851118423,
+    1851118375,
+    1851118303,
+    1851118186,
+    1851118311,
+    1851118321,
+    1851118265,
+    1851118250,
+    1851118299,
+    1851118418,
+    1851118408,
+    1851118202,
+    1851118371,
+    1851118292
+  ],
+  "geometry": [
+    { "lat": -31.7706818, "lon": -52.3120215 },
+    { "lat": -31.7706478, "lon": -52.3120325 },
+    { "lat": -31.7704458, "lon": -52.3120938 },
+    { "lat": -31.7702341, "lon": -52.3121890 },
+    { "lat": -31.7697652, "lon": -52.3124331 },
+    { "lat": -31.7696280, "lon": -52.3125311 },
+    { "lat": -31.7695503, "lon": -52.3126188 },
+    { "lat": -31.7694809, "lon": -52.3127773 },
+    { "lat": -31.7693273, "lon": -52.3132801 },
+    { "lat": -31.7691577, "lon": -52.3137830 },
+    { "lat": -31.7689994, "lon": -52.3142534 },
+    { "lat": -31.7688288, "lon": -52.3147569 },
+    { "lat": -31.7686736, "lon": -52.3152653 },
+    { "lat": -31.7685226, "lon": -52.3157786 },
+    { "lat": -31.7679809, "lon": -52.3175344 },
+    { "lat": -31.7678106, "lon": -52.3180443 },
+    { "lat": -31.7676379, "lon": -52.3186015 },
+    { "lat": -31.7671272, "lon": -52.3202088 },
+    { "lat": -31.7668011, "lon": -52.3212763 },
+    { "lat": -31.7666415, "lon": -52.3217431 },
+    { "lat": -31.7664864, "lon": -52.3222579 },
+    { "lat": -31.7663404, "lon": -52.3227515 }
+  ],
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "no",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394963,
+  "bounds": {
+    "minlat": -31.7606121,
+    "minlon": -52.3414388,
+    "maxlat": -31.7602478,
+    "maxlon": -52.3402948
+  },
+  "nodes": [
+    1241189667,
+    1675174789
+  ],
+  "geometry": [
+    { "lat": -31.7606121, "lon": -52.3402948 },
+    { "lat": -31.7602478, "lon": -52.3414388 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394964,
+  "bounds": {
+    "minlat": -31.7609388,
+    "minlon": -52.3402948,
+    "maxlat": -31.7606121,
+    "maxlon": -52.3392534
+  },
+  "nodes": [
+    1675174802,
+    8935725634,
+    1241189667
+  ],
+  "geometry": [
+    { "lat": -31.7609388, "lon": -52.3392534 },
+    { "lat": -31.7607598, "lon": -52.3398239 },
+    { "lat": -31.7606121, "lon": -52.3402948 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394965,
+  "bounds": {
+    "minlat": -31.7612786,
+    "minlon": -52.3392534,
+    "maxlat": -31.7609388,
+    "maxlon": -52.3381316
+  },
+  "nodes": [
+    1675174806,
+    11875810332,
+    1675174802
+  ],
+  "geometry": [
+    { "lat": -31.7612786, "lon": -52.3381316 },
+    { "lat": -31.7609520, "lon": -52.3392099 },
+    { "lat": -31.7609388, "lon": -52.3392534 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394966,
+  "bounds": {
+    "minlat": -31.7615893,
+    "minlon": -52.3381316,
+    "maxlat": -31.7612786,
+    "maxlon": -52.3371573
+  },
+  "nodes": [
+    3660945133,
+    1675174806
+  ],
+  "geometry": [
+    { "lat": -31.7615893, "lon": -52.3371573 },
+    { "lat": -31.7612786, "lon": -52.3381316 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394967,
+  "bounds": {
+    "minlat": -31.7617552,
+    "minlon": -52.3371573,
+    "maxlat": -31.7615893,
+    "maxlon": -52.3366262
+  },
+  "nodes": [
+    1675174819,
+    3660945133
+  ],
+  "geometry": [
+    { "lat": -31.7617552, "lon": -52.3366262 },
+    { "lat": -31.7615893, "lon": -52.3371573 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137394968,
+  "bounds": {
+    "minlat": -31.7623043,
+    "minlon": -52.3356304,
+    "maxlat": -31.7620768,
+    "maxlon": -52.3348714
+  },
+  "nodes": [
+    1241189598,
+    8935725640,
+    1675174827
+  ],
+  "geometry": [
+    { "lat": -31.7623043, "lon": -52.3348714 },
+    { "lat": -31.7621680, "lon": -52.3353271 },
+    { "lat": -31.7620768, "lon": -52.3356304 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407888,
+  "bounds": {
+    "minlat": -31.7592194,
+    "minlon": -52.3458682,
+    "maxlat": -31.7588809,
+    "maxlon": -52.3448220
+  },
+  "nodes": [
+    1241189520,
+    1241189541
+  ],
+  "geometry": [
+    { "lat": -31.7592194, "lon": -52.3448220 },
+    { "lat": -31.7588809, "lon": -52.3458682 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1137407889,
+  "bounds": {
+    "minlat": -31.7602478,
+    "minlon": -52.3435912,
+    "maxlat": -31.7595773,
+    "maxlon": -52.3414388
+  },
+  "nodes": [
+    1675174789,
+    1241189728,
+    1241189696
+  ],
+  "geometry": [
+    { "lat": -31.7602478, "lon": -52.3414388 },
+    { "lat": -31.7599160, "lon": -52.3424875 },
+    { "lat": -31.7595773, "lon": -52.3435912 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138418542,
+  "bounds": {
+    "minlat": -31.7594305,
+    "minlon": -52.3459608,
+    "maxlat": -31.7590972,
+    "maxlon": -52.3449069
+  },
+  "nodes": [
+    1241189604,
+    1241189749
+  ],
+  "geometry": [
+    { "lat": -31.7590972, "lon": -52.3459608 },
+    { "lat": -31.7594305, "lon": -52.3449069 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1138418543,
+  "bounds": {
+    "minlat": -31.7590972,
+    "minlon": -52.3481147,
+    "maxlat": -31.7584134,
+    "maxlon": -52.3459608
+  },
+  "nodes": [
+    2135116131,
+    1241189604
+  ],
+  "geometry": [
+    { "lat": -31.7584134, "lon": -52.3481147 },
+    { "lat": -31.7590972, "lon": -52.3459608 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204660,
+  "bounds": {
+    "minlat": -31.7628522,
+    "minlon": -52.3349699,
+    "maxlat": -31.7625295,
+    "maxlon": -52.3339279
+  },
+  "nodes": [
+    1241189521,
+    914518518
+  ],
+  "geometry": [
+    { "lat": -31.7625295, "lon": -52.3349699 },
+    { "lat": -31.7628522, "lon": -52.3339279 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204661,
+  "bounds": {
+    "minlat": -31.7625295,
+    "minlon": -52.3357149,
+    "maxlat": -31.7622894,
+    "maxlon": -52.3349699
+  },
+  "nodes": [
+    1675174830,
+    1241189521
+  ],
+  "geometry": [
+    { "lat": -31.7622894, "lon": -52.3357149 },
+    { "lat": -31.7625295, "lon": -52.3349699 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204662,
+  "bounds": {
+    "minlat": -31.7622894,
+    "minlon": -52.3367100,
+    "maxlat": -31.7619844,
+    "maxlon": -52.3357149
+  },
+  "nodes": [
+    1675174823,
+    1675174830
+  ],
+  "geometry": [
+    { "lat": -31.7619844, "lon": -52.3367100 },
+    { "lat": -31.7622894, "lon": -52.3357149 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204663,
+  "bounds": {
+    "minlat": -31.7619844,
+    "minlon": -52.3372512,
+    "maxlat": -31.7618105,
+    "maxlon": -52.3367100
+  },
+  "nodes": [
+    1241189632,
+    1675174823
+  ],
+  "geometry": [
+    { "lat": -31.7618105, "lon": -52.3372512 },
+    { "lat": -31.7619844, "lon": -52.3367100 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204664,
+  "bounds": {
+    "minlat": -31.7618105,
+    "minlon": -52.3382241,
+    "maxlat": -31.7615032,
+    "maxlon": -52.3372512
+  },
+  "nodes": [
+    1675174810,
+    1241189632
+  ],
+  "geometry": [
+    { "lat": -31.7615032, "lon": -52.3382241 },
+    { "lat": -31.7618105, "lon": -52.3372512 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204665,
+  "bounds": {
+    "minlat": -31.7615032,
+    "minlon": -52.3393493,
+    "maxlat": -31.7611469,
+    "maxlon": -52.3382241
+  },
+  "nodes": [
+    1675174804,
+    11875810325,
+    1675174810
+  ],
+  "geometry": [
+    { "lat": -31.7611469, "lon": -52.3393493 },
+    { "lat": -31.7614898, "lon": -52.3382664 },
+    { "lat": -31.7615032, "lon": -52.3382241 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204666,
+  "bounds": {
+    "minlat": -31.7611469,
+    "minlon": -52.3403846,
+    "maxlat": -31.7608259,
+    "maxlon": -52.3393493
+  },
+  "nodes": [
+    1675174799,
+    1675174804
+  ],
+  "geometry": [
+    { "lat": -31.7608259, "lon": -52.3403846 },
+    { "lat": -31.7611469, "lon": -52.3393493 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204667,
+  "bounds": {
+    "minlat": -31.7608259,
+    "minlon": -52.3415333,
+    "maxlat": -31.7604582,
+    "maxlon": -52.3403846
+  },
+  "nodes": [
+    1241189700,
+    1675174799
+  ],
+  "geometry": [
+    { "lat": -31.7604582, "lon": -52.3415333 },
+    { "lat": -31.7608259, "lon": -52.3403846 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204668,
+  "bounds": {
+    "minlat": -31.7604582,
+    "minlon": -52.3425753,
+    "maxlat": -31.7601292,
+    "maxlon": -52.3415333
+  },
+  "nodes": [
+    1241189751,
+    1241189700
+  ],
+  "geometry": [
+    { "lat": -31.7601292, "lon": -52.3425753 },
+    { "lat": -31.7604582, "lon": -52.3415333 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204669,
+  "bounds": {
+    "minlat": -31.7601292,
+    "minlon": -52.3436771,
+    "maxlat": -31.7597837,
+    "maxlon": -52.3425753
+  },
+  "nodes": [
+    1241189543,
+    1241189751
+  ],
+  "geometry": [
+    { "lat": -31.7597837, "lon": -52.3436771 },
+    { "lat": -31.7601292, "lon": -52.3425753 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140204670,
+  "bounds": {
+    "minlat": -31.7597837,
+    "minlon": -52.3449069,
+    "maxlat": -31.7594305,
+    "maxlon": -52.3436771
+  },
+  "nodes": [
+    1241189749,
+    1241189543
+  ],
+  "geometry": [
+    { "lat": -31.7594305, "lon": -52.3449069 },
+    { "lat": -31.7597837, "lon": -52.3436771 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218449,
+  "bounds": {
+    "minlat": -31.7620768,
+    "minlon": -52.3366262,
+    "maxlat": -31.7617552,
+    "maxlon": -52.3356304
+  },
+  "nodes": [
+    1675174827,
+    1675174819
+  ],
+  "geometry": [
+    { "lat": -31.7620768, "lon": -52.3356304 },
+    { "lat": -31.7617552, "lon": -52.3366262 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218450,
+  "bounds": {
+    "minlat": -31.7626292,
+    "minlon": -52.3348714,
+    "maxlat": -31.7623043,
+    "maxlon": -52.3338347
+  },
+  "nodes": [
+    1241189737,
+    8932989001,
+    1241189598
+  ],
+  "geometry": [
+    { "lat": -31.7626292, "lon": -52.3338347 },
+    { "lat": -31.7624602, "lon": -52.3343751 },
+    { "lat": -31.7623043, "lon": -52.3348714 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218451,
+  "bounds": {
+    "minlat": -31.7631213,
+    "minlon": -52.3338347,
+    "maxlat": -31.7626292,
+    "maxlon": -52.3322220
+  },
+  "nodes": [
+    1675174839,
+    1241189737
+  ],
+  "geometry": [
+    { "lat": -31.7631213, "lon": -52.3322220 },
+    { "lat": -31.7626292, "lon": -52.3338347 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1140218452,
+  "bounds": {
+    "minlat": -31.7634183,
+    "minlon": -52.3339279,
+    "maxlat": -31.7628522,
+    "maxlon": -52.3321261
+  },
+  "nodes": [
+    914518518,
+    3136119550
+  ],
+  "geometry": [
+    { "lat": -31.7628522, "lon": -52.3339279 },
+    { "lat": -31.7634183, "lon": -52.3321261 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 1275857808,
+  "bounds": {
+    "minlat": -31.7680667,
+    "minlon": -52.3226668,
+    "maxlat": -31.7660749,
+    "maxlon": -52.3163646
+  },
+  "nodes": [
+    11418062293,
+    11845545342,
+    4792563080,
+    11845545340,
+    7836254998
+  ],
+  "geometry": [
+    { "lat": -31.7660749, "lon": -52.3226668 },
+    { "lat": -31.7666898, "lon": -52.3206821 },
+    { "lat": -31.7672294, "lon": -52.3190189 },
+    { "lat": -31.7679013, "lon": -52.3168888 },
+    { "lat": -31.7680667, "lon": -52.3163646 }
+  ],
+  "tags": {
+    "construction": "tertiary",
+    "highway": "construction",
+    "name": "Avenida Bento Gonçalves",
+    "postal_code": "96075-005"
+  }
+},
+{
+  "type": "way",
+  "id": 1302622460,
+  "bounds": {
+    "minlat": -31.7569457,
+    "minlon": -52.3572309,
+    "maxlat": -31.7569226,
+    "maxlon": -52.3572126
+  },
+  "nodes": [
+    3531423929,
+    1241189754
+  ],
+  "geometry": [
+    { "lat": -31.7569226, "lon": -52.3572126 },
+    { "lat": -31.7569457, "lon": -52.3572309 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1511161610,
+  "bounds": {
+    "minlat": -31.7569963,
+    "minlon": -52.3557440,
+    "maxlat": -31.7563146,
+    "maxlon": -52.3518522
+  },
+  "nodes": [
+    8676248169,
+    8676248165,
+    7774461942,
+    1241189691,
+    7774461941,
+    1241189519,
+    7774461938,
+    1241189659,
+    7768544132,
+    1241189601,
+    7768544133,
+    1241189745
+  ],
+  "geometry": [
+    { "lat": -31.7569963, "lon": -52.3518522 },
+    { "lat": -31.7569533, "lon": -52.3519932 },
+    { "lat": -31.7567555, "lon": -52.3526409 },
+    { "lat": -31.7564593, "lon": -52.3536248 },
+    { "lat": -31.7564002, "lon": -52.3538496 },
+    { "lat": -31.7563456, "lon": -52.3540922 },
+    { "lat": -31.7563221, "lon": -52.3543574 },
+    { "lat": -31.7563146, "lon": -52.3546038 },
+    { "lat": -31.7563293, "lon": -52.3550116 },
+    { "lat": -31.7563561, "lon": -52.3552310 },
+    { "lat": -31.7564016, "lon": -52.3554453 },
+    { "lat": -31.7565041, "lon": -52.3557440 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-210",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1511161612,
+  "bounds": {
+    "minlat": -31.7584134,
+    "minlon": -52.3488206,
+    "maxlat": -31.7581928,
+    "maxlon": -52.3481147
+  },
+  "nodes": [
+    13812531875,
+    2135116131
+  ],
+  "geometry": [
+    { "lat": -31.7581928, "lon": -52.3488206 },
+    { "lat": -31.7584134, "lon": -52.3481147 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "maxspeed": "60",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96015-145",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+}
+
+  ]
+}

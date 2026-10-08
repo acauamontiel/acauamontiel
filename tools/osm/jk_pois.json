@@ -1,0 +1,4415 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-05-31T22:37:44Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1241471050,
+  "lat": -31.7382502,
+  "lon": -52.3276710,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1241471064,
+  "lat": -31.7396030,
+  "lon": -52.3287685,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1244808336,
+  "lat": -31.7462958,
+  "lon": -52.3286139,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1244808412,
+  "lat": -31.7584166,
+  "lon": -52.3312304,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1244808491,
+  "lat": -31.7553753,
+  "lon": -52.3311382,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1244808522,
+  "lat": -31.7554087,
+  "lon": -52.3309281,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 1890281337,
+  "lat": -31.7464626,
+  "lon": -52.3288317,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 3358725654,
+  "lat": -31.7387160,
+  "lon": -52.3278401,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Shell",
+    "fuel:biogas": "no",
+    "fuel:diesel": "yes",
+    "name": "Posto da República",
+    "source": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650524,
+  "lat": -31.7578742,
+  "lon": -52.3311793,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650525,
+  "lat": -31.7576151,
+  "lon": -52.3315065,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 4472650526,
+  "lat": -31.7582818,
+  "lon": -52.3310099,
+  "tags": {
+    "highway": "traffic_signals",
+    "source:highway": "local knowledge",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 4600266553,
+  "lat": -31.7583716,
+  "lon": -52.3307508,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Shell",
+    "name": "Posto Santa Clara"
+  }
+},
+{
+  "type": "node",
+  "id": 4693045389,
+  "lat": -31.7452694,
+  "lon": -52.3287993,
+  "tags": {
+    "natural": "tree"
+  }
+},
+{
+  "type": "node",
+  "id": 4777616538,
+  "lat": -31.7508189,
+  "lon": -52.3287216,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BR"
+  }
+},
+{
+  "type": "node",
+  "id": 4777616539,
+  "lat": -31.7458805,
+  "lon": -52.3284354,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "shell",
+    "name": "SIM"
+  }
+},
+{
+  "type": "node",
+  "id": 4867057087,
+  "lat": -31.7637016,
+  "lon": -52.3301045,
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "476",
+    "addr:postcode": "96085-000",
+    "addr:street": "Avenida Ferreira Viana",
+    "addr:suburb": "Areal",
+    "amenity": "pharmacy",
+    "brand": "Panvel",
+    "healthcare": "pharmacy",
+    "name": "Panvel Farmácias",
+    "not:brand:wikidata": "Q10344254"
+  }
+},
+{
+  "type": "node",
+  "id": 5239309572,
+  "lat": -31.7653297,
+  "lon": -52.3307058,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5239309573,
+  "lat": -31.7651941,
+  "lon": -52.3304002,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 7705335443,
+  "lat": -31.7626479,
+  "lon": -52.3302745,
+  "tags": {
+    "name": "Pet Shop King",
+    "shop": "pet"
+  }
+},
+{
+  "type": "node",
+  "id": 7705335446,
+  "lat": -31.7625516,
+  "lon": -52.3299964,
+  "tags": {
+    "name": "Correa Veículos",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 7714319239,
+  "lat": -31.7639093,
+  "lon": -52.3296773,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7714319242,
+  "lat": -31.7640356,
+  "lon": -52.3300285,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7747111285,
+  "lat": -31.7577621,
+  "lon": -52.3308053,
+  "tags": {
+    "name": "Silveira",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 7894483743,
+  "lat": -31.7628189,
+  "lon": -52.3296478,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7894483746,
+  "lat": -31.7627284,
+  "lon": -52.3295349,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7894483747,
+  "lat": -31.7626549,
+  "lon": -52.3295378,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442015,
+  "lat": -31.7626572,
+  "lon": -52.3298080,
+  "tags": {
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442020,
+  "lat": -31.7641557,
+  "lon": -52.3297617,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442021,
+  "lat": -31.7642665,
+  "lon": -52.3297436,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 7911442032,
+  "lat": -31.7624202,
+  "lon": -52.3291452,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 8022248141,
+  "lat": -31.7639902,
+  "lon": -52.3295018,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal",
+    "traffic_signals:direction": "forward"
+  }
+},
+{
+  "type": "node",
+  "id": 8288080709,
+  "lat": -31.7600036,
+  "lon": -52.3300258,
+  "tags": {
+    "name": "Hello",
+    "shop": "water"
+  }
+},
+{
+  "type": "node",
+  "id": 8288080710,
+  "lat": -31.7605326,
+  "lon": -52.3298264,
+  "tags": {
+    "name": "Ponto Certo",
+    "shop": "lottery"
+  }
+},
+{
+  "type": "node",
+  "id": 8288080711,
+  "lat": -31.7607434,
+  "lon": -52.3297384,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Pac Man Lanches"
+  }
+},
+{
+  "type": "node",
+  "id": 8288080712,
+  "lat": -31.7612202,
+  "lon": -52.3295242,
+  "tags": {
+    "name": "Geral Auto Center",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 8288080713,
+  "lat": -31.7610438,
+  "lon": -52.3296034,
+  "tags": {
+    "addr:housenumber": "2440",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "craft": "printer",
+    "name": "Di Ani"
+  }
+},
+{
+  "type": "node",
+  "id": 8288100939,
+  "lat": -31.7717056,
+  "lon": -52.3309892,
+  "tags": {
+    "addr:housenumber": "1358",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "name": "Minimercado Behling"
+  }
+},
+{
+  "type": "node",
+  "id": 8288100941,
+  "lat": -31.7746935,
+  "lon": -52.3298746,
+  "tags": {
+    "name": "Bella Presentes em Geral",
+    "shop": "variety_store"
+  }
+},
+{
+  "type": "node",
+  "id": 8288100952,
+  "lat": -31.7701836,
+  "lon": -52.3311004,
+  "tags": {
+    "amenity": "community_centre",
+    "community_centre": "parish_hall",
+    "name": "Centro Social Filadélfia"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546928,
+  "lat": -31.7407444,
+  "lon": -52.3284465,
+  "tags": {
+    "name": "Padoca Drive",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546929,
+  "lat": -31.7404288,
+  "lon": -52.3283494,
+  "tags": {
+    "name": "De Correias",
+    "shop": "car_parts"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546930,
+  "lat": -31.7396592,
+  "lon": -52.3280684,
+  "tags": {
+    "name": "Maria Flor",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546931,
+  "lat": -31.7394984,
+  "lon": -52.3280254,
+  "tags": {
+    "name": "Só Arte",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546932,
+  "lat": -31.7428316,
+  "lon": -52.3293736,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Onze Onze"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546933,
+  "lat": -31.7432255,
+  "lon": -52.3293359,
+  "tags": {
+    "leisure": "fitness_centre",
+    "name": "DC Fitness"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546934,
+  "lat": -31.7440978,
+  "lon": -52.3292510,
+  "tags": {
+    "name": "DETRAN",
+    "second_hand": "only",
+    "shop": "car"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546935,
+  "lat": -31.7444029,
+  "lon": -52.3292212,
+  "tags": {
+    "name": "Em Casa Móveis",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546936,
+  "lat": -31.7440759,
+  "lon": -52.3286174,
+  "tags": {
+    "government": "register_office",
+    "name": "CRVA",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546937,
+  "lat": -31.7437131,
+  "lon": -52.3286532,
+  "tags": {
+    "name": "Prime Auto Esporte",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546938,
+  "lat": -31.7435436,
+  "lon": -52.3286693,
+  "tags": {
+    "name": "AB Refrigeração Automotiva",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546939,
+  "lat": -31.7447574,
+  "lon": -52.3285467,
+  "tags": {
+    "amenity": "social_facility",
+    "name": "Família",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546940,
+  "lat": -31.7451530,
+  "lon": -52.3285056,
+  "tags": {
+    "craft": "electronics_repair",
+    "name": "Thomas Edison Assistência Eletrônica"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546941,
+  "lat": -31.7453201,
+  "lon": -52.3284883,
+  "tags": {
+    "name": "Une",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546942,
+  "lat": -31.7454782,
+  "lon": -52.3284719,
+  "tags": {
+    "name": "Querência Padaria / Lancheria",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546943,
+  "lat": -31.7455858,
+  "lon": -52.3284607,
+  "tags": {
+    "craft": "signmaker",
+    "fixme": "Usar tag mais específica (fábrica de placas para automóveis / DETRAN)",
+    "name": "FPT"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546944,
+  "lat": -31.7478354,
+  "lon": -52.3284634,
+  "tags": {
+    "name": "Marcelo Motos",
+    "second_hand": "only",
+    "shop": "motorcycle"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546945,
+  "lat": -31.7494615,
+  "lon": -52.3292243,
+  "tags": {
+    "name": "Marcos Pneus",
+    "shop": "tyres"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546946,
+  "lat": -31.7493204,
+  "lon": -52.3285787,
+  "tags": {
+    "name": "Materiali",
+    "shop": "trade",
+    "trade": "building_supplies"
+  }
+},
+{
+  "type": "node",
+  "id": 8306546948,
+  "lat": -31.7519858,
+  "lon": -52.3292705,
+  "tags": {
+    "addr:housenumber": "3558",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "brand": "Italínea",
+    "shop": "furniture"
+  }
+},
+{
+  "type": "node",
+  "id": 10624401304,
+  "lat": -31.7499937,
+  "lon": -52.3291765,
+  "tags": {
+    "highway": "bus_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 10624430105,
+  "lat": -31.7531192,
+  "lon": -52.3300877,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "no",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 10633928989,
+  "lat": -31.7557776,
+  "lon": -52.3312939,
+  "tags": {
+    "highway": "bus_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 10655079695,
+  "lat": -31.7475734,
+  "lon": -52.3289908,
+  "tags": {
+    "highway": "bus_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 11869007367,
+  "lat": -31.7556794,
+  "lon": -52.3306632,
+  "tags": {
+    "natural": "tree"
+  }
+},
+{
+  "type": "way",
+  "id": 108175453,
+  "center": {
+    "lat": -31.7428105,
+    "lon": -52.3321356
+  },
+  "tags": {
+    "alt_name": "Avenida Engenheira Ildefonso Simoes Lopes",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida República do Líbano",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108176075,
+  "center": {
+    "lat": -31.7500021,
+    "lon": -52.3297413
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Dom Joaquim",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 108513834,
+  "center": {
+    "lat": -31.7429254,
+    "lon": -52.3286093
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 108513835,
+  "center": {
+    "lat": -31.7385211,
+    "lon": -52.3277494
+  },
+  "tags": {
+    "highway": "primary_link",
+    "name": "Avenida São Francisco de Paula",
+    "oneway": "yes",
+    "postal_code": "96080-730",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108513839,
+  "center": {
+    "lat": -31.7435646,
+    "lon": -52.3289099
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108513841,
+  "center": {
+    "lat": -31.7465881,
+    "lon": -52.3234910
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida São Francisco de Paula",
+    "oneway": "yes",
+    "postal_code": "96080-730",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 108516451,
+  "center": {
+    "lat": -31.7628292,
+    "lon": -52.3294401
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 108516461,
+  "center": {
+    "lat": -31.7564685,
+    "lon": -52.3252864
+  },
+  "tags": {
+    "alt_name": "Avenida Domingos de Almeida",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Domingos José de Almeida",
+    "oneway": "yes",
+    "postal_code": "96085-470",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 155081925,
+  "center": {
+    "lat": -31.7677450,
+    "lon": -52.3315350
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Doutor Cassiano",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 155081932,
+  "center": {
+    "lat": -31.7752320,
+    "lon": -52.3327811
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua General Telles",
+    "oneway": "no",
+    "source:oneway": "local knowledge",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 155081937,
+  "center": {
+    "lat": -31.7789066,
+    "lon": -52.3289783
+  },
+  "tags": {
+    "alt_name": "Rua Três de Maio",
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua 3 de Maio",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 155081951,
+  "center": {
+    "lat": -31.7617917,
+    "lon": -52.3316101
+  },
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Rua Doutor Urbano Garcia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "source:name": "Prefeitura Municipal de Pelotas",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 155081956,
+  "center": {
+    "lat": -31.7607798,
+    "lon": -52.3315698
+  },
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Travessa Sturbelle",
+    "sidewalk": "both",
+    "source:name": "local knowledge",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 174425623,
+  "center": {
+    "lat": -31.7707879,
+    "lon": -52.3297896
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Frederico Trebbi",
+    "postal_code": "96075-650",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 174425624,
+  "center": {
+    "lat": -31.7670546,
+    "lon": -52.3307014
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425630,
+  "center": {
+    "lat": -31.7700196,
+    "lon": -52.3307594
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Professora Ernestina Mursa",
+    "postal_code": "96075-730",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 174425640,
+  "center": {
+    "lat": -31.7752209,
+    "lon": -52.3294243
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "postal_code:side:even": "96075-760",
+    "postal_code:side:odd": "96075-765",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425641,
+  "center": {
+    "lat": -31.7690434,
+    "lon": -52.3301842
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Doutor Calero",
+    "postal_code": "96075-580",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 174425644,
+  "center": {
+    "lat": -31.7698211,
+    "lon": -52.3294265
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avenida Olavo Afonso Alves",
+    "oneway": "yes",
+    "postal_code": "96075-710",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 174425645,
+  "center": {
+    "lat": -31.7723617,
+    "lon": -52.3283288
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Baldomero Trapaga",
+    "oneway": "no",
+    "postal_code": "96075-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425650,
+  "center": {
+    "lat": -31.7750664,
+    "lon": -52.3299781
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "postal_code:side:even": "96075-760",
+    "postal_code:side:odd": "96075-765",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425653,
+  "center": {
+    "lat": -31.7749035,
+    "lon": -52.3298683
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425654,
+  "center": {
+    "lat": -31.7676021,
+    "lon": -52.3309238
+  },
+  "tags": {
+    "alt_name": "Rua Xavante",
+    "highway": "residential",
+    "name": "Rua Xavantes",
+    "postal_code": "96075-800"
+  }
+},
+{
+  "type": "way",
+  "id": 174425656,
+  "center": {
+    "lat": -31.7737169,
+    "lon": -52.3306324
+  },
+  "tags": {
+    "cycleway:left": "lane",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425661,
+  "center": {
+    "lat": -31.7747374,
+    "lon": -52.3300652
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425662,
+  "center": {
+    "lat": -31.7751670,
+    "lon": -52.3295094
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Avenida Cidade de Rio Grande",
+    "oneway": "yes",
+    "postal_code": "96076-240",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174425677,
+  "center": {
+    "lat": -31.7679506,
+    "lon": -52.3308990
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Affonso Franz",
+    "postal_code": "96075-480"
+  }
+},
+{
+  "type": "way",
+  "id": 174425679,
+  "center": {
+    "lat": -31.7698688,
+    "lon": -52.3294228
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avenida Olavo Afonso Alves",
+    "oneway": "yes",
+    "postal_code": "96075-710",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 174425680,
+  "center": {
+    "lat": -31.7747347,
+    "lon": -52.3301515
+  },
+  "tags": {
+    "disused:highway": "secondary",
+    "highway": "cycleway",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 174425682,
+  "center": {
+    "lat": -31.7699944,
+    "lon": -52.3302283
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua João da Silva Silveira",
+    "postal_code": "96075-670"
+  }
+},
+{
+  "type": "way",
+  "id": 174560329,
+  "center": {
+    "lat": -31.7583123,
+    "lon": -52.3278416
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Otacílio Câmara",
+    "postal_code": "96077-670"
+  }
+},
+{
+  "type": "way",
+  "id": 174560335,
+  "center": {
+    "lat": -31.7600751,
+    "lon": -52.3271345
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Blau Nunes",
+    "postal_code": "96077-560"
+  }
+},
+{
+  "type": "way",
+  "id": 174560339,
+  "center": {
+    "lat": -31.7589804,
+    "lon": -52.3277796
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Pracinha Izidro Mattoso",
+    "postal_code": "96077-690"
+  }
+},
+{
+  "type": "way",
+  "id": 174560344,
+  "center": {
+    "lat": -31.7697816,
+    "lon": -52.3313040
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174563085,
+  "center": {
+    "lat": -31.7644533,
+    "lon": -52.3295565
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174563104,
+  "center": {
+    "lat": -31.7645001,
+    "lon": -52.3294422
+  },
+  "tags": {
+    "building": "residential",
+    "height": "6",
+    "material": "brick",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 174787408,
+  "center": {
+    "lat": -31.7547814,
+    "lon": -52.3303287
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Otávio Rocha"
+  }
+},
+{
+  "type": "way",
+  "id": 174787412,
+  "center": {
+    "lat": -31.7471773,
+    "lon": -52.3264772
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor Fernando Ferrari",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 174787434,
+  "center": {
+    "lat": -31.7527044,
+    "lon": -52.3258764
+  },
+  "tags": {
+    "alt_name": "Rua Cláudio Manoel da Costa",
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Doutor Cláudio Manoel da Costa",
+    "oneway": "no",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174787441,
+  "center": {
+    "lat": -31.7507631,
+    "lon": -52.3249880
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Rua Senador Alberto Pasqualini",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 174787452,
+  "center": {
+    "lat": -31.7523265,
+    "lon": -52.3270526
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Doutor Armando Fagundes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 174787454,
+  "center": {
+    "lat": -31.7540657,
+    "lon": -52.3294417
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua David Canabarro"
+  }
+},
+{
+  "type": "way",
+  "id": 174787460,
+  "center": {
+    "lat": -31.7540335,
+    "lon": -52.3297553
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Gomes Jardim"
+  }
+},
+{
+  "type": "way",
+  "id": 178679821,
+  "center": {
+    "lat": -31.7489926,
+    "lon": -52.3294653
+  },
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Rua Doutor Cláudio Manoel da Costa",
+    "sidewalk": "both",
+    "source:name": "CNEFE/IBGE",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 178679822,
+  "center": {
+    "lat": -31.7634470,
+    "lon": -52.3295674
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 178702491,
+  "center": {
+    "lat": -31.7446290,
+    "lon": -52.3314464
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Vereador Celso Garcia d'Avilla Sellas"
+  }
+},
+{
+  "type": "way",
+  "id": 178702874,
+  "center": {
+    "lat": -31.7752316,
+    "lon": -52.3292716
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 178739635,
+  "center": {
+    "lat": -31.7397412,
+    "lon": -52.3304763
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Julia Lopes de Almeida"
+  }
+},
+{
+  "type": "way",
+  "id": 198238060,
+  "center": {
+    "lat": -31.7800351,
+    "lon": -52.3275058
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Vereador Boaventura Barcelos",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 198238064,
+  "center": {
+    "lat": -31.7801422,
+    "lon": -52.3264530
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Silveira Calheca",
+    "oneway": "no",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 198238067,
+  "center": {
+    "lat": -31.7650778,
+    "lon": -52.3328009
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua General Argolo",
+    "oneway": "no",
+    "source:name": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 198238068,
+  "center": {
+    "lat": -31.7699960,
+    "lon": -52.3313541
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Rua General Neto",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 198238069,
+  "center": {
+    "lat": -31.7789692,
+    "lon": -52.3282624
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Doutor José Bonifácio Gonçalves",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 198238071,
+  "center": {
+    "lat": -31.7699483,
+    "lon": -52.3313579
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Rua General Neto",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 221671138,
+  "center": {
+    "lat": -31.7759430,
+    "lon": -52.3284730
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Cinco (Lot Anglo)",
+    "postal_code": "96075-061",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221671140,
+  "center": {
+    "lat": -31.7764156,
+    "lon": -52.3282188
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Dois (Lot Anglo)",
+    "postal_code": "96075-062",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221671144,
+  "center": {
+    "lat": -31.7767223,
+    "lon": -52.3278393
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Seis (Lot Anglo)",
+    "postal_code": "96075-063",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221671154,
+  "center": {
+    "lat": -31.7761385,
+    "lon": -52.3286298
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Cinco (Lot Anglo)",
+    "postal_code": "96075-061",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221671168,
+  "center": {
+    "lat": -31.7766215,
+    "lon": -52.3284302
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 221671171,
+  "center": {
+    "lat": -31.7769754,
+    "lon": -52.3275570
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Dois (Lot Anglo)",
+    "postal_code": "96075-062",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 224510440,
+  "center": {
+    "lat": -31.7750421,
+    "lon": -52.3302261
+  },
+  "tags": {
+    "alt_name": "Rua Giuseppe Garibaldi",
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "Rua Garibaldi",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 224510445,
+  "center": {
+    "lat": -31.7750613,
+    "lon": -52.3302073
+  },
+  "tags": {
+    "alt_name": "Rua Giuseppe Garibaldi",
+    "highway": "secondary",
+    "lanes": "1",
+    "name": "Rua Garibaldi",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 224510446,
+  "center": {
+    "lat": -31.7753161,
+    "lon": -52.3290609
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 286809160,
+  "center": {
+    "lat": -31.7644359,
+    "lon": -52.3280879
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-005",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 323283242,
+  "center": {
+    "lat": -31.7636120,
+    "lon": -52.3287160
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2300",
+    "addr:postcode": "96077-686",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Areal",
+    "brand": "Carrefour",
+    "brand:wikidata": "Q217599",
+    "building": "supermarket",
+    "contact:phone": "+55 53 2128-7201",
+    "name": "Carrefour",
+    "old_name": "Hipermercado BIG",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Carrefour Brasil",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 333820444,
+  "center": {
+    "lat": -31.7509581,
+    "lon": -52.3300682
+  },
+  "tags": {
+    "alt_name": "Rua Pedro Cabral",
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Pedro Álvares Cabral",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 333887081,
+  "center": {
+    "lat": -31.7776428,
+    "lon": -52.3280197
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96010-496",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 361654854,
+  "center": {
+    "lat": -31.7553920,
+    "lon": -52.3310331
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "3",
+    "maxspeed": "40",
+    "name": "Rua Rafael Pinto Bandeira",
+    "oneway": "yes",
+    "surface": "concrete",
+    "turn:lanes": "left|through|through"
+  }
+},
+{
+  "type": "way",
+  "id": 361735350,
+  "center": {
+    "lat": -31.7549004,
+    "lon": -52.3315372
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1460",
+    "addr:postcode": "96080-150",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Centro",
+    "building": "apartments",
+    "building:levels": "19"
+  }
+},
+{
+  "type": "way",
+  "id": 361837385,
+  "center": {
+    "lat": -31.7699646,
+    "lon": -52.3312888
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 361932042,
+  "center": {
+    "lat": -31.7703611,
+    "lon": -52.3312028
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Rua Baldomero Trapaga",
+    "oneway": "yes",
+    "postal_code": "96075-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 368390461,
+  "center": {
+    "lat": -31.7529966,
+    "lon": -52.3288335
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Gago Coutinho"
+  }
+},
+{
+  "type": "way",
+  "id": 368390546,
+  "center": {
+    "lat": -31.7664885,
+    "lon": -52.3275746
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Dona Darcy Vargas",
+    "postal_code": "96076-050"
+  }
+},
+{
+  "type": "way",
+  "id": 368390560,
+  "center": {
+    "lat": -31.7783059,
+    "lon": -52.3271998
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 368396472,
+  "center": {
+    "lat": -31.7776042,
+    "lon": -52.3272422
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Sete (Lot Anglo)",
+    "postal_code": "96075-065"
+  }
+},
+{
+  "type": "way",
+  "id": 368396474,
+  "center": {
+    "lat": -31.7779013,
+    "lon": -52.3269064
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Quatro (Lot Anglo)",
+    "postal_code": "96075-066"
+  }
+},
+{
+  "type": "way",
+  "id": 368398774,
+  "center": {
+    "lat": -31.7579711,
+    "lon": -52.3319392
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Ambrosio Pinto Ferreira"
+  }
+},
+{
+  "type": "way",
+  "id": 368398777,
+  "center": {
+    "lat": -31.7593711,
+    "lon": -52.3314705
+  },
+  "tags": {
+    "alt_name": "Rua Luiz de Mattos",
+    "highway": "residential",
+    "name": "Rua Luís de Matos",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 368398778,
+  "center": {
+    "lat": -31.7600288,
+    "lon": -52.3311544
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Capitão Felino Alves",
+    "source:name": "Prefeitura Municipal de Pelotas"
+  }
+},
+{
+  "type": "way",
+  "id": 368398797,
+  "center": {
+    "lat": -31.7718542,
+    "lon": -52.3317854
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Princesa Isabel"
+  }
+},
+{
+  "type": "way",
+  "id": 450677698,
+  "center": {
+    "lat": -31.7760909,
+    "lon": -52.3306828
+  },
+  "tags": {
+    "alt_name": "Rua Giuseppe Garibaldi",
+    "cycleway:left": "lane",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Garibaldi",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 451471676,
+  "center": {
+    "lat": -31.7543639,
+    "lon": -52.3301058
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 461924632,
+  "center": {
+    "lat": -31.7530523,
+    "lon": -52.3300009
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924633,
+  "center": {
+    "lat": -31.7583557,
+    "lon": -52.3311194
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924634,
+  "center": {
+    "lat": -31.7634016,
+    "lon": -52.3297403
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924635,
+  "center": {
+    "lat": -31.7626847,
+    "lon": -52.3297082
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924636,
+  "center": {
+    "lat": -31.7750138,
+    "lon": -52.3300814
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924637,
+  "center": {
+    "lat": -31.7651201,
+    "lon": -52.3306886
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924640,
+  "center": {
+    "lat": -31.7580830,
+    "lon": -52.3312361
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924643,
+  "center": {
+    "lat": -31.7577852,
+    "lon": -52.3313338
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924645,
+  "center": {
+    "lat": -31.7554348,
+    "lon": -52.3309835
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924648,
+  "center": {
+    "lat": -31.7700087,
+    "lon": -52.3314912
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924650,
+  "center": {
+    "lat": -31.7565973,
+    "lon": -52.3311873
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924652,
+  "center": {
+    "lat": -31.7681585,
+    "lon": -52.3316165
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924653,
+  "center": {
+    "lat": -31.7605285,
+    "lon": -52.3303713
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924655,
+  "center": {
+    "lat": -31.7724580,
+    "lon": -52.3308861
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 461924657,
+  "center": {
+    "lat": -31.7778418,
+    "lon": -52.3278646
+  },
+  "tags": {
+    "cutting": "yes",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 461924658,
+  "center": {
+    "lat": -31.7727858,
+    "lon": -52.3311578
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Barão de Butuí",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 461924659,
+  "center": {
+    "lat": -31.7727730,
+    "lon": -52.3312992
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "residential",
+    "layer": "1",
+    "maxspeed": "40",
+    "name": "Rua Barão de Butuí",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 461924660,
+  "center": {
+    "lat": -31.7677523,
+    "lon": -52.3316605
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "tertiary",
+    "layer": "1",
+    "name": "Rua Doutor Cassiano",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 474910745,
+  "center": {
+    "lat": -31.7720285,
+    "lon": -52.3339120
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Rua Barão de Butuí",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 478956655,
+  "center": {
+    "lat": -31.7383964,
+    "lon": -52.3278285
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida República do Líbano",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 484629847,
+  "center": {
+    "lat": -31.7381784,
+    "lon": -52.3275974
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida República do Líbano",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 485008257,
+  "center": {
+    "lat": -31.7662283,
+    "lon": -52.3270537
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Village Center"
+  }
+},
+{
+  "type": "way",
+  "id": 485026958,
+  "center": {
+    "lat": -31.7776335,
+    "lon": -52.3293137
+  },
+  "tags": {
+    "alt_name": "Rua Dom Pedro Segundo",
+    "highway": "residential",
+    "name": "Rua Dom Pedro II",
+    "oneway": "yes",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 485026960,
+  "center": {
+    "lat": -31.7775648,
+    "lon": -52.3293342
+  },
+  "tags": {
+    "alt_name": "Rua Dom Pedro Segundo",
+    "highway": "residential",
+    "name": "Rua Dom Pedro II",
+    "oneway": "yes",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 485967368,
+  "center": {
+    "lat": -31.7781092,
+    "lon": -52.3262729
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Residencial Simon Bolívar"
+  }
+},
+{
+  "type": "way",
+  "id": 494923976,
+  "center": {
+    "lat": -31.7684413,
+    "lon": -52.3326203
+  },
+  "tags": {
+    "addr:housenumber": "1656",
+    "addr:postcode": "96010-430",
+    "addr:street": "Rua Bento Martins",
+    "amenity": "school",
+    "contact:phone": "+55 53 3225-4269",
+    "isced:level": "2,3",
+    "name": "Colégio Estadual Dom João Braga",
+    "operator": "Secretaria da Educação do Rio Grande do Sul",
+    "ref:INEP": "43100074"
+  }
+},
+{
+  "type": "way",
+  "id": 494924950,
+  "center": {
+    "lat": -31.7725037,
+    "lon": -52.3307566
+  },
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:postcode": "96075-650",
+    "addr:street": "Rua Frederico Trebbi",
+    "amenity": "school",
+    "contact:phone": "+55 53 3229-3016",
+    "isced:level": "1,2",
+    "name": "EEEF Padre Rambo",
+    "official_name": "Escola Estadual de Ensino Fundamental Padre Rambo",
+    "operator": "Secretaria da Educação do Rio Grande do Sul",
+    "ref:INEP": "43101720",
+    "source": "CNEFE/IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 501292761,
+  "center": {
+    "lat": -31.7667569,
+    "lon": -52.3209930
+  },
+  "tags": {
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 526621919,
+  "center": {
+    "lat": -31.7656229,
+    "lon": -52.3293306
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Jardim das Acácias"
+  }
+},
+{
+  "type": "way",
+  "id": 541865363,
+  "center": {
+    "lat": -31.7650360,
+    "lon": -52.3297900
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 541865364,
+  "center": {
+    "lat": -31.7651828,
+    "lon": -52.3299367
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 541865365,
+  "center": {
+    "lat": -31.7653185,
+    "lon": -52.3300636
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 541865371,
+  "center": {
+    "lat": -31.7658828,
+    "lon": -52.3304088
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 541865372,
+  "center": {
+    "lat": -31.7657435,
+    "lon": -52.3305886
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 541865384,
+  "center": {
+    "lat": -31.7659957,
+    "lon": -52.3307528
+  },
+  "tags": {
+    "building": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 572745132,
+  "center": {
+    "lat": -31.7707852,
+    "lon": -52.3315826
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Rua Xavier Ferreira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 575603410,
+  "center": {
+    "lat": -31.7759583,
+    "lon": -52.3290220
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "postal_code": "96075-070",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 575603411,
+  "center": {
+    "lat": -31.7757927,
+    "lon": -52.3289066
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Um (Lot Anglo)",
+    "postal_code": "96075-060",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 575603412,
+  "center": {
+    "lat": -31.7692210,
+    "lon": -52.3339737
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua General Neto",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 575603414,
+  "center": {
+    "lat": -31.7676259,
+    "lon": -52.3322527
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Doutor Cassiano",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 575603416,
+  "center": {
+    "lat": -31.7665225,
+    "lon": -52.3309168
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 575603417,
+  "center": {
+    "lat": -31.7747518,
+    "lon": -52.3310137
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 584366509,
+  "center": {
+    "lat": -31.7736340,
+    "lon": -52.3316267
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Rua Xavier Ferreira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 653526225,
+  "center": {
+    "lat": -31.7709758,
+    "lon": -52.3325219
+  },
+  "tags": {
+    "building": "stadium"
+  }
+},
+{
+  "type": "way",
+  "id": 658292062,
+  "center": {
+    "lat": -31.7502592,
+    "lon": -52.3298040
+  },
+  "tags": {
+    "cycleway:left": "separate",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Dom Joaquim",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 725054251,
+  "center": {
+    "lat": -31.7468755,
+    "lon": -52.3277360
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 725054252,
+  "center": {
+    "lat": -31.7469493,
+    "lon": -52.3286386
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 725054253,
+  "center": {
+    "lat": -31.7476986,
+    "lon": -52.3287840
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 725054254,
+  "center": {
+    "lat": -31.7529111,
+    "lon": -52.3301258
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 725054255,
+  "center": {
+    "lat": -31.7476603,
+    "lon": -52.3288977
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 744510410,
+  "center": {
+    "lat": -31.7704849,
+    "lon": -52.3311948
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Rua Baldomero Trapaga",
+    "oneway": "yes",
+    "postal_code": "96075-540",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 807400389,
+  "center": {
+    "lat": -31.7502984,
+    "lon": -52.3288871
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 807400390,
+  "center": {
+    "lat": -31.7487525,
+    "lon": -52.3289774
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 809867877,
+  "center": {
+    "lat": -31.7744455,
+    "lon": -52.3309819
+  },
+  "tags": {
+    "leisure": "pitch",
+    "name": "Gigante",
+    "sport": "futsal"
+  }
+},
+{
+  "type": "way",
+  "id": 809871483,
+  "center": {
+    "lat": -31.7784435,
+    "lon": -52.3286560
+  },
+  "tags": {
+    "building": "warehouse",
+    "name": "Porto 5"
+  }
+},
+{
+  "type": "way",
+  "id": 846165044,
+  "center": {
+    "lat": -31.7629317,
+    "lon": -52.3295372
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824825,
+  "center": {
+    "lat": -31.7641221,
+    "lon": -52.3298687
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824826,
+  "center": {
+    "lat": -31.7641413,
+    "lon": -52.3300275
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824827,
+  "center": {
+    "lat": -31.7643208,
+    "lon": -52.3297778
+  },
+  "tags": {
+    "highway": "secondary",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824829,
+  "center": {
+    "lat": -31.7645419,
+    "lon": -52.3285303
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 847824831,
+  "center": {
+    "lat": -31.7625330,
+    "lon": -52.3295409
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824833,
+  "center": {
+    "lat": -31.7630908,
+    "lon": -52.3309862
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824834,
+  "center": {
+    "lat": -31.7621482,
+    "lon": -52.3295308
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 847824835,
+  "center": {
+    "lat": -31.7626207,
+    "lon": -52.3294279
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 860704565,
+  "center": {
+    "lat": -31.7630115,
+    "lon": -52.3292390
+  },
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Burger King",
+    "brand:wikidata": "Q177054",
+    "brand:wikipedia": "en:Burger King",
+    "building": "yes",
+    "cuisine": "burger",
+    "drive_through": "yes",
+    "name": "Burger King",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 860893281,
+  "center": {
+    "lat": -31.7391390,
+    "lon": -52.3281526
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 860893283,
+  "center": {
+    "lat": -31.7386849,
+    "lon": -52.3281314
+  },
+  "tags": {
+    "alt_name": "Avenida Engenheira Ildefonso Simoes Lopes",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida República do Líbano",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 891740067,
+  "center": {
+    "lat": -31.7628861,
+    "lon": -52.3297174
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Canal do Pepino",
+    "source": "Bing",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 891740069,
+  "center": {
+    "lat": -31.7713995,
+    "lon": -52.3311950
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 948127892,
+  "center": {
+    "lat": -31.7778635,
+    "lon": -52.3269109
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Quatro (Lot Anglo)",
+    "postal_code": "96075-066"
+  }
+},
+{
+  "type": "way",
+  "id": 948127893,
+  "center": {
+    "lat": -31.7777079,
+    "lon": -52.3271144
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Quatro (Lot Anglo)",
+    "postal_code": "96075-066"
+  }
+},
+{
+  "type": "way",
+  "id": 961804009,
+  "center": {
+    "lat": -31.7699558,
+    "lon": -52.3315315
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Rua General Neto",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 961916189,
+  "center": {
+    "lat": -31.7736995,
+    "lon": -52.3285805
+  },
+  "tags": {
+    "alt_name": "Avenida Arthur de Souza Costa",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Avenida Artur de Souza Costa",
+    "oneway": "yes",
+    "postal_code": "96075-520",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 966970339,
+  "center": {
+    "lat": -31.7640449,
+    "lon": -52.3301118
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "postal_code": "96075-000",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1088046368,
+  "center": {
+    "lat": -31.7627910,
+    "lon": -52.3290408
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "526",
+    "addr:postcode": "96075-000",
+    "addr:street": "Avenida Ferreira Viana",
+    "addr:suburb": "Areal",
+    "building": "yes",
+    "name": "Doux Donuteria",
+    "shop": "pastry"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335669,
+  "center": {
+    "lat": -31.7639115,
+    "lon": -52.3305534
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "maxspeed": "40",
+    "name": "Avenida Bento Gonçalves",
+    "oneway": "yes",
+    "parking:condition:left": "no_stopping",
+    "parking:condition:right": "ticket",
+    "parking:condition:right:default": "free",
+    "parking:condition:right:time_interval": "Mo-Fr 06:00-19:30;Sa 06:00-13:00",
+    "parking:lane:right": "parallel",
+    "postal_code": "96075-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335670,
+  "center": {
+    "lat": -31.7626923,
+    "lon": -52.3296742
+  },
+  "tags": {
+    "highway": "primary",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137335672,
+  "center": {
+    "lat": -31.7750674,
+    "lon": -52.3295910
+  },
+  "tags": {
+    "highway": "tertiary",
+    "name": "Rua Tiradentes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137364707,
+  "center": {
+    "lat": -31.7737835,
+    "lon": -52.3287488
+  },
+  "tags": {
+    "alt_name": "Avenida Arthur de Souza Costa",
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Avenida Artur de Souza Costa",
+    "oneway": "yes",
+    "postal_code": "96075-520",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1137374344,
+  "center": {
+    "lat": -31.7750082,
+    "lon": -52.3291692
+  },
+  "tags": {
+    "alt_name": "Avenida Cidade do Rio Grande",
+    "highway": "tertiary",
+    "name": "Avenida Cidade de Rio Grande",
+    "oneway": "yes",
+    "postal_code": "96076-240",
+    "surface": "cobblestone"
+  }
+},
+{
+  "type": "way",
+  "id": 1140252525,
+  "center": {
+    "lat": -31.7500789,
+    "lon": -52.3290817
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1140252526,
+  "center": {
+    "lat": -31.7486477,
+    "lon": -52.3287445
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1141594452,
+  "center": {
+    "lat": -31.7565361,
+    "lon": -52.3313273
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1141594453,
+  "center": {
+    "lat": -31.7602132,
+    "lon": -52.3306360
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1141691715,
+  "center": {
+    "lat": -31.7573596,
+    "lon": -52.3325089
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Antônio Francisco dos Anjos",
+    "oneway": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1143724442,
+  "center": {
+    "lat": -31.7471331,
+    "lon": -52.3296865
+  },
+  "tags": {
+    "alt_name": "Rua Anchieta",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Rua Padre Anchieta",
+    "oneway": "yes",
+    "source:name": "local knowledge",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1143742184,
+  "center": {
+    "lat": -31.7482343,
+    "lon": -52.3294091
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Gonçalves Chaves",
+    "oneway": "yes",
+    "postal_code": "96015-560",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1143778796,
+  "center": {
+    "lat": -31.7523174,
+    "lon": -52.3307147
+  },
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Barão de Azevedo Machado",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 1144216709,
+  "center": {
+    "lat": -31.7576627,
+    "lon": -52.3289243
+  },
+  "tags": {
+    "alt_name": "Avenida Domingos de Almeida",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Domingos José de Almeida",
+    "oneway": "yes",
+    "postal_code": "96085-470",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1144216710,
+  "center": {
+    "lat": -31.7587614,
+    "lon": -52.3318563
+  },
+  "tags": {
+    "alt_name": "Avenida Domingos de Almeida",
+    "cycleway:left": "lane",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avenida Domingos José de Almeida",
+    "oneway": "yes",
+    "postal_code": "96085-470",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1144530723,
+  "center": {
+    "lat": -31.7756902,
+    "lon": -52.3295574
+  },
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "40",
+    "name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "narrow": "yes",
+    "postal_code": "96010-496",
+    "surface": "unpaved"
+  }
+},
+{
+  "type": "way",
+  "id": 1144535072,
+  "center": {
+    "lat": -31.7790610,
+    "lon": -52.3256718
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Moradas do Porto"
+  }
+},
+{
+  "type": "way",
+  "id": 1144548374,
+  "center": {
+    "lat": -31.7583492,
+    "lon": -52.3311202
+  },
+  "tags": {
+    "alt_name": "Avenida Domingos de Almeida",
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Domingos José de Almeida",
+    "oneway": "yes",
+    "postal_code": "96085-470",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1144701392,
+  "center": {
+    "lat": -31.7536604,
+    "lon": -52.3313596
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua José Pinto Martins",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1144701393,
+  "center": {
+    "lat": -31.7553543,
+    "lon": -52.3305636
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "lanes:forward": "1",
+    "name": "Rua Rafael Pinto Bandeira",
+    "surface": "asphalt",
+    "turn:lanes:forward": "right"
+  }
+},
+{
+  "type": "way",
+  "id": 1144701394,
+  "center": {
+    "lat": -31.7551480,
+    "lon": -52.3318571
+  },
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Rua Rafael Pinto Bandeira",
+    "oneway": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1174646121,
+  "center": {
+    "lat": -31.7381028,
+    "lon": -52.3277514
+  },
+  "tags": {
+    "destination": "Avenida São Francisco de Paula",
+    "highway": "primary",
+    "name": "Avenida São Francisco de Paula",
+    "oneway": "yes",
+    "postal_code": "96080-730",
+    "source": "Bing",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1174646122,
+  "center": {
+    "lat": -31.7386328,
+    "lon": -52.3280263
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "destination": "Avenida República do Libano;Avenida São Francisco de Paula",
+    "highway": "secondary_link",
+    "lanes": "2",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365939,
+  "center": {
+    "lat": -31.7626917,
+    "lon": -52.3295363
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365940,
+  "center": {
+    "lat": -31.7628042,
+    "lon": -52.3300215
+  },
+  "tags": {
+    "highway": "primary",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365941,
+  "center": {
+    "lat": -31.7628249,
+    "lon": -52.3295354
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Presidente Juscelino Kubitschek",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365942,
+  "center": {
+    "lat": -31.7630363,
+    "lon": -52.3295416
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "primary",
+    "lanes": "4",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1263365943,
+  "center": {
+    "lat": -31.7622828,
+    "lon": -52.3280728
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338412,
+  "center": {
+    "lat": -31.7567838,
+    "lon": -52.3316241
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338413,
+  "center": {
+    "lat": -31.7570272,
+    "lon": -52.3316638
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338414,
+  "center": {
+    "lat": -31.7572804,
+    "lon": -52.3317014
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338415,
+  "center": {
+    "lat": -31.7572770,
+    "lon": -52.3318680
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338416,
+  "center": {
+    "lat": -31.7570185,
+    "lon": -52.3318355
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338417,
+  "center": {
+    "lat": -31.7567951,
+    "lon": -52.3318582
+  },
+  "tags": {
+    "building": "residential",
+    "building:levels": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 1272338418,
+  "center": {
+    "lat": -31.7570209,
+    "lon": -52.3318259
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Condominio Residencial Dona Laura",
+    "residential": "condominium"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401625,
+  "center": {
+    "lat": -31.7531561,
+    "lon": -52.3307882
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3417",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1272401626,
+  "center": {
+    "lat": -31.7533741,
+    "lon": -52.3309455
+  },
+  "tags": {
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1329938183,
+  "center": {
+    "lat": -31.7621586,
+    "lon": -52.3280830
+  },
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Avenida Ferreira Viana",
+    "oneway": "yes",
+    "postal_code": "96085-000",
+    "source": "Bing",
+    "source:highway": "schema_br2013",
+    "source:name": "IBGE",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1496191822,
+  "center": {
+    "lat": -31.7580237,
+    "lon": -52.3326754
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3218",
+    "addr:street": "Rua Gonçalves Chaves",
+    "addr:suburb": "Centro",
+    "education": "centre",
+    "name": "Reitoria IFSul",
+    "operator": "Instituto Federal Sul-rio-grandense"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310357,
+  "center": {
+    "lat": -31.7562796,
+    "lon": -52.3320117
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2985",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "landuse": "residential",
+    "name": "Condomínio Conjunto Residencial Aldeira",
+    "residential": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310360,
+  "center": {
+    "lat": -31.7567386,
+    "lon": -52.3319877
+  },
+  "tags": {
+    "building": "garage"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310367,
+  "center": {
+    "lat": -31.7543529,
+    "lon": -52.3311607
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3195",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "amenity": "waste_transfer_station",
+    "fee": "no",
+    "name": "Ecoponto Centro",
+    "operator": "Prefeitura Municipal de Pelotas",
+    "operator:type": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310368,
+  "center": {
+    "lat": -31.7563683,
+    "lon": -52.3316810
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2991",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310369,
+  "center": {
+    "lat": -31.7563234,
+    "lon": -52.3316742
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "2995",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310370,
+  "center": {
+    "lat": -31.7562964,
+    "lon": -52.3316147
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3005",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310371,
+  "center": {
+    "lat": -31.7562570,
+    "lon": -52.3316017
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3011",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310372,
+  "center": {
+    "lat": -31.7561957,
+    "lon": -52.3317499
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3015",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310373,
+  "center": {
+    "lat": -31.7561619,
+    "lon": -52.3316085
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3017",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310374,
+  "center": {
+    "lat": -31.7561440,
+    "lon": -52.3315228
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3023",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310375,
+  "center": {
+    "lat": -31.7560537,
+    "lon": -52.3316235
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3029",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310376,
+  "center": {
+    "lat": -31.7560072,
+    "lon": -52.3316159
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3035",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310377,
+  "center": {
+    "lat": -31.7560133,
+    "lon": -52.3314539
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3041",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310378,
+  "center": {
+    "lat": -31.7559172,
+    "lon": -52.3315994
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3047",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310379,
+  "center": {
+    "lat": -31.7558756,
+    "lon": -52.3315914
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3051",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310380,
+  "center": {
+    "lat": -31.7558491,
+    "lon": -52.3315212
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3055",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496310381,
+  "center": {
+    "lat": -31.7558079,
+    "lon": -52.3315088
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3061",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322476,
+  "center": {
+    "lat": -31.7541841,
+    "lon": -52.3311616
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3231",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322477,
+  "center": {
+    "lat": -31.7540425,
+    "lon": -52.3311710
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3237",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322478,
+  "center": {
+    "lat": -31.7539121,
+    "lon": -52.3311019
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3241",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322479,
+  "center": {
+    "lat": -31.7535835,
+    "lon": -52.3311387
+  },
+  "tags": {
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322480,
+  "center": {
+    "lat": -31.7534362,
+    "lon": -52.3310594
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3399",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "landuse": "residential",
+    "name": "Central Park Residencial Club",
+    "residential": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322481,
+  "center": {
+    "lat": -31.7529092,
+    "lon": -52.3306941
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3449",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322482,
+  "center": {
+    "lat": -31.7527873,
+    "lon": -52.3305971
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3461",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "building": "yes",
+    "shop": "car"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322483,
+  "center": {
+    "lat": -31.7526394,
+    "lon": -52.3303674
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3",
+    "addr:street": "Rua Barão de Azevedo Machado",
+    "addr:suburb": "Centro",
+    "building": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322484,
+  "center": {
+    "lat": -31.7548025,
+    "lon": -52.3317863
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "3161",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "addr:suburb": "Centro",
+    "landuse": "residential",
+    "name": "Edifício Residencial Terrace",
+    "residential": "apartments"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322486,
+  "center": {
+    "lat": -31.7554039,
+    "lon": -52.3315205
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1507",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322487,
+  "center": {
+    "lat": -31.7555158,
+    "lon": -52.3316434
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1509",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Centro",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322495,
+  "center": {
+    "lat": -31.7558291,
+    "lon": -52.3299607
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1359",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Areal",
+    "amenity": "social_facility",
+    "name": "Círculo Operário Pelotense"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322497,
+  "center": {
+    "lat": -31.7550589,
+    "lon": -52.3306046
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Areal",
+    "amenity": "pharmacy",
+    "brand": "Panvel",
+    "brand:wikidata": "Q10344254",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Panvel",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322501,
+  "center": {
+    "lat": -31.7551050,
+    "lon": -52.3304277
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1362",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Areal",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1496322502,
+  "center": {
+    "lat": -31.7551333,
+    "lon": -52.3303595
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "1359",
+    "addr:street": "Rua Rafael Pinto Bandeira",
+    "addr:suburb": "Areal",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1497763853,
+  "center": {
+    "lat": -31.7630003,
+    "lon": -52.3258122
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Cruzeiro do Sul",
+    "place": "neighbourhood",
+    "residential": "urban"
+  }
+},
+{
+  "type": "way",
+  "id": 1513931142,
+  "center": {
+    "lat": -31.7671898,
+    "lon": -52.3298447
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Connect JK"
+  }
+},
+{
+  "type": "way",
+  "id": 1514014529,
+  "center": {
+    "lat": -31.7762258,
+    "lon": -52.3287017
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Rua Cinco (Lot Anglo)",
+    "postal_code": "96075-061",
+    "source": "bing"
+  }
+},
+{
+  "type": "way",
+  "id": 1523570940,
+  "center": {
+    "lat": -31.7598544,
+    "lon": -52.3303808
+  },
+  "tags": {
+    "alt_name": "Avenida Presidente Juscelino Kubitschek de Oliveira",
+    "highway": "secondary",
+    "lanes": "2",
+    "maxspeed": "60",
+    "name": "Avenida Juscelino Kubitschek de Oliveira",
+    "oneway": "yes",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1523570941,
+  "center": {
+    "lat": -31.7577602,
+    "lon": -52.3313800
+  },
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Rua Antônio Francisco dos Anjos",
+    "oneway": "yes",
+    "postal_code": "96085-470",
+    "source": "Bing",
+    "source:name": "IBGE",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "relation",
+  "id": 7037760,
+  "center": {
+    "lat": -31.6867595,
+    "lon": -52.3252258
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Três Vendas",
+    "ref": "1",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7037769,
+  "center": {
+    "lat": -31.7672184,
+    "lon": -52.3031078
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "São Gonçalo",
+    "ref": "6",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7042082,
+  "center": {
+    "lat": -31.7269979,
+    "lon": -52.2887164
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Areal",
+    "ref": "5",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7042113,
+  "center": {
+    "lat": -31.7629588,
+    "lon": -52.3445093
+  },
+  "tags": {
+    "admin_level": "10",
+    "boundary": "administrative",
+    "name": "Centro",
+    "ref": "4",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 7136561,
+  "center": {
+    "lat": -31.7674005,
+    "lon": -52.3284347
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Village Center II",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 7136562,
+  "center": {
+    "lat": -31.7671737,
+    "lon": -52.3292612
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Village Center IV",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 9087650,
+  "center": {
+    "lat": -31.7709758,
+    "lon": -52.3325219
+  },
+  "tags": {
+    "addr:city": "Pelotas",
+    "addr:housenumber": "694",
+    "addr:street": "Rua Doutor João Pessoa",
+    "addr:suburb": "Navegantes",
+    "email": "contato@gebrasil.com.br",
+    "leisure": "stadium",
+    "name": "Estádio Bento Freitas",
+    "phone": "+55 53 3229-3999",
+    "sport": "soccer",
+    "type": "multipolygon",
+    "website": "https://www.gebrasil.com.br/",
+    "wikidata": "Q5401982",
+    "wikipedia": "pt:Estádio Bento Mendes de Freitas"
+  }
+},
+{
+  "type": "relation",
+  "id": 20410026,
+  "center": {
+    "lat": -31.7580237,
+    "lon": -52.3326754
+  },
+  "tags": {
+    "name": "Reitoria IFSul",
+    "site": "services",
+    "type": "site"
+  }
+},
+{
+  "type": "relation",
+  "id": 20411536,
+  "center": {
+    "lat": -31.7534362,
+    "lon": -52.3310594
+  },
+  "tags": {
+    "name": "Central Park Residencial Club",
+    "site": "housing",
+    "type": "site"
+  }
+},
+{
+  "type": "relation",
+  "id": 20411537,
+  "center": {
+    "lat": -31.7548025,
+    "lon": -52.3317863
+  },
+  "tags": {
+    "name": "Residencial Terrace",
+    "type": "site"
+  }
+}
+
+  ]
+}
