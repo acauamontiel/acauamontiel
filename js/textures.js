@@ -779,11 +779,11 @@ export function makeBusDestSign(text) {
 
 const BUS_LIVERIES = {
   // Turf (Marcopolo Torino): amarelo-ouro do teto até a base das janelas, faixa branca com o nome, saia verde-escura.
-  turf: { bands: [[2.74, '#e8a020'], [1.42, '#f4f4f0'], [0.88, '#3f7a62']], stripes: [[1.42, '#c8241c', 0.6]], text: 'TURF', font: 'italic bold 11px "Arial Black", Arial, sans-serif', textColor: '#2d6b55', number: '01', numberColor: '#2d6b55', nameH: 1.1, nameX: 0.48, nameW: 0.36, frontTextColor: '#2d6b55', roofTop: '#e8a020' },
+  turf: { bands: [[2.74, '#e8a020'], [1.42, '#f4f4f0'], [0.78, '#3f7a62']], stripes: [[1.42, '#c8241c', 0.6]], text: 'TURF', font: 'italic bold 10px "Arial Black", Arial, sans-serif', textColor: '#2d6b55', number: '01', numberColor: '#2d6b55', nameH: 1.0, nameX: 0.48, nameW: 0.36, frontTextColor: '#2d6b55', roofTop: '#e8a020' },
   // Santa Silvana: azul-claro inteiro, placa branca com o nome e o logo SS, 41025 em branco nas pontas.
-  santasilvana: { bands: [[2.74, '#7cc4e8']], stripes: [[0.42, '#5aa6cc', 0.8]], text: 'SANTA SILVANA', font: 'bold 8px "Arial Black", Arial, sans-serif', textColor: '#1b2a6a', number: '41025', numberColor: '#f8f8f4', nameH: 1.1, plate: true, roofTop: '#7cc4e8' },
+  santasilvana: { bands: [[2.74, '#7cc4e8']], stripes: [[0.42, '#5aa6cc', 0.8]], text: 'SANTA SILVANA', font: 'bold 8px "Arial Black", Arial, sans-serif', textColor: '#1b2a6a', number: '41025', numberColor: '#f8f8f4', nameH: 1.0, plate: true, roofTop: '#7cc4e8' },
   // Santa Rosa: branco, nome verde reto com sombra vermelha acima da roda traseira, pinceladas vermelhas e verdes.
-  santarosa: { bands: [[2.74, '#f4f4f0'], [0.45, '#3a3a3c']], text: 'SANTA ROSA', font: 'bold 11px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', nameH: 1.1, nameX: 0.48, nameW: 0.42, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
+  santarosa: { bands: [[2.74, '#f4f4f0'], [0.45, '#3a3a3c']], text: 'SANTA ROSA', font: 'bold 10px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', nameH: 1.0, nameX: 0.48, nameW: 0.42, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
 };
 
 export function makeBusLivery(kind, o) {

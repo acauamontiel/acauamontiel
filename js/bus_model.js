@@ -68,38 +68,6 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
   signGeo.translate((bb[0][0] + bb[1][0]) / 2, bb[1][1] - 0.32, bb[0][2] - 0.03);
   signGeo.setAttribute('envCut', new THREE.Float32BufferAttribute(new Float32Array(signGeo.attributes.position.count).fill(1), 1));
   const roles = []; // [mesh, role]
-  // Vidros laterais mais baixos (altura menor, mantidos no alto): sobe a base dos vidros das janelas para
-  // não encostar no nome da empresa pintado entre as rodas.
-  const GLASS_BOTTOM = 1.72, HALF_W = 1.2, SIDE_Z = 4.8;
-  gltf.scene.traverse((o) => {
-    if (!o.isMesh) return;
-    const name = o.material.name || '';
-    const col = (name.split('|')[1] || '255,255,255,255').split(',').map(Number);
-    if (col[3] < 255 || name.includes('d4exn1glaswall')) {
-      const p = o.geometry.attributes.position;
-      for (let i = 0; i < p.count; i++) {
-        if (Math.abs(p.getX(i)) > HALF_W && Math.abs(p.getZ(i)) < SIDE_Z && p.getY(i) < GLASS_BOTTOM && p.getY(i) > 0.9) p.setY(i, GLASS_BOTTOM);
-      }
-      p.needsUpdate = true;
-    }
-  });
-  // Faixa de lataria que fecha a abertura das janelas entre a base antiga (~1.4 m) e a nova, nos dois lados,
-  // com o mesmo UV projetado da pintura (lateral: u = frente -> trás, v = teto -> chão na metade de cima).
-  const stripGeos = [];
-  for (const side of [-1, 1]) {
-    const x = side * (HALF_W + 0.295), yA = 1.3, yB = GLASS_BOTTOM + 0.02, zA = -SIDE_Z - 0.4, zB = SIDE_Z + 0.4;
-    const g = new THREE.PlaneGeometry(zB - zA, yB - yA);
-    g.rotateY(side > 0 ? Math.PI / 2 : -Math.PI / 2);
-    g.translate(x, (yA + yB) / 2, (zA + zB) / 2);
-    const pos = g.attributes.position, uv = g.attributes.uv;
-    for (let i = 0; i < pos.count; i++) {
-      let u = (pos.getZ(i) - bb[0][2]) / (bb[1][2] - bb[0][2]);
-      if (side > 0) u = 1 - u;
-      uv.setXY(i, u, 1 - 0.5 * (bb[1][1] - pos.getY(i)) / (bb[1][1] - bb[0][1]));
-    }
-    envCutAttribute(g, 0.7);
-    stripGeos.push(g);
-  }
   gltf.scene.traverse((o) => {
     if (!o.isMesh) return;
     o.geometry.computeBoundingBox();
@@ -128,7 +96,6 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
         if (o.userData.role === 'livery') o.material = liveryMat(kind);
       });
       root.add(new THREE.Mesh(signGeo, signMat(kind)));
-      for (const g of stripGeos) root.add(new THREE.Mesh(g, liveryMat(kind)));
       const g = new THREE.Group();
       g.add(root);
       return g;
