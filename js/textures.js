@@ -696,50 +696,68 @@ export function makeBusSkin(kind) {
   const [c, g] = canvas(W * S, H * S);
   g.scale(S, S);
   let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
-  const yAt = (m) => Math.round(SIDE_H * (Y1 - m) / (Y1 - Y0)); // metro -> linha da lateral
+  const yAt = (m) => SIDE_H * (Y1 - m) / (Y1 - Y0); // metro -> linha da lateral (0 = teto)
   const L = BUS_LIVERIES[kind];
-  const skirtY = yAt(Y0 + (Y1 - Y0) * L.skirtTop);
-  // lateral
-  g.fillStyle = L.base; g.fillRect(0, 0, W, SIDE_H);
-  g.fillStyle = L.skirt; g.fillRect(0, skirtY, W, SIDE_H - skirtY);
-  if (L.roof) { g.fillStyle = L.roof; g.fillRect(0, 0, W, yAt(2.45)); }
-  g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, yAt(Y0 + 0.08), W, 2); // friso inferior
-  const nameY = yAt(1.05);
-  // Pinceladas (Santa Rosa): traços curtos e inclinados, vermelhos e verdes, espalhados pela lataria abaixo
-  // das janelas, mais densos perto do nome e na frente; alguns também na frente e na traseira do ônibus.
+  const text = (t, x, y, font, color, maxW, shadow) => {
+    g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle';
+    if (shadow) { g.fillStyle = shadow; g.fillText(t, x + 1.4, y + 1.2, maxW); }
+    g.fillStyle = color; g.fillText(t, x, y, maxW);
+  };
+  // Faixas horizontais (de cima para baixo): [altura em m onde começa, cor]. A última vai até o chão.
+  const bands = (x0, w, oy) => {
+    for (let i = 0; i < L.bands.length; i++) {
+      const [top, col] = L.bands[i], bottom = i + 1 < L.bands.length ? L.bands[i + 1][0] : Y0;
+      g.fillStyle = col; g.fillRect(x0, oy + yAt(top), w, yAt(bottom) - yAt(top) + 0.5);
+    }
+    for (const [m, col, h] of L.stripes || []) { g.fillStyle = col; g.fillRect(x0, oy + yAt(m), w, h); }
+    g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(x0, oy + yAt(Y0 + 0.08), w, 1.5); // friso inferior
+  };
+  // Pinceladas (Santa Rosa): traços curtos e inclinados, vermelhos e verdes.
   const stroke = (x, y, len, ang, col) => {
     g.save(); g.translate(x, y); g.rotate(ang); g.fillStyle = col;
-    g.beginPath(); g.moveTo(-len / 2, -1.1); g.lineTo(len / 2 - 1.5, -1.4); g.lineTo(len / 2, 0.2); g.lineTo(-len / 2 + 1.2, 1.3); g.closePath(); g.fill();
+    g.beginPath(); g.moveTo(-len / 2, -0.8); g.lineTo(len / 2 - 1.2, -1.0); g.lineTo(len / 2, 0.2); g.lineTo(-len / 2 + 1.0, 1.0); g.closePath(); g.fill();
     g.restore();
   };
   const strokes = (x0, x1, y0, y1, n, avoid) => {
     for (let k = 0; k < n; k++) {
       const x = x0 + rnd() * (x1 - x0), y = y0 + rnd() * (y1 - y0);
       if (avoid && x > avoid[0] && x < avoid[1] && y > avoid[2] && y < avoid[3]) continue;
-      stroke(x, y, 6 + rnd() * 6, (rnd() < 0.5 ? -1 : 1) * (0.5 + rnd() * 0.6), L.ribbons[k % 2]);
+      stroke(x, y, 4.5 + rnd() * 4.5, (rnd() < 0.5 ? -1 : 1) * (0.5 + rnd() * 0.6), L.ribbons[k % 2]);
     }
   };
-  if (L.ribbons) strokes(4, W - 4, yAt(1.45), yAt(Y0 + 0.14), 90, [W * 0.34, W * 0.96, nameY - 9, nameY + 9]);
-  if (L.plate) { g.fillStyle = L.plate; g.fillRect(Math.round(W * 0.33), nameY - 9, Math.round(W * 0.42), 18); }
-  const text = (t, x, y, font, color, maxW, shadow) => {
-    g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle';
-    if (shadow) { g.fillStyle = shadow; g.fillText(t, x + 1.4, y + 1.2, maxW); }
-    g.fillStyle = color; g.fillText(t, x, y, maxW);
+  // Placa branca com logo (Santa Silvana).
+  const plate = (cx, cy, w, h) => {
+    g.fillStyle = '#f8f8f4'; g.fillRect(cx - w / 2, cy - h / 2, w, h);
+    text(L.text, cx - w * 0.12, cy, L.font, L.textColor, w * 0.62);
+    const lx = cx + w * 0.36, r = h * 0.34;
+    g.strokeStyle = L.textColor; g.lineWidth = 1.2; g.beginPath(); g.arc(lx, cy, r, 0, Math.PI * 2); g.stroke();
+    g.strokeStyle = '#c8241c'; g.lineWidth = 1.6; g.beginPath(); g.arc(lx, cy, r + 1.8, -0.4, 1.9); g.stroke();
+    text('SS', lx, cy + 0.3, 'bold 6px Arial, sans-serif', L.textColor, r * 2);
   };
-  text(L.text, Math.round(W * (L.ribbons ? 0.65 : 0.54)), nameY, L.font.replace(/\d+px/, (m) => Math.round(parseInt(m) * 0.7) + 'px'), L.textColor, W * (L.ribbons ? 0.58 : 0.4), L.shadow);
-  text(L.number, Math.round(W * 0.09), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
-  text(L.number, Math.round(W * 0.93), nameY, 'bold 11px Arial, sans-serif', L.numberColor || '#111', 36);
-  // frente (0-64), traseira (64-128), teto (128-192), assoalho (192-256), na metade de baixo
+
+  // ---- lateral (u = frente -> trás, v = teto -> chão), metade de cima da textura
+  bands(0, W, 0);
+  const nameY = yAt(L.nameH || 1.1);
+  if (L.ribbons) strokes(4, W - 4, yAt(1.36), yAt(Y0 + 0.14), 60, [W * 0.36, W * 0.96, nameY - 7, nameY + 7]);
+  if (L.plate) {
+    plate(W * 0.70, nameY, W * 0.36, 10);
+    g.fillStyle = '#f8f8f4'; g.fillRect(W * 0.43, nameY - 4.5, W * 0.07, 9); // placa menor (Metroplan)
+    g.fillStyle = '#1f6fb2'; g.fillRect(W * 0.455, nameY - 3.5, 3.5, 6); g.fillStyle = '#c8241c'; g.fillRect(W * 0.455, nameY + 2, 7, 1.2);
+  } else {
+    text(L.text, W * (L.nameX || 0.62), nameY, L.font, L.textColor, W * (L.nameW || 0.5), L.shadow);
+  }
+  text(L.number, Math.round(W * 0.09), nameY, 'bold 9px Arial, sans-serif', L.numberColor || '#111', 36);
+  text(L.number, Math.round(W * 0.94), nameY, 'bold 9px Arial, sans-serif', L.numberColor || '#111', 36);
+
+  // ---- frente (0-64), traseira (64-128), teto (128-192), assoalho (192-256), metade de baixo
   const fy = (m) => SIDE_H + yAt(m);
   for (const [x0, rear] of [[0, false], [64, true]]) {
-    g.fillStyle = L.base; g.fillRect(x0, SIDE_H, 64, SIDE_H);
-    g.fillStyle = L.skirt; g.fillRect(x0, SIDE_H + skirtY, 64, SIDE_H - skirtY);
-    if (L.roof) { g.fillStyle = L.roof; g.fillRect(x0, SIDE_H, 64, yAt(2.45)); }
-    if (rear) text(L.number, x0 + 32, fy(0.95), 'bold 12px Arial, sans-serif', L.numberColor || '#111', 40);
-    else text(L.text, x0 + 32, fy(2.5), 'bold 8px Arial, sans-serif', L.roof ? '#111' : L.textColor, 56);
-    if (L.ribbons) strokes(x0 + 3, x0 + 61, fy(1.3), fy(Y0 + 0.14), rear ? 10 : 14, rear ? [x0 + 20, x0 + 44, fy(1.05), fy(0.85)] : null);
+    bands(x0, 64, SIDE_H);
+    if (rear) text(L.number, x0 + 32, fy(1.0), 'bold 10px Arial, sans-serif', L.numberColor || '#111', 40);
+    else text(L.text, x0 + 32, fy(2.5), 'bold 8px Arial, sans-serif', L.frontTextColor || L.textColor, 56);
+    if (L.ribbons) strokes(x0 + 3, x0 + 61, fy(1.3), fy(Y0 + 0.14), rear ? 7 : 9, rear ? [x0 + 20, x0 + 44, fy(1.1), fy(0.9)] : null);
   }
-  g.fillStyle = L.roof || L.roofTop; g.fillRect(128, SIDE_H, 64, SIDE_H);
+  g.fillStyle = L.roofTop; g.fillRect(128, SIDE_H, 64, SIDE_H);
   g.fillStyle = '#17181a'; g.fillRect(192, SIDE_H, 64, SIDE_H);
   return pixelTexture(c, false);
 }
@@ -760,9 +778,12 @@ export function makeBusDestSign(text) {
 }
 
 const BUS_LIVERIES = {
-  turf: { base: '#f2f2ee', skirt: '#4a7a6a', skirtTop: 0.26, text: 'TURF', font: 'bold 23px Georgia, "Times New Roman", serif', textColor: '#111', number: '27', roof: '#e8a020', roofTop: '#e4e4e0' },
-  santasilvana: { base: '#7cc4e8', skirt: '#6ab4dc', skirtTop: 0.14, text: 'SANTA SILVANA', font: 'italic bold 15px "Arial Black", Arial, sans-serif', textColor: '#111', number: '41005', roof: null, roofTop: '#6ab4dc', plate: '#f6f6f2' },
-  santarosa: { base: '#f4f4f0', skirt: '#3a3a3c', skirtTop: 0.09, text: 'SANTA ROSA', font: 'italic bold 30px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', roof: null, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
+  // Turf (Marcopolo Torino): amarelo-ouro do teto até a base das janelas, faixa branca com o nome, saia verde-escura.
+  turf: { bands: [[2.74, '#e8a020'], [1.42, '#f4f4f0'], [0.88, '#3f7a62']], stripes: [[1.42, '#c8241c', 0.6]], text: 'TURF', font: 'italic bold 11px "Arial Black", Arial, sans-serif', textColor: '#2d6b55', number: '01', numberColor: '#2d6b55', nameH: 1.13, nameX: 0.74, nameW: 0.34, frontTextColor: '#2d6b55', roofTop: '#e8a020' },
+  // Santa Silvana: azul-claro inteiro, placa branca com o nome e o logo SS, 41025 em branco nas pontas.
+  santasilvana: { bands: [[2.74, '#7cc4e8']], stripes: [[0.42, '#5aa6cc', 0.8]], text: 'SANTA SILVANA', font: 'bold 8px "Arial Black", Arial, sans-serif', textColor: '#1b2a6a', number: '41025', numberColor: '#f8f8f4', nameH: 1.13, plate: true, roofTop: '#7cc4e8' },
+  // Santa Rosa: branco, nome verde reto com sombra vermelha acima da roda traseira, pinceladas vermelhas e verdes.
+  santarosa: { bands: [[2.74, '#f4f4f0'], [0.45, '#3a3a3c']], text: 'SANTA ROSA', font: 'bold 11px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', nameH: 1.13, nameX: 0.66, nameW: 0.52, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
 };
 
 export function makeBusLivery(kind, o) {
