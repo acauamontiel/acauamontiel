@@ -234,3 +234,6 @@ kbd {
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 
 #loading { flex-direction: column; text-align: center; }
+.loading-box { display: flex; flex-direction: column; align-items: center; width: min(92vw, 420px); padding: 0 16px; }
+.loading-hint { max-width: 100%; line-height: 1.5; }
+@media (max-width: 520px) { .loading { font-size: 16px; letter-spacing: 0.2em; } .loading-hint { font-size: 10px; letter-spacing: 0.08em; } }

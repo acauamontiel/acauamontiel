@@ -430,6 +430,7 @@ if (loadingBar) loadingBar.style.width = '100%';
 await new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));
 warmUp();
 hud.show('title');
+if (params.has('loadtest')) document.getElementById('loading').classList.remove('hidden'); // depuração do visual do carregamento
 if (params.has('autostart')) startRun(false);
 if (params.has('showcase') && G.state === 'playing') { G.x = ROAD.PLAYER_MIN_X; camState.x = G.x; traffic.showcase(G.z); }
 if (params.has('bus')) traffic.spawnParked(7.1, G.z - 9, 'bus_' + params.get('bus'), 0xffffff, 0, 0); // depuração: ônibus logo à frente
