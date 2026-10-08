@@ -738,7 +738,7 @@ export function makeBusSkin(kind) {
   // ---- lateral (u = frente -> trás, v = teto -> chão), metade de cima da textura
   bands(0, W, 0);
   const nameY = yAt(L.nameH || 1.1);
-  if (L.ribbons) strokes(4, W - 4, yAt(1.36), yAt(Y0 + 0.14), 60, [W * 0.36, W * 0.96, nameY - 7, nameY + 7]);
+  if (L.ribbons) strokes(4, W - 4, yAt(1.36), yAt(Y0 + 0.14), 60, [W * 0.26, W * 0.70, nameY - 7, nameY + 7]);
   if (L.plate) {
     plate(W * 0.70, nameY, W * 0.36, 10);
     g.fillStyle = '#f8f8f4'; g.fillRect(W * 0.43, nameY - 4.5, W * 0.07, 9); // placa menor (Metroplan)
@@ -779,11 +779,11 @@ export function makeBusDestSign(text) {
 
 const BUS_LIVERIES = {
   // Turf (Marcopolo Torino): amarelo-ouro do teto até a base das janelas, faixa branca com o nome, saia verde-escura.
-  turf: { bands: [[2.74, '#e8a020'], [1.42, '#f4f4f0'], [0.88, '#3f7a62']], stripes: [[1.42, '#c8241c', 0.6]], text: 'TURF', font: 'italic bold 11px "Arial Black", Arial, sans-serif', textColor: '#2d6b55', number: '01', numberColor: '#2d6b55', nameH: 1.13, nameX: 0.74, nameW: 0.34, frontTextColor: '#2d6b55', roofTop: '#e8a020' },
+  turf: { bands: [[2.74, '#e8a020'], [1.42, '#f4f4f0'], [0.88, '#3f7a62']], stripes: [[1.42, '#c8241c', 0.6]], text: 'TURF', font: 'italic bold 11px "Arial Black", Arial, sans-serif', textColor: '#2d6b55', number: '01', numberColor: '#2d6b55', nameH: 1.1, nameX: 0.48, nameW: 0.36, frontTextColor: '#2d6b55', roofTop: '#e8a020' },
   // Santa Silvana: azul-claro inteiro, placa branca com o nome e o logo SS, 41025 em branco nas pontas.
-  santasilvana: { bands: [[2.74, '#7cc4e8']], stripes: [[0.42, '#5aa6cc', 0.8]], text: 'SANTA SILVANA', font: 'bold 8px "Arial Black", Arial, sans-serif', textColor: '#1b2a6a', number: '41025', numberColor: '#f8f8f4', nameH: 1.13, plate: true, roofTop: '#7cc4e8' },
+  santasilvana: { bands: [[2.74, '#7cc4e8']], stripes: [[0.42, '#5aa6cc', 0.8]], text: 'SANTA SILVANA', font: 'bold 8px "Arial Black", Arial, sans-serif', textColor: '#1b2a6a', number: '41025', numberColor: '#f8f8f4', nameH: 1.1, plate: true, roofTop: '#7cc4e8' },
   // Santa Rosa: branco, nome verde reto com sombra vermelha acima da roda traseira, pinceladas vermelhas e verdes.
-  santarosa: { bands: [[2.74, '#f4f4f0'], [0.45, '#3a3a3c']], text: 'SANTA ROSA', font: 'bold 11px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', nameH: 1.13, nameX: 0.66, nameW: 0.52, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
+  santarosa: { bands: [[2.74, '#f4f4f0'], [0.45, '#3a3a3c']], text: 'SANTA ROSA', font: 'bold 11px Georgia, "Times New Roman", serif', textColor: '#1e7a3c', shadow: '#c8241c', number: '42', numberColor: '#1e7a3c', nameH: 1.1, nameX: 0.48, nameW: 0.42, roofTop: '#e8e8e4', ribbons: ['#c8241c', '#1e7a3c'] },
 };
 
 export function makeBusLivery(kind, o) {
