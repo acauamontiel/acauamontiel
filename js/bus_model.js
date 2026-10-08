@@ -3,13 +3,14 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ps1Material } from './ps1.js';
+import { SMOOTH } from './quality.js';
 
 const SCALE = 0.92; // o modelo tem 3,0 x 11,9 m; o tráfego do jogo usa ~2,7 x 11 m
 
 function pixelate(tex) {
   if (!tex) return null;
-  tex.magFilter = THREE.NearestFilter;
-  tex.minFilter = THREE.NearestMipmapLinearFilter;
+  tex.magFilter = SMOOTH ? THREE.LinearFilter : THREE.NearestFilter;
+  tex.minFilter = SMOOTH ? THREE.LinearMipmapLinearFilter : THREE.NearestMipmapLinearFilter;
   tex.generateMipmaps = true;
   tex.colorSpace = THREE.NoColorSpace;
   tex.needsUpdate = true;

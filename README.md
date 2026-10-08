@@ -43,6 +43,7 @@ Parâmetros de URL úteis (depuração):
 | `?bot` | piloto automático que persegue motos e desvia do resto |
 | `?showcase` | estaciona um exemplar de cada veículo à frente |
 | `?nohud` | esconde o HUD |
+| `?quality=sa` | modo gráfico San Andreas (render até 1280 px, filtro bilinear); `ps1` volta ao padrão; o botão do título guarda a escolha |
 | `?lowpoly` | usa o Astra e os ônibus procedurais em vez dos modelos GLB |
 | `?touch` | força os botões de toque (para testar no desktop) |
 | `?dbg` | loga estado do tráfego e draw calls no console |
@@ -77,7 +78,8 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 
 Tudo em `js/ps1.js`:
 
-- render interno com 640 px no lado maior, seja a janela larga ou alta, com upscale nearest-neighbor;
+- render interno com 640 px no lado maior, seja a janela larga ou alta, com upscale nearest-neighbor; no modo
+  **San Andreas** (botão no título) o render vai até 1280 px e as texturas usam filtro bilinear (`js/quality.js`);
 - iluminação por fragmento: luar fraco, **postes de sódio** a cada 20 m no canteiro (poças quentes na pista) e o
   **farol do Astra** abrindo à frente; nada disso usa luzes do three.js, é tudo calculado no shader;
 - emissivos: lanternas, faróis, luminárias e semáforos brilham via atributo por vértice; janelas acesas,

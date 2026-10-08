@@ -80,7 +80,14 @@ def png(rows, w, h):
     def chunk(t, d): return struct.pack('>I', len(d)) + t + d + struct.pack('>I', zlib.crc32(t + d) & 0xffffffff)
     return b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', w, h, 8, 6, 0, 0, 0)) + chunk(b'IDAT', zlib.compress(raw, 9)) + chunk(b'IEND', b'')
 
-def texture_png(r, t, maxsize=256):
+def tone_curve(rows, gamma):
+    lut = bytes(int(round(255 * (i / 255.0) ** gamma)) for i in range(256))
+    for row in rows:
+        for p in range(0, len(row), 4):
+            row[p] = lut[row[p]]; row[p+1] = lut[row[p+1]]; row[p+2] = lut[row[p+2]]
+    return rows
+
+def texture_png(r, t, maxsize=256, gamma=1.0):
     w, h = t['w'], t['h']; fmt = t['format']; off = t['data']
     if fmt in ('DXT1', 'DXT3', 'DXT5'):
         rows = decode_dxt(r.data, off, w, h, fmt)
@@ -91,4 +98,5 @@ def texture_png(r, t, maxsize=256):
     f = 1
     while max(w, h) // f > maxsize: f *= 2
     rows, w, h = downscale(rows, w, h, f)
+    if gamma != 1.0: rows = tone_curve(rows, gamma)
     return png(rows, w, h), w, h

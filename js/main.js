@@ -9,6 +9,7 @@ import { loadVehicleModels } from './vehicle_models.js';
 import { City, ROAD, THEMES, PHASE_LEN } from './city.js';
 import { Traffic } from './traffic.js';
 import { HUD } from './hud.js';
+import { QUALITY, setQuality, renderLongSide } from './quality.js';
 import { Input } from './input.js';
 import { GameAudio } from './audio.js';
 
@@ -381,6 +382,7 @@ function resize() {
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
+  post.longSide = renderLongSide(w, h);
   post.setSize(w, h);
 }
 window.addEventListener('resize', resize);
@@ -429,6 +431,13 @@ if (loadingEl) loadingEl.textContent = 'PREPARANDO…';
 if (loadingBar) loadingBar.style.width = '100%';
 await new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));
 warmUp();
+// Botão de modo gráfico no título (recarrega a página).
+const qbtn = document.getElementById('quality-btn');
+if (qbtn) {
+  qbtn.textContent = 'GRÁFICOS: ' + (QUALITY === 'sa' ? 'SAN ANDREAS' : 'PS1') + ' · trocar';
+  for (const ev of ['pointerdown', 'mousedown', 'touchstart', 'keydown']) qbtn.addEventListener(ev, (e) => e.stopPropagation());
+  qbtn.addEventListener('click', (e) => { e.stopPropagation(); setQuality(QUALITY === 'sa' ? 'ps1' : 'sa'); });
+}
 hud.show('title');
 if (params.has('loadtest')) document.getElementById('loading').classList.remove('hidden'); // depuração do visual do carregamento
 if (params.has('autostart')) startRun(false);
