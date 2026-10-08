@@ -18,6 +18,8 @@ ap.add_argument('--ground', type=float, default=None, help='z (GTA) do chão; de
 ap.add_argument('--report', action='store_true')
 ap.add_argument('--generic', action='store_true', help='carro do tráfego: materiais paint/glass genéricos (js/vehicle_models.js)')
 ap.add_argument('--target', type=int, default=0, help='orçamento de triângulos da carroceria (decimação proporcional)')
+ap.add_argument('--wheel-bones', default='wheel_lf,wheel_lr,wheel_rf,wheel_rr', help='ossos onde instanciar a roda (moto: wheel_lf,wheel_lr)')
+ap.add_argument('--no-mirror', action='store_true', help='não espelha a roda do lado direito (motos)')
 ap.add_argument('--curve', default='', help='escurece texturas por curva de tom (gama): nome:gama,nome:gama (fundo escuro, lâmpadas claras)')
 ap.add_argument('--drop-uv', default='', help='remove triângulos pelo centro do UV: gi:umin,umax,vmin,vmax;...')
 args = ap.parse_args()
@@ -39,7 +41,12 @@ for m in re.finditer(b'DRFR', r.data):
     if lp:
         wheel_model = rage.read_model(r, r.ptrlist(lp)[0]); wheel_bb = (r.vec(o+0x30,3), r.vec(o+0x40,3)); break
 wheel_r = wheel_bb[1][2] if wheel_bb else 0.32
-wl = sk[bone_by_name['wheel_lf']]['pos']
+def bone_world(i):
+    p = [0.0, 0.0, 0.0]
+    while i >= 0:
+        p = [a + b for a, b in zip(p, sk[i]['pos'])]; i = sk[i]['parent']
+    return p
+wl = bone_world(bone_by_name['wheel_lf'])
 ground = args.ground if args.ground is not None else wl[2] - wheel_r
 print('raio roda %.3f, chão z=%.3f' % (wheel_r, ground))
 
@@ -145,6 +152,8 @@ if wheel_model and not args.no_wheels:
     import decimate
     groups = [('cap', [0], 60, 'spec|dourado'), ('ring', [1], 120, 'vehicle_mesh|black'), ('rim', [2, 3, 4, 5], args.wheel_tris, 'wheel|rim'),
               ('tire', [6, 7, 8, 9], int(args.wheel_tris * 0.7), 'wheel|tire'), ('disc', [10], 60, 'vehicle_tire|tormoz_color')]
+    if len(wheel_model['geoms']) < 11:  # roda de moto: cada geometria vira um grupo com o shader original
+        groups = [('w%d' % i, [i], args.wheel_tris, 'vehicle_tire|' + (d['shaders'][g['shader']]['params'].get('DiffuseSampler', (None, None))[1] or '')) for i, g in enumerate(wheel_model['geoms'])]
     mats = {}
     for name, gis, target, mname in groups:
         if mname in mats: continue
@@ -166,7 +175,9 @@ if wheel_model and not args.no_wheels:
         p2, a2, t2 = decimate.decimate(pos, attrs, tris, target)
         decimated[name] = (p2, a2, t2, mname)
         print('%-40s tris %6d -> %5d' % ('wheel ' + name, len(tris), len(t2)))
+    wheel_bones = [b for b in args.wheel_bones.split(',') if b in bone_by_name]
     for side, mirror in (('l', False), ('r', True)):
+        if args.no_mirror and side == 'r': continue
         prims = []
         for name, (p2, a2, t2, mname) in decimated.items():
             sx = -1 if mirror else 1
@@ -176,8 +187,8 @@ if wheel_model and not args.no_wheels:
             prims.append(out.primitive(pos, nor, uv, ind, mats[mname]))
             if side == 'l': total += 2 * len(t2)
         mi = out.mesh('wheel_' + side, prims)
-        for bn in (('wheel_lf', 'wheel_lr') if side == 'l' else ('wheel_rf', 'wheel_rr')):
-            p = conv(sk[bone_by_name[bn]]['pos'])
+        for bn in (wheel_bones if args.no_mirror else [b for b in wheel_bones if ('_l' in b) == (side == 'l')]):
+            p = conv(bone_world(bone_by_name[bn]))
             out.node({'name': bn, 'mesh': mi, 'translation': list(p)})
             print('  nó %s em %s' % (bn, [round(x, 3) for x in p]))
 

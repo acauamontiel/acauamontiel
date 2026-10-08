@@ -317,6 +317,18 @@ export function buildMotoTemplate() {
   const head = new THREE.SphereGeometry(0.17, 7, 5); head.translate(0, 1.52, -0.12);
   detail.push(colorize(head, 0xe8e8e8)); // capacete
   detail.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.52, -0.28)); // viseira
+  // Piloto completo para a CG 125 (o modelo de GTA V vem sem motoqueiro): pernas, braços, tronco e capacete.
+  const riderFull = [];
+  riderFull.push(box(0.36, 0.42, 0.26, 0x2a2a4a, 0, 0.78, 0.15));
+  const torso3 = box(0.42, 0.50, 0.30, 0x8a1a1a, 0, 0, 0); torso3.rotateX(-0.28); torso3.translate(0, 1.18, 0.02);
+  riderFull.push(torso3);
+  const armL3 = box(0.09, 0.09, 0.46, 0x8a1a1a, 0, 0, 0); armL3.rotateX(0.5); armL3.translate(-0.22, 1.08, -0.26);
+  const armR3 = box(0.09, 0.09, 0.46, 0x8a1a1a, 0, 0, 0); armR3.rotateX(0.5); armR3.translate(0.22, 1.08, -0.26);
+  riderFull.push(armL3, armR3);
+  const head3 = new THREE.SphereGeometry(0.17, 7, 5); head3.translate(0, 1.52, -0.12);
+  riderFull.push(colorize(head3, 0xe8e8e8));
+  riderFull.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.52, -0.28));
+  riderFull.push(box(0.52, 0.04, 0.48, 0x1a1a1a, 0, 1.0, 0.78)); // alça do baú
   // Tronco e capacete para completar o motoboy do modelo 3D (o mod da Biz só traz braços e pernas).
   const rider = [];
   const torso2 = box(0.40, 0.52, 0.30, 0x8a1a1a, 0, 0, 0); torso2.rotateX(-0.25); torso2.translate(0, 0.98, 0.14);
@@ -324,13 +336,19 @@ export function buildMotoTemplate() {
   const head2 = new THREE.SphereGeometry(0.17, 7, 5); head2.translate(0, 1.33, 0.0);
   rider.push(colorize(head2, 0xe8e8e8));
   rider.push(box(0.26, 0.09, 0.06, 0x101418, 0, 1.33, -0.16));
-  return { paint: merge(paint), detail: merge(detail), bag, rider: merge(rider), w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000], bagColors: [0xd42020, 0xf2c230] };
+  return { paint: merge(paint), detail: merge(detail), bag, rider: merge(rider), riderFull: merge(riderFull), w: 0.75, l: 2.05, colors: [0xd02020, 0x2050c0, 0x202020, 0xe0e0e0, 0x20a040, 0xf0a000], bagColors: [0xd42020, 0xf2c230] };
 }
 
-export function makeMoto(tpl, color, M, bagColor = 0xd42020) {
-  if (M.models && M.models.biz) {
-    const g = M.models.biz.make(color, bagColor);
-    g.add(new THREE.Mesh(tpl.rider, M.detail));
+export const MOTO_MODELS = ['biz', 'cg125'];
+
+/** Motoboy: Biz (vem com motoqueiro e baú no mod) ou CG 125 (recebe piloto e baú procedurais). */
+export function makeMoto(tpl, color, M, bagColor = 0xd42020, which = MOTO_MODELS[Math.floor(Math.random() * MOTO_MODELS.length)]) {
+  const avail = MOTO_MODELS.filter((k) => M.models && M.models[k]);
+  if (avail.length) {
+    const key = avail.includes(which) ? which : avail[0];
+    const g = M.models[key].make(color, bagColor);
+    if (key === 'biz') g.add(new THREE.Mesh(tpl.rider, M.detail));
+    else { g.add(new THREE.Mesh(tpl.riderFull, M.detail)); g.add(new THREE.Mesh(tpl.bag, M.paint(bagColor))); }
     g.add(shadowMesh(1.0, 2.2, M));
     return g;
   }

@@ -40,7 +40,7 @@ function fixedMaterial(src, mesh, length) {
   if (tex === 'wheel') return rgba === 'rim' ? { opts: { color: 0x6e7176, envStrength: 0.5, lightScale: 0.5 }, envCut: 0 } : { opts: { color: 0x0c0c0d }, envCut: 1 };
   if (tex === 'spec') return { opts: { color: 0x8a8c90, envStrength: 0.5, lightScale: 0.5 }, envCut: 0 };
   if (tex === 'vehicle_tire' || tex === 'vehicle_mesh' || tex === 'vehicle_badges' || tex === 'vehicle_detail2') {
-    return map ? { opts: { map, lightScale: 0.7, alphaTest: tex === 'vehicle_badges' ? 0.5 : 0 }, envCut: 1 } : { opts: { color: 0x151517, envStrength: 0.2 }, envCut: 0.5 };
+    return map ? { opts: { map, lightScale: 0.7, alphaTest: tex === 'vehicle_badges' ? 0.5 : 0 }, envCut: 1 } : { opts: { color: 0x2c2c30, envStrength: 0.35, lightScale: 0.7 }, envCut: 0.3 };
   }
   if (name.startsWith('glass')) return { opts: { color: 0x0c1016, envStrength: 0.9, transparent: true, opacity: 0.92, side: THREE.DoubleSide }, envCut: 0.35 };
   const chrome = /chrom|cromo|crom|reflect|ref/.test(tex);
@@ -110,6 +110,7 @@ export const VEHICLE_MODELS = {
   kombi: { url: 'assets/kombi.glb', length: 4.5 },
   saveiro: { url: 'assets/saveiro.glb', length: 4.5 },
   biz: { url: 'assets/biz.glb', length: 2.0 },
+  cg125: { url: 'assets/cg125.glb', length: 2.05 },
 };
 
 /** Carrega todos os modelos do catálogo; os que falharem ficam de fora (cai no procedural). */

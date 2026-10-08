@@ -42,7 +42,7 @@ if (q.has('game')) {
       M.models = { [q.get('game')]: v };
       const tpls = buildTrafficTemplates(); const tpl = tpls.find((t) => t.model === q.get('game'));
       const color = parseInt(q.get('color') || 'c0392b', 16);
-      scene.add(q.get('game') === 'biz' ? makeMoto(buildMotoTemplate(), color, M, parseInt(q.get('color2') || 'f2c230', 16)) : tpl ? makeVehicle(tpl, color, M) : v.make(color));
+      scene.add(['biz', 'cg125'].includes(q.get('game')) ? makeMoto(buildMotoTemplate(), color, M, parseInt(q.get('color2') || 'f2c230', 16), q.get('game')) : tpl ? makeVehicle(tpl, color, M) : v.make(color));
       draw();
     });
   }

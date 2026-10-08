@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { PS1Post, shared, ps1Material } from './ps1.js';
 import { makeTextures } from './textures.js';
-import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate, makeVehicle, makeMoto, makePothole } from './vehicles.js';
+import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate, makeVehicle, makeMoto, makePothole, MOTO_MODELS } from './vehicles.js';
 import { loadAstraModel } from './astra_model.js';
 import { loadBusModel } from './bus_model.js';
 import { loadVehicleModels } from './vehicle_models.js';
@@ -414,7 +414,7 @@ hud.setBest(G.best);
 function warmUp() {
   const g = new THREE.Group();
   for (const tpl of traffic.cars) for (const c of tpl.colors) g.add(makeVehicle(tpl, c, M));
-  for (const c of traffic.moto.colors) for (const b of traffic.moto.bagColors) g.add(makeMoto(traffic.moto, c, M, b));
+  for (const c of traffic.moto.colors) for (const b of traffic.moto.bagColors) for (const k of MOTO_MODELS) g.add(makeMoto(traffic.moto, c, M, b, k));
   g.add(makePothole(M));
   g.traverse((o) => { if (o.isMesh) o.frustumCulled = false; });
   g.position.set(G.x, 0, G.z - 12);

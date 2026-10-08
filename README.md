@@ -166,6 +166,9 @@ python3 tools/rage2glb/export_car.py biz.dff --out assets/biz.glb --target 7000 
   carregados. Todos os carros do tráfego vêm de modelos; os loftados ficam só como reserva.
 - A **Kombi** (`.yft`, no lugar da van) e a **Saveiro** (`.dff`, no lugar da picape) seguem o mesmo caminho; na Saveiro
   os acessórios opcionais do mod (botijão, latas, rack, engate, placas de GNV) ficam de fora via `--skip-frames`.
+- A **CG 125** (`.yft` de moto) é a segunda moto dos entregadores, sorteada junto com a Biz; como o mod vem sem
+  motoqueiro, ela recebe piloto e baú procedurais. O exportador GTA V ganhou `--wheel-bones wheel_lf,wheel_lr --no-mirror`
+  para rodas de moto.
 - O **Jeep Compass** (mod `huntley.dff`) sai pelo mesmo `export_car.py`; o **Gol** é um `.yft` do GTA V e sai pelo
   `export_glb.py --generic --target 11000`, que nomeia os materiais do mesmo jeito (`paint`, `glass|...`) e decima
   a carroceria até o orçamento:
@@ -199,7 +202,7 @@ js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
 assets/bus.glb    modelo do ônibus urbano (idem)
-assets/marea.glb  hb20.glb  compass.glb  gol.glb  kombi.glb  saveiro.glb  biz.glb   carros e moto do tráfego
+assets/marea.glb  hb20.glb  compass.glb  gol.glb  kombi.glb  saveiro.glb  biz.glb  cg125.glb   carros e motos do tráfego
 js/vehicle_models.js  carregador genérico dos carros/moto em GLB
 js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
 tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA: ônibus, carros, motos) → GLB (Python puro)
