@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Crazy Astra · GSi em Pelotas</title>
   <meta name="description" content="Crazy Astra: um Astra GSi preto correndo de madrugada pelas avenidas de Pelotas, desviando de carros e buracos e atropelando motos.">
+  <meta name="theme-color" content="#07070a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Crazy Astra">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Crazy Astra">
+  <meta property="og:title" content="Crazy Astra · GSi em Pelotas">
+  <meta property="og:description" content="Um Astra GSi preto correndo de madrugada pelas avenidas Duque de Caxias, Bento Gonçalves e JK, em Pelotas.">
+  <meta property="og:url" content="https://astra.acauamontiel.com.br/">
+  <meta property="og:image" content="https://astra.acauamontiel.com.br/icons/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crazy Astra · GSi em Pelotas">
+  <meta name="twitter:image" content="https://astra.acauamontiel.com.br/icons/og-image.png">
   <link rel="stylesheet" href="css/style.css?v=5">
   <script type="importmap">
   {
@@ -113,5 +134,11 @@
     });
   </script>
   <script type="module" src="js/main.js"></script>
+  <script>
+    // PWA: registra o service worker (cache para jogar offline e instalar na tela inicial).
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+    }
+  </script>
 </body>
 </html>

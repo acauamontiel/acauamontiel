@@ -1,0 +1,21 @@
+{
+  "name": "Crazy Astra · GSi em Pelotas",
+  "short_name": "Crazy Astra",
+  "description": "Um Astra GSi preto correndo de madrugada pelas avenidas de Pelotas, desviando de carros e buracos e atropelando motos.",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#07070a",
+  "theme_color": "#07070a",
+  "lang": "pt-BR",
+  "categories": ["games"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "icons/og-image.png", "sizes": "1200x630", "type": "image/png", "form_factor": "wide", "label": "Astra GSi nas avenidas de Pelotas" }
+  ]
+}

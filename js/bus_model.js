@@ -68,6 +68,21 @@ export async function loadBusModel(M, T, url = 'assets/bus.glb') {
   signGeo.translate((bb[0][0] + bb[1][0]) / 2, bb[1][1] - 0.32, bb[0][2] - 0.03);
   signGeo.setAttribute('envCut', new THREE.Float32BufferAttribute(new Float32Array(signGeo.attributes.position.count).fill(1), 1));
   const roles = []; // [mesh, role]
+  // Vidros laterais mais baixos (altura menor, mantidos no alto): sobe a base dos vidros das janelas para
+  // não encostar no nome da empresa pintado entre as rodas.
+  const GLASS_BOTTOM = 1.72, HALF_W = 1.2, SIDE_Z = 4.8;
+  gltf.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const name = o.material.name || '';
+    const col = (name.split('|')[1] || '255,255,255,255').split(',').map(Number);
+    if (col[3] < 255 || name.includes('d4exn1glaswall')) {
+      const p = o.geometry.attributes.position;
+      for (let i = 0; i < p.count; i++) {
+        if (Math.abs(p.getX(i)) > HALF_W && Math.abs(p.getZ(i)) < SIDE_Z && p.getY(i) < GLASS_BOTTOM && p.getY(i) > 0.9) p.setY(i, GLASS_BOTTOM);
+      }
+      p.needsUpdate = true;
+    }
+  });
   gltf.scene.traverse((o) => {
     if (!o.isMesh) return;
     o.geometry.computeBoundingBox();

@@ -73,6 +73,14 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 - **Fase 3 · Av. Pres. Juscelino Kubitschek** — largada no supermercado BIG; meio-fio pintado de branco,
   terrenos de areia, palmeiras, canal, guindastes do porto, silos e posto de gasolina.
 
+## PWA
+
+O jogo é instalável (manifesto em `manifest.webmanifest`, ícones do emblema GSi em `icons/`, tela cheia em paisagem)
+e funciona offline depois da primeira visita: o `sw.js` responde com a rede primeiro e cai no cache quando não há
+conexão, guardando inclusive os GLB e o three.js. Ao publicar uma versão nova, troque o nome do cache em `sw.js`
+(`crazy-astra-v1`) para os clientes descartarem o cache antigo. As meta tags Open Graph apontam para
+`icons/og-image.png` (foto do Astra) em `https://astra.acauamontiel.com.br/`.
+
 ## Dados reais das avenidas (OpenStreetMap)
 
 Os 2 km de cada fase seguem o que existe de verdade ao longo da avenida, a partir do ponto de partida, com dados do
