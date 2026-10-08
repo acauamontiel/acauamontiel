@@ -75,7 +75,8 @@ const START_PHASE = Math.min(THEMES.length - 1, Math.max(0, Number(params.get('p
 const TP = Number(params.get('tp')) || 0;
 const START_Z = phaseStartZ(START_PHASE) - TP;
 // Curvas visuais por fase (dobra no vertex shader): a JK tem a curva característica logo após o BIG.
-const CURVES = { jk: { amp: 14, from: 70, to: 470 } };
+// Curvas visuais a partir do traçado real (OSM): a JK dobra à esquerda logo depois do BIG e volta; a Duque abre à esquerda no fim.
+const CURVES = { jk: { amp: 16, from: 150, to: 1350 }, duque: { amp: 9, from: 1000, to: 2100 } };
 function updateCurve() {
   const c = CURVES[THEMES[G.phase].key];
   const z0 = phaseStartZ(G.phase);

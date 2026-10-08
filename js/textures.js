@@ -62,6 +62,95 @@ function markEmissive(g, x, y, w, h, alpha) {
   g.restore();
 }
 
+
+// Estilos de letreiro por categoria (cor do letreiro, cor do toldo, interior aceso).
+const SHOP_STYLES = {
+  generic: ['#c0392b', '#1f6fb2', '#2e8b57', '#d68a1a', '#7a3fa0', '#1f8a9a', '#b23a1f', '#444'].map((sign) => ({ sign, awning: sign, glow: '#ffd9a0' })),
+  pharmacy: { sign: '#1e8a4a', awning: '#1e8a4a', glow: '#e8fff0', cross: true },
+  fuel: { sign: '#c8241c', awning: '#f2c230', glow: '#ffffff' },
+  bank: { sign: '#1946a8', awning: '#1946a8', glow: '#dfe8ff' },
+  supermarket: { sign: '#d42020', awning: '#f2c230', glow: '#ffffff' },
+  car: { sign: '#2a2a30', awning: '#c8c8c8', glow: '#eef4ff', glass: true },
+  car_parts: { sign: '#1f3a7a', awning: '#f2c230', glow: '#ffd9a0' },
+  restaurant: { sign: '#8a1a1a', awning: '#d42020', glow: '#ffc880' },
+  fast_food: { sign: '#d68a1a', awning: '#d42020', glow: '#ffc060' },
+  bakery: { sign: '#b5651d', awning: '#f4e0b0', glow: '#ffd090' },
+  ice_cream: { sign: '#e85d9a', awning: '#ffffff', glow: '#ffe8f4' },
+  furniture: { sign: '#6a4a2a', awning: '#c8a060', glow: '#ffd9a0' },
+  clothes: { sign: '#7a3fa0', awning: '#f4f4f4', glow: '#fff0ff' },
+  hardware: { sign: '#d68a1a', awning: '#2a2a30', glow: '#ffd9a0' },
+  lottery: { sign: '#1e8a4a', awning: '#f2c230', glow: '#ffffd0' },
+  health: { sign: '#1f8a9a', awning: '#ffffff', glow: '#ffffff' },
+  church: { sign: '#3a2a6a', awning: '#f4f4f4', glow: '#ffe0b0' },
+  police: { sign: '#1946a8', awning: '#8a7a5a', glow: '#ffffff' },
+  gym: { sign: '#111', awning: '#d42020', glow: '#c0e0ff' },
+  pet: { sign: '#d68a1a', awning: '#2e8b57', glow: '#ffd9a0' },
+  florist: { sign: '#2e8b57', awning: '#e85d9a', glow: '#ffe8f4' },
+  post: { sign: '#f2c230', awning: '#1946a8', glow: '#ffd9a0' },
+  school: { sign: '#1946a8', awning: '#ffffff', glow: '#ffd9a0' },
+  other: { sign: '#444', awning: '#c8c8c8', glow: '#ffd9a0' },
+};
+
+/** Desenha um letreiro+vitrine de 64x64 em (x, y). */
+function drawShopTile(g, x, y, name, st) {
+  g.fillStyle = '#e6e2d8'; g.fillRect(x, y, 64, 64);
+  g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(x, y + 56, 64, 8);
+  const gl = g.createLinearGradient(0, y + 24, 0, y + 64);
+  gl.addColorStop(0, '#6f8ea8'); gl.addColorStop(0.4, '#2a3a4a'); gl.addColorStop(1, '#141c26');
+  g.fillStyle = gl; g.fillRect(x + 6, y + 24, 52, 40);
+  g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x + 8, y + 26, 16, 34);
+  g.fillStyle = '#333'; g.fillRect(x + 30, y + 24, 3, 40); g.fillRect(x + 6, y + 24, 52, 2);
+  g.fillStyle = '#5a3a1a'; g.fillRect(x + 40, y + 34, 14, 30);
+  g.fillStyle = '#c8a040'; g.fillRect(x + 50, y + 48, 2, 2);
+  g.fillStyle = st.sign; g.fillRect(x, y + 2, 64, 18);
+  g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x, y + 18, 64, 2);
+  g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.font = 'bold ' + (name.length > 16 ? 6 : name.length > 10 ? 7 : 9) + 'px Arial, sans-serif';
+  g.fillText(name, x + 32, y + 11, 62);
+  if (st.cross) { g.fillStyle = '#fff'; g.fillRect(x + 2, y + 7, 8, 3); g.fillRect(x + 4.5, y + 4.5, 3, 8); }
+  for (let s = 0; s < 64; s += 8) { g.fillStyle = s % 16 ? '#f4f4f4' : st.awning; g.fillRect(x + s, y + 20, 8, 4); }
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(x, y + 24, 64, 2);
+  g.fillStyle = st.glow; g.fillRect(x + 8, y + 26, st.glass ? 48 : 20, 36);
+  if (!st.glass) { g.fillStyle = 'rgba(60,40,20,0.5)'; g.fillRect(x + 12, y + 40, 6, 22); g.fillRect(x + 20, y + 44, 5, 18); }
+  markEmissive(g, x + 6, y + 24, 52, 40, 0.45);
+  markEmissive(g, x, y + 2, 64, 18, 0.2);
+}
+
+/**
+ * Atlas de letreiros com os nomes reais de uma avenida (grade de 16 colunas de 64 px).
+ * O tile 0 é parede lisa (faces laterais das caixas). Devolve { texture, cols, rows, uv(i) }.
+ */
+export function makeShopAtlas(pois) {
+  const cols = 16, n = pois.length + 1, rows = Math.max(1, Math.ceil(n / cols));
+  const [c, g] = canvas(cols * 64, rows * 64);
+  g.fillStyle = '#d8d2c4'; g.fillRect(0, 0, cols * 64, rows * 64);
+  pois.forEach((p, k) => {
+    const i = k + 1, st = SHOP_STYLES[p.cat] || SHOP_STYLES.other;
+    const style = Array.isArray(st) ? st[k % st.length] : st;
+    drawShopTile(g, (i % cols) * 64, Math.floor(i / cols) * 64, p.name.toUpperCase(), style);
+  });
+  const texture = pixelTexture(c, false);
+  return { texture, cols, rows, count: n, uv: (i) => ({ u0: (i % cols) / cols, u1: ((i % cols) + 1) / cols, v0: 1 - (Math.floor(i / cols) + 1) / rows, v1: 1 - Math.floor(i / cols) / rows }) };
+}
+
+/** Placas de rua (azuis, 256x64) com os nomes das transversais, em grade de 4 colunas. */
+export function makeStreetSignAtlas(names) {
+  const cols = 4, n = Math.max(1, names.length), rows = Math.ceil(n / cols);
+  const [c, g] = canvas(cols * 256, rows * 64);
+  names.forEach((name, i) => {
+    const x = (i % cols) * 256, y = Math.floor(i / cols) * 64;
+    g.fillStyle = '#1946a8'; g.fillRect(x, y, 256, 64);
+    g.fillStyle = '#fff'; g.fillRect(x + 4, y + 4, 248, 56);
+    g.fillStyle = '#1946a8'; g.fillRect(x + 8, y + 8, 240, 48);
+    g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    const m = name.match(/^(Rua|Avenida|Praça|Travessa)\s+(.*)$/i);
+    g.font = 'bold 13px Arial, sans-serif'; g.fillText((m ? m[1] : '').toUpperCase(), x + 128, y + 20, 230);
+    g.font = 'bold ' + (name.length > 22 ? 15 : 19) + 'px Arial, sans-serif'; g.fillText((m ? m[2] : name).toUpperCase(), x + 128, y + 42, 236);
+  });
+  const texture = pixelTexture(c, false);
+  return { texture, cols, rows, count: n, uv: (i) => ({ u0: (i % cols) / cols, u1: ((i % cols) + 1) / cols, v0: 1 - (Math.floor(i / cols) + 1) / rows, v1: 1 - Math.floor(i / cols) / rows }) };
+}
+
 export function makeTextures() {
   const T = {};
 
@@ -254,39 +343,7 @@ export function makeTextures() {
   {
     const n = T.shopNames.length;
     const [c, g] = canvas(64 * n, 64);
-    const awnings = ['#c0392b', '#1f6fb2', '#2e8b57', '#d68a1a', '#7a3fa0', '#1f8a9a', '#b23a1f', '#444'];
-    for (let i = 0; i < n; i++) {
-      const x = i * 64;
-      g.fillStyle = ['#e9dcc3', '#dfe3e8', '#f1e4b3', '#e5d6d6', '#d9e4d9', '#e6e6e6', '#f0d9c0', '#d8dde6'][i % 8];
-      g.fillRect(x, 0, 64, 64);
-      g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(x, 56, 64, 8);
-      // vitrine com reflexo
-      const gl = g.createLinearGradient(0, 24, 0, 64);
-      gl.addColorStop(0, '#6f8ea8'); gl.addColorStop(0.4, '#2a3a4a'); gl.addColorStop(1, '#141c26');
-      g.fillStyle = gl; g.fillRect(x + 6, 24, 52, 40);
-      g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x + 8, 26, 16, 34);
-      g.fillStyle = '#333'; g.fillRect(x + 30, 24, 3, 40); g.fillRect(x + 6, 24, 52, 2);
-      // porta
-      g.fillStyle = '#5a3a1a'; g.fillRect(x + 40, 34, 14, 30);
-      g.fillStyle = '#c8a040'; g.fillRect(x + 50, 48, 2, 2);
-      // letreiro
-      g.fillStyle = awnings[i % awnings.length]; g.fillRect(x, 2, 64, 18);
-      g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x, 18, 64, 2);
-      g.fillStyle = '#fff';
-      g.font = 'bold 9px Arial, sans-serif';
-      g.textAlign = 'center'; g.textBaseline = 'middle';
-      const name = T.shopNames[i];
-      if (name.length > 10) g.font = 'bold 7px Arial, sans-serif';
-      g.fillText(name, x + 32, 11, 62);
-      // toldo listrado
-      for (let s = 0; s < 64; s += 8) { g.fillStyle = s % 16 ? '#f4f4f4' : awnings[i % awnings.length]; g.fillRect(x + s, 20, 8, 4); }
-      g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(x, 24, 64, 2);
-      // À noite: vitrine acesa e letreiro luminoso.
-      g.fillStyle = '#ffd9a0'; g.fillRect(x + 8, 26, 20, 36);
-      g.fillStyle = 'rgba(60,40,20,0.5)'; g.fillRect(x + 12, 40, 6, 22); g.fillRect(x + 20, 44, 5, 18); // manequins
-      markEmissive(g, x + 6, 24, 52, 40, 0.45);
-      markEmissive(g, x, 2, 64, 18, 0.2);
-    }
+    for (let i = 0; i < n; i++) drawShopTile(g, i * 64, 0, T.shopNames[i], SHOP_STYLES.generic[i % SHOP_STYLES.generic.length]);
     T.shops = pixelTexture(c, false);
     T.shopCount = n;
   }
@@ -497,13 +554,16 @@ export function makeTextures() {
   T.landmarkTexts = [
     ['BRIGADA MILITAR', 'SEDE FRAGATA · 4º BPM'],
     ['COLÉGIO PELOTENSE', 'AUDITÓRIO ANTÔNIO EDGAR NOGUEIRA'],
+    ['BRIGADA MILITAR', 'COMANDO REGIONAL · AV. BENTO GONÇALVES'],
+    ['PARQUE DOM ANTÔNIO ZATTERA', 'ESTÁDIO BOCA DO LOBO'],
   ];
+  T.landmarkCount = T.landmarkTexts.length;
   {
-    const [c, g] = canvas(512, 64);
-    for (let i = 0; i < 2; i++) {
+    const [c, g] = canvas(256 * T.landmarkCount, 64);
+    for (let i = 0; i < T.landmarkCount; i++) {
       const x = i * 256;
-      g.fillStyle = i === 0 ? '#efe9d8' : '#9fb08c'; g.fillRect(x, 0, 256, 64);
-      g.fillStyle = i === 0 ? '#1a1a1a' : '#f4f4ee'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillStyle = i === 1 ? '#9fb08c' : '#efe9d8'; g.fillRect(x, 0, 256, 64);
+      g.fillStyle = i === 1 ? '#f4f4ee' : '#1a1a1a'; g.textAlign = 'center'; g.textBaseline = 'middle';
       g.font = 'bold 26px Arial, sans-serif';
       g.fillText(T.landmarkTexts[i][0], x + 128, 24, 244);
       g.font = 'bold 13px Arial, sans-serif';

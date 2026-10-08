@@ -1,6 +1,9 @@
 // Cidade procedural em "chunks" de 40 m ao longo de -z. Três avenidas temáticas de Pelotas:
 // Duque de Caxias (Fragata), Bento Gonçalves (Centro) e Pres. Juscelino Kubitschek (Porto/Areal).
 import * as THREE from 'three';
+import { AVENUES } from './avenues_data.js';
+import { makeShopAtlas, makeStreetSignAtlas } from './textures.js';
+import { ps1Material } from './ps1.js';
 import { box, cylinder, groundPlane, tileBoxUVs, atlasFaceUVs, signQuad, crossTree, merge, colorize, gradientColorize, emissive } from './geometry.js';
 
 export const CHUNK = 40;
@@ -64,12 +67,66 @@ export function phaseOfChunk(i) { return Math.min(THEMES.length - 1, Math.floor(
 export function chunkIndexAt(z) { return Math.max(0, Math.floor(-z / CHUNK)); }
 export function themeAt(z) { return themeOfChunk(chunkIndexAt(z)); }
 
+/** Espelha uma geometria em x, corrigindo o enrolamento das faces. */
+function mirrorX(geo) {
+  geo.scale(-1, 1, 1);
+  const uv = geo.attributes.uv;
+  if (uv) {
+    let lo = Infinity, hi = -Infinity;
+    for (let i = 0; i < uv.count; i++) { lo = Math.min(lo, uv.getX(i)); hi = Math.max(hi, uv.getX(i)); }
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, lo + hi - uv.getX(i), uv.getY(i));
+    uv.needsUpdate = true;
+  }
+  if (geo.index) {
+    const a = geo.index.array;
+    for (let i = 0; i + 2 < a.length; i += 3) { const t = a[i + 1]; a[i + 1] = a[i + 2]; a[i + 2] = t; }
+    geo.index.needsUpdate = true;
+  } else {
+    for (const name of Object.keys(geo.attributes)) {
+      const at = geo.attributes[name], k = at.itemSize, arr = at.array;
+      for (let i = 0; i + 2 < at.count; i += 3) for (let j = 0; j < k; j++) { const t = arr[(i + 1) * k + j]; arr[(i + 1) * k + j] = arr[(i + 2) * k + j]; arr[(i + 2) * k + j] = t; }
+      at.needsUpdate = true;
+    }
+  }
+  return geo;
+}
+
 export class City {
   constructor(scene, M, T) {
     this.scene = scene;
     this.M = M;
     this.T = T;
     this.chunks = new Map();
+    this.phases = THEMES.map((t) => this.preparePhase(t));
+  }
+
+  /** Dados reais da avenida (OpenStreetMap) organizados por trecho de 40 m: cruzamentos, paradas, lojas, andares. */
+  preparePhase(theme) {
+    const data = AVENUES[theme.key] || { pois: [], streets: [], stops: [], signals: [], levels: [] };
+    const pois = data.pois.filter((p) => p.s >= 0 && p.cat !== 'police');
+    const shopAtlas = makeShopAtlas(pois);
+    pois.forEach((p, k) => { p.idx = k + 1; });
+    const shopMat = ps1Material({ map: shopAtlas.texture, emissiveMask: true });
+    const streetAtlas = makeStreetSignAtlas(data.streets.map((s) => s[1]));
+    const streetMat = ps1Material({ map: streetAtlas.texture, unlit: true, color: 0xeeeeee, side: THREE.DoubleSide });
+    const xChunks = new Map(); let lastS = -1e9;
+    data.streets.forEach(([s, name], k) => {
+      const local = Math.floor(s / CHUNK);
+      if (s - lastS < 90 || local < 3 || local > PHASE_CHUNKS - 4 || xChunks.has(local)) return;
+      xChunks.set(local, k); lastS = s;
+    });
+    const stopChunks = new Map();
+    for (const [s, side] of data.stops) { const local = Math.floor(s / CHUNK); if (local >= 3 && !xChunks.has(local) && !stopChunks.has(local)) stopChunks.set(local, side); }
+    const byChunk = new Map();
+    for (const p of pois) { const k = Math.floor(p.s / CHUNK) + '|' + p.side; if (!byChunk.has(k)) byChunk.set(k, []); byChunk.get(k).push(p); }
+    return { data, pois, shopAtlas, shopMat, streetAtlas, streetMat, xChunks, stopChunks, byChunk, hasStreets: data.streets.length > 0, hasStops: data.stops.length > 0 };
+  }
+
+  /** Andares do prédio real mais próximo (até 60 m) desse lado, ou null. */
+  levelsNear(P, s, side) {
+    let best = null;
+    for (const [ls, lside, lv] of P.data.levels) if (lside === side && Math.abs(ls - s) < 60 && (best === null || Math.abs(ls - s) < best[0])) best = [Math.abs(ls - s), lv];
+    return best ? best[1] : null;
   }
 
   reset() {
@@ -95,6 +152,8 @@ export class City {
   }
 
   materialFor(key) {
+    const at = key.indexOf('@');
+    if (at > 0) { const P = this.phases[Number(key.slice(at + 1))]; return key.startsWith('shops') ? P.shopMat : P.streetMat; }
     const m = this.M[key];
     if (!m) throw new Error('material desconhecido: ' + key);
     return m;
@@ -106,10 +165,11 @@ export class City {
     const theme = themeOfChunk(i);
     const local = i - phaseOfChunk(i) * PHASE_CHUNKS;
     const zA = -i * CHUNK, zB = zA - CHUNK, zc = zA - CHUNK / 2;
-    const isX = local % 8 === 4;
+    const phase = phaseOfChunk(i), P = this.phases[phase];
+    const isX = P.hasStreets ? P.xChunks.has(local) : local % 8 === 4;
     const parts = {};
     const add = (key, geo) => { (parts[key] ||= []).push(geo); };
-    const ctx = { rng, pick, theme, local, zA, zB, zc, isX, add, i };
+    const ctx = { rng, pick, theme, local, zA, zB, zc, isX, add, i, P, phase, used: new Set() };
 
     // --- Pista: duas pistas de 3 faixas, linhas de borda.
     // A pista do jogador é mais subdividida para o mapeamento afim não deformar tanto perto da câmera.
@@ -145,7 +205,7 @@ export class City {
     }
 
     // --- Ponto de ônibus, outdoor, pórtico de largada.
-    if (!isX && local % 5 === 1) this.busStop(ctx, 1);
+    if (!isX && (P.hasStops ? P.stopChunks.has(local) : local % 5 === 1)) this.busStop(ctx, P.hasStops ? P.stopChunks.get(local) : 1);
     if (!isX && local % 6 === 2) this.billboard(ctx, rng() < 0.5 ? 1 : -1, Math.floor(rng() * this.T.billboardGeneric));
     if (local === 2) this.gantry(ctx, 11, 0xc8241c);
     if (local === PHASE_CHUNKS - 3) this.gantry(ctx, 12, 0x111111);
@@ -188,8 +248,16 @@ export class City {
     for (const x of [7.1, -7.1]) for (const z of [zc + 8.4, zc - 8.4]) add('zebra', groundPlane(ROAD.CARRIAGE_W, 2.4, 3, 1, 0xffffff, x, 0.03, z, 3, 1));
     this.trafficLight(add, 12.9, zc + 7.6, -1, rng);
     this.trafficLight(add, -12.9, zc - 7.6, 1, rng);
-    this.streetSign(add, 13.3, zc + 7.2, theme.sign);
-    this.streetSign(add, -13.3, zc - 7.2, theme.sign);
+    const { P, phase } = ctx;
+    if (P.xChunks.has(local)) {
+      const k = P.xChunks.get(local);
+      this.namedStreetSign(add, 13.3, zc + 7.2, P, phase, k);
+      this.namedStreetSign(add, -13.3, zc - 7.2, P, phase, k);
+      this.streetSign(add, 13.3, zc - 7.2, theme.sign);
+    } else {
+      this.streetSign(add, 13.3, zc + 7.2, theme.sign);
+      this.streetSign(add, -13.3, zc - 7.2, theme.sign);
+    }
     if (rng() < 0.7) this.directionSign(add, 0, zc + 9.5, Math.floor(rng() * 4));
     // Lojas de esquina viradas para a transversal ficam implícitas; postes nos cantos.
     for (const sx of [1, -1]) for (const sz of [1, -1]) add('props', cylinder(0.06, 0.06, 3.5, 5, 0x888a8e, sx * 13.0, 1.75, zc + sz * 7.0));
@@ -210,6 +278,14 @@ export class City {
     const q = signQuad(1.9, 0.48, idx / this.T.signCount, (idx + 1) / this.T.signCount);
     q.translate(x, 2.95, z);
     add('signs', q);
+  }
+
+  namedStreetSign(add, x, z, P, phase, k) {
+    add('props', cylinder(0.05, 0.05, 2.8, 5, 0x888a8e, x, 1.4, z));
+    const { u0, u1, v0, v1 } = P.streetAtlas.uv(k);
+    const q = signQuad(1.9, 0.48, u0, u1, v0, v1);
+    q.translate(x, 2.95, z);
+    add('streetsigns@' + phase, q);
   }
 
   directionSign(add, x, z, idx) {
@@ -246,15 +322,24 @@ export class City {
   }
 
   fillBuildings(ctx, side, z0, z1) {
-    const { add, theme, rng, pick } = ctx;
+    const { add, theme, rng, pick, P, phase, local } = ctx;
     const x0 = ROAD.SIDEWALK_X1;
     const shopCount = this.T.shopCount;
+    // Estabelecimentos reais deste trecho e lado (OpenStreetMap), em ordem de distância.
+    const used = ctx.used;
+    const here = (P.byChunk.get(local + '|' + side) || []).filter((p) => !used.has(p));
+    if (here.filter((p) => p.cat === 'fuel').length && !ctx.isX) { here.forEach((p) => used.add(p)); this.gasStation(this.sided(ctx, side)); return; }
+    if (here.filter((p) => p.cat === 'car').length >= 3) { here.forEach((p) => used.add(p)); this.dealership(this.sided(ctx, -side)); return; }
     let z = z0;
     while (z - z1 > 4) {
       let bw = 7 + rng() * 8;
       if (z - bw < z1 + 4) bw = z - z1;
       const bd = 10 + rng() * 8;
-      const floors = theme.floors[0] + Math.floor(rng() * (theme.floors[1] - theme.floors[0] + 1));
+      const s = -(z - bw / 2) - phase * PHASE_LEN;
+      const lv = this.levelsNear(P, s, side);
+      const floors = lv ? Math.max(1, Math.min(9, lv)) : theme.floors[0] + Math.floor(rng() * (theme.floors[1] - theme.floors[0] + 1));
+      const mine = here.filter((p) => !used.has(p) && -p.s - phase * PHASE_LEN <= z + 3 && -p.s - phase * PHASE_LEN > z - bw - 3);
+      if (mine.some((p) => p.cat === 'school')) { mine.forEach((p) => used.add(p)); this.school(ctx, side, z, Math.max(bw, 14), mine.find((p) => p.cat === 'school')); z -= Math.max(bw, 14) + 0.4; continue; }
       const tint = pick(theme.palette);
       const facadeName = pick(theme.facades);
       const zc = z - bw / 2;
@@ -282,18 +367,27 @@ export class City {
         z -= bw + 0.4;
         continue;
       }
-      const commercial = rng() < theme.shopProb;
+      const commercial = mine.length > 0 || rng() < theme.shopProb;
       let y = 0;
       if (commercial) {
         const groundH = 3.8;
-        const units = Math.max(1, Math.round(bw / 6));
+        const units = Math.max(1, Math.max(mine.length, Math.round(bw / 6)));
         const uw = bw / units;
         for (let u = 0; u < units; u++) {
-          const idx = pick(theme.shops);
           const g = new THREE.BoxGeometry(bd, groundH, uw);
-          atlasFaceUVs(g, side > 0 ? 1 : 0, idx / shopCount, (idx + 1) / shopCount, 0, 1, (idx + 0.02) / shopCount, 0.985);
-          g.translate(xc, groundH / 2, z - uw * (u + 0.5));
-          add('shops', gradientColorize(g, 0xffffff, 0.78));
+          const poi = mine[u];
+          if (poi) {
+            used.add(poi);
+            const { u0, u1, v0, v1 } = P.shopAtlas.uv(poi.idx);
+            atlasFaceUVs(g, side > 0 ? 1 : 0, u0, u1, v0, v1, 0.01, 0.99);
+            g.translate(xc, groundH / 2, z - uw * (u + 0.5));
+            add('shops@' + phase, gradientColorize(g, 0xffffff, 0.78));
+          } else {
+            const idx = pick(theme.shops);
+            atlasFaceUVs(g, side > 0 ? 1 : 0, idx / shopCount, (idx + 1) / shopCount, 0, 1, (idx + 0.02) / shopCount, 0.985);
+            g.translate(xc, groundH / 2, z - uw * (u + 0.5));
+            add('shops', gradientColorize(g, 0xffffff, 0.78));
+          }
           if (rng() < 0.6) add('props', box(1.3, 0.08, uw * 0.85, pick(AWNINGS), side * (x0 - 0.65), 3.05, z - uw * (u + 0.5)));
         }
         y = groundH;
@@ -313,7 +407,34 @@ export class City {
     }
   }
 
-  // Pontos de referência por avenida. Retorna true se ocupou esse lado do chunk.
+  /** ctx cujo add espelha em x quando side < 0 (construtores escritos para um lado só). */
+  sided(ctx, side) {
+    if (side > 0) return ctx;
+    return { ...ctx, add: (key, geo) => ctx.add(key, mirrorX(geo)) };
+  }
+
+  /** Escola: muro baixo com grade, pátio e bloco de dois andares com o nome no letreiro. */
+  school(ctx, side, z, bw, poi) {
+    const { add, P, phase } = ctx;
+    const x0 = ROAD.SIDEWALK_X1, zc = z - bw / 2;
+    add('props', box(0.3, 1.2, bw, 0xd8d0c0, side * (x0 + 0.15), 0.75, zc));
+    for (let k = 0.5; k < bw; k += 2) add('props', box(0.08, 1.6, 0.08, 0x8a8a8e, side * (x0 + 0.15), 2.0, z - k));
+    add('asphaltPlain', groundPlane(8, bw - 1, 2, 3, 0xffffff, side * (x0 + 4.5), 0.02, zc, 1, 1));
+    const h = 7.0;
+    const g = new THREE.BoxGeometry(14, h, bw - 2);
+    tileBoxUVs(g, 14, h, bw - 2, 7.0, 6.4);
+    g.translate(side * (x0 + 9 + 7), h / 2, zc);
+    add('facade_modern', gradientColorize(g, 0xf4e8c8, 0.7));
+    add('props', box(14.2, 0.35, bw - 1.8, 0x6a645c, side * (x0 + 16), h + 0.17, zc));
+    const { u0, u1, v0, v1 } = P.shopAtlas.uv(poi.idx);
+    const q = signQuad(6, 1.7, u0, u1, v1 - (v1 - v0) * 0.32, v1 - (v1 - v0) * 0.02);
+    q.rotateY(side > 0 ? -Math.PI / 2 : Math.PI / 2); q.translate(side * (x0 + 0.05), 2.2, zc);
+    add('shops@' + phase, q);
+    add('props', box(0.12, 2.6, 0.12, 0x8a8a8e, side * (x0 + 0.4), 1.3, zc - 3.2));
+    add('props', box(0.12, 2.6, 0.12, 0x8a8a8e, side * (x0 + 0.4), 1.3, zc + 3.2));
+  }
+
+  // Pontos de referência por avenida, nas distâncias reais (OpenStreetMap). Retorna true se ocupou esse lado do chunk.
   landmark(ctx, side) {
     const { theme, local } = ctx;
     if (local <= 2) {
@@ -321,25 +442,29 @@ export class City {
       if (theme.key === 'bento' && side > 0) { this.pelotense(ctx); return true; }
       if (theme.key === 'jk' && side > 0) { this.big(ctx); return true; }
     }
+    const rel = (base) => ({ ...ctx, local: local - base });
     if (theme.key === 'duque') {
-      if (side > 0 && local === 13) { this.supermarketLot(ctx); return true; }
-      if (side > 0 && local === 14) { this.supermarketStore(ctx); return true; }
-      if (side < 0 && local === 26) { this.dealership(ctx); return true; }
+      if (side > 0 && local === 8) { this.supermarketLot(ctx); return true; }       // Nicolini, 370 m
+      if (side > 0 && local === 9) { this.supermarketStore(ctx); return true; }
+      if (side > 0 && local === 28) { this.supermarketStore(ctx); return true; }    // Stok Center, 1150 m
+      if (side < 0 && local === 24) { this.dealership(ctx); return true; }           // revendas de carros, 900-1100 m
     }
     if (theme.key === 'bento') {
-      if (side < 0 && local >= 9 && local <= 11) { this.park(ctx); return true; }
-      if (side > 0 && local >= 24 && local <= 26) { this.stadium(ctx); return true; }
+      if (side < 0 && local >= 22 && local <= 24) { this.park(rel(13)); return true; }                    // Parque Dom Antônio Zattera, 877 m
+      if (side < 0 && local >= 25 && local <= 27) { this.stadium(this.sided(rel(1), -1)); return true; }   // Estádio Boca do Lobo, no parque
+      if (side > 0 && local >= 30 && local <= 32) { this.brigada({ ...this.sided(rel(30), -1), signIdx: 2 }); return true; }   // Quartel da Brigada Militar, 1264 m
+      if (side < 0 && local >= 44 && local <= 46) { this.big(this.sided(rel(44), -1)); return true; }      // BIG/Carrefour, 1812 m (JK começa ali)
     }
     if (theme.key === 'jk') {
-      if (side < 0 && local >= 8 && local <= 32) { this.canal(ctx); return true; }
-      if (side > 0 && (local === 15 || local === 29)) { this.gasStation(ctx); return true; }
+      if (side < 0 && local >= 26 && local <= 36) { this.canal(ctx); return true; }
+      if (side > 0 && local === 14) { this.gasStation(ctx); return true; }           // Posto Santa Clara, 595 m
       if (side > 0 && local === 21) { this.silos(ctx); return true; }
     }
     return false;
   }
 
   // Ponto de partida da Duque: sede da Brigada Militar no Fragata (lado esquerdo).
-  brigada({ add, zA, zB, zc, local, rng }) {
+  brigada({ add, zA, zB, zc, local, rng, signIdx }) {
     const x0 = ROAD.SIDEWALK_X1;
     if (local === 1) {
       const xc = -(x0 + 8);
@@ -353,7 +478,8 @@ export class City {
       add('props', box(3.5, 0.4, 10, 0xf0ead8, -(x0 + 1.5), 4.2, zc));
       for (const dz of [-4, 0, 4]) add('props', box(0.5, 4.2, 0.5, 0xe8e2d0, -(x0 - 0.1), 2.1 + 0.15, zc + dz));
       add('props', emissive(box(0.3, 2.6, 3.2, 0xffe0b0, -(x0 + 0.1), 1.3 + 0.15, zc))); // porta de vidro acesa
-      const q = signQuad(14, 2.0, 0, 0.5);
+      const n = this.T.landmarkCount, si = signIdx === undefined ? 0 : signIdx;
+      const q = signQuad(14, 2.0, si / n, (si + 1) / n);
       q.rotateY(Math.PI / 2); q.translate(-(x0 - 0.02), 3.6, zc + 8);
       add('landmarkSigns', q);
       // mastro com bandeira
@@ -383,7 +509,8 @@ export class City {
       add('props', box(18.4, 0.5, 38.4, 0x7a8a6a, xc, 6.45, zc));
       add('props', box(2.2, 0.35, 12, 0x9fb08c, x0 + 1.1, 5.0, zc)); // marquise da entrada
       add('props', box(0.3, 3.4, 5, 0x3a4a44, x0 + 0.15, 1.7 + 0.15, zc)); // portão gradeado
-      const q = signQuad(16, 2.2, 0.5, 1.0);
+      const n = this.T.landmarkCount;
+      const q = signQuad(16, 2.2, 1 / n, 2 / n);
       q.rotateY(-Math.PI / 2); q.translate(x0 - 0.02, 5.6, zc + 8);
       add('landmarkSigns', q);
       add('asphaltPlain', groundPlane(3.6, 38, 1, 5, 0xffffff, x0 + 1.8 - 1.8, 0.16, zc, 1, 1));
@@ -525,15 +652,15 @@ export class City {
     add('water', groundPlane(140, CHUNK, 14, 4, 0xffffff, -(16.7 + 6 + 70), -0.9, zc, 2, 2));
     // margem oposta: galpões do porto
     add('props', box(22, 7 + rng() * 4, 30, 0x8a9298, -98, 3.5, zc + (rng() - 0.5) * 6));
-    if (local >= 18 && local <= 20) {
+    if (local >= 30 && local <= 32) {
       const x = -92;
       for (const dz of [-9, 9]) add('props', box(2.2, 30, 2.2, 0xc84a1a, x, 14, zc + dz));
       add('props', box(2.2, 2.2, 20, 0xc84a1a, x, 29, zc));
       add('props', box(32, 1.8, 2.2, 0xc84a1a, x + 15, 28.5, zc));
       add('props', box(3, 3, 3, 0x3a3a3e, x + 28, 26, zc));
     }
-    if (local === 12) this.streetSign(add, -13.6, zA - 20, 5);
-    if (local === 24) this.directionSign(add, -13.6, zA - 20, 2);
+    if (local === 27) this.streetSign(add, -13.6, zA - 20, 5);
+    if (local === 34) this.directionSign(add, -13.6, zA - 20, 2);
   }
 
   gasStation({ add, zA, zc }) {

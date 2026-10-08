@@ -73,6 +73,26 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 - **Fase 3 · Av. Pres. Juscelino Kubitschek** — largada no supermercado BIG; meio-fio pintado de branco,
   terrenos de areia, palmeiras, canal, guindastes do porto, silos e posto de gasolina.
 
+## Dados reais das avenidas (OpenStreetMap)
+
+Os 2 km de cada fase seguem o que existe de verdade ao longo da avenida, a partir do ponto de partida, com dados do
+[OpenStreetMap](https://www.openstreetmap.org) (© colaboradores do OSM, licença ODbL), baixados pela API Overpass por
+`tools/osm/build_avenues.py` e gravados em `js/avenues_data.js`:
+
+- **cruzamentos** nas transversais reais, com a placa azul do nome da rua (Rua Marcílio Dias, Rua Santos Dumont,
+  Rua Marechal Deodoro…);
+- **letreiros** com os nomes dos estabelecimentos reais na distância e no lado certos (Fragafarma, Unisuper, Atacado de
+  Sorvetes, Cantina da Bento, Panvel, Banrisul…), com cor e vitrine conforme a categoria; postos viram posto de
+  gasolina, três ou mais revendas de carro viram concessionária, escolas viram escola com letreiro;
+- **paradas de ônibus** e **andares** dos prédios onde o OSM informa;
+- **marcos** nas distâncias reais: na Bento, o Parque Dom Antônio Zattera com o Estádio Boca do Lobo, o Quartel da
+  Brigada Militar (Comando Regional) e o BIG no fim; na Duque, o Nicolini, o Stok Center e as revendas de carros;
+- a **curva** da JK depois do BIG e a curva no fim da Duque vêm do traçado real.
+
+Para atualizar: baixe os `*_geom.json`, `*_pois.json` e `*_cross.json` com as consultas documentadas no script e rode
+`python3 tools/osm/build_avenues.py <pasta> js/avenues_data.js`. Fotos de referência não são usadas: as fachadas
+continuam procedurais.
+
 ## Técnica
 
 Tudo em `js/ps1.js`:
@@ -198,7 +218,9 @@ js/textures.js    texturas procedurais
 js/geometry.js    helpers low-poly
 js/vehicles.js    Astra procedural (reserva), carros do tráfego, ônibus (Turf, Santa Silvana, Santa Rosa), moto, buraco
 js/astra_model.js carrega assets/astra.glb e aplica os materiais do jogo
-js/city.js        avenidas, prédios, cruzamentos e pontos de referência
+js/city.js        avenidas, prédios, cruzamentos e pontos de referência (guiados por avenues_data.js)
+js/avenues_data.js  dados reais das avenidas (OSM)
+tools/osm/        gerador dos dados a partir do Overpass
 js/traffic.js     spawn, movimento e colisões
 js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
