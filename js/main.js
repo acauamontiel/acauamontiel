@@ -440,6 +440,8 @@ function warmUp() {
   scene.remove(g);
   g.traverse((o) => { if (o.isMesh) o.frustumCulled = true; });
 }
+// Outdoor da Auto Car: a foto real entra no atlas de outdoors (se não carregar, fica a versão em texto).
+await new Promise((done) => new THREE.ImageLoader().load('assets/autocar.jpg', (img) => { T.applyBillboardImage(img); done(); }, undefined, () => done()));
 if (loadingEl) loadingEl.textContent = 'PREPARANDO…';
 if (loadingBar) loadingBar.style.width = '100%';
 await new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));

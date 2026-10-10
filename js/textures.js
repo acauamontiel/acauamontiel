@@ -493,20 +493,22 @@ export function makeTextures() {
     ['PNEUS 24H', 'BORRACHARIA DO PORTO'],
     ['DOCES FINOS', 'QUINDIM · CAMAFEU · BEM-CASADO'],
     ['COLÉGIO', 'MATRÍCULAS ABERTAS'],
-    ['ONLY ASTRA', 'GSi 2.0 16V · 136 CV'],
+    ['AUTO CAR', 'MECÂNICA MULTIMARCAS'], // substituído pela foto (applyBillboardImage)
     ['RÁDIO FM', 'A VOZ DA ZONA SUL'],
-    // índices 8+ são usados só pelos pontos de referência
+    // índices 8 a 12 são usados só pelos pontos de referência
     ['SUPERMERCADO', 'OFERTAS DA SEMANA · FRAGATA'],
     ['POSTO', 'GASOLINA · ETANOL · DIESEL'],
     ['CONCESSIONÁRIA', 'ASTRA · VECTRA · CORSA · OMEGA'],
     ['LARGADA', 'CRAZY ASTRA'],
     ['CHEGADA', 'FIM DA FASE'],
+    ['AUTO CAR', 'MECÂNICA MULTIMARCAS · PELOTAS'], // 13: segunda versão com a foto
   ];
-  T.billboardGeneric = 8;
+  // Outdoors genéricos sorteados ao longo das avenidas; a Auto Car entra duas vezes para aparecer mais.
+  T.billboardGenericIdx = [0, 1, 2, 3, 4, 5, 6, 7, 13, 6, 13];
   {
     const n = T.billboardTexts.length;
     const [c, g] = canvas(256 * n, 128);
-    const bgs = ['#c23a1f', '#1f4fa0', '#f2c230', '#222', '#d86aa0', '#2a8a5a', '#000', '#5a2a9a', '#c8241c', '#1a7a3a', '#1a1a1a', '#1f4fa0', '#111111'];
+    const bgs = ['#c23a1f', '#1f4fa0', '#f2c230', '#222', '#d86aa0', '#2a8a5a', '#000', '#5a2a9a', '#c8241c', '#1a7a3a', '#1a1a1a', '#1f4fa0', '#111111', '#000'];
     for (let i = 0; i < n; i++) {
       const x = i * 256;
       g.fillStyle = bgs[i % bgs.length]; g.fillRect(x, 0, 256, 128);
@@ -521,6 +523,21 @@ export function makeTextures() {
     }
     T.billboards = pixelTexture(c, false);
     T.billboardCount = n;
+    /** Desenha a foto da Auto Car (assets/autocar.jpg, quadrada) nos dois outdoors dela e atualiza o atlas. */
+    T.applyBillboardImage = (img) => {
+      const w = img.width, h = img.height;
+      // 6: faixa central da foto (2:1), com o logo inteiro.
+      g.drawImage(img, 0, h * 0.25, w, h * 0.5, 6 * 256, 0, 256, 128);
+      // 13: logo em close com borda branca e faixa vermelha embaixo.
+      const x = 13 * 256;
+      g.fillStyle = '#fff'; g.fillRect(x, 0, 256, 128);
+      g.drawImage(img, w * 0.08, h * 0.3, w * 0.84, h * 0.42, x + 4, 4, 248, 96);
+      g.fillStyle = '#c8241c'; g.fillRect(x + 4, 100, 248, 24);
+      g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.font = 'bold 15px Arial, sans-serif';
+      g.fillText('MECÂNICA MULTIMARCAS · PELOTAS', x + 128, 112, 240);
+      T.billboards.needsUpdate = true;
+    };
   }
 
   // Placas azuis (atlas 6 x 256x64): avenidas e pontos de referência.

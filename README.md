@@ -73,6 +73,10 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 - **Fase 3 · Av. Pres. Juscelino Kubitschek** — largada no supermercado BIG; meio-fio pintado de branco,
   terrenos de areia, palmeiras, canal, guindastes do porto, silos e posto de gasolina.
 
+Ao longo das avenidas há outdoors sorteados (Fenadoce, xis, borracharia, rádio…) e os da oficina Auto Car, feitos
+a partir da foto real em `assets/autocar.jpg`, desenhada no atlas de outdoors quando o jogo carrega
+(`T.applyBillboardImage` em `js/textures.js`); a Auto Car entra com peso dobrado no sorteio.
+
 ## PWA
 
 O jogo é instalável (manifesto em `manifest.webmanifest`, ícones do emblema GSi em `icons/`, modo `standalone`,
@@ -241,6 +245,7 @@ js/hud.js  js/input.js  js/audio.js
 assets/astra.glb  modelo do Astra (gerado por tools/rage2glb)
 assets/bus.glb    modelo do ônibus urbano (idem)
 assets/marea.glb  hb20.glb  compass.glb  gol.glb  kombi.glb  saveiro.glb  biz.glb  cg125.glb   carros e motos do tráfego
+assets/autocar.jpg foto da oficina Auto Car usada nos outdoors
 js/vehicle_models.js  carregador genérico dos carros/moto em GLB
 js/bus_model.js   carrega assets/bus.glb e aplica as pinturas das empresas
 tools/rage2glb/   conversores .yft/.ytd (GTA V) e .dff/.txd (GTA SA: ônibus, carros, motos) → GLB (Python puro)

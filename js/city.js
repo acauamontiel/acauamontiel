@@ -206,7 +206,10 @@ export class City {
 
     // --- Ponto de ônibus, outdoor, pórtico de largada.
     if (!isX && (P.hasStops ? P.stopChunks.has(local) : local % 5 === 1)) this.busStop(ctx, P.hasStops ? P.stopChunks.get(local) : 1);
-    if (!isX && local % 6 === 2) this.billboard(ctx, rng() < 0.5 ? 1 : -1, Math.floor(rng() * this.T.billboardGeneric));
+    if (!isX && local % 4 === 2) {
+      const gi = this.T.billboardGenericIdx;
+      this.billboard(ctx, rng() < 0.5 ? 1 : -1, gi[Math.floor(rng() * gi.length)]);
+    }
     if (local === 2) this.gantry(ctx, 11, 0xc8241c);
     if (local === PHASE_CHUNKS - 3) this.gantry(ctx, 12, 0x111111);
 
