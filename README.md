@@ -82,8 +82,10 @@ a partir da foto real em `assets/autocar.jpg`, desenhada no atlas de outdoors qu
 O jogo é instalável (manifesto em `manifest.webmanifest`, ícones do emblema GSi em `icons/`, modo `standalone`,
 que mantém a barra de gestos do Android para sair do app, e orientação livre: o jogo se adapta a retrato e paisagem)
 e funciona offline depois da primeira visita: o `sw.js` responde com a rede primeiro e cai no cache quando não há
-conexão, guardando inclusive os GLB e o three.js. Ao publicar uma versão nova, troque o nome do cache em `sw.js`
-(`crazy-astra-v2`) para os clientes descartarem o cache antigo. Mudanças no manifesto (modo de exibição, orientação)
+conexão, guardando inclusive os GLB e o three.js. As requisições do service worker usam `cache: 'no-cache'`, ou seja,
+revalidam no servidor (304 quando nada mudou) em vez de aceitar o cache HTTP do navegador, para não misturar módulos
+JS de versões diferentes depois de uma atualização. Ao publicar uma versão nova, troque o nome do cache em `sw.js`
+(`crazy-astra-v3`) para os clientes descartarem o cache antigo. Mudanças no manifesto (modo de exibição, orientação)
 só valem para quem reinstala o app ou espera o Android atualizá-lo.
 
 No celular a resolução interna fica limitada a 1024 px no lado maior (`js/quality.js`) para poupar GPU e memória. Se

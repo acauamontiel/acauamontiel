@@ -528,14 +528,10 @@ export function makeTextures() {
       const w = img.width, h = img.height;
       // 6: faixa central da foto (2:1), com o logo inteiro.
       g.drawImage(img, 0, h * 0.25, w, h * 0.5, 6 * 256, 0, 256, 128);
-      // 13: logo em close com borda branca e faixa vermelha embaixo.
+      // 13: logo em close com borda branca.
       const x = 13 * 256;
       g.fillStyle = '#fff'; g.fillRect(x, 0, 256, 128);
-      g.drawImage(img, w * 0.08, h * 0.3, w * 0.84, h * 0.42, x + 4, 4, 248, 96);
-      g.fillStyle = '#c8241c'; g.fillRect(x + 4, 100, 248, 24);
-      g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle';
-      g.font = 'bold 15px Arial, sans-serif';
-      g.fillText('MECÂNICA MULTIMARCAS · PELOTAS', x + 128, 112, 240);
+      g.drawImage(img, w * 0.04, h * 0.25, w * 0.92, h * 0.46, x + 4, 4, 248, 120);
       T.billboards.needsUpdate = true;
     };
   }
