@@ -26,6 +26,18 @@ try {
 }
 renderer.setPixelRatio(1);
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+// Se a GPU derrubar o contexto (memória/driver no celular), mostra aviso e recarrega em vez de ficar numa tela
+// preta sem resposta. Sem o preventDefault o navegador não tenta restaurar o contexto.
+canvas.addEventListener('webglcontextlost', (e) => {
+  e.preventDefault();
+  const el = document.getElementById('loading');
+  el.classList.remove('hidden');
+  el.querySelector('.loading').textContent = 'A PLACA DE VÍDEO PAROU DE RESPONDER';
+  el.querySelector('.loading-hint').textContent = 'Toque para recarregar o jogo';
+  el.addEventListener('pointerdown', () => location.reload(), { once: true });
+  setTimeout(() => location.reload(), 4000);
+});
+canvas.addEventListener('webglcontextrestored', () => location.reload());
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.5, 340);

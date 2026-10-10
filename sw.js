@@ -1,6 +1,6 @@
 // Service worker do Crazy Astra: rede primeiro (sempre a versão nova quando online), cache como reserva
 // para jogar offline. Os GLB e o three.js ficam em cache depois da primeira visita.
-const CACHE = 'crazy-astra-v1';
+const CACHE = 'crazy-astra-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './css/style.css', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', (e) => {

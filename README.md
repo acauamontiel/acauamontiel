@@ -75,10 +75,16 @@ Cada fase é uma avenida real de Pelotas (a cidade em si é imaginada), com o po
 
 ## PWA
 
-O jogo é instalável (manifesto em `manifest.webmanifest`, ícones do emblema GSi em `icons/`, tela cheia em paisagem)
+O jogo é instalável (manifesto em `manifest.webmanifest`, ícones do emblema GSi em `icons/`, modo `standalone`,
+que mantém a barra de gestos do Android para sair do app, e orientação livre: o jogo se adapta a retrato e paisagem)
 e funciona offline depois da primeira visita: o `sw.js` responde com a rede primeiro e cai no cache quando não há
 conexão, guardando inclusive os GLB e o three.js. Ao publicar uma versão nova, troque o nome do cache em `sw.js`
-(`crazy-astra-v1`) para os clientes descartarem o cache antigo. As meta tags Open Graph apontam para
+(`crazy-astra-v2`) para os clientes descartarem o cache antigo. Mudanças no manifesto (modo de exibição, orientação)
+só valem para quem reinstala o app ou espera o Android atualizá-lo.
+
+No celular a resolução interna fica limitada a 1024 px no lado maior (`js/quality.js`) para poupar GPU e memória. Se
+a GPU derrubar o contexto WebGL (tela preta), o jogo mostra um aviso e recarrega sozinho (`webglcontextlost` em
+`js/main.js`). As meta tags Open Graph apontam para
 `icons/og-image.png` (foto do Astra) em `https://astra.acauamontiel.com.br/`.
 
 ## Dados reais das avenidas (OpenStreetMap)
