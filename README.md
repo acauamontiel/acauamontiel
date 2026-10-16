@@ -146,8 +146,7 @@ entra sozinho se o GLB não carregar.
 conversor em `tools/rage2glb/`, escrito em Python puro (sem dependências):
 
 ```bash
-python3 tools/rage2glb/export_glb.py buffalo.yft buffalo.ytd assets/astra.glb --texsize 512 --wheel-tris 20000 --tire-tris 3000 \
-  --skip 9,14,15,42,46,48,84,86 --curve farol:2.2,lanterna:1.8,vehiclelights128:2.0,farolvidro:2.0
+python3 tools/rage2glb/export_glb.py buffalo.yft buffalo.ytd assets/astra.glb --texsize 128 --skip 9,14,15,42,46,48,84,86 --curve farol:2.2,lanterna:1.8,vehiclelights128:2.0,farolvidro:2.0
 ```
 
 O que o conversor faz:
@@ -155,16 +154,13 @@ O que o conversor faz:
 - descomprime o recurso RSC7 e lê o fragmento: drawable, esqueleto, shaders, buffers de vértices e índices
   (posição, normal, UV, índices de osso), e o dicionário de texturas (DXT1/DXT5/ARGB → PNG);
 - mantém só o exterior: descarta as peças ligadas a ossos de interior/motor/som e os shaders de interior
-  (`--skip-bones`, `--skip-shaders`, `--skip`), e deixa de fora os decalques da tampa ("SUPER SPORT", "ASTRA", "2.0", "GSi 16V"; `--drop-uv` tira só uma região de UV se for preciso); `--curve` escurece faróis e lanternas (máscara negra) mantendo as lâmpadas claras; a carroceria fica com os ~30 mil triângulos originais (os 310 mil do arquivo incluem interior, motor e as quatro rodas); com as rodas o GLB tem ~73 mil triângulos e 4,3 MB;
+  (`--skip-bones`, `--skip-shaders`, `--skip`), e deixa de fora os decalques da tampa ("SUPER SPORT", "ASTRA", "2.0", "GSi 16V"; `--drop-uv` tira só uma região de UV se for preciso); `--curve` escurece faróis e lanternas (máscara negra) mantendo as lâmpadas claras; o resultado tem ~31 mil triângulos em vez dos 310 mil originais;
 - converte os eixos (GTA: y para frente, z para cima → jogo: -z para frente, y para cima) e coloca as rodas no chão;
-- mantém o aro inteiro (19,5 mil triângulos: a decimação quebrava os raios finos) e decima só o pneu (9,9 mil → 3 mil,
-  `--tire-tris`) por colapso de arestas com quádricas (`decimate.py`); instancia as quatro rodas nos ossos
-  `wheel_lf/rf/lr/rr`, espelhando as da direita;
-- reduz as texturas para 512 px (faróis e lanternas ficam no tamanho original) e grava um GLB com materiais nomeados
+- decima as rodas (30 mil → 1,4 mil triângulos cada) por colapso de arestas com quádricas (`decimate.py`) e
+  instancia as quatro nos ossos `wheel_lf/rf/lr/rr`, espelhando as da direita;
+- reduz as texturas para 128 px (256 px para faróis e lanternas) e grava um GLB com materiais nomeados
   `shader|textura`, que `js/astra_model.js` troca pelos materiais do jogo (pintura preta com reflexo,
-  vidro fumê, faróis e lanternas acesos, gravatas pretas, aros preto fosco, placa MGY 8888 gerada em canvas).
-  A abertura inferior do para-choque é vazada no modelo (no GTA se vê o radiador atrás); como o cofre do motor
-  fica de fora, `astra_model.js` fecha o vão com um painel preto.
+  vidro fumê, faróis e lanternas acesos, gravatas pretas, placa MGY 8888 gerada em canvas).
 
 ### O modelo do ônibus
 

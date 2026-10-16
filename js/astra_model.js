@@ -75,13 +75,6 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   const group = new THREE.Group();
   group.add(gltf.scene);
   group.add(shadowMesh(2.2, 4.7, M));
-  // A abertura inferior do para-choque é vazada no modelo (no GTA se vê o radiador escuro atrás). Sem o cofre do
-  // motor, enxergava-se a rua através dela: um painel preto fosco fecha o vão por dentro.
-  const panel = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.7), ps1Material({ color: 0x050506, envStrength: 0 }));
-  envCutAttribute(panel.geometry, 1);
-  panel.position.set(0, 0.42, -1.85);
-  panel.material.side = THREE.DoubleSide;
-  gltf.scene.add(panel);
 
   const wheels = ['wheel_lf', 'wheel_rf', 'wheel_lr', 'wheel_rr'].map((n) => gltf.scene.getObjectByName(n)).filter(Boolean);
   const rear = wheels.filter((w) => w.name.endsWith('r'));
