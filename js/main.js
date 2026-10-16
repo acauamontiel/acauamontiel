@@ -41,7 +41,7 @@ canvas.addEventListener('webglcontextrestored', () => location.reload());
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 4 / 3, 0.5, 340);
-const post = new PS1Post(renderer, 640);
+const post = new PS1Post(renderer, 640, params.has('noaa') ? 0 : 4); // ?noaa desliga o anti-aliasing (aparelhos fracos)
 
 const T = makeTextures();
 const M = makeMaterials(T);

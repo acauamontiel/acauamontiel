@@ -281,7 +281,7 @@ const _dir = new THREE.Vector3();
 
 /** Pós-processamento: cena em resolução reduzida → tela, com céu noturno. */
 export class PS1Post {
-  constructor(renderer, longSide = 640) {
+  constructor(renderer, longSide = 640, samples = 4) {
     this.renderer = renderer;
     this.longSide = longSide;
     this.rt = new THREE.WebGLRenderTarget(640, 360, {
@@ -289,6 +289,7 @@ export class PS1Post {
       magFilter: THREE.LinearFilter,
       depthBuffer: true,
       stencilBuffer: false,
+      samples, // MSAA (WebGL2): suaviza bordas de aros, fios e placas; 0 desliga
     });
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);

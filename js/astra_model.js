@@ -22,7 +22,7 @@ const RULES = [
   ['vehicle_badges', (map) => ({ map, alphaTest: 0.5, polygonOffset: 1 }), 1],
   ['vehicle_detail2|futo_dash', (map) => ({ map }), 1],
   ['vehicle_detail2', () => ({ color: 0x18191b }), 1],
-  ['wheel|rim', () => ({ color: 0x121214, envStrength: 0.55 }), 0],
+  ['wheel|rim', () => ({ color: 0x08080a, envStrength: 0.4 }), 0], // aro preto fosco escuro
   ['wheel|tire', () => ({ color: 0x0c0c0d }), 1],
   ['vehicle_tire', (map) => ({ map, color: 0x9a9a9a }), 0.5],
 ];
@@ -75,6 +75,13 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   const group = new THREE.Group();
   group.add(gltf.scene);
   group.add(shadowMesh(2.2, 4.7, M));
+  // A abertura inferior do para-choque é vazada no modelo (no GTA se vê o radiador escuro atrás). Sem o cofre do
+  // motor, enxergava-se a rua através dela: um painel preto fosco fecha o vão por dentro.
+  const panel = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.7), ps1Material({ color: 0x050506, envStrength: 0 }));
+  envCutAttribute(panel.geometry, 1);
+  panel.position.set(0, 0.42, -1.85);
+  panel.material.side = THREE.DoubleSide;
+  gltf.scene.add(panel);
 
   const wheels = ['wheel_lf', 'wheel_rf', 'wheel_lr', 'wheel_rr'].map((n) => gltf.scene.getObjectByName(n)).filter(Boolean);
   const rear = wheels.filter((w) => w.name.endsWith('r'));

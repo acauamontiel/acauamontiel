@@ -11,7 +11,8 @@ ap.add_argument('--skip-shaders', default='vehicle_interior2,vehicle_dash_emissi
 ap.add_argument('--skip-bones', default='interiorlight,engine,seat_pside_f,seat_dside_f,seat_dside_r,seat_pside_r,motor,som,caixasom,dials,dialsb,steeringwheel,internoluz,chassis_lowlod,chassis_dummy,neon_l,neon_r,neon_f,neon_b,CorneteiraByPedro³D')
 ap.add_argument('--wheel-only', default='', help='índices de geometria da roda a incluir')
 ap.add_argument('--no-wheels', action='store_true')
-ap.add_argument('--wheel-tris', type=int, default=700, help='triângulos alvo do aro (pneu = 70%%)')
+ap.add_argument('--wheel-tris', type=int, default=700, help='triângulos alvo do aro (pneu = 70%%, salvo --tire-tris)')
+ap.add_argument('--tire-tris', type=int, default=0, help='triângulos alvo do pneu (0 = 70%% do aro)')
 ap.add_argument('--texsize-big', default='farol,lanterna,vehiclelights128,farolvidro', help='texturas exportadas com o dobro do tamanho')
 ap.add_argument('--texsize', type=int, default=256)
 ap.add_argument('--ground', type=float, default=None, help='z (GTA) do chão; default = centro da roda - raio')
@@ -151,7 +152,7 @@ for gi, g, res in collected:
 if wheel_model and not args.no_wheels:
     import decimate
     groups = [('cap', [0], 60, 'spec|dourado'), ('ring', [1], 120, 'vehicle_mesh|black'), ('rim', [2, 3, 4, 5], args.wheel_tris, 'wheel|rim'),
-              ('tire', [6, 7, 8, 9], int(args.wheel_tris * 0.7), 'wheel|tire'), ('disc', [10], 60, 'vehicle_tire|tormoz_color')]
+              ('tire', [6, 7, 8, 9], args.tire_tris or int(args.wheel_tris * 0.7), 'wheel|tire'), ('disc', [10], 60, 'vehicle_tire|tormoz_color')]
     if len(wheel_model['geoms']) < 11:  # roda de moto: cada geometria vira um grupo com o shader original
         groups = [('w%d' % i, [i], args.wheel_tris, 'vehicle_tire|' + (d['shaders'][g['shader']]['params'].get('DiffuseSampler', (None, None))[1] or '')) for i, g in enumerate(wheel_model['geoms'])]
     mats = {}
