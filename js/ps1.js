@@ -18,11 +18,13 @@ export const shared = {
   uDiffuse: { value: 0.22 },
   uNight: { value: 1 },
   uEnvScale: { value: 0.45 },
-  uCarPos: { value: new THREE.Vector3(7.1, 0.6, 0) },
   // Faróis do Astra: origem de cada feixe (mundo) e direção comum (normalizada, com a inclinação para baixo).
   uHeadL: { value: new THREE.Vector3(6.5, 0.685, -1.99) },
   uHeadR: { value: new THREE.Vector3(7.7, 0.685, -1.99) },
   uHeadDir: { value: new THREE.Vector3(0, -0.07, -1).normalize() },
+  // Faróis de neblina: origem de cada um (mesma direção horizontal dos faróis).
+  uFogL: { value: new THREE.Vector3(6.47, 0.35, -2.03) },
+  uFogR: { value: new THREE.Vector3(7.73, 0.35, -2.03) },
   // Curva visual da pista: x = amplitude lateral, y = z inicial, z = z final, w = z da câmera.
   uCurve: { value: new THREE.Vector4(0, 0, -1, 0) },
 };
@@ -32,6 +34,8 @@ export function setHeadlightsFromCar(x, z) {
   shared.uHeadL.value.set(x - 0.6, 0.685, z - 1.99);
   shared.uHeadR.value.set(x + 0.6, 0.685, z - 1.99);
   shared.uHeadDir.value.set(0, -0.07, -1).normalize();
+  shared.uFogL.value.set(x - 0.63, 0.35, z - 2.03);
+  shared.uFogR.value.set(x + 0.63, 0.35, z - 2.03);
 }
 
 
@@ -134,6 +138,8 @@ uniform float uNight;
 uniform vec3 uHeadL;
 uniform vec3 uHeadR;
 uniform vec3 uHeadDir;
+uniform vec3 uFogL;
+uniform vec3 uFogR;
 uniform float uLightScale;
 
 varying vec2 vUv;
@@ -175,6 +181,21 @@ float beamTerm(vec3 p, vec3 o) {
 }
 float headTerm(vec3 p) { return beamTerm(p, uHeadL) + beamTerm(p, uHeadR); }
 
+// Faróis de neblina (nós luz_neblina_*): leque largo, curto e rente ao chão, logo à frente do para-choque.
+float fogBeam(vec3 p, vec3 o) {
+  vec3 d = p - o;
+  vec2 h = normalize(uHeadDir.xz);
+  float along = dot(d.xz, h);
+  if (along <= 0.0) return 0.0;
+  float side = d.x * h.y - d.z * h.x;
+  float spread = 1.6 + along * 0.55;
+  float lat = exp(-(side * side) / (spread * spread));
+  float fall = clamp(1.0 - along / 16.0, 0.0, 1.0);
+  float v = clamp(1.0 - abs(d.y + 0.2) / 1.1, 0.0, 1.0);
+  return lat * fall * v * 0.55;
+}
+float fogTerm(vec3 p) { return fogBeam(p, uFogL) + fogBeam(p, uFogR); }
+
 void main() {
   vec4 tex = vec4(1.0);
   if (uHasMap > 0.5) tex = texture2D(uMap, vUv);
@@ -186,7 +207,7 @@ void main() {
   if (vEnvCut < -0.5) emis = 1.0;
 
   vec3 lamp = vec3(1.0, 0.72, 0.42) * lampTerm(vWorld) * uNight;
-  vec3 head = vec3(1.0, 0.95, 0.82) * headTerm(vWorld) * uNight;
+  vec3 head = (vec3(1.0, 0.95, 0.82) * headTerm(vWorld) + vec3(1.0, 0.9, 0.62) * fogTerm(vWorld)) * uNight;
   vec3 c = albedo * (vLight + (lamp + head) * uLightScale) * (1.0 - emis) + albedo * emis;
 
   if (uEnvStrength > 0.0) c += texture2D(uEnvMap, vEnv).rgb * uEnvStrength * uEnvScale * max(0.0, 1.0 - vEnvCut);
@@ -228,6 +249,8 @@ export function ps1Material(o = {}) {
       uHeadL: shared.uHeadL,
       uHeadR: shared.uHeadR,
       uHeadDir: shared.uHeadDir,
+      uFogL: shared.uFogL,
+      uFogR: shared.uFogR,
       uMap: { value: o.map || white },
       uHasMap: { value: o.map ? 1 : 0 },
       uColor: { value: new THREE.Color(o.color === undefined ? 0xffffff : o.color) },

@@ -52,7 +52,7 @@ function glowTexture() {
 }
 
 /**
- * Luzes a partir dos vazios do modelo (luz_farol_esq/dir, luz_lanterna_esq/dir). O feixe de cada vazio sai pelo
+ * Luzes a partir dos vazios do modelo (luz_farol_esq/dir, luz_neblina_esq/dir, luz_lanterna_esq/dir). O feixe de cada vazio sai pelo
  * -Y local do nó no glTF (é o -Z do vazio no Blender; o exportador só corrige o eixo de luzes e câmeras).
  * Devolve null se o modelo não tiver os nós. Os feixes em si são calculados no shader (uHeadL/uHeadR/uHeadDir);
  * aqui entram o brilho das lentes e o das lanternas, que cresce ao frear.
@@ -61,6 +61,7 @@ function buildLights(root, tailMats) {
   const node = (n) => root.getObjectByName(n);
   const head = [node('luz_farol_esq'), node('luz_farol_dir')].filter(Boolean);
   const tail = [node('luz_lanterna_esq'), node('luz_lanterna_dir')].filter(Boolean);
+  const fog = [node('luz_neblina_esq'), node('luz_neblina_dir')].filter(Boolean);
   if (head.length < 2) return null;
   const tex = glowTexture();
   const glow = (n, color, size, opacity) => {
@@ -69,6 +70,7 @@ function buildLights(root, tailMats) {
     n.add(s); return s;
   };
   head.forEach((n) => glow(n, 0xfff0d2, 0.55, 0.9));
+  fog.forEach((n) => glow(n, 0xffe6a0, 0.34, 0.8));
   const tailGlow = tail.map((n) => glow(n, 0xff2412, 0.45, 0.4));
   const dim = new THREE.Color(0x8c8c8c), full = new THREE.Color(0xffffff);
   const q = new THREE.Quaternion();
@@ -78,6 +80,7 @@ function buildLights(root, tailMats) {
       head[0].getWorldPosition(shared.uHeadL.value);
       head[1].getWorldPosition(shared.uHeadR.value);
       shared.uHeadDir.value.set(0, -1, 0).applyQuaternion(head[0].getWorldQuaternion(q)).normalize();
+      if (fog.length === 2) { fog[0].getWorldPosition(shared.uFogL.value); fog[1].getWorldPosition(shared.uFogR.value); }
     },
     /** k = 0 lanterna normal, 1 freio no máximo. */
     setBrake(k) {

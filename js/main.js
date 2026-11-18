@@ -413,7 +413,6 @@ function frame() {
   else updateGameOver(dt);
   city.update(G.z);
   updateCurve();
-  shared.uCarPos.value.set(G.x, 0.6, G.z);
   // Faróis e lanternas: os feixes nascem dos nós luz_farol_* do modelo e seguem o carro (inclusive no drift).
   if (astra.lights) {
     if (G.state !== 'playing') G.brakeGlow = 0;
