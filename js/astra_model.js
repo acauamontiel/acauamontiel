@@ -23,6 +23,7 @@ const RULES = [
   ['vehicle_detail2|futo_dash', (map) => ({ map }), 1],
   ['vehicle_detail2', () => ({ color: 0x18191b }), 1],
   ['wheel|rim', () => ({ color: 0x08080a, envStrength: 0.4 }), 0], // aro preto fosco escuro
+  ['wheel|emblem', () => ({ color: 0xc9962e, envStrength: 0.5 }), 0.2], // gravata dourada da calota
   ['wheel|tire', () => ({ color: 0x0c0c0d }), 1],
   ['vehicle_tire', (map) => ({ map, color: 0x9a9a9a }), 0.5],
 ];

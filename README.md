@@ -164,6 +164,23 @@ O que o conversor faz:
   `shader|textura`, que `js/astra_model.js` troca pelos materiais do jogo (pintura preta com reflexo,
   vidro fumê, faróis e lanternas acesos, gravatas pretas, aros preto fosco, placa MGY 8888 gerada em canvas).
 
+### A roda feita no Blender
+
+As rodas do Astra não são mais as do mod: vêm de um `.blend` próprio (aro preto de cinco raios duplos, calota com a
+gravata dourada, pneu de perfil baixo), convertido em dois passos:
+
+```
+pip install bpy                                                   # ou rode dentro do Blender
+python3 tools/rage2glb/blend_wheel.py roda.blend roda.json        # extrai e reduz (Decimate) a roda
+python3 tools/rage2glb/swap_wheel.py assets/astra.glb roda.json assets/astra.glb
+```
+
+`blend_wheel.py` espera a roda deitada (eixo em Z, face externa em +Z), separa pneu, emblema e aro pelo nome do
+material, reduz o pneu para ~9 mil triângulos e escala tudo para o raio da roda do jogo (0,319 m).
+`swap_wheel.py` troca as primitivas de `wheel_l`/`wheel_r` dentro do GLB (mantém o disco de freio original) sem
+precisar do `.yft`; `export_glb.py --wheel-json roda.json` faz o mesmo numa exportação completa. No jogo os
+materiais são `wheel|rim`, `wheel|tire` e `wheel|emblem` (`js/astra_model.js`).
+
 ### O modelo do ônibus
 
 `assets/bus.glb` vem de um mod de GTA San Andreas (`bus.dff` + `bus.txd`, RenderWare), convertido por
