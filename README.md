@@ -182,7 +182,15 @@ glTF do Blender. Convenções do `.blend`: frente em +Y, chão em Z = 0, 1 unida
 
 No jogo, `js/astra_model.js` usa cores e texturas do próprio modelo e só escolhe o tipo de shader pelo nome do
 material (pintura com reflexo, vidro transparente, faróis emissivos, grade recortada); materiais novos criados no
-Blender entram com a cor do modelo e reflexo proporcional ao brilho. As seções acima descrevem a conversão original
+Blender entram com a cor do modelo e reflexo proporcional ao brilho. **Luzes.** O modelo traz vazios que marcam as luzes: `luz_farol_esq/dir`, `luz_lanterna_esq/dir` e
+`luz_neblina_esq/dir` (estes ainda sem uso). O jogo não usa luzes do three.js: os dois feixes dos faróis são
+calculados no shader (`beamTerm` em `js/ps1.js`) a partir da posição e da direção dos nós `luz_farol_*`, então
+seguem o carro inclusive no drift; nas lentes e nas lanternas entram brilhos aditivos, e a lanterna acende mais
+forte ao frear (`buildLights` em `js/astra_model.js`). O feixe de cada vazio sai pelo **-Y local** do nó no glTF
+(o -Z do vazio no Blender: o exportador só corrige o eixo de luzes e câmeras, não de vazios). Materiais com
+emissão ligada no Blender são desenhados com brilho próprio. Os spots do `.blend` não são exportados.
+
+As seções acima descrevem a conversão original
 do mod, que continua valendo para os carros do tráfego.
 
 ### O modelo do ônibus

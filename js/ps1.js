@@ -19,9 +19,21 @@ export const shared = {
   uNight: { value: 1 },
   uEnvScale: { value: 0.45 },
   uCarPos: { value: new THREE.Vector3(7.1, 0.6, 0) },
+  // Faróis do Astra: origem de cada feixe (mundo) e direção comum (normalizada, com a inclinação para baixo).
+  uHeadL: { value: new THREE.Vector3(6.5, 0.685, -1.99) },
+  uHeadR: { value: new THREE.Vector3(7.7, 0.685, -1.99) },
+  uHeadDir: { value: new THREE.Vector3(0, -0.07, -1).normalize() },
   // Curva visual da pista: x = amplitude lateral, y = z inicial, z = z final, w = z da câmera.
   uCurve: { value: new THREE.Vector4(0, 0, -1, 0) },
 };
+
+/** Faróis no lugar padrão de um carro em (x, z) apontando para -z (visualizador, Astra procedural). */
+export function setHeadlightsFromCar(x, z) {
+  shared.uHeadL.value.set(x - 0.6, 0.685, z - 1.99);
+  shared.uHeadR.value.set(x + 0.6, 0.685, z - 1.99);
+  shared.uHeadDir.value.set(0, -0.07, -1).normalize();
+}
+
 
 const white = (() => {
   const t = new THREE.DataTexture(new Uint8Array([255, 255, 255, 255]), 1, 1);
@@ -119,7 +131,9 @@ uniform sampler2D uEnvMap;
 uniform float uEnvStrength;
 uniform float uEnvScale;
 uniform float uNight;
-uniform vec3 uCarPos;
+uniform vec3 uHeadL;
+uniform vec3 uHeadR;
+uniform vec3 uHeadDir;
 uniform float uLightScale;
 
 varying vec2 vUv;
@@ -144,17 +158,22 @@ float lampTerm(vec3 p) {
   return sum;
 }
 
-// Farol do Astra: feixe para -z a partir do carro, abrindo com a distância.
-float headTerm(vec3 p) {
-  vec3 d = p - uCarPos;
-  float along = -d.z;
+// Faróis do Astra: um feixe por lente (nós luz_farol_* do modelo), na direção do carro, abrindo com a distância
+// e descendo conforme a inclinação do nó.
+float beamTerm(vec3 p, vec3 o) {
+  vec3 d = p - o;
+  float hl = max(length(uHeadDir.xz), 0.001);
+  vec2 h = uHeadDir.xz / hl;
+  float along = dot(d.xz, h);
   if (along <= 0.0) return 0.0;
-  float spread = 1.6 + along * 0.3;
-  float lat = exp(-(d.x * d.x) / (spread * spread));
+  float side = d.x * h.y - d.z * h.x;
+  float spread = 1.2 + along * 0.3;
+  float lat = exp(-(side * side) / (spread * spread));
   float fall = clamp(1.0 - along / 70.0, 0.0, 1.0);
-  float h = clamp(1.0 - abs(d.y - 0.2) / 3.5, 0.0, 1.0);
-  return lat * fall * fall * h * 2.2;
+  float v = clamp(1.0 - abs(d.y - along * uHeadDir.y / hl) / 4.5, 0.0, 1.0);
+  return lat * fall * fall * v * 1.4;
 }
+float headTerm(vec3 p) { return beamTerm(p, uHeadL) + beamTerm(p, uHeadR); }
 
 void main() {
   vec4 tex = vec4(1.0);
@@ -206,7 +225,9 @@ export function ps1Material(o = {}) {
       uCurve: shared.uCurve,
       uNight: shared.uNight,
       uEnvScale: shared.uEnvScale,
-      uCarPos: shared.uCarPos,
+      uHeadL: shared.uHeadL,
+      uHeadR: shared.uHeadR,
+      uHeadDir: shared.uHeadDir,
       uMap: { value: o.map || white },
       uHasMap: { value: o.map ? 1 : 0 },
       uColor: { value: new THREE.Color(o.color === undefined ? 0xffffff : o.color) },

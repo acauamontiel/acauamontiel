@@ -1,6 +1,6 @@
 // PELOTAS TURISMO — Astra GSi pelas avenidas de Pelotas, em WebGL com visual de PS1.
 import * as THREE from 'three';
-import { PS1Post, shared, ps1Material } from './ps1.js';
+import { PS1Post, shared, ps1Material, setHeadlightsFromCar } from './ps1.js';
 import { makeTextures } from './textures.js';
 import { makeMaterials, buildAstra, buildTrafficTemplates, buildMotoTemplate, makeVehicle, makeMoto, makePothole, MOTO_MODELS } from './vehicles.js';
 import { loadAstraModel } from './astra_model.js';
@@ -103,7 +103,7 @@ const G = {
   health: 100, score: 0, combo: 0, comboTimer: 0, dist: 0, motos: 0,
   time: 0, stateTime: 0,
   shake: 0, bounce: 0, bounceV: 0, roll: 0, invuln: 0, gear: 1, rpm: 0,
-  drift: 0, vx: 0, yaw: 0, driftPop: false, smokeT: 0,
+  drift: 0, vx: 0, yaw: 0, driftPop: false, smokeT: 0, brakeGlow: 0,
   course: THEMES[START_PHASE].name, phase: START_PHASE, phases: THEMES.length, best: loadBest(), alive: false,
   wheelRot: 0, titleAngle: 0, phaseDist: 0,
 };
@@ -243,6 +243,7 @@ function updatePlaying(dt) {
   const cruise = 24 + diff * 18;
   const throttle = input.up ? 1 : 0;
   const brake = input.brake || input.down;
+  G.brakeGlow += ((brake ? 1 : 0) - G.brakeGlow) * Math.min(1, 14 * dt); // luz de freio
   const steer = BOT ? botSteer() : input.steer;
 
   // Drift: acelerar e frear juntos (ou o botão/Shift de drift) solta a traseira; o carro guina e
@@ -413,6 +414,13 @@ function frame() {
   city.update(G.z);
   updateCurve();
   shared.uCarPos.value.set(G.x, 0.6, G.z);
+  // Faróis e lanternas: os feixes nascem dos nós luz_farol_* do modelo e seguem o carro (inclusive no drift).
+  if (astra.lights) {
+    if (G.state !== 'playing') G.brakeGlow = 0;
+    astra.group.updateMatrixWorld(true);
+    astra.lights.update(shared);
+    astra.lights.setBrake(G.brakeGlow);
+  } else setHeadlightsFromCar(G.x, G.z);
   if (DBG) renderer.info.reset();
   post.render(scene, camera, G.time);
 }

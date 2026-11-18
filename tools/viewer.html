@@ -16,7 +16,7 @@ import { makeMaterials, makeVehicle, makeMoto, buildTrafficTemplates, buildMotoT
 import { loadAstraModel } from '../js/astra_model.js';
 import { loadBusModel } from '../js/bus_model.js';
 import { loadVehicleModel, VEHICLE_MODELS } from '../js/vehicle_models.js';
-import { shared } from '../js/ps1.js';
+import { shared, setHeadlightsFromCar } from '../js/ps1.js';
 const q = new URLSearchParams(location.search);
 const file = q.get('file') || '../assets/astra.glb';
 const only = (q.get('only') || '').split(',').filter(Boolean);
@@ -32,7 +32,7 @@ scene.add(new THREE.GridHelper(6, 12, 0x555, 0x444));
 const names = [];
 // ?game: carrega pelo mesmo caminho do jogo (materiais PS1, placa MGY 8888), em cena diurna.
 if (q.has('game')) {
-  if (q.has('night')) shared.uCarPos.value.set(0, 0.6, 25); // como no jogo: o veículo 25 m à frente do farol do Astra
+  if (q.has('night')) setHeadlightsFromCar(0, 25); // como no jogo: o veículo 25 m à frente do farol do Astra
   else { shared.uNight.value = 0; shared.uAmbient.value = 0.9; shared.uDiffuse.value = 0.5; shared.uFogFar.value = 1000; }
   const T = makeTextures(); const M = makeMaterials(T);
   if (q.get('game') === 'bus') loadBusModel(M, T, q.get('file') || '../assets/bus.glb').then((b) => { scene.add(b.make(q.get('kind') || 'turf')); draw(); });

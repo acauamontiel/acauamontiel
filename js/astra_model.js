@@ -42,6 +42,51 @@ function envCutAttribute(geo, value) {
   geo.setAttribute('envCut', new THREE.Float32BufferAttribute(new Float32Array(n).fill(value), 1));
 }
 
+/** Textura de brilho radial para as lentes (sprites aditivos). */
+function glowTexture() {
+  const c = document.createElement('canvas'); c.width = c.height = 64;
+  const g = c.getContext('2d'), r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(0.25, 'rgba(255,255,255,0.55)'); r.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = r; g.fillRect(0, 0, 64, 64);
+  return new THREE.CanvasTexture(c);
+}
+
+/**
+ * Luzes a partir dos vazios do modelo (luz_farol_esq/dir, luz_lanterna_esq/dir). O feixe de cada vazio sai pelo
+ * -Y local do nó no glTF (é o -Z do vazio no Blender; o exportador só corrige o eixo de luzes e câmeras).
+ * Devolve null se o modelo não tiver os nós. Os feixes em si são calculados no shader (uHeadL/uHeadR/uHeadDir);
+ * aqui entram o brilho das lentes e o das lanternas, que cresce ao frear.
+ */
+function buildLights(root, tailMats) {
+  const node = (n) => root.getObjectByName(n);
+  const head = [node('luz_farol_esq'), node('luz_farol_dir')].filter(Boolean);
+  const tail = [node('luz_lanterna_esq'), node('luz_lanterna_dir')].filter(Boolean);
+  if (head.length < 2) return null;
+  const tex = glowTexture();
+  const glow = (n, color, size, opacity) => {
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, color, opacity, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+    s.scale.setScalar(size); s.position.set(0, -0.05, 0); s.renderOrder = 3; // 5 cm à frente da lente
+    n.add(s); return s;
+  };
+  head.forEach((n) => glow(n, 0xfff0d2, 0.55, 0.9));
+  const tailGlow = tail.map((n) => glow(n, 0xff2412, 0.45, 0.4));
+  const dim = new THREE.Color(0x8c8c8c), full = new THREE.Color(0xffffff);
+  const q = new THREE.Quaternion();
+  return {
+    /** Atualiza os uniformes dos feixes com a posição e a direção atuais dos nós (carro já posicionado). */
+    update(shared) {
+      head[0].getWorldPosition(shared.uHeadL.value);
+      head[1].getWorldPosition(shared.uHeadR.value);
+      shared.uHeadDir.value.set(0, -1, 0).applyQuaternion(head[0].getWorldQuaternion(q)).normalize();
+    },
+    /** k = 0 lanterna normal, 1 freio no máximo. */
+    setBrake(k) {
+      for (const s of tailGlow) { s.material.opacity = 0.4 + 0.6 * k; s.scale.setScalar(0.45 + 0.4 * k); }
+      for (const m of tailMats) m.uniforms.uColor.value.copy(dim).lerp(full, k);
+    },
+  };
+}
+
 /**
  * Carrega o GLB e devolve o mesmo contrato de buildAstra():
  * { group, wheels, width, length, wheelR, rearWheels }.
@@ -57,6 +102,8 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
     // baseColorFactor do glTF é linear; o jogo trabalha com cores sRGB sem gerenciamento de cor.
     const color = src.color ? src.color.clone().convertLinearToSRGB().getHex() : 0xffffff;
     const opts = rule[1](map, color, src);
+    // emissão ligada no modelo (emissiveTexture): a peça tem brilho próprio, sem depender de poste ou farol
+    if (opts.unlit === undefined && src.emissiveMap) opts.unlit = true;
     const mat = ps1Material(opts);
     mat.name = name;
     cache.set(src, { mat, envCut: rule[2] });
@@ -74,6 +121,8 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   const paint = [...cache.values()].find((v) => v.mat.name.startsWith('vehicle_paint1'));
   if (paint) M.astraPaint = paint.mat;
 
+  const lights = buildLights(gltf.scene, [...cache.values()].filter((v) => v.mat.name.includes('lanterna')).map((v) => v.mat));
+
   const group = new THREE.Group();
   group.add(gltf.scene);
   group.add(shadowMesh(2.2, 4.7, M));
@@ -86,7 +135,7 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   // raio da roda: altura do eixo (o chão do modelo fica em y = 0)
   if (!extras.wheelRadius && wheels.length) extras.wheelRadius = wheels[0].position.y;
   return {
-    group, wheels,
+    group, wheels, lights,
     width: bb[1][0] - bb[0][0], length: bb[1][2] - bb[0][2],
     wheelR: extras.wheelRadius || 0.32,
     rearWheels: { x: rear.map((w) => w.position.x), z: rear.length ? rear[0].position.z : 1.38 },
