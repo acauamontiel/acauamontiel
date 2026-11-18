@@ -21,10 +21,11 @@ const RULES = [
   ['vehicle_mesh|grade', (map) => ({ map, alphaTest: 0.5, side: THREE.DoubleSide, envStrength: 0.2 }), 0],
   ['vehicle_mesh', (map, color) => ({ map, color, envStrength: 0.25 }), 0.3],
   ['normal|placa', (map) => ({ map, unlit: true }), 1],
+  ['Borracha', (map, color) => ({ map, color, lightScale: 0.45 }), 1], // borracha não estoura sob o farol e os postes
   ['vehicle_badges', (map) => ({ map, alphaTest: 0.5, polygonOffset: 1 }), 1],
 ];
-/** Qualquer outro material: cor/textura do modelo, com reflexo proporcional ao brilho (1 - rugosidade). */
-const DEFAULT_RULE = ['', (map, color, src) => ({ map, color, envStrength: Math.max(0, 0.6 - (src.roughness ?? 0.8)) }), 0.5];
+/** Qualquer outro material: cor/textura e face dupla como no modelo, com reflexo proporcional ao brilho (1 - rugosidade). */
+const DEFAULT_RULE = ['', (map, color, src) => ({ map, color, side: src.side, envStrength: Math.max(0, 0.6 - (src.roughness ?? 0.8)) }), 0.5];
 
 function pixelate(tex) {
   if (!tex) return null;

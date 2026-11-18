@@ -172,11 +172,11 @@ a pintura, o vidro e a placa MGY 8888. Esse `.blend` é a fonte, e a conversão 
 
 ```
 pip install bpy                                             # ou rode dentro do Blender
-python3 tools/rage2glb/blend_car.py astra_fix.blend assets/astra.glb
+python3 tools/rage2glb/blend_car.py astra_jogo.blend assets/astra.glb
 ```
 
-`blend_car.py` deixa de fora objetos ocultos, câmera, luzes e o chão de cena; reduz a roda marcada pelo vazio
-`roda_nova_lf` (o pneu vem com 1,4 milhão de triângulos e sai com 9 mil), une as peças numa malha e a instancia nos
+`blend_car.py` deixa de fora objetos ocultos, câmera, luzes e o chão de cena; reduz, se passar do orçamento, a roda marcada pelo vazio
+`roda_nova_lf` (a versão de jogo já vem leve, com 16 mil triângulos por roda), une as peças numa malha e a instancia nos
 quatro eixos como `wheel_lf/lr/rf/rr` (as da direita espelhadas); o resto é exportado como está pelo exportador
 glTF do Blender. Convenções do `.blend`: frente em +Y, chão em Z = 0, 1 unidade = 1 m.
 
