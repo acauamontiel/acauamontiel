@@ -1,32 +1,30 @@
-// Astra GSi vindo de um modelo 3D (assets/astra.glb, gerado por tools/rage2glb a partir de um .yft/.ytd).
-// O GLB traz só geometria, UV e texturas pequenas; os materiais são recriados aqui com o shader do jogo.
+// Astra GSi vindo de um modelo 3D (assets/astra.glb, exportado do .blend do carro por tools/rage2glb/blend_car.py).
+// Geometria, cores e texturas são as do modelo; aqui os materiais são recriados com o shader do jogo.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ps1Material } from './ps1.js';
 import { shadowMesh } from './vehicles.js';
 
-const PAINT = 0x0a0b0d;
-
-/** Regras de material por nome ("shader|textura" do arquivo original), na ordem de teste. */
+/**
+ * Tipo de shader por nome de material ("shader|textura" do arquivo original ou nome dado no Blender), na ordem de
+ * teste. Cor e textura vêm sempre do modelo (assets/astra.glb, gerado de um .blend por tools/rage2glb/blend_car.py):
+ * aqui só se decide como o jogo desenha cada tipo de peça (reflexo, transparência, emissivo, recorte).
+ * Cada regra: [prefixo, (map, cor) => opções do ps1Material, envCut].
+ */
 const RULES = [
-  ['vehicle_paint1', () => ({ color: PAINT, envStrength: 0.7 }), 0],
-  ['vehicle_vehglass|vidrofume', () => ({ color: 0x0c1016, envStrength: 1.0, transparent: true, opacity: 0.93, side: THREE.DoubleSide }), 0.35],
+  ['vehicle_paint1', (map, color) => ({ color, envStrength: 0.7 }), 0],
+  ['vehicle_vehglass|vidrofume', (map, color) => ({ color, envStrength: 1.0, transparent: true, opacity: 0.93, side: THREE.DoubleSide }), 0.35],
   ['vehicle_vehglass|farolvidro', (map) => ({ map, color: 0x8a8a8a, unlit: true, transparent: true, opacity: 0.85, envStrength: 0.3 }), 0.5],
   ['vehicle_vehglass_inner', () => ({ color: 0x0a0d12, transparent: true, opacity: 0.55 }), 0.6],
   ['vehicle_lightsemissive', (map) => ({ map, color: 0x8c8c8c, unlit: true }), 1],
   ['vehicle_mesh|farol', (map) => ({ map, color: 0x7a7a7a, unlit: true }), 1],
   ['vehicle_mesh|grade', (map) => ({ map, alphaTest: 0.5, side: THREE.DoubleSide, envStrength: 0.2 }), 0],
-  ['vehicle_mesh', () => ({ color: 0x131416, envStrength: 0.25 }), 0.3],
-  ['spec|dourado', () => ({ color: 0x0c0c0e, envStrength: 0.9 }), 0], // gravatas e calotas pretas
-  ['normal|placa', (map, T) => ({ map: T.plate, unlit: true }), 1],
+  ['vehicle_mesh', (map, color) => ({ map, color, envStrength: 0.25 }), 0.3],
+  ['normal|placa', (map) => ({ map, unlit: true }), 1],
   ['vehicle_badges', (map) => ({ map, alphaTest: 0.5, polygonOffset: 1 }), 1],
-  ['vehicle_detail2|futo_dash', (map) => ({ map }), 1],
-  ['vehicle_detail2', () => ({ color: 0x18191b }), 1],
-  ['wheel|rim', () => ({ color: 0x08080a, envStrength: 0.4 }), 0], // aro preto fosco escuro
-  ['wheel|emblem', () => ({ color: 0xc9962e, envStrength: 0.5 }), 0.2], // gravata dourada da calota
-  ['wheel|tire', () => ({ color: 0x0c0c0d }), 1],
-  ['vehicle_tire', (map) => ({ map, color: 0x9a9a9a }), 0.5],
 ];
+/** Qualquer outro material: cor/textura do modelo, com reflexo proporcional ao brilho (1 - rugosidade). */
+const DEFAULT_RULE = ['', (map, color, src) => ({ map, color, envStrength: Math.max(0, 0.6 - (src.roughness ?? 0.8)) }), 0.5];
 
 function pixelate(tex) {
   if (!tex) return null;
@@ -53,9 +51,11 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   const material = (src) => {
     if (cache.has(src)) return cache.get(src);
     const name = src.name || '';
-    const rule = RULES.find(([prefix]) => name.startsWith(prefix)) || ['', (map) => ({ map, color: map ? 0xffffff : 0x3a3a3c }), 0.5];
+    const rule = RULES.find(([prefix]) => name.startsWith(prefix)) || DEFAULT_RULE;
     const map = pixelate(src.map);
-    const opts = rule[1](map, T);
+    // baseColorFactor do glTF é linear; o jogo trabalha com cores sRGB sem gerenciamento de cor.
+    const color = src.color ? src.color.clone().convertLinearToSRGB().getHex() : 0xffffff;
+    const opts = rule[1](map, color, src);
     const mat = ps1Material(opts);
     mat.name = name;
     cache.set(src, { mat, envCut: rule[2] });
@@ -80,7 +80,10 @@ export async function loadAstraModel(M, T, url = 'assets/astra.glb') {
   const wheels = ['wheel_lf', 'wheel_rf', 'wheel_lr', 'wheel_rr'].map((n) => gltf.scene.getObjectByName(n)).filter(Boolean);
   const rear = wheels.filter((w) => w.name.endsWith('r'));
   const extras = gltf.parser.json.extras || {};
-  const bb = extras.bbox || [[-0.95, 0, -2.13], [0.95, 1.6, 2.11]];
+  const box = new THREE.Box3().setFromObject(gltf.scene);
+  const bb = extras.bbox || [box.min.toArray(), box.max.toArray()];
+  // raio da roda: altura do eixo (o chão do modelo fica em y = 0)
+  if (!extras.wheelRadius && wheels.length) extras.wheelRadius = wheels[0].position.y;
   return {
     group, wheels,
     width: bb[1][0] - bb[0][0], length: bb[1][2] - bb[0][2],

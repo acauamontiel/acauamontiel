@@ -164,22 +164,26 @@ O que o conversor faz:
   `shader|textura`, que `js/astra_model.js` troca pelos materiais do jogo (pintura preta com reflexo,
   vidro fumê, faróis e lanternas acesos, gravatas pretas, aros preto fosco, placa MGY 8888 gerada em canvas).
 
-### A roda feita no Blender
+### O Astra atual vem de um .blend
 
-As rodas do Astra não são mais as do mod: vêm de um `.blend` próprio (aro preto de cinco raios duplos, calota com a
-gravata dourada, pneu de perfil baixo), convertido em dois passos:
+O `assets/astra.glb` do jogo não sai mais direto do mod: o modelo convertido foi levado ao Blender, onde ganhou as
+rodas novas (aro preto de cinco raios duplos, gravata dourada na calota), o fundo do para-choque, as caixas de roda,
+a pintura, o vidro e a placa MGY 8888. Esse `.blend` é a fonte, e a conversão é um passo só:
 
 ```
-pip install bpy                                                   # ou rode dentro do Blender
-python3 tools/rage2glb/blend_wheel.py roda.blend roda.json        # extrai e reduz (Decimate) a roda
-python3 tools/rage2glb/swap_wheel.py assets/astra.glb roda.json assets/astra.glb
+pip install bpy                                             # ou rode dentro do Blender
+python3 tools/rage2glb/blend_car.py astra_fix.blend assets/astra.glb
 ```
 
-`blend_wheel.py` espera a roda deitada (eixo em Z, face externa em +Z), separa pneu, emblema e aro pelo nome do
-material, reduz o pneu para ~9 mil triângulos e escala tudo para o raio da roda do jogo (0,319 m).
-`swap_wheel.py` troca as primitivas de `wheel_l`/`wheel_r` dentro do GLB (mantém o disco de freio original) sem
-precisar do `.yft`; `export_glb.py --wheel-json roda.json` faz o mesmo numa exportação completa. No jogo os
-materiais são `wheel|rim`, `wheel|tire` e `wheel|emblem` (`js/astra_model.js`).
+`blend_car.py` deixa de fora objetos ocultos, câmera, luzes e o chão de cena; reduz a roda marcada pelo vazio
+`roda_nova_lf` (o pneu vem com 1,4 milhão de triângulos e sai com 9 mil), une as peças numa malha e a instancia nos
+quatro eixos como `wheel_lf/lr/rf/rr` (as da direita espelhadas); o resto é exportado como está pelo exportador
+glTF do Blender. Convenções do `.blend`: frente em +Y, chão em Z = 0, 1 unidade = 1 m.
+
+No jogo, `js/astra_model.js` usa cores e texturas do próprio modelo e só escolhe o tipo de shader pelo nome do
+material (pintura com reflexo, vidro transparente, faróis emissivos, grade recortada); materiais novos criados no
+Blender entram com a cor do modelo e reflexo proporcional ao brilho. As seções acima descrevem a conversão original
+do mod, que continua valendo para os carros do tráfego.
 
 ### O modelo do ônibus
 
